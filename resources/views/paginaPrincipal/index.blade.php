@@ -39,7 +39,7 @@
 <body class="warehouse--v4 features--animate-zoom template-index" data-instant-intensity="viewport">
     <!-- END sections: header-group -->
     <!-- BEGIN sections: overlay-group -->
-    <nav class="navbar navbar-inverse" style="background-color: black !important;">
+    <nav class="navbar navbar-inverse" style="background-color: black !important; position: fixed !important; width: 100% !important; z-index: 9999 !important;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -47,11 +47,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">WebSiteName</a>
+                <a class="navbar-brand active" href="#">Magic Sex Shop</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <!--<li class="active"><a href="#">Home</a></li>-->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorías<span
                                 class="caret"></span></a>
@@ -61,13 +61,16 @@
                             <li><a href="#">Page 1-3</a></li>
                         </ul>
                     </li>
+                    <!--
                     <li><a href="#">Page 2</a></li>
                     <li><a href="#">Page 3</a></li>
                 </ul>
+                
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
+                -->
             </div>
         </div>
     </nav>
@@ -76,6 +79,7 @@
         <div data-section-id="sections--14562733359167__popups" data-section-type="popups"></div>
     </div>
 
+    <br><br><br><br><br><br><br><br><br><br>
     <!-- END sections: overlay-group -->
     <main id="main" role="main">
         <!--LayoutHub-Workspace-Start-->
@@ -90,104 +94,17 @@
     &quot;transitionEffect&quot;: &quot;fade&quot;,
     &quot;cycleSpeed&quot;: 5000
   }">
-                <div>
-                    <div class="slideshow slideshow--preserve-ratio slideshow--edge2edge flickity-enabled is-draggable is-fade"
-                        style="color: #ffffff" tabindex="0">
-                        <div class="flickity-viewport" style="height: 270.938px; touch-action: pan-y;">
-                            <div class="flickity-slider" style="left: 0px; transform: translateX(50%);"><a
-                                    href="/products/lovense-webcam" class="slideshow__slide" id="block-slide-2"
-                                    data-block-index="0" style="position: absolute; left: -50%; opacity: 0;"
-                                    aria-hidden="true">
-                                    <div class="slideshow__slide-inner slideshow__slide-inner--middle-center">
-                                        <div class="hidden-phone"><img
-                                                src="//cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=1920"
-                                                alt=""
-                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=1600 1600w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense.png?v=1682531207&amp;width=1800 1800w"
-                                                width="1920" height="600" loading="lazy"
-                                                class="slideshow__image "></div>
-                                        <div class="hidden-tablet-and-up"><img
-                                                src="//cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense_Mobile.png?v=1682531220&amp;width=1200"
-                                                alt=""
-                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense_Mobile.png?v=1682531220&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense_Mobile.png?v=1682531220&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense_Mobile.png?v=1682531220&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense_Mobile.png?v=1682531220&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense_Mobile.png?v=1682531220&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense_Mobile.png?v=1682531220&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_lovense_Mobile.png?v=1682531220&amp;width=1200 1200w"
-                                                width="1200" height="1080" loading="lazy"
-                                                class="slideshow__image "></div>
-                                    </div>
-                                </a><a href="/collections/lubricantes-vaginales" class="slideshow__slide"
-                                    id="block-slide-1" data-block-index="1"
-                                    style="position: absolute; left: -50%; opacity: 0.155868;" aria-hidden="true">
-                                    <div class="slideshow__slide-inner slideshow__slide-inner--middle-center">
-                                        <div class="hidden-phone"><img
-                                                src="//cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=1920"
-                                                alt=""
-                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=1600 1600w, //cdn.shopify.com/s/files/1/1102/5004/files/banner_elixir__2.png?v=1681137660&amp;width=1800 1800w"
-                                                width="1920" height="600" loading="lazy"
-                                                class="slideshow__image "></div>
-                                        <div class="hidden-tablet-and-up"><img
-                                                src="//cdn.shopify.com/s/files/1/1102/5004/files/lubricante_saborizados.png?v=1681137675&amp;width=1200"
-                                                alt=""
-                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/files/lubricante_saborizados.png?v=1681137675&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/lubricante_saborizados.png?v=1681137675&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/lubricante_saborizados.png?v=1681137675&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/lubricante_saborizados.png?v=1681137675&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/lubricante_saborizados.png?v=1681137675&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/files/lubricante_saborizados.png?v=1681137675&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/files/lubricante_saborizados.png?v=1681137675&amp;width=1200 1200w"
-                                                width="1200" height="1080" loading="lazy"
-                                                class="slideshow__image "></div>
-                                    </div>
-                                </a>
-                                <a href="#" class="slideshow__slide is-selected"
-                                    id="block-c32e02ae-697a-4fe2-8519-ecdf39182042" data-block-index="2"
-                                    style="position: absolute; left: -50%; opacity: 0.844132;">
-                                    <div class="slideshow__slide-inner slideshow__slide-inner--middle-center">
-                                        <div class="hidden-phone">
-                                            <img src="images/inicio.jpg?v=1680025258&amp;width=1920" alt=""
-                                                srcset="images/inicio.jpg?v=1680025258&amp;width=200 200w, images/inicio.jpg?v=1680025258&amp;width=300 300w, images/inicio.jpg?v=1680025258&amp;width=400 400w, images/inicio.jpg?v=1680025258&amp;width=600 600w, images/inicio.jpg?v=1680025258&amp;width=800 800w, images/inicio.jpg?v=1680025258&amp;width=1000 1000w, images/inicio.jpg?v=1680025258&amp;width=1200 1200w, images/inicio.jpg?v=1680025258&amp;width=1400 1400w, images/inicio.jpg?v=1680025258&amp;width=1600 1600w, images/inicio.jpg?v=1680025258&amp;width=1800 1800w"
-                                                width="1920" height="600" loading="lazy"
-                                                class="slideshow__image ">
-                                        </div>
-                                        <div class="hidden-tablet-and-up"><img
-                                                src="images/inicio.jpg?v=1680025277&amp;width=1200" alt=""
-                                                srcset="images/inicio.jpg?v=1680025277&amp;width=200 200w, images/inicio.jpg?v=1680025277&amp;width=300 300w, images/inicio.jpg?v=1680025277&amp;width=400 400w, images/inicio.jpg?v=1680025277&amp;width=600 600w, images/inicio.jpg?v=1680025277&amp;width=800 800w, images/inicio.jpg?v=1680025277&amp;width=1000 1000w, images/inicio.jpg?v=1680025277&amp;width=1200 1200w"
-                                                width="1200" height="1080" loading="lazy"
-                                                class="slideshow__image "></div>
-                                    </div>
-                                </a><a href="/collections/lenceria" class="slideshow__slide"
-                                    id="block-7c6f2af9-f2c7-4663-9019-cac3dc1e06e6" data-block-index="3"
-                                    style="position: absolute; left: -50%; opacity: 0;" aria-hidden="true">
-                                    <div class="slideshow__slide-inner slideshow__slide-inner--middle-center">
-                                        <div class="hidden-phone"><img
-                                                src="//cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=5760"
-                                                alt=""
-                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=1600 1600w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=1800 1800w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=2000 2000w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=2200 2200w, //cdn.shopify.com/s/files/1/1102/5004/files/Lerot_Nueva_Coleccion.png?v=1678977304&amp;width=2400 2400w"
-                                                width="8000" height="2500" loading="lazy"
-                                                class="slideshow__image "></div>
-                                        <div class="hidden-tablet-and-up"><img
-                                                src="//cdn.shopify.com/s/files/1/1102/5004/files/mobile_lerot.png?v=1678978915&amp;width=1080"
-                                                alt=""
-                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/files/mobile_lerot.png?v=1678978915&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/mobile_lerot.png?v=1678978915&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/mobile_lerot.png?v=1678978915&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/mobile_lerot.png?v=1678978915&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/mobile_lerot.png?v=1678978915&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/files/mobile_lerot.png?v=1678978915&amp;width=1000 1000w"
-                                                width="1080" height="1200" loading="lazy"
-                                                class="slideshow__image "></div>
-                                    </div>
-                                </a><a
-                                    href="https://wa.me/573006008000?utm_source=pagina_web&amp;utm_medium=banner&amp;utm_campaign=banner-envios-balisex-05-11-22"
-                                    class="slideshow__slide" id="block-3daf1850-f650-4428-abff-d60aa5898bde"
-                                    data-block-index="4" style="position: absolute; left: -50%; opacity: 0;"
-                                    target="_blank" rel="noopener" aria-describedby="a11y-new-window-message"
-                                    aria-hidden="true">
-                                    <div class="slideshow__slide-inner slideshow__slide-inner--middle-center">
-                                        <div class="hidden-phone"><img
-                                                src="//cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=2161"
-                                                alt=""
-                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=1600 1600w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=1800 1800w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios.jpg?v=1676995978&amp;width=2000 2000w"
-                                                width="2161" height="721" loading="lazy"
-                                                class="slideshow__image "></div>
-                                        <div class="hidden-tablet-and-up"><img
-                                                src="//cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios_responsive.jpg?v=1676995981&amp;width=751"
-                                                alt=""
-                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios_responsive.jpg?v=1676995981&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios_responsive.jpg?v=1676995981&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios_responsive.jpg?v=1676995981&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/Banner_envios_responsive.jpg?v=1676995981&amp;width=600 600w"
-                                                width="751" height="1101" loading="lazy"
-                                                class="slideshow__image "></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="hidden-phone">
+    <img src="images/inicio.jpg?v=1680025258&amp;width=1920" alt=""
+        srcset="images/inicio.jpg?v=1680025258&amp;width=200 200w, images/inicio.jpg?v=1680025258&amp;width=300 300w, images/inicio.jpg?v=1680025258&amp;width=400 400w, images/inicio.jpg?v=1680025258&amp;width=600 600w, images/inicio.jpg?v=1680025258&amp;width=800 800w, images/inicio.jpg?v=1680025258&amp;width=1000 1000w, images/inicio.jpg?v=1680025258&amp;width=1200 1200w, images/inicio.jpg?v=1680025258&amp;width=1400 1400w, images/inicio.jpg?v=1680025258&amp;width=1600 1600w, images/inicio.jpg?v=1680025258&amp;width=1800 1800w"
+        width="1920" height="600" loading="lazy"
+        class="slideshow__image zoom">
+</div>
+<div class="hidden-tablet-and-up zoom"><img
+        src="images/inicio.jpg?v=1680025277&amp;width=1200" alt=""
+        srcset="images/inicio.jpg?v=1680025277&amp;width=200 200w, images/inicio.jpg?v=1680025277&amp;width=300 300w, images/inicio.jpg?v=1680025277&amp;width=400 400w, images/inicio.jpg?v=1680025277&amp;width=600 600w, images/inicio.jpg?v=1680025277&amp;width=800 800w, images/inicio.jpg?v=1680025277&amp;width=1000 1000w, images/inicio.jpg?v=1680025277&amp;width=1200 1200w"
+        width="1200" height="1080" loading="lazy"
+        class="slideshow__image "></div>
             </section>
         </div>
         <div id="shopify-section-template--14562732638271__collection-list" class="shopify-section">
@@ -979,8 +896,10 @@
     &quot;infoOverflowScroll&quot;: false,
     &quot;isQuickView&quot;: false
   }">
+
                 <div class="container">
                     <div style="text-align: right !important;">
+                        <p>Síguenos</p>
                         <li class="social-media__item social-media__item--facebook">
                             <a href="https://www.facebook.com/Balistorecolombia/" target="_blank" rel="noopener"
                                 aria-label="Síguenos en Facebook" aria-describedby="a11y-new-window-message"><svg
@@ -1010,7 +929,7 @@
                                         fill="currentColor" fill-rule="evenodd"></path>
                                 </svg></a>
                         </li>
-                        <li class="social-media__item">
+                        <li class="social-media__item social-media__item--whatsapp">
                             <a href="https://www.instagram.com/balisexstore/" target="_blank" rel="noopener"
                                 aria-label="Síguenos en Instagram" aria-describedby="a11y-new-window-message"><svg
                                     focusable="false" class="icon" role="presentation" viewBox="2 1 21 21">
@@ -1807,6 +1726,15 @@
                                                     <path
                                                         d="M15 30C6.71572875 30 0 23.2842712 0 15 0 6.71572875 6.71572875 0 15 0c8.2842712 0 15 6.71572875 15 15 0 8.2842712-6.7157288 15-15 15zm.0000159-23.03571429c-2.1823849 0-2.4560363.00925037-3.3131306.0483571-.8553081.03901103-1.4394529.17486384-1.9505835.37352345-.52841925.20532625-.9765517.48009406-1.42331254.926823-.44672894.44676084-.72149675.89489329-.926823 1.42331254-.19865961.5111306-.33451242 1.0952754-.37352345 1.9505835-.03910673.8570943-.0483571 1.1307457-.0483571 3.3131306 0 2.1823531.00925037 2.4560045.0483571 3.3130988.03901103.8553081.17486384 1.4394529.37352345 1.9505835.20532625.5284193.48009406.9765517.926823 1.4233125.44676084.446729.89489329.7214968 1.42331254.9268549.5111306.1986278 1.0952754.3344806 1.9505835.3734916.8570943.0391067 1.1307457.0483571 3.3131306.0483571 2.1823531 0 2.4560045-.0092504 3.3130988-.0483571.8553081-.039011 1.4394529-.1748638 1.9505835-.3734916.5284193-.2053581.9765517-.4801259 1.4233125-.9268549.446729-.4467608.7214968-.8948932.9268549-1.4233125.1986278-.5111306.3344806-1.0952754.3734916-1.9505835.0391067-.8570943.0483571-1.1307457.0483571-3.3130988 0-2.1823849-.0092504-2.4560363-.0483571-3.3131306-.039011-.8553081-.1748638-1.4394529-.3734916-1.9505835-.2053581-.52841925-.4801259-.9765517-.9268549-1.42331254-.4467608-.44672894-.8948932-.72149675-1.4233125-.926823-.5111306-.19865961-1.0952754-.33451242-1.9505835-.37352345-.8570943-.03910673-1.1307457-.0483571-3.3130988-.0483571zm0 1.44787387c2.1456068 0 2.3997686.00819774 3.2471022.04685789.7834742.03572556 1.2089592.1666342 1.4921162.27668167.3750864.14577303.6427729.31990322.9239522.60111439.2812111.28117926.4553413.54886575.6011144.92395217.1100474.283157.2409561.708642.2766816 1.4921162.0386602.8473336.0468579 1.1014954.0468579 3.247134 0 2.1456068-.0081977 2.3997686-.0468579 3.2471022-.0357255.7834742-.1666342 1.2089592-.2766816 1.4921162-.1457731.3750864-.3199033.6427729-.6011144.9239522-.2811793.2812111-.5488658.4553413-.9239522.6011144-.283157.1100474-.708642.2409561-1.4921162.2766816-.847206.0386602-1.1013359.0468579-3.2471022.0468579-2.1457981 0-2.3998961-.0081977-3.247134-.0468579-.7834742-.0357255-1.2089592-.1666342-1.4921162-.2766816-.37508642-.1457731-.64277291-.3199033-.92395217-.6011144-.28117927-.2811793-.45534136-.5488658-.60111439-.9239522-.11004747-.283157-.24095611-.708642-.27668167-1.4921162-.03866015-.8473336-.04685789-1.1014954-.04685789-3.2471022 0-2.1456386.00819774-2.3998004.04685789-3.247134.03572556-.7834742.1666342-1.2089592.27668167-1.4921162.14577303-.37508642.31990322-.64277291.60111439-.92395217.28117926-.28121117.54886575-.45534136.92395217-.60111439.283157-.11004747.708642-.24095611 1.4921162-.27668167.8473336-.03866015 1.1014954-.04685789 3.247134-.04685789zm0 9.26641182c-1.479357 0-2.6785873-1.1992303-2.6785873-2.6785555 0-1.479357 1.1992303-2.6785873 2.6785873-2.6785873 1.4793252 0 2.6785555 1.1992303 2.6785555 2.6785873 0 1.4793252-1.1992303 2.6785555-2.6785555 2.6785555zm0-6.8050167c-2.2790034 0-4.1264612 1.8474578-4.1264612 4.1264612 0 2.2789716 1.8474578 4.1264294 4.1264612 4.1264294 2.2789716 0 4.1264294-1.8474578 4.1264294-4.1264294 0-2.2790034-1.8474578-4.1264612-4.1264294-4.1264612zm5.2537621-.1630297c0-.532566-.431737-.96430298-.964303-.96430298-.532534 0-.964271.43173698-.964271.96430298 0 .5325659.431737.964271.964271.964271.532566 0 .964303-.4317051.964303-.964271z"
                                                         fill="currentColor" fill-rule="evenodd"></path>
+                                                </svg></a>
+                                        </li>
+                                        <li class="social-media__item social-media__item--whatsapp">
+                                            <a href="https://www.instagram.com/balisexstore/" target="_blank" rel="noopener"
+                                                aria-label="Síguenos en Instagram" aria-describedby="a11y-new-window-message"><svg
+                                                    focusable="false" class="icon" role="presentation" viewBox="2 1 21 21">
+                                                    <path
+                                                        d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"
+                                                        fill="currentColor" fill-rule="evenodd" class="focusAlWhatapps"></path>
                                                 </svg></a>
                                         </li>
                                     </ul>
