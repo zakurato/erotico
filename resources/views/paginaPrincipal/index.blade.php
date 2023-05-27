@@ -2,13 +2,9 @@
     style="--announcement-bar-height: 43px; --header-height: 230px;">
 
 <head>
-
     <!--/Css propios public-->
-
     <link rel="stylesheet" href="http://localhost/erotico/public/index/index.Css">
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}">
-
-
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
@@ -16,10 +12,7 @@
     <link rel="shortcut icon"
         href="//cdn.shopify.com/s/files/1/1102/5004/files/favicon_70bd5645-333e-41c1-9dd5-cf7e81b4074b_96x96.png?v=1674755086"
         type="image/png">
-
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v=120939182865429120021678115775">
-
-
     <!-- BEGIN app block: shopify://apps/yoast-seo-seo-for-everyone/blocks/metatags/7c777011-bc88-4743-a24e-64336e1e5b46 -->
     <!-- This site is optimized with Yoast SEO for Shopify -->
     <title>Magic Sex Shop</title>
@@ -38,253 +31,14 @@
     <meta property="og:image:width" content="1200">
     <!--/ Yoast SEO -->
     <!-- END app app block -->
-    
-    
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <link href="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" rel="preload"
-        as="script">
-    <script id="boomr-scr-as" src="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" async="">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdn.shopify.com/shopifycloud/payment-sheet/assets/latest/spb.es.js?v=2"
-        data-source-attribute="shopify.dynamic_checkout.product.init"></script>
-
-    <script type="module" src="https://cdn.addi.com/home-banner-widget/prod/v1/home-banner-widget.esm.js"></script>
-
-    <meta http-equiv="origin-trial"
-        content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/runtime.latest.es.498138cceeb7af87acbd.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~Information~NoAddressLocation~Payment~PostPurchase~Review~Shipping~ShopPay~Sho~cf13f96e.latest.es.04837ae4ff5a8e949953.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.1ef8820b00c216a809e6.js">
-    <script type="text/javascript" src="https://cdn.shopify.com/s/files/1/0897/8142/files/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://cdn.shopify.com/s/files/1/0897/8142/files/jquery.min.js"></script>
-
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.d7938d71f0dae49198e9.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.86cd9328cdcd6cd3a58f.js">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.shopify.com/s/files/1/0683/1371/0892/files/superlemon-12-May.css?v=1683892361">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.01049fa1c3a14c81835f.js">
-
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~app.latest.es.c5d0bf6ec152ebca42f4.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.5e621e50a12b927ebb1f.js">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.9f2a5e9ec696775e2217.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.e788719f193b49c039a3.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.6b4c79ead7042980b29d.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.da9f06164a980bf8e7ea.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.9a0274ab07be120c1902.css">
-    <script id="boomr-scr-as" src="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" async="">
-    </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdn.shopify.com/shopifycloud/payment-sheet/assets/latest/spb.es.js?v=2"
-        data-source-attribute="shopify.dynamic_checkout.product.init"></script>
-    <script id="boomr-scr-as" src="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" async="">
-    </script>
-
-    <script type="module" src="https://cdn.addi.com/home-banner-widget/prod/v1/home-banner-widget.esm.js"></script>
-    <meta http-equiv="origin-trial"
-        content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/runtime.latest.es.498138cceeb7af87acbd.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~Information~NoAddressLocation~Payment~PostPurchase~Review~Shipping~ShopPay~Sho~cf13f96e.latest.es.04837ae4ff5a8e949953.js">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.1ef8820b00c216a809e6.js">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.shopify.com/s/files/1/0683/1371/0892/files/superlemon-12-May.css?v=1683892361">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.d7938d71f0dae49198e9.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.86cd9328cdcd6cd3a58f.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.01049fa1c3a14c81835f.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~app.latest.es.c5d0bf6ec152ebca42f4.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.5e621e50a12b927ebb1f.js">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.9f2a5e9ec696775e2217.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.e788719f193b49c039a3.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.6b4c79ead7042980b29d.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.da9f06164a980bf8e7ea.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.9a0274ab07be120c1902.css">
-
-    <script id="boomr-scr-as" src="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" async="">
-    </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdn.shopify.com/shopifycloud/payment-sheet/assets/latest/spb.es.js?v=2"
-        data-source-attribute="shopify.dynamic_checkout.product.init"></script>
-
-
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/runtime.latest.es.498138cceeb7af87acbd.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~Information~NoAddressLocation~Payment~PostPurchase~Review~Shipping~ShopPay~Sho~cf13f96e.latest.es.04837ae4ff5a8e949953.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.1ef8820b00c216a809e6.js">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.shopify.com/s/files/1/0683/1371/0892/files/superlemon-12-May.css?v=1683892361">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.d7938d71f0dae49198e9.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.86cd9328cdcd6cd3a58f.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.01049fa1c3a14c81835f.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~app.latest.es.c5d0bf6ec152ebca42f4.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.5e621e50a12b927ebb1f.js">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.9f2a5e9ec696775e2217.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.e788719f193b49c039a3.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.6b4c79ead7042980b29d.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.da9f06164a980bf8e7ea.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.9a0274ab07be120c1902.css">
-    <script id="boomr-scr-as" src="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" async="">
-    </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdn.shopify.com/shopifycloud/payment-sheet/assets/latest/spb.es.js?v=2"
-        data-source-attribute="shopify.dynamic_checkout.product.init"></script>
-
-
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/runtime.latest.es.498138cceeb7af87acbd.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~Information~NoAddressLocation~Payment~PostPurchase~Review~Shipping~ShopPay~Sho~cf13f96e.latest.es.04837ae4ff5a8e949953.js">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.1ef8820b00c216a809e6.js">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.shopify.com/s/files/1/0683/1371/0892/files/superlemon-12-May.css?v=1683892361">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.d7938d71f0dae49198e9.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.86cd9328cdcd6cd3a58f.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.01049fa1c3a14c81835f.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~app.latest.es.c5d0bf6ec152ebca42f4.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.5e621e50a12b927ebb1f.js">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.9f2a5e9ec696775e2217.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.e788719f193b49c039a3.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.6b4c79ead7042980b29d.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.da9f06164a980bf8e7ea.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.9a0274ab07be120c1902.css">
-
-    <script id="boomr-scr-as" src="https://cdn.shopify.com/shopifycloud/boomerang/shopify-boomerang-1.0.0.min.js" async="">
-    </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdn.shopify.com/shopifycloud/payment-sheet/assets/latest/spb.es.js?v=2"
-        data-source-attribute="shopify.dynamic_checkout.product.init"></script>
-
-
-    <script type="module" src="https://cdn.addi.com/home-banner-widget/prod/v1/home-banner-widget.esm.js"></script>
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/runtime.latest.es.498138cceeb7af87acbd.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~Information~NoAddressLocation~Payment~PostPurchase~Review~Shipping~ShopPay~Sho~cf13f96e.latest.es.04837ae4ff5a8e949953.js">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.1ef8820b00c216a809e6.js">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.shopify.com/s/files/1/0683/1371/0892/files/superlemon-12-May.css?v=1683892361">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.d7938d71f0dae49198e9.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.86cd9328cdcd6cd3a58f.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.01049fa1c3a14c81835f.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-packages~app.latest.es.c5d0bf6ec152ebca42f4.js">
-    <link rel="prefetch" fetchpriority="low" as="script"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.5e621e50a12b927ebb1f.js">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/checkout-web-ui~app.latest.es.9f2a5e9ec696775e2217.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/vendors~app.latest.es.e788719f193b49c039a3.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/app.latest.es.6b4c79ead7042980b29d.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information~Payment~ShopPay.latest.es.da9f06164a980bf8e7ea.css">
-    <link rel="prefetch" fetchpriority="low" as="style"
-        href="https://cdn.shopify.com/shopifycloud/checkout-web/assets/Information.latest.es.9a0274ab07be120c1902.css">
-
 </head>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
 <body class="warehouse--v4 features--animate-zoom template-index" data-instant-intensity="viewport">
-
-
-
-
-
-
-
-
-
     <!-- END sections: header-group -->
     <!-- BEGIN sections: overlay-group -->
-
-
     <nav class="navbar navbar-inverse" style="background-color: black !important;">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -317,36 +71,11 @@
             </div>
         </div>
     </nav>
-
-
     <div id="shopify-section-sections--14562733359167__popups"
         class="shopify-section shopify-section-group-overlay-group">
         <div data-section-id="sections--14562733359167__popups" data-section-type="popups"></div>
-
     </div>
-    <div id="shopify-section-sections--14562733359167__privacy-banner"
-        class="shopify-section shopify-section-group-overlay-group">
-        <aside class="cookie-bar" aria-hidden="true">
-            <div class="container">
-                <div class="cookie-bar__inner">
-                    <div class="cookie-bar__text rte">
-                        <p>Use this bar to show information about your cookie policy.</p>
-                    </div>
 
-                    <div class="cookie-bar__choice-container">
-                        <div class="button-group button-group--fit">
-                            <button type="button" class="cookie-bar__button button button--primary"
-                                data-action="accept-terms">Acceptar</button>
-                            <button type="button" class="cookie-bar__button button button--secondary"
-                                data-action="decline-terms">Declinar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-
-    </div>
     <!-- END sections: overlay-group -->
     <main id="main" role="main">
         <!--LayoutHub-Workspace-Start-->
@@ -383,8 +112,6 @@
                                                 width="1200" height="1080" loading="lazy"
                                                 class="slideshow__image "></div>
                                     </div>
-
-
                                 </a><a href="/collections/lubricantes-vaginales" class="slideshow__slide"
                                     id="block-slide-1" data-block-index="1"
                                     style="position: absolute; left: -50%; opacity: 0.155868;" aria-hidden="true">
@@ -402,9 +129,8 @@
                                                 width="1200" height="1080" loading="lazy"
                                                 class="slideshow__image "></div>
                                     </div>
-
                                 </a>
-                                <a href="/collections/satisfyer" class="slideshow__slide is-selected"
+                                <a href="#" class="slideshow__slide is-selected"
                                     id="block-c32e02ae-697a-4fe2-8519-ecdf39182042" data-block-index="2"
                                     style="position: absolute; left: -50%; opacity: 0.844132;">
                                     <div class="slideshow__slide-inner slideshow__slide-inner--middle-center">
@@ -420,7 +146,6 @@
                                                 width="1200" height="1080" loading="lazy"
                                                 class="slideshow__image "></div>
                                     </div>
-
                                 </a><a href="/collections/lenceria" class="slideshow__slide"
                                     id="block-7c6f2af9-f2c7-4663-9019-cac3dc1e06e6" data-block-index="3"
                                     style="position: absolute; left: -50%; opacity: 0;" aria-hidden="true">
@@ -438,7 +163,6 @@
                                                 width="1080" height="1200" loading="lazy"
                                                 class="slideshow__image "></div>
                                     </div>
-
                                 </a><a
                                     href="https://wa.me/573006008000?utm_source=pagina_web&amp;utm_medium=banner&amp;utm_campaign=banner-envios-balisex-05-11-22"
                                     class="slideshow__slide" id="block-3daf1850-f650-4428-abff-d60aa5898bde"
@@ -459,22 +183,17 @@
                                                 width="751" height="1101" loading="lazy"
                                                 class="slideshow__image "></div>
                                     </div>
-
-
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__collection-list" class="shopify-section">
             <section class="section" data-section-id="template--14562732638271__collection-list"
                 data-section-type="collection-list">
-
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
             class="shopify-section">
@@ -484,11 +203,9 @@
                 <div class="container container--narrow">
                     <h2 class="heading h1">Si hablas de juguetes, hablas de Magic Sex Shop.</h2>
                     <div class="rte">
-
                     </div>
                 </div>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__featured-collection" class="shopify-section">
             <section class="section" data-section-id="template--14562732638271__featured-collection"
@@ -505,9 +222,6 @@
                         </div>
                     </header>
                 </div>
-
-
-
                 <div class="container container--flush">
                     <div class="product-list product-list--vertical product-list--stackable">
                         <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
@@ -536,29 +250,6 @@
                                     <div class="product-item__price-list price-list"><span class="price">
                                             <span class="visually-hidden">Precio de venta</span>$508.900 COP</span>
                                     </div>
-
-
-
-                                    <div style="display: none;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="7118474084415" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge" data-average-rating="0.00"
-                                            data-number-of-reviews="0" data-number-of-questions="0"> <span
-                                                class="jdgm-prev-badge__stars" data-score="0.00" tabindex="0"
-                                                aria-label="0.00 stars" role="button"> <span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span> </span> <span
-                                                class="jdgm-prev-badge__text">Sin reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_7118474084415_template--14562732638271__featured-collection"
@@ -569,12 +260,7 @@
                                     <input type="hidden" name="id" value="39977224732735"><button
                                         type="submit"
                                         class="product-item__action-button button button--small button--primary"
-                                        data-action="add-to-cart">Añadir al carrito</button><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__featured-collection"
-                                        data-product-url="/products/pezoneras-vibratorias-gemini-lovense">Vista
-                                        rápida</button>
+                                        data-action="add-to-cart">Añadir al carrito</button>
                                 </form>
                             </div>
                         </div>
@@ -605,43 +291,6 @@
                                     <div class="product-item__price-list price-list"><span class="price">
                                             <span class="visually-hidden">Precio de venta</span>$866.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: none;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="7118540898367" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge" data-average-rating="0.00"
-                                            data-number-of-reviews="0" data-number-of-questions="0"> <span
-                                                class="jdgm-prev-badge__stars" data-score="0.00" tabindex="0"
-                                                aria-label="0.00 stars" role="button"> <span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span> </span> <span
-                                                class="jdgm-prev-badge__text">Sin reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_7118540898367_template--14562732638271__featured-collection"
@@ -652,12 +301,7 @@
                                     <input type="hidden" name="id" value="39977466757183"><button
                                         type="submit"
                                         class="product-item__action-button button button--small button--primary"
-                                        data-action="add-to-cart">Añadir al carrito</button><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__featured-collection"
-                                        data-product-url="/products/vibrador-gravity-con-empuje-automatico-lovense">Vista
-                                        rápida</button>
+                                        data-action="add-to-cart">Añadir al carrito</button>
                                 </form>
                             </div>
                         </div>
@@ -686,43 +330,6 @@
                                     <div class="product-item__price-list price-list"><span class="price">
                                             <span class="visually-hidden">Precio de venta</span>$214.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: none;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="7084445466687" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge" data-average-rating="0.00"
-                                            data-number-of-reviews="0" data-number-of-questions="0"> <span
-                                                class="jdgm-prev-badge__stars" data-score="0.00" tabindex="0"
-                                                aria-label="0.00 stars" role="button"> <span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span> </span> <span
-                                                class="jdgm-prev-badge__text">Sin reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_7084445466687_template--14562732638271__featured-collection"
@@ -733,11 +340,7 @@
                                     <input type="hidden" name="id" value="39913750069311"><a
                                         href="/products/bala-vibradora-tulip"
                                         class="product-item__action-button button button--small button--primary">Añadir
-                                        al carrito</a><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__featured-collection"
-                                        data-product-url="/products/bala-vibradora-tulip">Vista rápida</button>
+                                        al carrito</a>
                                 </form>
                             </div>
                         </div>
@@ -767,43 +370,6 @@
                                     <div class="product-item__price-list price-list"><span class="price">
                                             <span class="visually-hidden">Precio de venta</span>$321.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: none;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="7084462866495" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge" data-average-rating="0.00"
-                                            data-number-of-reviews="0" data-number-of-questions="0"> <span
-                                                class="jdgm-prev-badge__stars" data-score="0.00" tabindex="0"
-                                                aria-label="0.00 stars" role="button"> <span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span> </span> <span
-                                                class="jdgm-prev-badge__text">Sin reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_7084462866495_template--14562732638271__featured-collection"
@@ -814,11 +380,7 @@
                                     <input type="hidden" name="id" value="39913762652223"><button
                                         type="submit"
                                         class="product-item__action-button button button--small button--primary"
-                                        data-action="add-to-cart">Añadir al carrito</button><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__featured-collection"
-                                        data-product-url="/products/masturbador-masculino-robin">Vista rápida</button>
+                                        data-action="add-to-cart">Añadir al carrito</button>
                                 </form>
                             </div>
                         </div>
@@ -833,7 +395,6 @@
                                     d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
                                     fill="currentColor" fill-rule="evenodd"></path>
                             </svg></button>
-
                         <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
                                 viewBox="0 0 64 64" role="presentation">
                                 <path opacity=".4"
@@ -843,12 +404,10 @@
                                     d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
                                 </path>
                             </svg></div>
-
                         <div class="modal__inner"></div>
                     </div>
                 </div>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__5199ee47-c016-4657-bf0b-bfd73334618b"
             class="shopify-section">
@@ -858,11 +417,9 @@
                 <div class="container container--medium">
                     <h2 class="heading h1">Recoge un juguete para tu próxima aventura.</h2>
                     <div class="rte">
-
                     </div>
                 </div>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
             class="shopify-section">
@@ -885,7 +442,6 @@
                             </svg></a>
                     </header>
                 </div>
-
                 <div class="container container--flush">
                     <div class="product-list product-list--vertical product-list--stackable">
                         <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
@@ -915,63 +471,20 @@
                                             class="price price--highlight">
                                             <span class="visually-hidden">Precio de venta</span>Desde $9.900
                                             COP</span>
-
                                         <span class="price price--compare">
                                             <span class="visually-hidden">Precio habitual</span>$12.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: block;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="1786829832255" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge" data-average-rating="5.00"
-                                            data-number-of-reviews="5" data-number-of-questions="0"> <span
-                                                class="jdgm-prev-badge__stars" data-score="5.00" tabindex="0"
-                                                aria-label="5.00 stars" role="button"> <span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span> </span> <span
-                                                class="jdgm-prev-badge__text">5 reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                                     accept-charset="UTF-8" class="product-item__action-list button-stack"
                                     enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                        value="product"><input type="hidden" name="utf8"
-                                        value="✓"><input type="hidden" name="quantity" value="1">
+                                        value="product"><input type="hidden" name="utf8" value="✓"><input
+                                        type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="id" value="15108051861567"><a
                                         href="/products/limpiador-de-juguetes-elixir-de-melon"
                                         class="product-item__action-button button button--small button--primary">Añadir
-                                        al carrito</a><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-                                        data-product-url="/products/limpiador-de-juguetes-elixir-de-melon">Vista
-                                        rápida</button>
+                                        al carrito</a>
                                 </form>
                             </div>
                         </div>
@@ -989,8 +502,8 @@
                                         alt="Lovense Lush Vibrador"
                                         srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1200 1200w"
                                         width="1200" height="1200" loading="lazy"
-                                        sizes="(max-width: 699px) 100vw, 600px"
-                                        class="product-item__secondary-image"></div>
+                                        sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
+                                </div>
                             </a>
                             <div class="product-item__info">
                                 <div class="product-item__info-inner"><a class="product-item__vendor link"
@@ -1000,58 +513,16 @@
                                     <div class="product-item__price-list price-list"><span class="price">
                                             <span class="visually-hidden">Precio de venta</span>$441.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: block;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup" data-id="7310752131"
-                                        data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge"
-                                            data-average-rating="5.00" data-number-of-reviews="7"
-                                            data-number-of-questions="0"> <span class="jdgm-prev-badge__stars"
-                                                data-score="5.00" tabindex="0" aria-label="5.00 stars"
-                                                role="button"> <span class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span> </span> <span
-                                                class="jdgm-prev-badge__text">7 reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_7310752131_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                                     accept-charset="UTF-8" class="product-item__action-list button-stack"
                                     enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                        value="product"><input type="hidden" name="utf8"
-                                        value="✓"><input type="hidden" name="quantity" value="1">
-                                    <input type="hidden" name="id" value="22904763459"><button
-                                        type="submit"
+                                        value="product"><input type="hidden" name="utf8" value="✓"><input
+                                        type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="id" value="22904763459"><button type="submit"
                                         class="product-item__action-button button button--small button--primary"
-                                        data-action="add-to-cart">Añadir al carrito</button><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-                                        data-product-url="/products/lovense-lush-vibrador">Vista rápida</button>
+                                        data-action="add-to-cart">Añadir al carrito</button>
                                 </form>
                             </div>
                         </div>
@@ -1069,8 +540,8 @@
                                         alt="Plug Anal Rómulo Bali Sex Store"
                                         srcset="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=1000 1000w"
                                         width="1000" height="1000" loading="lazy"
-                                        sizes="(max-width: 699px) 100vw, 600px"
-                                        class="product-item__secondary-image"></div>
+                                        sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
+                                </div>
                             </a>
                             <div class="product-item__info">
                                 <div class="product-item__info-inner"><a class="product-item__vendor link"
@@ -1081,62 +552,20 @@
                                             class="price price--highlight">
                                             <span class="visually-hidden">Precio de venta</span>Desde $47.900
                                             COP</span>
-
                                         <span class="price price--compare">
                                             <span class="visually-hidden">Precio habitual</span>$49.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: block;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup" data-id="4676664323"
-                                        data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge"
-                                            data-average-rating="5.00" data-number-of-reviews="3"
-                                            data-number-of-questions="0"> <span class="jdgm-prev-badge__stars"
-                                                data-score="5.00" tabindex="0" aria-label="5.00 stars"
-                                                role="button"> <span class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span> </span> <span
-                                                class="jdgm-prev-badge__text">3 reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_4676664323_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                                     accept-charset="UTF-8" class="product-item__action-list button-stack"
                                     enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                        value="product"><input type="hidden" name="utf8"
-                                        value="✓"><input type="hidden" name="quantity" value="1">
+                                        value="product"><input type="hidden" name="utf8" value="✓"><input
+                                        type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="id" value="13588243087423"><a
                                         href="/products/plug-anal-romulo"
                                         class="product-item__action-button button button--small button--primary">Añadir
-                                        al carrito</a><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-                                        data-product-url="/products/plug-anal-romulo">Vista rápida</button>
+                                        al carrito</a>
                                 </form>
                             </div>
                         </div>
@@ -1154,8 +583,8 @@
                                         alt="Limpiador para Juguetes Elixir Neutro"
                                         srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=1000 1000w"
                                         width="1000" height="1000" loading="lazy"
-                                        sizes="(max-width: 699px) 100vw, 600px"
-                                        class="product-item__secondary-image"></div>
+                                        sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
+                                </div>
                             </a>
                             <div class="product-item__info">
                                 <div class="product-item__info-inner"><a class="product-item__vendor link"
@@ -1167,63 +596,20 @@
                                             class="price price--highlight">
                                             <span class="visually-hidden">Precio de venta</span>Desde $9.900
                                             COP</span>
-
                                         <span class="price price--compare">
                                             <span class="visually-hidden">Precio habitual</span>$12.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: block;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="614614204448" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge"
-                                            data-average-rating="4.57" data-number-of-reviews="7"
-                                            data-number-of-questions="0"> <span class="jdgm-prev-badge__stars"
-                                                data-score="4.57" tabindex="0" aria-label="4.57 stars"
-                                                role="button"> <span class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--on"></span><span
-                                                    class="jdgm-star jdgm--half"></span> </span> <span
-                                                class="jdgm-prev-badge__text">7 reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_614614204448_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                                     accept-charset="UTF-8" class="product-item__action-list button-stack"
                                     enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                        value="product"><input type="hidden" name="utf8"
-                                        value="✓"><input type="hidden" name="quantity" value="1">
+                                        value="product"><input type="hidden" name="utf8" value="✓"><input
+                                        type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="id" value="15108011262015"><a
                                         href="/products/limpiador-de-juguetes-sexuales-elixir"
                                         class="product-item__action-button button button--small button--primary">Añadir
-                                        al carrito</a><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-                                        data-product-url="/products/limpiador-de-juguetes-sexuales-elixir">Vista
-                                        rápida</button>
+                                        al carrito</a>
                                 </form>
                             </div>
                         </div>
@@ -1233,13 +619,11 @@
                     class="modal" aria-hidden="true">
                     <div class="modal__dialog modal__dialog--stretch" role="dialog">
                         <button class="modal__close link" data-action="close-modal" title="Cerrar"><svg
-                                focusable="false" class="icon icon--close " viewBox="0 0 19 19"
-                                role="presentation">
+                                focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
                                 <path
                                     d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
                                     fill="currentColor" fill-rule="evenodd"></path>
                             </svg></button>
-
                         <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
                                 viewBox="0 0 64 64" role="presentation">
                                 <path opacity=".4"
@@ -1249,17 +633,14 @@
                                     d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
                                 </path>
                             </svg></div>
-
                         <div class="modal__inner"></div>
                     </div>
                 </div>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
             class="shopify-section">
-            <section class="section"
-                data-section-id="template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
+            <section class="section" data-section-id="template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
                 data-section-type="featured-collection"
                 data-section-settings="{
     &quot;stackable&quot;: true,
@@ -1278,7 +659,6 @@
                             </svg></a>
                     </header>
                 </div>
-
                 <div class="container container--flush">
                     <div class="product-list product-list--vertical product-list--stackable">
                         <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
@@ -1295,8 +675,8 @@
                                         alt="Lovense Webcam"
                                         srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1600 1600w"
                                         width="3126" height="3126" loading="lazy"
-                                        sizes="(max-width: 699px) 100vw, 600px"
-                                        class="product-item__secondary-image"></div>
+                                        sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
+                                </div>
                             </a>
                             <div class="product-item__info">
                                 <div class="product-item__info-inner"><a class="product-item__vendor link"
@@ -1306,58 +686,17 @@
                                     <div class="product-item__price-list price-list"><span class="price">
                                             <span class="visually-hidden">Precio de venta</span>$1.957.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: none;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="7181122338879" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge"
-                                            data-average-rating="0.00" data-number-of-reviews="0"
-                                            data-number-of-questions="0"> <span class="jdgm-prev-badge__stars"
-                                                data-score="0.00" tabindex="0" aria-label="0.00 stars"
-                                                role="button"> <span class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span> </span> <span
-                                                class="jdgm-prev-badge__text">Sin reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_7181122338879_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
                                     accept-charset="UTF-8" class="product-item__action-list button-stack"
                                     enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                        value="product"><input type="hidden" name="utf8"
-                                        value="✓"><input type="hidden" name="quantity" value="1">
+                                        value="product"><input type="hidden" name="utf8" value="✓"><input
+                                        type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="id" value="40080226222143"><button
                                         type="submit"
                                         class="product-item__action-button button button--small button--primary"
-                                        data-action="add-to-cart">Añadir al carrito</button><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
-                                        data-product-url="/products/lovense-webcam">Vista rápida</button>
+                                        data-action="add-to-cart">Añadir al carrito</button>
                                 </form>
                             </div>
                         </div>
@@ -1375,8 +714,8 @@
                                         alt="Satisfyer Pro 2 Generation 3 Con APP"
                                         srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1400 1400w"
                                         width="1500" height="1500" loading="lazy"
-                                        sizes="(max-width: 699px) 100vw, 600px"
-                                        class="product-item__secondary-image"></div>
+                                        sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
+                                </div>
                             </a>
                             <div class="product-item__info">
                                 <div class="product-item__info-inner"><a class="product-item__vendor link"
@@ -1387,59 +726,17 @@
                                     <div class="product-item__price-list price-list"><span class="price">
                                             <span class="visually-hidden">Precio de venta</span>$605.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: none;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="7164760326207" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge"
-                                            data-average-rating="0.00" data-number-of-reviews="0"
-                                            data-number-of-questions="0"> <span class="jdgm-prev-badge__stars"
-                                                data-score="0.00" tabindex="0" aria-label="0.00 stars"
-                                                role="button"> <span class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span> </span> <span
-                                                class="jdgm-prev-badge__text">Sin reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_7164760326207_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
                                     accept-charset="UTF-8" class="product-item__action-list button-stack"
                                     enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                        value="product"><input type="hidden" name="utf8"
-                                        value="✓"><input type="hidden" name="quantity" value="1">
+                                        value="product"><input type="hidden" name="utf8" value="✓"><input
+                                        type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="id" value="40057952927807"><button
                                         type="submit"
                                         class="product-item__action-button button button--small button--primary"
-                                        data-action="add-to-cart">Añadir al carrito</button><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
-                                        data-product-url="/products/satisfyer-pro-2-generation-3-con-app">Vista
-                                        rápida</button>
+                                        data-action="add-to-cart">Añadir al carrito</button>
                                 </form>
                             </div>
                         </div>
@@ -1458,8 +755,8 @@
                                         alt="Vibrador Gravity con empuje automatico Lovense"
                                         srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1600 1600w"
                                         width="3126" height="3125" loading="lazy"
-                                        sizes="(max-width: 699px) 100vw, 600px"
-                                        class="product-item__secondary-image"></div>
+                                        sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
+                                </div>
                             </a>
                             <div class="product-item__info">
                                 <div class="product-item__info-inner"><a class="product-item__vendor link"
@@ -1470,59 +767,17 @@
                                     <div class="product-item__price-list price-list"><span class="price">
                                             <span class="visually-hidden">Precio de venta</span>$866.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: none;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="7118540898367" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge"
-                                            data-average-rating="0.00" data-number-of-reviews="0"
-                                            data-number-of-questions="0"> <span class="jdgm-prev-badge__stars"
-                                                data-score="0.00" tabindex="0" aria-label="0.00 stars"
-                                                role="button"> <span class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span> </span> <span
-                                                class="jdgm-prev-badge__text">Sin reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_7118540898367_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
                                     accept-charset="UTF-8" class="product-item__action-list button-stack"
                                     enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                        value="product"><input type="hidden" name="utf8"
-                                        value="✓"><input type="hidden" name="quantity" value="1">
+                                        value="product"><input type="hidden" name="utf8" value="✓"><input
+                                        type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="id" value="39977466757183"><button
                                         type="submit"
                                         class="product-item__action-button button button--small button--primary"
-                                        data-action="add-to-cart">Añadir al carrito</button><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
-                                        data-product-url="/products/vibrador-gravity-con-empuje-automatico-lovense">Vista
-                                        rápida</button>
+                                        data-action="add-to-cart">Añadir al carrito</button>
                                 </form>
                             </div>
                         </div>
@@ -1540,8 +795,8 @@
                                         alt="Masturbadora Alex Neo 2 Svakom"
                                         srcset="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1600 1600w"
                                         width="2084" height="2084" loading="lazy"
-                                        sizes="(max-width: 699px) 100vw, 600px"
-                                        class="product-item__secondary-image"></div>
+                                        sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
+                                </div>
                             </a>
                             <div class="product-item__info">
                                 <div class="product-item__info-inner"><a class="product-item__vendor link"
@@ -1552,58 +807,17 @@
                                     <div class="product-item__price-list price-list"><span class="price">
                                             <span class="visually-hidden">Precio de venta</span>$939.900 COP</span>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <div style="display: none;"
-                                        class="jdgm-widget jdgm-preview-badge jdgm--done-setup"
-                                        data-id="7113625436223" data-template="index" data-auto-install="false">
-                                        <div style="display:none" class="jdgm-prev-badge"
-                                            data-average-rating="0.00" data-number-of-reviews="0"
-                                            data-number-of-questions="0"> <span class="jdgm-prev-badge__stars"
-                                                data-score="0.00" tabindex="0" aria-label="0.00 stars"
-                                                role="button"> <span class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span><span
-                                                    class="jdgm-star jdgm--off"></span> </span> <span
-                                                class="jdgm-prev-badge__text">Sin reseñas</span> </div>
-                                    </div>
-
-
-
-
-
-
                                 </div>
                                 <form method="post" action="/cart/add"
                                     id="product_form_id_7113625436223_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
                                     accept-charset="UTF-8" class="product-item__action-list button-stack"
                                     enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                        value="product"><input type="hidden" name="utf8"
-                                        value="✓"><input type="hidden" name="quantity" value="1">
+                                        value="product"><input type="hidden" name="utf8" value="✓"><input
+                                        type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="id" value="39960627052607"><button
                                         type="submit"
                                         class="product-item__action-button button button--small button--primary"
-                                        data-action="add-to-cart">Añadir al carrito</button><button type="button"
-                                        class="product-item__action-button product-item__action-button--list-view-only button button--small button--ternary hidden-phone"
-                                        data-action="open-modal" data-secondary-action="open-quick-view"
-                                        aria-controls="modal-quick-view-template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
-                                        data-product-url="/products/masturbadora-alex-neo-2">Vista rápida</button>
+                                        data-action="add-to-cart">Añadir al carrito</button>
                                 </form>
                             </div>
                         </div>
@@ -1613,13 +827,11 @@
                     class="modal" aria-hidden="true">
                     <div class="modal__dialog modal__dialog--stretch" role="dialog">
                         <button class="modal__close link" data-action="close-modal" title="Cerrar"><svg
-                                focusable="false" class="icon icon--close " viewBox="0 0 19 19"
-                                role="presentation">
+                                focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
                                 <path
                                     d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
                                     fill="currentColor" fill-rule="evenodd"></path>
                             </svg></button>
-
                         <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
                                 viewBox="0 0 64 64" role="presentation">
                                 <path opacity=".4"
@@ -1629,12 +841,10 @@
                                     d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
                                 </path>
                             </svg></div>
-
                         <div class="modal__inner"></div>
                     </div>
                 </div>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__127e7bfe-e656-4552-b607-86d223e6a4d2"
             class="shopify-section">
@@ -1644,16 +854,13 @@
                 <div class="container container--narrow">
                     <h2 class="heading h1">La tienda donde compras placer.</h2>
                     <div class="rte">
-
                     </div>
                 </div>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8"
             class="shopify-section">
-            <section class="section"
-                data-section-id="template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8"
+            <section class="section" data-section-id="template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8"
                 data-section-type="mosaic">
                 <div class="container">
                     <div class="mosaic mosaic--medium mosaic--three-columns">
@@ -1671,10 +878,6 @@
                                                 sizes="min(100vw, 560px)" class="image-background">
                                         </div>
                                     </div>
-
-
-
-
                                     </noscript>
                                 </a>
                             </div>
@@ -1691,14 +894,9 @@
                                                 sizes="min(100vw, 560px)" class="image-background">
                                         </div>
                                     </div>
-
-
-
-
                                 </a>
                             </div>
                         </div>
-
                         <div class="mosaic__column">
                             <div class="mosaic__item">
                                 <a href="/collections/modelos-webcam"
@@ -1713,13 +911,9 @@
                                                 sizes="min(100vw, 560px)" class="image-background">
                                         </div>
                                     </div>
-
-
-
                                 </a>
                             </div>
                         </div>
-
                         <div class="mosaic__column">
                             <div class="mosaic__item">
                                 <a href="/collections/wanna"
@@ -1734,10 +928,6 @@
                                                 sizes="min(100vw, 560px)" class="image-background">
                                         </div>
                                     </div>
-
-
-
-
                                 </a>
                             </div>
                             <div class="mosaic__item">
@@ -1753,17 +943,12 @@
                                                 sizes="min(100vw, 560px)" class="image-background">
                                         </div>
                                     </div>
-
-
-
-
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__220c92e8-4944-411d-b5f7-cdc598a18b79"
             class="shopify-section">
@@ -1773,11 +958,9 @@
                 <div class="container container--narrow">
                     <h2 class="heading h1">¡Estás a un juguete de conseguir un orgasmo!</h2>
                     <div class="rte">
-
                     </div>
                 </div>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__featured-product" class="shopify-section">
             <section class="section" data-section-id="template--14562732638271__featured-product"
@@ -1841,7 +1024,6 @@
                         <h2 class="section__title heading h3">El mejor juguete sexual de la temporada</h2>
                     </header>
                 </div>
-
                 <div class="container container--flush">
                     <div class="featured-product">
                         <div class="card">
@@ -2393,7 +1575,6 @@
                                                 <div class="pswp__item"></div>
                                                 <div class="pswp__item"></div>
                                             </div>
-
                                             <div class="pswp__ui">
                                                 <button class="pswp__button pswp__button--close"
                                                     aria-label="Cerrar">
@@ -2404,7 +1585,6 @@
                                                             fill="currentColor"></path>
                                                     </svg>
                                                 </button>
-
                                                 <div class="pswp__prev-next">
                                                     <button class="pswp__button pswp__button--arrow--left"
                                                         aria-label="Anterior">
@@ -2415,7 +1595,6 @@
                                                                 stroke-linecap="square"></path>
                                                         </svg>
                                                     </button>
-
                                                     <button class="pswp__button pswp__button--arrow--right"
                                                         aria-label="Siguiente">
                                                         <svg focusable="false" class="icon icon--arrow-right "
@@ -2426,7 +1605,6 @@
                                                         </svg>
                                                     </button>
                                                 </div>
-
                                                 <div class="pswp__pagination">
                                                     <span class="pswp__pagination-current"></span> / <span
                                                         class="pswp__pagination-count"></span>
@@ -2451,15 +1629,11 @@
                                             <a href="/products/succionador-de-clitoris-pulse-pure-svakom">Succionador
                                                 de Clítoris Pulse Pure Svakom</a>
                                         </h3>
-
-
-
                                         <hr class="card__separator">
                                         <div class="product-form__variants">
                                             <div class="product-form__option" data-selector-type="block"><span
                                                     class="product-form__option-name text--strong">Color: <span
                                                         class="product-form__selected-value">Azul Oscuro</span></span>
-
                                                 <div class="block-swatch-list">
                                                     <div class="block-swatch">
                                                         <input
@@ -2493,7 +1667,6 @@
                                             <div class="no-js product-form__option">
                                                 <label class="product-form__option-name text--strong"
                                                     for="product-select-7064984518719">Variante</label>
-
                                                 <div class="select-wrapper select-wrapper--primary">
                                                     <select id="product-select-7064984518719" name="id">
                                                         <option selected="selected" value="39888065790015"
@@ -2509,22 +1682,18 @@
                                         <div class="product-form__info-list">
                                             <div class="product-form__info-item">
                                                 <span class="product-form__info-title text--strong">Precio:</span>
-
                                                 <div class="product-form__info-content" role="region"
                                                     aria-live="polite">
                                                     <div class="price-list"><span class="price">
                                                             <span class="visually-hidden">Precio de
                                                                 venta</span>$428.900
                                                             COP</span></div>
-
                                                     <div class="product-form__price-info" style="display: none">
                                                         <div class="unit-price-measurement">
                                                             <span class="unit-price-measurement__price"></span>
                                                             <span class="unit-price-measurement__separator">/ </span>
-
                                                             <span
                                                                 class="unit-price-measurement__reference-value"></span>
-
                                                             <span
                                                                 class="unit-price-measurement__reference-unit"></span>
                                                         </div>
@@ -2535,7 +1704,6 @@
                                                 <label
                                                     for="template--14562732638271__featured-product-7064984518719-quantity"
                                                     class="product-form__info-title text--strong">Cantidad:</label>
-
                                                 <div class="product-form__info-content">
                                                     <div class="quantity-selector quantity-selector--product">
                                                         <button type="button" class="quantity-selector__button"
@@ -2566,21 +1734,12 @@
                                                 class="product-form__add-button button button--primary"
                                                 data-action="add-to-cart">Añadir al carrito</button>
                                         </div>
-
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <script>
-                    window.ShopifyXR = window.ShopifyXR || function() {
-                        (ShopifyXR.q = ShopifyXR.q || []).push(arguments)
-                    };
-                    ShopifyXR('addModels', []);
-                </script>
             </section>
-
         </div>
         <div id="shopify-section-template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c"
             class="shopify-section">
@@ -2590,11 +1749,9 @@
                 <div class="container container--narrow">
                     <h2 class="heading h1">Mejora tu vida sexual con las mejores marcas.</h2>
                     <div class="rte">
-
                     </div>
                 </div>
             </section>
-
             <div id="shopify-section-sections--14562733293631__footer"
                 class="shopify-section shopify-section-group-footer-group">
                 <footer class="footer" data-section-id="sections--14562733293631__footer"
@@ -2619,7 +1776,6 @@
                             <aside class="footer__aside">
                                 <div class="footer__aside-item footer__aside-item--social">
                                     <p class="footer__aside-title">Síguenos</p>
-
                                     <ul class="social-media__item-list  list--unstyled" role="list">
                                         <li class="social-media__item social-media__item--facebook">
                                             <a href="https://www.facebook.com/Balistorecolombia/" target="_blank"
@@ -2631,8 +1787,6 @@
                                                         fill="currentColor" fill-rule="evenodd"></path>
                                                 </svg></a>
                                         </li>
-
-
                                         <li class="social-media__item social-media__item--twitter">
                                             <a href="https://twitter.com/BaliSexStore" target="_blank"
                                                 rel="noopener" aria-label="Síguenos en Twitter"
@@ -2644,8 +1798,6 @@
                                                         fill="currentColor" fill-rule="evenodd"></path>
                                                 </svg></a>
                                         </li>
-
-
                                         <li class="social-media__item social-media__item--instagram">
                                             <a href="https://www.instagram.com/balisexstore/" target="_blank"
                                                 rel="noopener" aria-label="Síguenos en Instagram"
@@ -2666,14 +1818,11 @@
                         </div>
                     </div>
                 </footer>
-
                 <script
                     src="//cdn.shopify.com/s/files/1/1102/5004/t/56/assets/seedgrow-whatsapp-init.js?v=133368006568959630281676930370"
                     defer="defer"></script>
                 <script src="//cdn.shopify.com/s/files/1/1102/5004/t/56/assets/seedgrow-whatsapp-lib.js?v=5470402636176923031676930223"
                     defer="defer"></script>
-
-
                 <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
                     target="_blank">
                     <div class="joinchat joinchat--right joinchat--btn joinchat--show joinchat--tooltip"
@@ -2687,14 +1836,9 @@
                         </div>
                     </div>
                 </a>
-
-
                 <script data-name="shopifyAddiWidget" data-id="balisexstore" data-ally-slug="balisexstore-ecommerce"
                     data-element-reference=".product-form__info-item"
                     src="https://s3.amazonaws.com/statics.addi.com/shopify/js/shopify-co-widget-wrapper.bundle.min.js"></script>
-
-
-
                 </a>
 </body>
 
