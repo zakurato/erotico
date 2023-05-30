@@ -15218,14 +15218,20 @@ shopify-payment-terms {
     transform: scale(1.1) !important; /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 
-  
-  @keyframes slide-up {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(0);
-    }
+  .animacion1 {
+    animation-duration: 2s;
+    animation-name: slidein;
   }
   
+  @keyframes slidein {
+    from {
+      transform: translateX(100%);
+      width: 300%;
+    }
+  
+    to {
+      transform: translateX(0%);
+      width: 100%;
+    }
+  }
   

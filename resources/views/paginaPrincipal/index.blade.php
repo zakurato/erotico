@@ -3,8 +3,9 @@
 
 <head>
     <!--/Css propios public-->
-    <link rel="stylesheet" href="http://localhost/erotico/public/index/index.Css">
-    <link rel="stylesheet" href="{{ asset('index/styles.Css') }}">
+    <link rel="stylesheet" href="{{ asset('index/index.Css?1.0') }}">
+    <link rel="stylesheet" href="{{ asset('index/styles.Css?1.0') }}?v=120939182865429120021678115775">
+
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
@@ -12,19 +13,16 @@
     <link rel="shortcut icon"
         href="//cdn.shopify.com/s/files/1/1102/5004/files/favicon_70bd5645-333e-41c1-9dd5-cf7e81b4074b_96x96.png?v=1674755086"
         type="image/png">
-    <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v=120939182865429120021678115775">
     <!-- BEGIN app block: shopify://apps/yoast-seo-seo-for-everyone/blocks/metatags/7c777011-bc88-4743-a24e-64336e1e5b46 -->
     <!-- This site is optimized with Yoast SEO for Shopify -->
-    <title>Magic Sex Shop</title>
+    <title>MagicSexShop</title>
     <meta name="description"
         content="La mejor Tienda De Productos Para Adultos Chat Con Asesora Gratis. Envíos 100% discretos, Enviamos a todo el país.">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="google-site-verification" content="pqs7gw7ZfJcXy9eMGnVUeMQQ5u_Jeb5V7kcz6XtPw5M">
-    <meta property="og:site_name" content="Bali Sex Store - Sex Shop Online">
+    <meta property="og:site_name" content="MagicSexShop - Sex Shop Online">
     <meta property="og:url" content="https://www.magicsexshop.com/">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="La mejor Tienda Magic Sex Shop">
+    <meta property="og:title" content="La mejor Tienda MagicSexShop">
     <meta property="og:description" content="La mejor Tienda De Productos Para Adultos">
     <meta property="og:image" content="">
     <meta property="og:image:height" content="628">
@@ -39,81 +37,114 @@
 <body class="warehouse--v4 features--animate-zoom template-index" data-instant-intensity="viewport">
     <!-- END sections: header-group -->
     <!-- BEGIN sections: overlay-group -->
-    <section>
-            <nav class="navbar navbar-inverse "
-                style="background-color: black !important; position: fixed !important; width: 100% !important; z-index: 9999 !important;">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand active" href="#">Magic Sex Shop</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav">
-                            <!--<li class="active"><a href="#">Home</a></li>-->
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorías<span
-                                        class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                </ul>
-                            </li>
-                            <!--
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Page 3</a></li>
-                </ul>
-                
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-                -->
-                    </div>
+    <nav class="navbar navbar-inverse"
+        style="background-color: black !important; position: fixed !important; width: 100% !important; z-index: 9999 !important;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="header__logo-link">
+                    <img class="header__logo-image" style="max-width: 300px" width="600" height="200"
+                        src="images/logo3.png?v=1676468577"
+                        alt="">
+                </a>
+                <br><br>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a style="font: 150%  Arial" class="dropdown-toggle" data-toggle="dropdown" href="#">Categorías<span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Page 1-1</a></li>
+                                <li><a href="#">Page 1-2</a></li>
+                                <li><a href="#">Page 1-3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
-            <div id="shopify-section-sections--14562733359167__popups"
-                class="shopify-section shopify-section-group-overlay-group">
-                <div data-section-id="sections--14562733359167__popups" data-section-type="popups"></div>
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form action="{{ route('index') }}">
+                        <input type="text" placeholder="Buscar..." style="width: 260px; height: 30px;">
+                        <button type="submit" class="search-bar__submit" aria-label="Buscar"><svg focusable="false"
+                                class="icon icon--search " viewBox="0 0 21 21" role="presentation">
+                                <g stroke-width="2" stroke="currentColor" fill="none" fill-rule="evenodd">
+                                    <path d="M19 19l-5-5" stroke-linecap="square"></path>
+                                    <circle cx="8.5" cy="8.5" r="7.5"></circle>
+                                </g>
+                            </svg><svg focusable="false" class="icon icon--search-loader " viewBox="0 0 64 64"
+                                role="presentation">
+                                <path
+                                    d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
+                                </path>
+                                <path
+                                    d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
+                                </path>
+                            </svg>
+                        </button>
+                    </form>
 
-            <br><br><br><br><br><br><br><br><br><br>
-            <!-- END sections: overlay-group -->
-            <main id="main" role="main" class="component">
-
-                <div class="hidden-phone">
-                    <img src="images/inicio.jpg?v=1680025258&amp;width=1920" alt=""
-                        srcset="images/inicio.jpg?v=1680025258&amp;width=200 200w, images/inicio.jpg?v=1680025258&amp;width=300 300w, images/inicio.jpg?v=1680025258&amp;width=400 400w, images/inicio.jpg?v=1680025258&amp;width=600 600w, images/inicio.jpg?v=1680025258&amp;width=800 800w, images/inicio.jpg?v=1680025258&amp;width=1000 1000w, images/inicio.jpg?v=1680025258&amp;width=1200 1200w, images/inicio.jpg?v=1680025258&amp;width=1400 1400w, images/inicio.jpg?v=1680025258&amp;width=1600 1600w, images/inicio.jpg?v=1680025258&amp;width=1800 1800w"
-                        width="1920" height="600" loading="lazy" class="slideshow__image zoom">
-                </div>
-                <div class="hidden-tablet-and-up zoom"><img src="images/inicio.jpg?v=1680025277&amp;width=1200"
-                        alt=""
-                        srcset="images/inicio.jpg?v=1680025277&amp;width=200 200w, images/inicio.jpg?v=1680025277&amp;width=300 300w, images/inicio.jpg?v=1680025277&amp;width=400 400w, images/inicio.jpg?v=1680025277&amp;width=600 600w, images/inicio.jpg?v=1680025277&amp;width=800 800w, images/inicio.jpg?v=1680025277&amp;width=1000 1000w, images/inicio.jpg?v=1680025277&amp;width=1200 1200w"
-                        width="1200" height="1080" loading="lazy" class="slideshow__image "></div>
-
+                    <form action="">
+                        <div style="display: inline-flex;">
+                            <!-- carrito -->
+                            <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg" width="28"
+                                height="28" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                                    fill="#9d9d9d">
+                                </path>
+                            </svg>
+                            <p style="color: #9d9d9d">0</p>
+                            <h4 style="color: #9d9d9d; margin-left: 10px">Carrito</h4>
+                            <!-- carrito -->
+                        </div>
+                    </form>
+                </li>
+            </ul>
         </div>
-        <div id="shopify-section-template--14562732638271__collection-list" class="shopify-section">
-            <section class="section" data-section-id="template--14562732638271__collection-list"
-                data-section-type="collection-list">
-            </section>
+    </nav>
+
+    <section class="animacion1">
+
+        <div id="shopify-section-sections--14562733359167__popups"
+            class="shopify-section shopify-section-group-overlay-group">
+            <div data-section-id="sections--14562733359167__popups" data-section-type="popups"></div>
         </div>
-        <div id="shopify-section-template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
-            class="shopify-section">
-            <section class="section section--text-centered"
-                data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
-                data-section-type="rich-text">
-                <div class="container container--narrow">
-                    <h2 class="heading h1">Si hablas de juguetes, hablas de Magic Sex Shop.</h2>
-                    <div class="rte">
+
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <!-- END sections: overlay-group -->
+        <main id="main" role="main" class="component">
+
+            <div class="hidden-phone">
+                <img src="images/inicio3.png?v=1680025258&amp;width=1920" alt="" width="1920"
+                    height="600" loading="lazy" class="slideshow__image zoom">
+            </div>
+            <div class="hidden-tablet-and-up zoom"><img src="images/inicio3.png?v=1680025277&amp;width=1200"
+                    alt="" width="1200" height="1080" loading="lazy" class="slideshow__image "></div>
+
+            </div>
+            <div id="shopify-section-template--14562732638271__collection-list" class="shopify-section">
+                <section class="section" data-section-id="template--14562732638271__collection-list"
+                    data-section-type="collection-list">
+                </section>
+            </div>
+            <div id="shopify-section-template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
+                class="shopify-section">
+                <section class="section section--text-centered"
+                    data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
+                    data-section-type="rich-text">
+                    <div class="container container--narrow">
+                        <h2 class="heading h1">Encuentra la magia dentro de ti en MagicSexShop.</h2>
+                        <div class="rte">
+                        </div>
                     </div>
-                </div>
-            </section>
-        </div>
-        </div>
+                </section>
+            </div>
+            </div>
     </section>
     <!--hasta aqui llega la seccion -->
 
@@ -327,218 +358,207 @@
         </section>
     </div>
     <div id="shopify-section-template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03" class="shopify-section">
-        <section class="section" data-section-id="template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-            data-section-type="featured-collection"
-            data-section-settings="{
-    &quot;stackable&quot;: true,
-    &quot;layout&quot;: &quot;vertical&quot;
-  }">
-            <div class="container">
-                <header class="section__header">
-                    <div class="section__header-stack">
-                        <h2 class="section__title heading h3">Los productos más vendidos</h2>
-                    </div><a href="/collections/los-mas-vendidos" class="section__action-link link">Ver todos
-                        <svg focusable="false" class="icon icon--tail-right " viewBox="0 0 24 24"
-                            role="presentation">
-                            <path fill="currentColor"
-                                d="M22.707 11.293L15 3.586 13.586 5l6 6H2c-.553 0-1 .448-1 1s.447 1 1 1h17.586l-6 6L15 20.414l7.707-7.707c.391-.391.391-1.023 0-1.414z">
-                            </path>
-                        </svg></a>
-                </header>
-            </div>
-            <div class="container container--flush">
-                <div class="product-list product-list--vertical product-list--stackable">
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/limpiador-de-juguetes-elixir-de-melon"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=1000"
-                                    alt="Limpiador para Juguetes Elixir Melón"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=1000 1000w"
-                                    width="1000" height="1000" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="22838291529791"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=1000"
-                                    alt="Limpiador para Juguetes Elixir Melón"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=1000 1000w"
-                                    width="1000" height="1000" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/vendors?q=Bali%20Sex%20Store">Bali Sex Store</a>
-                                <a href="/products/limpiador-de-juguetes-elixir-de-melon"
-                                    class="product-item__title text--strong link">Limpiador para Juguetes Elixir
-                                    Melón</a>
-                                <div class="product-item__price-list price-list"><span class="price price--highlight">
-                                        <span class="visually-hidden">Precio de venta</span>Desde $9.900
-                                        COP</span>
-                                    <span class="price price--compare">
-                                        <span class="visually-hidden">Precio habitual</span>$12.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="15108051861567"><a
-                                    href="/products/limpiador-de-juguetes-elixir-de-melon"
-                                    class="product-item__action-button button button--small button--primary">Añadir
-                                    al carrito</a>
-                            </form>
+        <div class="container">
+            <header class="section__header">
+                <div class="section__header-stack">
+                    <h2 class="section__title heading h3">Los productos más vendidos</h2>
+                </div><a href="/collections/los-mas-vendidos" class="section__action-link link">Ver todos
+                    <svg focusable="false" class="icon icon--tail-right " viewBox="0 0 24 24" role="presentation">
+                        <path fill="currentColor"
+                            d="M22.707 11.293L15 3.586 13.586 5l6 6H2c-.553 0-1 .448-1 1s.447 1 1 1h17.586l-6 6L15 20.414l7.707-7.707c.391-.391.391-1.023 0-1.414z">
+                        </path>
+                    </svg></a>
+            </header>
+        </div>
+        <div class="container container--flush">
+            <div class="product-list product-list--vertical product-list--stackable">
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
+                        href="/products/limpiador-de-juguetes-elixir-de-melon"
+                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=1000"
+                                alt="Limpiador para Juguetes Elixir Melón"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=1000 1000w"
+                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22838291529791" class="product-item__primary-image"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=1000"
+                                alt="Limpiador para Juguetes Elixir Melón"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=1000 1000w"
+                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                class="product-item__secondary-image">
                         </div>
+                    </a>
+                    <div class="product-item__info">
+                        <div class="product-item__info-inner"><a class="product-item__vendor link"
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Bali Sex Store</a>
+                            <a href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__title text--strong link">Limpiador para Juguetes Elixir
+                                Melón</a>
+                            <div class="product-item__price-list price-list"><span class="price price--highlight">
+                                    <span class="visually-hidden">Precio de venta</span>Desde $9.900
+                                    COP</span>
+                                <span class="price price--compare">
+                                    <span class="visually-hidden">Precio habitual</span>$12.900 COP</span>
+                            </div>
+                        </div>
+                        <form method="post" action="/cart/add"
+                            id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
+                            accept-charset="UTF-8" class="product-item__action-list button-stack"
+                            enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                value="product"><input type="hidden" name="utf8" value="✓"><input
+                                type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="id" value="15108051861567"><a
+                                href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</a>
+                        </form>
                     </div>
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/lovense-lush-vibrador"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=1200"
-                                    alt="Lovense Lush Vibrador"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=1200 1200w"
-                                    width="1200" height="1200" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="20357021958207"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1200"
-                                    alt="Lovense Lush Vibrador"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1200 1200w"
-                                    width="1200" height="1200" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/lovense">Lovense</a>
-                                <a href="/products/lovense-lush-vibrador"
-                                    class="product-item__title text--strong link">Lovense Lush Vibrador</a>
-                                <div class="product-item__price-list price-list"><span class="price">
-                                        <span class="visually-hidden">Precio de venta</span>$441.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_7310752131_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="22904763459"><button type="submit"
-                                    class="product-item__action-button button button--small button--primary"
-                                    data-action="add-to-cart">Añadir al carrito</button>
-                            </form>
+                </div>
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
+                        href="/products/lovense-lush-vibrador"
+                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=1200"
+                                alt="Lovense Lush Vibrador"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=1200 1200w"
+                                width="1200" height="1200" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="20357021958207" class="product-item__primary-image"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1200"
+                                alt="Lovense Lush Vibrador"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1200 1200w"
+                                width="1200" height="1200" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                class="product-item__secondary-image">
                         </div>
+                    </a>
+                    <div class="product-item__info">
+                        <div class="product-item__info-inner"><a class="product-item__vendor link"
+                                href="/collections/lovense">Lovense</a>
+                            <a href="/products/lovense-lush-vibrador"
+                                class="product-item__title text--strong link">Lovense Lush Vibrador</a>
+                            <div class="product-item__price-list price-list"><span class="price">
+                                    <span class="visually-hidden">Precio de venta</span>$441.900 COP</span>
+                            </div>
+                        </div>
+                        <form method="post" action="/cart/add"
+                            id="product_form_id_7310752131_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
+                            accept-charset="UTF-8" class="product-item__action-list button-stack"
+                            enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                value="product"><input type="hidden" name="utf8" value="✓"><input
+                                type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="id" value="22904763459"><button type="submit"
+                                class="product-item__action-button button button--small button--primary"
+                                data-action="add-to-cart">Añadir al carrito</button>
+                        </form>
                     </div>
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/plug-anal-romulo"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=800"
-                                    alt="Plug Anal Rómulo Bali Sex Store"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=800 800w"
-                                    width="800" height="800" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="8059988770879"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=1000"
-                                    alt="Plug Anal Rómulo Bali Sex Store"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=1000 1000w"
-                                    width="1000" height="1000" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/vendors?q=Bali%20Sex%20Store">Bali Sex Store</a>
-                                <a href="/products/plug-anal-romulo"
-                                    class="product-item__title text--strong link">Plug Anal Rómulo</a>
-                                <div class="product-item__price-list price-list"><span class="price price--highlight">
-                                        <span class="visually-hidden">Precio de venta</span>Desde $47.900
-                                        COP</span>
-                                    <span class="price price--compare">
-                                        <span class="visually-hidden">Precio habitual</span>$49.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_4676664323_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="13588243087423"><a
-                                    href="/products/plug-anal-romulo"
-                                    class="product-item__action-button button button--small button--primary">Añadir
-                                    al carrito</a>
-                            </form>
+                </div>
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
+                        href="/products/plug-anal-romulo"
+                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=800"
+                                alt="Plug Anal Rómulo Bali Sex Store"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=800 800w"
+                                width="800" height="800" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="8059988770879" class="product-item__primary-image"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=1000"
+                                alt="Plug Anal Rómulo Bali Sex Store"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=1000 1000w"
+                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                class="product-item__secondary-image">
                         </div>
+                    </a>
+                    <div class="product-item__info">
+                        <div class="product-item__info-inner"><a class="product-item__vendor link"
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Bali Sex Store</a>
+                            <a href="/products/plug-anal-romulo" class="product-item__title text--strong link">Plug
+                                Anal Rómulo</a>
+                            <div class="product-item__price-list price-list"><span class="price price--highlight">
+                                    <span class="visually-hidden">Precio de venta</span>Desde $47.900
+                                    COP</span>
+                                <span class="price price--compare">
+                                    <span class="visually-hidden">Precio habitual</span>$49.900 COP</span>
+                            </div>
+                        </div>
+                        <form method="post" action="/cart/add"
+                            id="product_form_id_4676664323_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
+                            accept-charset="UTF-8" class="product-item__action-list button-stack"
+                            enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                value="product"><input type="hidden" name="utf8" value="✓"><input
+                                type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="id" value="13588243087423"><a
+                                href="/products/plug-anal-romulo"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</a>
+                        </form>
                     </div>
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/limpiador-de-juguetes-sexuales-elixir"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=1000"
-                                    alt="Limpiador para Juguetes Elixir Neutro"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=1000 1000w"
-                                    width="1000" height="1000" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="22838295887935"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=1000"
-                                    alt="Limpiador para Juguetes Elixir Neutro"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=1000 1000w"
-                                    width="1000" height="1000" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/vendors?q=Bali%20Sex%20Store">Bali Sex Store</a>
-                                <a href="/products/limpiador-de-juguetes-sexuales-elixir"
-                                    class="product-item__title text--strong link">Limpiador para Juguetes Elixir
-                                    Neutro</a>
-                                <div class="product-item__price-list price-list"><span class="price price--highlight">
-                                        <span class="visually-hidden">Precio de venta</span>Desde $9.900
-                                        COP</span>
-                                    <span class="price price--compare">
-                                        <span class="visually-hidden">Precio habitual</span>$12.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_614614204448_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="15108011262015"><a
-                                    href="/products/limpiador-de-juguetes-sexuales-elixir"
-                                    class="product-item__action-button button button--small button--primary">Añadir
-                                    al carrito</a>
-                            </form>
+                </div>
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
+                        href="/products/limpiador-de-juguetes-sexuales-elixir"
+                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=1000"
+                                alt="Limpiador para Juguetes Elixir Neutro"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=1000 1000w"
+                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22838295887935" class="product-item__primary-image"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=1000"
+                                alt="Limpiador para Juguetes Elixir Neutro"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=1000 1000w"
+                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                class="product-item__secondary-image">
                         </div>
+                    </a>
+                    <div class="product-item__info">
+                        <div class="product-item__info-inner"><a class="product-item__vendor link"
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Bali Sex Store</a>
+                            <a href="/products/limpiador-de-juguetes-sexuales-elixir"
+                                class="product-item__title text--strong link">Limpiador para Juguetes Elixir
+                                Neutro</a>
+                            <div class="product-item__price-list price-list"><span class="price price--highlight">
+                                    <span class="visually-hidden">Precio de venta</span>Desde $9.900
+                                    COP</span>
+                                <span class="price price--compare">
+                                    <span class="visually-hidden">Precio habitual</span>$12.900 COP</span>
+                            </div>
+                        </div>
+                        <form method="post" action="/cart/add"
+                            id="product_form_id_614614204448_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
+                            accept-charset="UTF-8" class="product-item__action-list button-stack"
+                            enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                value="product"><input type="hidden" name="utf8" value="✓"><input
+                                type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="id" value="15108011262015"><a
+                                href="/products/limpiador-de-juguetes-sexuales-elixir"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</a>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div id="modal-quick-view-template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03" class="modal"
-                aria-hidden="true">
-                <div class="modal__dialog modal__dialog--stretch" role="dialog">
-                    <button class="modal__close link" data-action="close-modal" title="Cerrar"><svg
-                            focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
-                            <path
-                                d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
-                                fill="currentColor" fill-rule="evenodd"></path>
-                        </svg></button>
-                    <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
-                            viewBox="0 0 64 64" role="presentation">
-                            <path opacity=".4"
-                                d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
-                            </path>
-                            <path
-                                d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
-                            </path>
-                        </svg></div>
-                    <div class="modal__inner"></div>
-                </div>
+        </div>
+        <div id="modal-quick-view-template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03" class="modal"
+            aria-hidden="true">
+            <div class="modal__dialog modal__dialog--stretch" role="dialog">
+                <button class="modal__close link" data-action="close-modal" title="Cerrar"><svg focusable="false"
+                        class="icon icon--close " viewBox="0 0 19 19" role="presentation">
+                        <path
+                            d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg></button>
+                <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
+                        viewBox="0 0 64 64" role="presentation">
+                        <path opacity=".4"
+                            d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
+                        </path>
+                        <path
+                            d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
+                        </path>
+                    </svg></div>
+                <div class="modal__inner"></div>
             </div>
-        </section>
+        </div>
     </div>
+
     <div id="shopify-section-template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079" class="shopify-section">
         <section class="section" data-section-id="template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
             data-section-type="featured-collection"
@@ -546,199 +566,196 @@
     &quot;stackable&quot;: true,
     &quot;layout&quot;: &quot;vertical&quot;
   }">
-            <div class="container">
-                <header class="section__header">
-                    <div class="section__header-stack">
-                        <h2 class="section__title heading h3">Interactivos y con app: Conecta con el placer</h2>
-                    </div><a href="/collections/interactivos-para-parejas" class="section__action-link link">Ver
-                        todos <svg focusable="false" class="icon icon--tail-right " viewBox="0 0 24 24"
-                            role="presentation">
-                            <path fill="currentColor"
-                                d="M22.707 11.293L15 3.586 13.586 5l6 6H2c-.553 0-1 .448-1 1s.447 1 1 1h17.586l-6 6L15 20.414l7.707-7.707c.391-.391.391-1.023 0-1.414z">
-                            </path>
-                        </svg></a>
-                </header>
-            </div>
-            <div class="container container--flush">
-                <div class="product-list product-list--vertical product-list--stackable">
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/lovense-webcam"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=3126"
-                                    alt="Lovense Webcam"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1600 1600w"
-                                    width="3126" height="3126" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="23356634202175"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=3126"
-                                    alt="Lovense Webcam"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1600 1600w"
-                                    width="3126" height="3126" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/lovense">Lovense</a>
-                                <a href="/products/lovense-webcam"
-                                    class="product-item__title text--strong link">Lovense Webcam</a>
-                                <div class="product-item__price-list price-list"><span class="price">
-                                        <span class="visually-hidden">Precio de venta</span>$1.957.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_7181122338879_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="40080226222143"><button type="submit"
-                                    class="product-item__action-button button button--small button--primary"
-                                    data-action="add-to-cart">Añadir al carrito</button>
-                            </form>
+        </section>
+        <div class="container">
+            <header class="section__header">
+                <div class="section__header-stack">
+                    <h2 class="section__title heading h3">Interactivos y con app: Conecta con el placer</h2>
+                </div><a href="/collections/interactivos-para-parejas" class="section__action-link link">Ver
+                    todos <svg focusable="false" class="icon icon--tail-right " viewBox="0 0 24 24"
+                        role="presentation">
+                        <path fill="currentColor"
+                            d="M22.707 11.293L15 3.586 13.586 5l6 6H2c-.553 0-1 .448-1 1s.447 1 1 1h17.586l-6 6L15 20.414l7.707-7.707c.391-.391.391-1.023 0-1.414z">
+                        </path>
+                    </svg></a>
+            </header>
+        </div>
+        <div class="container container--flush">
+            <div class="product-list product-list--vertical product-list--stackable">
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
+                        href="/products/lovense-webcam"
+                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=3126"
+                                alt="Lovense Webcam"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1600 1600w"
+                                width="3126" height="3126" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="23356634202175" class="product-item__primary-image"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=3126"
+                                alt="Lovense Webcam"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1600 1600w"
+                                width="3126" height="3126" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                class="product-item__secondary-image">
                         </div>
+                    </a>
+                    <div class="product-item__info">
+                        <div class="product-item__info-inner"><a class="product-item__vendor link"
+                                href="/collections/lovense">Lovense</a>
+                            <a href="/products/lovense-webcam" class="product-item__title text--strong link">Lovense
+                                Webcam</a>
+                            <div class="product-item__price-list price-list"><span class="price">
+                                    <span class="visually-hidden">Precio de venta</span>$1.957.900 COP</span>
+                            </div>
+                        </div>
+                        <form method="post" action="/cart/add"
+                            id="product_form_id_7181122338879_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
+                            accept-charset="UTF-8" class="product-item__action-list button-stack"
+                            enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                value="product"><input type="hidden" name="utf8" value="✓"><input
+                                type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="id" value="40080226222143"><button type="submit"
+                                class="product-item__action-button button button--small button--primary"
+                                data-action="add-to-cart">Añadir al carrito</button>
+                        </form>
                     </div>
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/satisfyer-pro-2-generation-3-con-app"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1500"
-                                    alt="Satisfyer Pro 2 Generation 3 Con APP"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1400 1400w"
-                                    width="1500" height="1500" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="23276797624383"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1500"
-                                    alt="Satisfyer Pro 2 Generation 3 Con APP"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1400 1400w"
-                                    width="1500" height="1500" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/satisfyer">Satisfyer</a>
-                                <a href="/products/satisfyer-pro-2-generation-3-con-app"
-                                    class="product-item__title text--strong link">Satisfyer Pro 2 Generation 3 Con
-                                    APP</a>
-                                <div class="product-item__price-list price-list"><span class="price">
-                                        <span class="visually-hidden">Precio de venta</span>$605.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_7164760326207_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="40057952927807"><button type="submit"
-                                    class="product-item__action-button button button--small button--primary"
-                                    data-action="add-to-cart">Añadir al carrito</button>
-                            </form>
+                </div>
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
+                        href="/products/satisfyer-pro-2-generation-3-con-app"
+                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1500"
+                                alt="Satisfyer Pro 2 Generation 3 Con APP"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1400 1400w"
+                                width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="23276797624383" class="product-item__primary-image"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1500"
+                                alt="Satisfyer Pro 2 Generation 3 Con APP"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1400 1400w"
+                                width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                class="product-item__secondary-image">
                         </div>
+                    </a>
+                    <div class="product-item__info">
+                        <div class="product-item__info-inner"><a class="product-item__vendor link"
+                                href="/collections/satisfyer">Satisfyer</a>
+                            <a href="/products/satisfyer-pro-2-generation-3-con-app"
+                                class="product-item__title text--strong link">Satisfyer Pro 2 Generation 3 Con
+                                APP</a>
+                            <div class="product-item__price-list price-list"><span class="price">
+                                    <span class="visually-hidden">Precio de venta</span>$605.900 COP</span>
+                            </div>
+                        </div>
+                        <form method="post" action="/cart/add"
+                            id="product_form_id_7164760326207_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
+                            accept-charset="UTF-8" class="product-item__action-list button-stack"
+                            enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                value="product"><input type="hidden" name="utf8" value="✓"><input
+                                type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="id" value="40057952927807"><button type="submit"
+                                class="product-item__action-button button button--small button--primary"
+                                data-action="add-to-cart">Añadir al carrito</button>
+                        </form>
                     </div>
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/vibrador-gravity-con-empuje-automatico-lovense"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 99.96801023672425%">
-                                <img src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=3126"
-                                    alt="Vibrador Gravity con empuje automatico Lovense"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1600 1600w"
-                                    width="3126" height="3125" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="22973970612287"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=3126"
-                                    alt="Vibrador Gravity con empuje automatico Lovense"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1600 1600w"
-                                    width="3126" height="3125" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/lovense">Lovense</a>
-                                <a href="/products/vibrador-gravity-con-empuje-automatico-lovense"
-                                    class="product-item__title text--strong link">Vibrador Gravity con empuje
-                                    automatico Lovense</a>
-                                <div class="product-item__price-list price-list"><span class="price">
-                                        <span class="visually-hidden">Precio de venta</span>$866.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_7118540898367_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="39977466757183"><button type="submit"
-                                    class="product-item__action-button button button--small button--primary"
-                                    data-action="add-to-cart">Añadir al carrito</button>
-                            </form>
+                </div>
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
+                        href="/products/vibrador-gravity-con-empuje-automatico-lovense"
+                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 99.96801023672425%">
+                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=3126"
+                                alt="Vibrador Gravity con empuje automatico Lovense"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1600 1600w"
+                                width="3126" height="3125" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22973970612287" class="product-item__primary-image"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=3126"
+                                alt="Vibrador Gravity con empuje automatico Lovense"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1600 1600w"
+                                width="3126" height="3125" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                class="product-item__secondary-image">
                         </div>
+                    </a>
+                    <div class="product-item__info">
+                        <div class="product-item__info-inner"><a class="product-item__vendor link"
+                                href="/collections/lovense">Lovense</a>
+                            <a href="/products/vibrador-gravity-con-empuje-automatico-lovense"
+                                class="product-item__title text--strong link">Vibrador Gravity con empuje
+                                automatico Lovense</a>
+                            <div class="product-item__price-list price-list"><span class="price">
+                                    <span class="visually-hidden">Precio de venta</span>$866.900 COP</span>
+                            </div>
+                        </div>
+                        <form method="post" action="/cart/add"
+                            id="product_form_id_7118540898367_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
+                            accept-charset="UTF-8" class="product-item__action-list button-stack"
+                            enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                value="product"><input type="hidden" name="utf8" value="✓"><input
+                                type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="id" value="39977466757183"><button type="submit"
+                                class="product-item__action-button button button--small button--primary"
+                                data-action="add-to-cart">Añadir al carrito</button>
+                        </form>
                     </div>
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/masturbadora-alex-neo-2"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=2084"
-                                    alt="Masturbadora Alex Neo 2 Svakom"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1600 1600w"
-                                    width="2084" height="2084" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="22910075043903"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=2084"
-                                    alt="Masturbadora Alex Neo 2 Svakom"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1600 1600w"
-                                    width="2084" height="2084" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/svakom">SVAKOM</a>
-                                <a href="/products/masturbadora-alex-neo-2"
-                                    class="product-item__title text--strong link">Masturbadora Alex Neo 2
-                                    Svakom</a>
-                                <div class="product-item__price-list price-list"><span class="price">
-                                        <span class="visually-hidden">Precio de venta</span>$939.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_7113625436223_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="39960627052607"><button type="submit"
-                                    class="product-item__action-button button button--small button--primary"
-                                    data-action="add-to-cart">Añadir al carrito</button>
-                            </form>
+                </div>
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
+                        href="/products/masturbadora-alex-neo-2"
+                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=2084"
+                                alt="Masturbadora Alex Neo 2 Svakom"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1600 1600w"
+                                width="2084" height="2084" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22910075043903" class="product-item__primary-image"><img
+                                src="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=2084"
+                                alt="Masturbadora Alex Neo 2 Svakom"
+                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1600 1600w"
+                                width="2084" height="2084" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                class="product-item__secondary-image">
                         </div>
+                    </a>
+                    <div class="product-item__info">
+                        <div class="product-item__info-inner"><a class="product-item__vendor link"
+                                href="/collections/svakom">SVAKOM</a>
+                            <a href="/products/masturbadora-alex-neo-2"
+                                class="product-item__title text--strong link">Masturbadora Alex Neo 2
+                                Svakom</a>
+                            <div class="product-item__price-list price-list"><span class="price">
+                                    <span class="visually-hidden">Precio de venta</span>$939.900 COP</span>
+                            </div>
+                        </div>
+                        <form method="post" action="/cart/add"
+                            id="product_form_id_7113625436223_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
+                            accept-charset="UTF-8" class="product-item__action-list button-stack"
+                            enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                value="product"><input type="hidden" name="utf8" value="✓"><input
+                                type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="id" value="39960627052607"><button type="submit"
+                                class="product-item__action-button button button--small button--primary"
+                                data-action="add-to-cart">Añadir al carrito</button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div id="modal-quick-view-template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079" class="modal"
-                aria-hidden="true">
-                <div class="modal__dialog modal__dialog--stretch" role="dialog">
-                    <button class="modal__close link" data-action="close-modal" title="Cerrar"><svg
-                            focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
-                            <path
-                                d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
-                                fill="currentColor" fill-rule="evenodd"></path>
-                        </svg></button>
-                    <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
-                            viewBox="0 0 64 64" role="presentation">
-                            <path opacity=".4"
-                                d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
-                            </path>
-                            <path
-                                d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
-                            </path>
-                        </svg></div>
-                    <div class="modal__inner"></div>
-                </div>
+        </div>
+        <div id="modal-quick-view-template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079" class="modal"
+            aria-hidden="true">
+            <div class="modal__dialog modal__dialog--stretch" role="dialog">
+                <button class="modal__close link" data-action="close-modal" title="Cerrar"><svg focusable="false"
+                        class="icon icon--close " viewBox="0 0 19 19" role="presentation">
+                        <path
+                            d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg></button>
+                <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
+                        viewBox="0 0 64 64" role="presentation">
+                        <path opacity=".4"
+                            d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
+                        </path>
+                        <path
+                            d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
+                        </path>
+                    </svg></div>
+                <div class="modal__inner"></div>
             </div>
+        </div>
         </section>
     </div>
     <div id="shopify-section-template--14562732638271__127e7bfe-e656-4552-b607-86d223e6a4d2" class="shopify-section">
@@ -764,11 +781,10 @@
                                 class="promo-block promo-block--bottom-left ">
                                 <div class="promo-block__image-clip">
                                     <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
-                                            src="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_BDSM.jpg?v=1675344482&amp;width=801"
-                                            alt=""
-                                            srcset="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_BDSM.jpg?v=1675344482&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_BDSM.jpg?v=1675344482&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_BDSM.jpg?v=1675344482&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_BDSM.jpg?v=1675344482&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_BDSM.jpg?v=1675344482&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_BDSM.jpg?v=1675344482&amp;width=800 800w"
+                                            src="images/lubricantes.jpeg?v=1675344482&amp;width=801" alt=""
                                             width="801" height="520" loading="lazy" sizes="min(100vw, 560px)"
                                             class="image-background">
+                                        <h1 class="overlay-heading">Lubricantes</h1>
                                     </div>
                                 </div>
                                 </noscript>
@@ -778,13 +794,13 @@
                             <a href="/collections/elixir"
                                 id="block-template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8-1676133389dee69932-1"
                                 class="promo-block promo-block--bottom-left ">
+
                                 <div class="promo-block__image-clip">
-                                    <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
-                                            src="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LUBRICANTES.jpg?v=1675344500&amp;width=801"
-                                            alt=""
-                                            srcset="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LUBRICANTES.jpg?v=1675344500&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LUBRICANTES.jpg?v=1675344500&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LUBRICANTES.jpg?v=1675344500&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LUBRICANTES.jpg?v=1675344500&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LUBRICANTES.jpg?v=1675344500&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LUBRICANTES.jpg?v=1675344500&amp;width=800 800w"
+                                    <div class="promo-block__image-wrapper promo-block__image-wrapper--cover">
+                                        <img src="images/vibradores.jpeg?v=1675344516&amp;width=1101" alt=""
                                             width="801" height="520" loading="lazy" sizes="min(100vw, 560px)"
                                             class="image-background">
+                                        <h1 class="overlay-heading">Vibradores</h1>
                                     </div>
                                 </div>
                             </a>
@@ -796,12 +812,11 @@
                                 id="block-template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8-1676133389dee69932-2"
                                 class="promo-block promo-block--bottom-left ">
                                 <div class="promo-block__image-clip">
-                                    <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
-                                            src="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_WEBCAM.jpg?v=1675344516&amp;width=1101"
-                                            alt=""
-                                            srcset="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_WEBCAM.jpg?v=1675344516&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_WEBCAM.jpg?v=1675344516&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_WEBCAM.jpg?v=1675344516&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_WEBCAM.jpg?v=1675344516&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_WEBCAM.jpg?v=1675344516&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_WEBCAM.jpg?v=1675344516&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_WEBCAM.jpg?v=1675344516&amp;width=1000 1000w"
+                                    <div class="promo-block__image-wrapper promo-block__image-wrapper--cover">
+                                        <img src="images/lenceria.jpeg?v=1675344516&amp;width=1101" alt=""
                                             width="1101" height="1101" loading="lazy" sizes="min(100vw, 560px)"
                                             class="image-background">
+                                        <h1 class="overlay-heading">Lencería</h1>
                                     </div>
                                 </div>
                             </a>
@@ -814,11 +829,10 @@
                                 class="promo-block promo-block--bottom-left ">
                                 <div class="promo-block__image-clip">
                                     <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
-                                            src="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_JUEGOS.jpg?v=1675344531&amp;width=801"
-                                            alt=""
-                                            srcset="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_JUEGOS.jpg?v=1675344531&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_JUEGOS.jpg?v=1675344531&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_JUEGOS.jpg?v=1675344531&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_JUEGOS.jpg?v=1675344531&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_JUEGOS.jpg?v=1675344531&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_JUEGOS.jpg?v=1675344531&amp;width=800 800w"
+                                            src="images/anales.jpeg?v=1675344531&amp;width=801" alt=""
                                             width="801" height="520" loading="lazy" sizes="min(100vw, 560px)"
                                             class="image-background">
+                                        <h1 class="overlay-heading">Accesorios anales</h1>
                                     </div>
                                 </div>
                             </a>
@@ -829,11 +843,10 @@
                                 class="promo-block promo-block--bottom-left ">
                                 <div class="promo-block__image-clip">
                                     <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
-                                            src="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LENCERIA.jpg?v=1675344549&amp;width=801"
-                                            alt=""
-                                            srcset="//cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LENCERIA.jpg?v=1675344549&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LENCERIA.jpg?v=1675344549&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LENCERIA.jpg?v=1675344549&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LENCERIA.jpg?v=1675344549&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LENCERIA.jpg?v=1675344549&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/files/mosaico_LENCERIA.jpg?v=1675344549&amp;width=800 800w"
+                                            src="images/bondage2.jpeg?v=1675344549&amp;width=801" alt=""
                                             width="801" height="520" loading="lazy" sizes="min(100vw, 560px)"
                                             class="image-background">
+                                        <h1 class="overlay-heading">Bondage</h1>
                                     </div>
                                 </div>
                             </a>
@@ -884,16 +897,7 @@
                                     fill="currentColor" fill-rule="evenodd"></path>
                             </svg></a>
                     </li>
-                    <li class="social-media__item social-media__item--twitter">
-                        <a href="https://twitter.com/BaliSexStore" target="_blank" rel="noopener"
-                            aria-label="Síguenos en Twitter" aria-describedby="a11y-new-window-message"><svg
-                                focusable="false" class="icon icon--twitter " role="presentation"
-                                viewBox="0 0 30 30">
-                                <path
-                                    d="M15 30C6.71572875 30 0 23.2842712 0 15 0 6.71572875 6.71572875 0 15 0c8.2842712 0 15 6.71572875 15 15 0 8.2842712-6.7157288 15-15 15zm3.4314771-20.35648929c-.134011.01468929-.2681239.02905715-.4022367.043425-.2602865.05139643-.5083383.11526429-.7319208.20275715-.9352275.36657324-1.5727317 1.05116784-1.86618 2.00016964-.1167278.3774214-.1643635 1.0083696-.0160821 1.3982464-.5276368-.0006268-1.0383364-.0756643-1.4800457-.1737-1.7415129-.3873214-2.8258768-.9100285-4.02996109-1.7609946-.35342035-.2497018-.70016357-.5329286-.981255-.8477679-.09067071-.1012178-.23357785-.1903178-.29762142-.3113357-.00537429-.0025553-.01072822-.0047893-.0161025-.0073446-.13989429.2340643-.27121822.4879125-.35394965.7752857-.32626393 1.1332446.18958607 2.0844643.73998215 2.7026518.16682678.187441.43731214.3036696.60328392.4783178h.01608215c-.12466715.041834-.34181679-.0159589-.45040179-.0360803-.25715143-.0482143-.476235-.0919607-.69177643-.1740215-.11255464-.0482142-.22521107-.09675-.3378675-.1449642-.00525214 1.251691.69448393 2.0653071 1.55247643 2.5503267.27968679.158384.67097143.3713625 1.07780893.391484-.2176789.1657285-1.14873321.0897268-1.47198429.0581143.40392643.9397285 1.02481929 1.5652607 2.09147249 1.9056375.2750861.0874928.6108975.1650857.981255.1593482-.1965482.2107446-.6162514.3825321-.8928439.528766-.57057.3017572-1.2328489.4971697-1.97873466.6450108-.2991075.0590785-.61700464.0469446-.94113107.0941946-.35834678.0520554-.73320321-.02745-1.0537875-.0364018.09657429.053325.19312822.1063286.28958036.1596536.2939775.1615821.60135.3033482.93309.4345875.59738036.2359768 1.23392786.4144661 1.93859037.5725286 1.4209286.3186642 3.4251707.175291 4.6653278-.1740215 3.4539354-.9723053 5.6357529-3.2426035 6.459179-6.586425.1416246-.5754053.162226-1.2283875.1527803-1.9126768.1716718-.1232517.3432215-.2465035.5148729-.3697553.4251996-.3074947.8236703-.7363286 1.118055-1.1591036v-.00765c-.5604729.1583679-1.1506672.4499036-1.8661597.4566054v-.0070232c.1397925-.0495.250515-.1545429.3619908-.2321358.5021089-.3493285.8288003-.8100964 1.0697678-1.39826246-.1366982.06769286-.2734778.13506429-.4101761.20275716-.4218407.1938214-1.1381067.4719375-1.689256.5144143-.6491893-.5345357-1.3289754-.95506074-2.6061215-.93461789z"
-                                    fill="currentColor" fill-rule="evenodd"></path>
-                            </svg></a>
-                    </li>
+
                     <li class="social-media__item social-media__item--instagram">
                         <a href="https://www.instagram.com/balisexstore/" target="_blank" rel="noopener"
                             aria-label="Síguenos en Instagram" aria-describedby="a11y-new-window-message"><svg
@@ -1653,7 +1657,7 @@
                                     <span>Acerca de nosotros</span>
                                 </button>
                                 <p>
-                                    Magic Sex Shop ofrece variedad en Juguetes para Adultos,Lencería, Lubricantes y
+                                    MagicSexShop ofrece variedad en Juguetes para Adultos,Lencería, Lubricantes y
                                     Accesorios.
                                     Ventas al por mayor.
                                     100% Discreción.
@@ -1671,17 +1675,6 @@
                                                 class="icon icon--facebook " viewBox="0 0 30 30">
                                                 <path
                                                     d="M15 30C6.71572875 30 0 23.2842712 0 15 0 6.71572875 6.71572875 0 15 0c8.2842712 0 15 6.71572875 15 15 0 8.2842712-6.7157288 15-15 15zm3.2142857-17.1429611h-2.1428678v-2.1425646c0-.5852979.8203285-1.07160109 1.0714928-1.07160109h1.071375v-2.1428925h-2.1428678c-2.3564786 0-3.2142536 1.98610393-3.2142536 3.21449359v2.1425646h-1.0714822l.0032143 2.1528011 1.0682679-.0099086v7.499969h3.2142536v-7.499969h2.1428678v-2.1428925z"
-                                                    fill="currentColor" fill-rule="evenodd"></path>
-                                            </svg></a>
-                                    </li>
-                                    <li class="social-media__item social-media__item--twitter">
-                                        <a href="https://twitter.com/BaliSexStore" target="_blank" rel="noopener"
-                                            aria-label="Síguenos en Twitter"
-                                            aria-describedby="a11y-new-window-message"><svg focusable="false"
-                                                class="icon icon--twitter " role="presentation"
-                                                viewBox="0 0 30 30">
-                                                <path
-                                                    d="M15 30C6.71572875 30 0 23.2842712 0 15 0 6.71572875 6.71572875 0 15 0c8.2842712 0 15 6.71572875 15 15 0 8.2842712-6.7157288 15-15 15zm3.4314771-20.35648929c-.134011.01468929-.2681239.02905715-.4022367.043425-.2602865.05139643-.5083383.11526429-.7319208.20275715-.9352275.36657324-1.5727317 1.05116784-1.86618 2.00016964-.1167278.3774214-.1643635 1.0083696-.0160821 1.3982464-.5276368-.0006268-1.0383364-.0756643-1.4800457-.1737-1.7415129-.3873214-2.8258768-.9100285-4.02996109-1.7609946-.35342035-.2497018-.70016357-.5329286-.981255-.8477679-.09067071-.1012178-.23357785-.1903178-.29762142-.3113357-.00537429-.0025553-.01072822-.0047893-.0161025-.0073446-.13989429.2340643-.27121822.4879125-.35394965.7752857-.32626393 1.1332446.18958607 2.0844643.73998215 2.7026518.16682678.187441.43731214.3036696.60328392.4783178h.01608215c-.12466715.041834-.34181679-.0159589-.45040179-.0360803-.25715143-.0482143-.476235-.0919607-.69177643-.1740215-.11255464-.0482142-.22521107-.09675-.3378675-.1449642-.00525214 1.251691.69448393 2.0653071 1.55247643 2.5503267.27968679.158384.67097143.3713625 1.07780893.391484-.2176789.1657285-1.14873321.0897268-1.47198429.0581143.40392643.9397285 1.02481929 1.5652607 2.09147249 1.9056375.2750861.0874928.6108975.1650857.981255.1593482-.1965482.2107446-.6162514.3825321-.8928439.528766-.57057.3017572-1.2328489.4971697-1.97873466.6450108-.2991075.0590785-.61700464.0469446-.94113107.0941946-.35834678.0520554-.73320321-.02745-1.0537875-.0364018.09657429.053325.19312822.1063286.28958036.1596536.2939775.1615821.60135.3033482.93309.4345875.59738036.2359768 1.23392786.4144661 1.93859037.5725286 1.4209286.3186642 3.4251707.175291 4.6653278-.1740215 3.4539354-.9723053 5.6357529-3.2426035 6.459179-6.586425.1416246-.5754053.162226-1.2283875.1527803-1.9126768.1716718-.1232517.3432215-.2465035.5148729-.3697553.4251996-.3074947.8236703-.7363286 1.118055-1.1591036v-.00765c-.5604729.1583679-1.1506672.4499036-1.8661597.4566054v-.0070232c.1397925-.0495.250515-.1545429.3619908-.2321358.5021089-.3493285.8288003-.8100964 1.0697678-1.39826246-.1366982.06769286-.2734778.13506429-.4101761.20275716-.4218407.1938214-1.1381067.4719375-1.689256.5144143-.6491893-.5345357-1.3289754-.95506074-2.6061215-.93461789z"
                                                     fill="currentColor" fill-rule="evenodd"></path>
                                             </svg></a>
                                     </li>
@@ -1710,7 +1703,7 @@
                                 </ul>
                             </div>
                             <div class="footer__aside-item footer__aside-item--copyright hidden-lap-and-up">
-                                <p>© 2023 Magic Sex Shop</p>
+                                <p>© 2023 MagicSexShop</p>
                             </div>
                         </aside>
                     </div>
@@ -1728,10 +1721,10 @@
                     </div>
                 </div>
             </a>
-            <script data-name="shopifyAddiWidget" data-id="balisexstore" data-ally-slug="balisexstore-ecommerce"
-                data-element-reference=".product-form__info-item"
-                src="https://s3.amazonaws.com/statics.addi.com/shopify/js/shopify-co-widget-wrapper.bundle.min.js"></script>
+
             </a>
+
+
 </body>
 
 </html>
