@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,8 +38,32 @@ class HomeController extends Controller
         return redirect()->route('index');
     }
     
-    public function formCrear(){
-        return view("productos.formCrearProducto");
+    public function formCrearProducto(){
+        $categorias = Categoria::all();
+        return view("productos.formCrearProducto",compact("categorias"));
+    }
+
+    public function storeProducto(Request $request){
+        // return "imagen","nombre","categoria","color,"tamaño","descripcion"}
+        // database "imagen","nombre","categoria","color,"tamaño","descripcion"}
+
+        $imageName = time().'.'.$request->imagen->extension();  
+       
+        $request->imagen->move(public_path('imagesProductos'), $imageName);
+
+
+        $producto = new Producto();
+
+        $producto->imagen = $request->imagen;
+        $producto->nombre = $request->nombre;
+        $producto->categoria = $request->categoria;
+        $producto->color = $request->color;
+        $producto->tamaño = $request->tamaño;
+        $producto->descripcion = $request->descripcion;
+        $producto->save();
+
+        session()->flash("correcto","Producto creado correctamente");
+        return redirect()->route("formCrearProducto");
     }
 
     public function formCrearCategoria(){

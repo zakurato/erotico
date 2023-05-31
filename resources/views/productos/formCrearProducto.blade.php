@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +10,64 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('login/loginAdentro.Css?1.0') }}">
 </head>
+
 <body>
+
+    <div class="navbar">
+        <ul>
+            <li><a href="{{ route('loginDentro') }}">Inicio</a></li>
+            <!-- Agrega aquí más elementos del navbar si es necesario -->
+        </ul>
+    </div>
     <div class="container">
         <h2>Crear producto</h2>
-        <form action="">
-          <div class="form-group">
-            <label>Nombre del producto:</label>
-            <input type="text" class="form-control" name="nombre">
+        <br>
+        {{session("correcto")}}
+        <br>
+        <form action="{{ route('storeProducto') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <br>
+            <div class="form-group">
+                <label for="exampleImage">Seleccionar imagen</label>
+                <input type="file" class="form-control-file" name="imagen" required>
+            </div>
+            <div class="form-group">
+                <label>Nombre del producto:</label>
+                <input type="text" class="form-control" name="nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Seleccione una categoría</label>
+              <select class="form-control" name="categoria">
+                  @foreach ($categorias as $item)
+                      <option>{{ $item->nombreCategoria }}</option>
+                  @endforeach
+              </select>
           </div>
-          <button type="submit" class="btn btn-default">Crear producto</button>
+          
+            <div class="form-group">
+                <label>Color del producto:</label>
+                <input type="text" class="form-control" name="color">
+            </div>
+            <div class="form-group">
+                <label>Tamaño del producto:</label>
+                <input type="text" class="form-control" name="tamaño">
+            </div>
+            <div class="form-group">
+                <label for="exampleTextarea">Descripción del producto</label>
+                <textarea class="form-control" name="descripcion" rows="3"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-default">Crear producto</button>
+            </div>
         </form>
-      </div>
+    </div>
+
+
+
+
+
 </body>
+
 </html>

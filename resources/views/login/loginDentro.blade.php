@@ -25,7 +25,7 @@
         <input type="button" value="Crear categoría">
     </a>
     <br><br><br>
-    <a href="{{route("formCrear")}}">
+    <a href="{{route("formCrearProducto")}}">
         <input type="button" value="Crear producto">
     </a>
 

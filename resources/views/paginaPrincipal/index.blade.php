@@ -37,76 +37,129 @@
 <body class="warehouse--v4 features--animate-zoom template-index" data-instant-intensity="viewport">
     <!-- END sections: header-group -->
     <!-- BEGIN sections: overlay-group -->
-    <nav class="navbar navbar-inverse"
-        style="background-color: black !important; position: fixed !important; width: 100% !important; z-index: 9999 !important;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="navbar navbar-inverse"
+        style="background-color: black !important; position: fixed; width: 100% !important; z-index: 9999 !important;">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="#" class="header__logo-link">
-                    <img class="header__logo-image" style="max-width: 300px" width="600" height="200"
-                        src="images/logo3.png?v=1676468577"
-                        alt="">
-                </a>
-                <br><br>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a style="font: 150%  Arial" class="dropdown-toggle" data-toggle="dropdown" href="#">Categorías<span
-                                    class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Page 1-1</a></li>
-                                <li><a href="#">Page 1-2</a></li>
-                                <li><a href="#">Page 1-3</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span
+                                class="icon-bar"></span><span class="icon-bar"></span><span
+                                class="icon-bar"></span></button>
+                        <a href="#" class="header__logo-link">
+                            <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
+                        </a>
+                    </div>
+
+                    <div class="navbar-collapse collapse" id="mobile_menu">
+                        <ul class="nav navbar-nav">
+                            <!--<li class="active"><a href="#">Home</a></li>-->
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías<span
+                                        class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">About One</a></li>
+                                    <li><a href="#">About Two</a></li>
+                                    <li><a href="#">About Three</a></li>
+                                </ul>
+                            </li>
+                            <!--
+                            <li><a href="#">Welcome</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            -->
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <form action="" class="navbar-form">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="search" name="search" id=""
+                                                placeholder="Buscar..." class="form-control">
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-search">
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <form action="">
+                                    <div style="display: inline-flex;">
+                                        <!-- carrito -->
+                                        <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg" width="28"
+                                            height="28" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                                                fill="#9d9d9d">
+                                            </path>
+                                        </svg>
+                                        <p style="color: #9d9d9d">0</p>
+                                        <h4 style="color: #9d9d9d;">Carrito de compras</h4>
+                                        <!-- carrito -->
+                                    </div>
+                                </form>
+    
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <form action="{{ route('index') }}">
-                        <input type="text" placeholder="Buscar..." style="width: 260px; height: 30px;">
-                        <button type="submit" class="search-bar__submit" aria-label="Buscar"><svg focusable="false"
-                                class="icon icon--search " viewBox="0 0 21 21" role="presentation">
-                                <g stroke-width="2" stroke="currentColor" fill="none" fill-rule="evenodd">
-                                    <path d="M19 19l-5-5" stroke-linecap="square"></path>
-                                    <circle cx="8.5" cy="8.5" r="7.5"></circle>
-                                </g>
-                            </svg><svg focusable="false" class="icon icon--search-loader " viewBox="0 0 64 64"
-                                role="presentation">
-                                <path
-                                    d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
-                                </path>
-                                <path
-                                    d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
-                                </path>
-                            </svg>
-                        </button>
-                    </form>
-
-                    <form action="">
-                        <div style="display: inline-flex;">
-                            <!-- carrito -->
-                            <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg" width="28"
-                                height="28" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                    fill="#9d9d9d">
-                                </path>
-                            </svg>
-                            <p style="color: #9d9d9d">0</p>
-                            <h4 style="color: #9d9d9d; margin-left: 10px">Carrito</h4>
-                            <!-- carrito -->
-                        </div>
-                    </form>
-                </li>
-            </ul>
         </div>
-    </nav>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <section class="animacion1">
 
@@ -115,7 +168,6 @@
             <div data-section-id="sections--14562733359167__popups" data-section-type="popups"></div>
         </div>
 
-        <br><br><br><br><br><br><br><br><br><br><br>
         <!-- END sections: overlay-group -->
         <main id="main" role="main" class="component">
 
@@ -124,7 +176,8 @@
                     height="600" loading="lazy" class="slideshow__image zoom">
             </div>
             <div class="hidden-tablet-and-up zoom"><img src="images/inicio3.png?v=1680025277&amp;width=1200"
-                    alt="" width="1200" height="1080" loading="lazy" class="slideshow__image "></div>
+                    alt="" width="1200" height="1080" loading="lazy" class="slideshow__image ">
+            </div>
 
             </div>
             <div id="shopify-section-template--14562732638271__collection-list" class="shopify-section">
