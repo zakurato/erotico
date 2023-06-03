@@ -4,15 +4,13 @@
 <head>
     <!--/Css propios public-->
     <link rel="stylesheet" href="{{ asset('index/index.Css?1.0') }}">
-    <link rel="stylesheet" href="{{ asset('index/styles.Css?1.0') }}?v=120939182865429120021678115775">
+    <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v=120939182865429120021678115775">
 
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="theme-color" content="#000000">
-    <link rel="shortcut icon"
-        href="//cdn.shopify.com/s/files/1/1102/5004/files/favicon_70bd5645-333e-41c1-9dd5-cf7e81b4074b_96x96.png?v=1674755086"
-        type="image/png">
+
     <!-- BEGIN app block: shopify://apps/yoast-seo-seo-for-everyone/blocks/metatags/7c777011-bc88-4743-a24e-64336e1e5b46 -->
     <!-- This site is optimized with Yoast SEO for Shopify -->
     <title>MagicSexShop</title>
@@ -73,9 +71,10 @@
                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías<span
                                         class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">About One</a></li>
-                                    <li><a href="#">About Two</a></li>
-                                    <li><a href="#">About Three</a></li>
+                                    @foreach ($categorias as $item)
+                                        <li><a href="#">{{ $item->nombreCategoria }}</a></li>
+                                    @endforeach
+
                                 </ul>
                             </li>
                             <!--
@@ -87,13 +86,13 @@
                         </ul>
                         <ul class="nav navbar-nav">
                             <li>
-                                <form action="" class="navbar-form">
+                                <form action="" class="navbar-form" style="width: 100%">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="search" name="search" id=""
-                                                placeholder="Buscar..." class="form-control">
+                                            <input type="search" name="search" id="" placeholder="Buscar..."
+                                                class="form-control">
                                             <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-search">
+                                                <span class="glyphicon glyphicon-search">
                                         </div>
                                     </div>
                                 </form>
@@ -117,7 +116,7 @@
                                         <!-- carrito -->
                                     </div>
                                 </form>
-    
+
                             </li>
                         </ul>
                     </div>
@@ -216,164 +215,48 @@
                     </div>
                 </header>
             </div>
+
             <div class="container container--flush">
+                {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
                 <div class="product-list product-list--vertical product-list--stackable">
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/pezoneras-vibratorias-gemini-lovense"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=3125"
-                                    alt="Pezoneras vibratorias Gemini Lovense"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_4.jpg?v=1673978877&amp;width=1600 1600w"
-                                    width="3125" height="3125" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="22973949247551"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=3126"
-                                    alt="Pezoneras vibratorias Gemini Lovense"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-PPE-GEMINI_2.jpg?v=1673978877&amp;width=1600 1600w"
-                                    width="3126" height="3125" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/lovense">Lovense</a>
-                                <a href="/products/pezoneras-vibratorias-gemini-lovense"
-                                    class="product-item__title text--strong link">Pezoneras vibratorias Gemini
-                                    Lovense</a>
-                                <div class="product-item__price-list price-list"><span class="price">
-                                        <span class="visually-hidden">Precio de venta</span>$508.900 COP</span>
+                    @foreach ($productos as $item)
+                        <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
+                                href="#"
+                                class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                                <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%">
+
+                                    <img src="imagesProductos/{{ $item->imagen }}?v=1673978877&amp;width=3125"
+                                        alt="" width="3125" height="3125" loading="lazy"
+                                        sizes="(max-width: 699px) 100vw, 600px" data-media-id="22973949247551"
+                                        class="product-item__primary-image">
+
+                                    <img src="images/logo.jpg?v=1673978877&amp;width=3126" alt=""
+                                        width="3126" height="3125" loading="lazy"
+                                        sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
+
                                 </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_7118474084415_template--14562732638271__featured-collection"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="39977224732735"><button type="submit"
-                                    class="product-item__action-button button button--small button--primary"
-                                    data-action="add-to-cart">Añadir al carrito</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/vibrador-gravity-con-empuje-automatico-lovense"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 99.96801023672425%">
-                                <img src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=3126"
-                                    alt="Vibrador Gravity con empuje automatico Lovense"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1600 1600w"
-                                    width="3126" height="3125" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="22973970612287"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=3126"
-                                    alt="Vibrador Gravity con empuje automatico Lovense"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1600 1600w"
-                                    width="3126" height="3125" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/lovense">Lovense</a>
-                                <a href="/products/vibrador-gravity-con-empuje-automatico-lovense"
-                                    class="product-item__title text--strong link">Vibrador Gravity con empuje
-                                    automatico Lovense</a>
-                                <div class="product-item__price-list price-list"><span class="price">
-                                        <span class="visually-hidden">Precio de venta</span>$866.900 COP</span>
+                            </a>
+                            <div class="product-item__info">
+                                <div class="product-item__info-inner">{{ $item->categoria }}
+                                    <p class="product-item__title text--strong link">{{ $item->nombre }}</p>
+                                    <div class="product-item__price-list price-list"><span class="price">
+                                            ₡{{ $item->precio }} </span>
+                                    </div>
                                 </div>
+                                <form method="post" action="/cart/add"
+                                    id="product_form_id_7118474084415_template--14562732638271__featured-collection"
+                                    accept-charset="UTF-8" class="product-item__action-list button-stack"
+                                    enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                        value="product"><input type="hidden" name="utf8" value="✓"><input
+                                        type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="id" value="39977224732735"><button
+                                        type="submit"
+                                        class="product-item__action-button button button--small button--primary"
+                                        data-action="add-to-cart">Añadir al carrito</button>
+                                </form>
                             </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_7118540898367_template--14562732638271__featured-collection"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="39977466757183"><button type="submit"
-                                    class="product-item__action-button button button--small button--primary"
-                                    data-action="add-to-cart">Añadir al carrito</button>
-                            </form>
                         </div>
-                    </div>
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/bala-vibradora-tulip"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=4168"
-                                    alt="Bala Vibradora Tulip Svakom"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-negro-2.png?v=1669301864&amp;width=1600 1600w"
-                                    width="4168" height="4168" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="22684818899007"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=4168"
-                                    alt="Bala Vibradora Tulip Svakom"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/bala-vibradora-tulip-svakom-morado-2.png?v=1669301864&amp;width=1600 1600w"
-                                    width="4168" height="4167" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/svakom">SVAKOM</a>
-                                <a href="/products/bala-vibradora-tulip"
-                                    class="product-item__title text--strong link">Bala Vibradora Tulip Svakom</a>
-                                <div class="product-item__price-list price-list"><span class="price">
-                                        <span class="visually-hidden">Precio de venta</span>$214.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_7084445466687_template--14562732638271__featured-collection"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="39913750069311"><a
-                                    href="/products/bala-vibradora-tulip"
-                                    class="product-item__action-button button button--small button--primary">Añadir
-                                    al carrito</a>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                            href="/products/masturbador-masculino-robin"
-                            class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                            <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/5.png?v=1669302636&amp;width=1200"
-                                    alt="Masturbador Masculino Robin Svakom"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/5.png?v=1669302636&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/5.png?v=1669302636&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/5.png?v=1669302636&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/5.png?v=1669302636&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/5.png?v=1669302636&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/5.png?v=1669302636&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/5.png?v=1669302636&amp;width=1200 1200w"
-                                    width="1200" height="1200" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" data-media-id="22684849537087"
-                                    class="product-item__primary-image"><img
-                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/6.png?v=1669302637&amp;width=1200"
-                                    alt="Masturbador Masculino Robin Svakom"
-                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/6.png?v=1669302637&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/6.png?v=1669302637&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/6.png?v=1669302637&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/6.png?v=1669302637&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/6.png?v=1669302637&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/6.png?v=1669302637&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/6.png?v=1669302637&amp;width=1200 1200w"
-                                    width="1200" height="1200" loading="lazy"
-                                    sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
-                            </div>
-                        </a>
-                        <div class="product-item__info">
-                            <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                    href="/collections/svakom">SVAKOM</a>
-                                <a href="/products/masturbador-masculino-robin"
-                                    class="product-item__title text--strong link">Masturbador Masculino Robin
-                                    Svakom</a>
-                                <div class="product-item__price-list price-list"><span class="price">
-                                        <span class="visually-hidden">Precio de venta</span>$321.900 COP</span>
-                                </div>
-                            </div>
-                            <form method="post" action="/cart/add"
-                                id="product_form_id_7084462866495_template--14562732638271__featured-collection"
-                                accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                    value="product"><input type="hidden" name="utf8" value="✓"><input
-                                    type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="id" value="39913762652223"><button type="submit"
-                                    class="product-item__action-button button button--small button--primary"
-                                    data-action="add-to-cart">Añadir al carrito</button>
-                            </form>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div id="modal-quick-view-template--14562732638271__featured-collection" class="modal"
@@ -415,43 +298,29 @@
             <header class="section__header">
                 <div class="section__header-stack">
                     <h2 class="section__title heading h3">Los productos más vendidos</h2>
-                </div><a href="/collections/los-mas-vendidos" class="section__action-link link">Ver todos
-                    <svg focusable="false" class="icon icon--tail-right " viewBox="0 0 24 24" role="presentation">
-                        <path fill="currentColor"
-                            d="M22.707 11.293L15 3.586 13.586 5l6 6H2c-.553 0-1 .448-1 1s.447 1 1 1h17.586l-6 6L15 20.414l7.707-7.707c.391-.391.391-1.023 0-1.414z">
-                        </path>
-                    </svg></a>
+                </div>
             </header>
         </div>
         <div class="container container--flush">
             <div class="product-list product-list--vertical product-list--stackable">
-                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                        href="/products/limpiador-de-juguetes-elixir-de-melon"
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a href=""
                         class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
                         <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=1000"
-                                alt="Limpiador para Juguetes Elixir Melón"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-29ml_1.jpg?v=1671717460&amp;width=1000 1000w"
-                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
                                 data-media-id="22838291529791" class="product-item__primary-image"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=1000"
-                                alt="Limpiador para Juguetes Elixir Melón"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-mel-58ml_1.jpg?v=1671717460&amp;width=1000 1000w"
-                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
                                 class="product-item__secondary-image">
                         </div>
                     </a>
                     <div class="product-item__info">
                         <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                href="/collections/vendors?q=Bali%20Sex%20Store">Bali Sex Store</a>
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Categoría</a>
                             <a href="/products/limpiador-de-juguetes-elixir-de-melon"
-                                class="product-item__title text--strong link">Limpiador para Juguetes Elixir
-                                Melón</a>
+                                class="product-item__title text--strong link">Nombre</a>
                             <div class="product-item__price-list price-list"><span class="price price--highlight">
-                                    <span class="visually-hidden">Precio de venta</span>Desde $9.900
-                                    COP</span>
-                                <span class="price price--compare">
-                                    <span class="visually-hidden">Precio habitual</span>$12.900 COP</span>
+                                    Precio
                             </div>
                         </div>
                         <form method="post" action="/cart/add"
@@ -467,121 +336,100 @@
                         </form>
                     </div>
                 </div>
-                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                        href="/products/lovense-lush-vibrador"
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a href=""
                         class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
                         <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=1200"
-                                alt="Lovense Lush Vibrador"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store4.jpg?v=1645565899&amp;width=1200 1200w"
-                                width="1200" height="1200" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
-                                data-media-id="20357021958207" class="product-item__primary-image"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1200"
-                                alt="Lovense Lush Vibrador"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Lovense-lush-vibrador-Bali-Sex-Store.jpg?v=1645565899&amp;width=1200 1200w"
-                                width="1200" height="1200" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22838291529791" class="product-item__primary-image"><img
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
                                 class="product-item__secondary-image">
                         </div>
                     </a>
                     <div class="product-item__info">
                         <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                href="/collections/lovense">Lovense</a>
-                            <a href="/products/lovense-lush-vibrador"
-                                class="product-item__title text--strong link">Lovense Lush Vibrador</a>
-                            <div class="product-item__price-list price-list"><span class="price">
-                                    <span class="visually-hidden">Precio de venta</span>$441.900 COP</span>
-                            </div>
-                        </div>
-                        <form method="post" action="/cart/add"
-                            id="product_form_id_7310752131_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
-                            accept-charset="UTF-8" class="product-item__action-list button-stack"
-                            enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                value="product"><input type="hidden" name="utf8" value="✓"><input
-                                type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="id" value="22904763459"><button type="submit"
-                                class="product-item__action-button button button--small button--primary"
-                                data-action="add-to-cart">Añadir al carrito</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                        href="/products/plug-anal-romulo"
-                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=800"
-                                alt="Plug Anal Rómulo Bali Sex Store"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store.jpg?v=1611105680&amp;width=800 800w"
-                                width="800" height="800" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
-                                data-media-id="8059988770879" class="product-item__primary-image"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=1000"
-                                alt="Plug Anal Rómulo Bali Sex Store"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/plug-anal-romulo-bali-sex-store-bali-sex-store-2.jpg?v=1611105680&amp;width=1000 1000w"
-                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
-                                class="product-item__secondary-image">
-                        </div>
-                    </a>
-                    <div class="product-item__info">
-                        <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                href="/collections/vendors?q=Bali%20Sex%20Store">Bali Sex Store</a>
-                            <a href="/products/plug-anal-romulo" class="product-item__title text--strong link">Plug
-                                Anal Rómulo</a>
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Categoría</a>
+                            <a href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__title text--strong link">Nombre</a>
                             <div class="product-item__price-list price-list"><span class="price price--highlight">
-                                    <span class="visually-hidden">Precio de venta</span>Desde $47.900
-                                    COP</span>
-                                <span class="price price--compare">
-                                    <span class="visually-hidden">Precio habitual</span>$49.900 COP</span>
+                                    Precio
                             </div>
                         </div>
                         <form method="post" action="/cart/add"
-                            id="product_form_id_4676664323_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
+                            id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                             accept-charset="UTF-8" class="product-item__action-list button-stack"
                             enctype="multipart/form-data"><input type="hidden" name="form_type"
                                 value="product"><input type="hidden" name="utf8" value="✓"><input
                                 type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="id" value="13588243087423"><a
-                                href="/products/plug-anal-romulo"
+                            <input type="hidden" name="id" value="15108051861567"><a
+                                href="/products/limpiador-de-juguetes-elixir-de-melon"
                                 class="product-item__action-button button button--small button--primary">Añadir
                                 al carrito</a>
                         </form>
                     </div>
                 </div>
-                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                        href="/products/limpiador-de-juguetes-sexuales-elixir"
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a href=""
                         class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
                         <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=1000"
-                                alt="Limpiador para Juguetes Elixir Neutro"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-29ml_1.jpg?v=1671717573&amp;width=1000 1000w"
-                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
-                                data-media-id="22838295887935" class="product-item__primary-image"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=1000"
-                                alt="Limpiador para Juguetes Elixir Neutro"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/ex-ctc-002-neu-58ml_1.jpg?v=1671717573&amp;width=1000 1000w"
-                                width="1000" height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22838291529791" class="product-item__primary-image"><img
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
                                 class="product-item__secondary-image">
                         </div>
                     </a>
                     <div class="product-item__info">
                         <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                href="/collections/vendors?q=Bali%20Sex%20Store">Bali Sex Store</a>
-                            <a href="/products/limpiador-de-juguetes-sexuales-elixir"
-                                class="product-item__title text--strong link">Limpiador para Juguetes Elixir
-                                Neutro</a>
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Categoría</a>
+                            <a href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__title text--strong link">Nombre</a>
                             <div class="product-item__price-list price-list"><span class="price price--highlight">
-                                    <span class="visually-hidden">Precio de venta</span>Desde $9.900
-                                    COP</span>
-                                <span class="price price--compare">
-                                    <span class="visually-hidden">Precio habitual</span>$12.900 COP</span>
+                                    Precio
                             </div>
                         </div>
                         <form method="post" action="/cart/add"
-                            id="product_form_id_614614204448_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
+                            id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                             accept-charset="UTF-8" class="product-item__action-list button-stack"
                             enctype="multipart/form-data"><input type="hidden" name="form_type"
                                 value="product"><input type="hidden" name="utf8" value="✓"><input
                                 type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="id" value="15108011262015"><a
-                                href="/products/limpiador-de-juguetes-sexuales-elixir"
+                            <input type="hidden" name="id" value="15108051861567"><a
+                                href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a href=""
+                        class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22838291529791" class="product-item__primary-image"><img
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                class="product-item__secondary-image">
+                        </div>
+                    </a>
+                    <div class="product-item__info">
+                        <div class="product-item__info-inner"><a class="product-item__vendor link"
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Categoría</a>
+                            <a href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__title text--strong link">Nombre</a>
+                            <div class="product-item__price-list price-list"><span class="price price--highlight">
+                                    Precio
+                            </div>
+                        </div>
+                        <form method="post" action="/cart/add"
+                            id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
+                            accept-charset="UTF-8" class="product-item__action-list button-stack"
+                            enctype="multipart/form-data"><input type="hidden" name="form_type"
+                                value="product"><input type="hidden" name="utf8" value="✓"><input
+                                type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="id" value="15108051861567"><a
+                                href="/products/limpiador-de-juguetes-elixir-de-melon"
                                 class="product-item__action-button button button--small button--primary">Añadir
                                 al carrito</a>
                         </form>
@@ -623,166 +471,141 @@
         <div class="container">
             <header class="section__header">
                 <div class="section__header-stack">
-                    <h2 class="section__title heading h3">Interactivos y con app: Conecta con el placer</h2>
-                </div><a href="/collections/interactivos-para-parejas" class="section__action-link link">Ver
-                    todos <svg focusable="false" class="icon icon--tail-right " viewBox="0 0 24 24"
-                        role="presentation">
-                        <path fill="currentColor"
-                            d="M22.707 11.293L15 3.586 13.586 5l6 6H2c-.553 0-1 .448-1 1s.447 1 1 1h17.586l-6 6L15 20.414l7.707-7.707c.391-.391.391-1.023 0-1.414z">
-                        </path>
-                    </svg></a>
+                    <h2 class="section__title heading h3">Interactivo, conecta con el placer</h2>
+                </div>
             </header>
         </div>
         <div class="container container--flush">
             <div class="product-list product-list--vertical product-list--stackable">
-                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                        href="/products/lovense-webcam"
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a href=""
                         class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
                         <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=3126"
-                                alt="Lovense Webcam"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_1.png?v=1681491331&amp;width=1600 1600w"
-                                width="3126" height="3126" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
-                                data-media-id="23356634202175" class="product-item__primary-image"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=3126"
-                                alt="Lovense Webcam"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-OO-001-CAM_2.png?v=1681491331&amp;width=1600 1600w"
-                                width="3126" height="3126" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22838291529791" class="product-item__primary-image"><img
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
                                 class="product-item__secondary-image">
                         </div>
                     </a>
                     <div class="product-item__info">
                         <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                href="/collections/lovense">Lovense</a>
-                            <a href="/products/lovense-webcam" class="product-item__title text--strong link">Lovense
-                                Webcam</a>
-                            <div class="product-item__price-list price-list"><span class="price">
-                                    <span class="visually-hidden">Precio de venta</span>$1.957.900 COP</span>
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Categoría</a>
+                            <a href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__title text--strong link">Nombre</a>
+                            <div class="product-item__price-list price-list"><span class="price price--highlight">
+                                    Precio
                             </div>
                         </div>
                         <form method="post" action="/cart/add"
-                            id="product_form_id_7181122338879_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
+                            id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                             accept-charset="UTF-8" class="product-item__action-list button-stack"
                             enctype="multipart/form-data"><input type="hidden" name="form_type"
                                 value="product"><input type="hidden" name="utf8" value="✓"><input
                                 type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="id" value="40080226222143"><button type="submit"
-                                class="product-item__action-button button button--small button--primary"
-                                data-action="add-to-cart">Añadir al carrito</button>
+                            <input type="hidden" name="id" value="15108051861567"><a
+                                href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</a>
                         </form>
                     </div>
                 </div>
-                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                        href="/products/satisfyer-pro-2-generation-3-con-app"
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a href=""
                         class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
                         <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1500"
-                                alt="Satisfyer Pro 2 Generation 3 Con APP"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_3_6b459009-a740-43e3-bc42-c32242831701.jpg?v=1680024865&amp;width=1400 1400w"
-                                width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
-                                data-media-id="23276797624383" class="product-item__primary-image"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1500"
-                                alt="Satisfyer Pro 2 Generation 3 Con APP"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/Pro2Generation3_winered_2_a127ca89-aa43-4661-aef0-e946553f37bc.jpg?v=1680024865&amp;width=1400 1400w"
-                                width="1500" height="1500" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22838291529791" class="product-item__primary-image"><img
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
                                 class="product-item__secondary-image">
                         </div>
                     </a>
                     <div class="product-item__info">
                         <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                href="/collections/satisfyer">Satisfyer</a>
-                            <a href="/products/satisfyer-pro-2-generation-3-con-app"
-                                class="product-item__title text--strong link">Satisfyer Pro 2 Generation 3 Con
-                                APP</a>
-                            <div class="product-item__price-list price-list"><span class="price">
-                                    <span class="visually-hidden">Precio de venta</span>$605.900 COP</span>
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Categoría</a>
+                            <a href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__title text--strong link">Nombre</a>
+                            <div class="product-item__price-list price-list"><span class="price price--highlight">
+                                    Precio
                             </div>
                         </div>
                         <form method="post" action="/cart/add"
-                            id="product_form_id_7164760326207_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
+                            id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                             accept-charset="UTF-8" class="product-item__action-list button-stack"
                             enctype="multipart/form-data"><input type="hidden" name="form_type"
                                 value="product"><input type="hidden" name="utf8" value="✓"><input
                                 type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="id" value="40057952927807"><button type="submit"
-                                class="product-item__action-button button button--small button--primary"
-                                data-action="add-to-cart">Añadir al carrito</button>
+                            <input type="hidden" name="id" value="15108051861567"><a
+                                href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</a>
                         </form>
                     </div>
                 </div>
-                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                        href="/products/vibrador-gravity-con-empuje-automatico-lovense"
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a href=""
                         class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 99.96801023672425%">
-                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=3126"
-                                alt="Vibrador Gravity con empuje automatico Lovense"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_1.jpg?v=1674570641&amp;width=1600 1600w"
-                                width="3126" height="3125" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
-                                data-media-id="22973970612287" class="product-item__primary-image"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=3126"
-                                alt="Vibrador Gravity con empuje automatico Lovense"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/LV-JVB-020-GRAVITY_2.jpg?v=1674570641&amp;width=1600 1600w"
-                                width="3126" height="3125" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                        <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22838291529791" class="product-item__primary-image"><img
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
                                 class="product-item__secondary-image">
                         </div>
                     </a>
                     <div class="product-item__info">
                         <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                href="/collections/lovense">Lovense</a>
-                            <a href="/products/vibrador-gravity-con-empuje-automatico-lovense"
-                                class="product-item__title text--strong link">Vibrador Gravity con empuje
-                                automatico Lovense</a>
-                            <div class="product-item__price-list price-list"><span class="price">
-                                    <span class="visually-hidden">Precio de venta</span>$866.900 COP</span>
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Categoría</a>
+                            <a href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__title text--strong link">Nombre</a>
+                            <div class="product-item__price-list price-list"><span class="price price--highlight">
+                                    Precio
                             </div>
                         </div>
                         <form method="post" action="/cart/add"
-                            id="product_form_id_7118540898367_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
+                            id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                             accept-charset="UTF-8" class="product-item__action-list button-stack"
                             enctype="multipart/form-data"><input type="hidden" name="form_type"
                                 value="product"><input type="hidden" name="utf8" value="✓"><input
                                 type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="id" value="39977466757183"><button type="submit"
-                                class="product-item__action-button button button--small button--primary"
-                                data-action="add-to-cart">Añadir al carrito</button>
+                            <input type="hidden" name="id" value="15108051861567"><a
+                                href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</a>
                         </form>
                     </div>
                 </div>
-                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                        href="/products/masturbadora-alex-neo-2"
+                <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a href=""
                         class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
                         <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=2084"
-                                alt="Masturbadora Alex Neo 2 Svakom"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_1.jpg?v=1672952975&amp;width=1600 1600w"
-                                width="2084" height="2084" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
-                                data-media-id="22910075043903" class="product-item__primary-image"><img
-                                src="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=2084"
-                                alt="Masturbadora Alex Neo 2 Svakom"
-                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=200 200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=300 300w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1000 1000w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1200 1200w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1400 1400w, //cdn.shopify.com/s/files/1/1102/5004/products/SV-JMM-007-ALEXNEO2-AZU_2.jpg?v=1672952974&amp;width=1600 1600w"
-                                width="2084" height="2084" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
+                                data-media-id="22838291529791" class="product-item__primary-image"><img
+                                src="images/logo.jpg?v=1671717460&amp;width=1000" alt="" width="1000"
+                                height="1000" loading="lazy" sizes="(max-width: 699px) 100vw, 600px"
                                 class="product-item__secondary-image">
                         </div>
                     </a>
                     <div class="product-item__info">
                         <div class="product-item__info-inner"><a class="product-item__vendor link"
-                                href="/collections/svakom">SVAKOM</a>
-                            <a href="/products/masturbadora-alex-neo-2"
-                                class="product-item__title text--strong link">Masturbadora Alex Neo 2
-                                Svakom</a>
-                            <div class="product-item__price-list price-list"><span class="price">
-                                    <span class="visually-hidden">Precio de venta</span>$939.900 COP</span>
+                                href="/collections/vendors?q=Bali%20Sex%20Store">Categoría</a>
+                            <a href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__title text--strong link">Nombre</a>
+                            <div class="product-item__price-list price-list"><span class="price price--highlight">
+                                    Precio
                             </div>
                         </div>
                         <form method="post" action="/cart/add"
-                            id="product_form_id_7113625436223_template--14562732638271__3c0c8859-6c6a-460f-9e13-00fdb706e079"
+                            id="product_form_id_1786829832255_template--14562732638271__9f725e29-59ac-478b-9630-95fad80f8d03"
                             accept-charset="UTF-8" class="product-item__action-list button-stack"
                             enctype="multipart/form-data"><input type="hidden" name="form_type"
                                 value="product"><input type="hidden" name="utf8" value="✓"><input
                                 type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="id" value="39960627052607"><button type="submit"
-                                class="product-item__action-button button button--small button--primary"
-                                data-action="add-to-cart">Añadir al carrito</button>
+                            <input type="hidden" name="id" value="15108051861567"><a
+                                href="/products/limpiador-de-juguetes-elixir-de-melon"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</a>
                         </form>
                     </div>
                 </div>
@@ -942,9 +765,10 @@
                 <div style="text-align: right !important;">
                     <p>Síguenos</p>
                     <li class="social-media__item social-media__item--facebook">
-                        <a href="https://www.facebook.com/Balistorecolombia/" target="_blank" rel="noopener"
-                            aria-label="Síguenos en Facebook" aria-describedby="a11y-new-window-message"><svg
-                                focusable="false" class="icon icon--facebook " viewBox="0 0 30 30">
+                        <a href="https://www.facebook.com/profile.php?id=100063694886908" target="_blank"
+                            rel="noopener" aria-label="Síguenos en Facebook"
+                            aria-describedby="a11y-new-window-message"><svg focusable="false"
+                                class="icon icon--facebook " viewBox="0 0 30 30">
                                 <path
                                     d="M15 30C6.71572875 30 0 23.2842712 0 15 0 6.71572875 6.71572875 0 15 0c8.2842712 0 15 6.71572875 15 15 0 8.2842712-6.7157288 15-15 15zm3.2142857-17.1429611h-2.1428678v-2.1425646c0-.5852979.8203285-1.07160109 1.0714928-1.07160109h1.071375v-2.1428925h-2.1428678c-2.3564786 0-3.2142536 1.98610393-3.2142536 3.21449359v2.1425646h-1.0714822l.0032143 2.1528011 1.0682679-.0099086v7.499969h3.2142536v-7.499969h2.1428678v-2.1428925z"
                                     fill="currentColor" fill-rule="evenodd"></path>
@@ -952,7 +776,7 @@
                     </li>
 
                     <li class="social-media__item social-media__item--instagram">
-                        <a href="https://www.instagram.com/balisexstore/" target="_blank" rel="noopener"
+                        <a href="https://www.instagram.com/magicsexshop27/?hl=es" target="_blank" rel="noopener"
                             aria-label="Síguenos en Instagram" aria-describedby="a11y-new-window-message"><svg
                                 focusable="false" class="icon icon--instagram " role="presentation"
                                 viewBox="0 0 30 30">
@@ -973,7 +797,7 @@
                     </li>
                 </div>
                 <header class="section__header">
-                    <h2 class="section__title heading h3">El mejor juguete sexual de la temporada</h2>
+                    <h2 class="section__title heading h3">El mejor artículo de la temporada</h2>
                 </header>
             </div>
             <div class="container container--flush">
@@ -983,348 +807,24 @@
                             <div class="product-gallery product-gallery--with-thumbnails">
                                 <div class="product-gallery__carousel-wrapper">
                                     <div class="product-gallery__carousel product-gallery__carousel--zoomable flickity-enabled is-fade"
-                                        data-media-count="20" data-initial-media-id="22584943902783"
-                                        style="">
+                                        data-media-count="20" data-initial-media-id="22584943902783" style="">
                                         <div class="flickity-viewport" style="height: 695px; touch-action: pan-y;">
                                             <div class="flickity-slider"
                                                 style="left: 0px; transform: translateX(50%);">
-                                                <div class="product-gallery__carousel-item is-selected"
-                                                    tabindex="-1" data-media-id="22584943902783"
-                                                    data-media-type="image"
+                                                <div class="product-gallery__carousel-item is-selected" tabindex="-1"
+                                                    data-media-id="22584943902783" data-media-type="image"
                                                     style="position: absolute; left: -50%; opacity: 1;">
                                                     <div class="product-gallery__size-limiter"
                                                         style="max-width: 1000px">
+
                                                         <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584943935551"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584943968319"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944001087"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944033855"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944066623"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944099391"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944132159"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944164927"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944197695"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944230463"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944263231"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944295999"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944328767"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944361535"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944394303"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944427071"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944459839"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=1000 1000w"
-                                                                width="1000" height="1000" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944492607"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 66.7%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=1000 1000w"
-                                                                width="1000" height="667" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=1800"
-                                                                data-zoom-width="1000">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-gallery__carousel-item product-gallery__carousel-item--hidden"
-                                                    tabindex="-1" data-media-id="22584944525375"
-                                                    data-media-type="image" aria-hidden="true"
-                                                    style="position: absolute; left: -50%; opacity: 0;">
-                                                    <div class="product-gallery__size-limiter"
-                                                        style="max-width: 1000px">
-                                                        <div class="aspect-ratio" style="padding-bottom: 66.7%">
-                                                            <img src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=1000"
-                                                                alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                                srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=400 400w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=500 500w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=600 600w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=700 700w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=800 800w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=900 900w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=1000 1000w"
-                                                                width="1000" height="667" loading="lazy"
-                                                                class="product-gallery__image"
-                                                                data-zoom="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=1800"
-                                                                data-zoom-width="1000">
+                                                            @foreach ($productos as $item)
+                                                                @if ($item->temporada == '1')
+                                                                    <img style="width: 380px; height: 380px;"
+                                                                        src="imagesProductos/{{ $item->imagen }}"
+                                                                        alt="">
+                                                                @endif
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1332,235 +832,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="scroller">
-                                    <div class="scroller__inner">
-                                        <div class="product-gallery__thumbnail-list"><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1_1024x.jpg?v=1667488264"
-                                                rel="noopener" class="product-gallery__thumbnail is-nav-selected"
-                                                data-media-id="22584943902783" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_1.jpg?v=1667488264&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1_1024x.jpg?v=1667488265"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584943935551" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_1.jpg?v=1667488265&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2_1024x.jpg?v=1667488263"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584943968319" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_2.jpg?v=1667488263&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2_1024x.jpg?v=1667488263"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944001087" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_2.jpg?v=1667488263&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3_1024x.jpg?v=1667488262"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944033855" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_3.jpg?v=1667488262&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3_1024x.jpg?v=1667488262"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944066623" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_3.jpg?v=1667488262&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4_1024x.jpg?v=1667488263"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944099391" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_4.jpg?v=1667488263&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4_1024x.jpg?v=1667488266"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944132159" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_4.jpg?v=1667488266&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5_1024x.jpg?v=1667488264"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944164927" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_5.jpg?v=1667488264&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5_1024x.jpg?v=1667488262"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944197695" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_5.jpg?v=1667488262&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6_1024x.jpg?v=1667488262"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944230463" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_6.jpg?v=1667488262&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6_1024x.jpg?v=1667488266"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944263231" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_6.jpg?v=1667488266&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7_1024x.jpg?v=1667488263"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944295999" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_7.jpg?v=1667488263&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7_1024x.jpg?v=1667488265"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944328767" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_7.jpg?v=1667488265&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8_1024x.jpg?v=1667488264"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944361535" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_8.jpg?v=1667488264&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8_1024x.jpg?v=1667488264"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944394303" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_8.jpg?v=1667488264&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9_1024x.jpg?v=1667488265"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944427071" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_9.jpg?v=1667488265&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9_1024x.jpg?v=1667488265"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944459839" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_9.jpg?v=1667488265&amp;width=390 390w"
-                                                    width="1000" height="1000" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10_1024x.jpg?v=1667488267"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944492607" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-rosado-svakom_10.jpg?v=1667488267&amp;width=390 390w"
-                                                    width="1000" height="667" loading="lazy"
-                                                    sizes="130px"></a><a
-                                                href="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10_1024x.jpg?v=1667488264"
-                                                rel="noopener" class="product-gallery__thumbnail  "
-                                                data-media-id="22584944525375" target="_blank"
-                                                aria-describedby="a11y-new-window-message"><img
-                                                    src="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=1000"
-                                                    alt="Succionador de Clítoris Pulse Pure Svakom"
-                                                    srcset="//cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=130 130w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=260 260w, //cdn.shopify.com/s/files/1/1102/5004/products/succionador-pulse-pure-azul-svakom_10.jpg?v=1667488264&amp;width=390 390w"
-                                                    width="1000" height="667" loading="lazy"
-                                                    sizes="130px"></a></div>
-                                    </div>
-                                </div>
-                                <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="pswp__bg"></div>
-                                    <div class="pswp__scroll-wrap">
-                                        <div class="pswp__container">
-                                            <div class="pswp__item"></div>
-                                            <div class="pswp__item"></div>
-                                            <div class="pswp__item"></div>
-                                        </div>
-                                        <div class="pswp__ui">
-                                            <button class="pswp__button pswp__button--close" aria-label="Cerrar">
-                                                <svg focusable="false" class="icon icon--close-2 "
-                                                    viewBox="0 0 12 12" role="presentation">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M7.414 6l4.243 4.243-1.414 1.414L6 7.414l-4.243 4.243-1.414-1.414L4.586 6 .343 1.757 1.757.343 6 4.586 10.243.343l1.414 1.414L7.414 6z"
-                                                        fill="currentColor"></path>
-                                                </svg>
-                                            </button>
-                                            <div class="pswp__prev-next">
-                                                <button class="pswp__button pswp__button--arrow--left"
-                                                    aria-label="Anterior">
-                                                    <svg focusable="false" class="icon icon--arrow-left "
-                                                        viewBox="0 0 8 12" role="presentation">
-                                                        <path stroke="currentColor" stroke-width="2"
-                                                            d="M6 10L2 6l4-4" fill="none"
-                                                            stroke-linecap="square"></path>
-                                                    </svg>
-                                                </button>
-                                                <button class="pswp__button pswp__button--arrow--right"
-                                                    aria-label="Siguiente">
-                                                    <svg focusable="false" class="icon icon--arrow-right "
-                                                        viewBox="0 0 8 12" role="presentation">
-                                                        <path stroke="currentColor" stroke-width="2"
-                                                            d="M2 2l4 4-4 4" fill="none"
-                                                            stroke-linecap="square"></path>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <div class="pswp__pagination">
-                                                <span class="pswp__pagination-current"></span> / <span
-                                                    class="pswp__pagination-count"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1571,69 +843,28 @@
                             <form method="post" action="/cart/add"
                                 id="product_form_template--14562732638271__featured-product7064984518719"
                                 accept-charset="UTF-8" class="product-form" enctype="multipart/form-data">
-                                <input type="hidden" name="form_type" value="product"><input type="hidden"
-                                    name="utf8" value="✓">
                                 <div class="product-meta">
                                     <h3 class="product-meta__title heading h2">
-                                        <a href="/products/succionador-de-clitoris-pulse-pure-svakom">Succionador
-                                            de Clítoris Pulse Pure Svakom</a>
+                                        @foreach ($productos as $item)
+                                            @if ($item->temporada == '1')
+                                                <p>{{ $item->nombre }}</p>
+                                            @endif
+                                        @endforeach
                                     </h3>
                                     <hr class="card__separator">
-                                    <div class="product-form__variants">
-                                        <div class="product-form__option" data-selector-type="block"><span
-                                                class="product-form__option-name text--strong">Color: <span
-                                                    class="product-form__selected-value">Azul Oscuro</span></span>
-                                            <div class="block-swatch-list">
-                                                <div class="block-swatch">
-                                                    <input class="block-swatch__radio product-form__single-selector"
-                                                        type="radio"
-                                                        name="template--14562732638271__featured-product-7064984518719-1"
-                                                        id="template--14562732638271__featured-product-7064984518719-1-1"
-                                                        value="Azul Oscuro" checked=""
-                                                        data-option-position="1">
-                                                    <label class="block-swatch__item"
-                                                        for="template--14562732638271__featured-product-7064984518719-1-1"
-                                                        title="Azul Oscuro">
-                                                        <span class="block-swatch__item-text">Azul Oscuro</span>
-                                                    </label>
-                                                </div>
-                                                <div class="block-swatch">
-                                                    <input class="block-swatch__radio product-form__single-selector"
-                                                        type="radio"
-                                                        name="template--14562732638271__featured-product-7064984518719-1"
-                                                        id="template--14562732638271__featured-product-7064984518719-1-2"
-                                                        value="Rosado" data-option-position="1">
-                                                    <label class="block-swatch__item"
-                                                        for="template--14562732638271__featured-product-7064984518719-1-2"
-                                                        title="Rosado">
-                                                        <span class="block-swatch__item-text">Rosado</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="no-js product-form__option">
-                                            <label class="product-form__option-name text--strong"
-                                                for="product-select-7064984518719">Variante</label>
-                                            <div class="select-wrapper select-wrapper--primary">
-                                                <select id="product-select-7064984518719" name="id">
-                                                    <option selected="selected" value="39888065790015"
-                                                        data-sku="SV-JVB-040-PURE-AZUO">Azul Oscuro - $428.900 COP
-                                                    </option>
-                                                    <option value="39888065822783" data-sku="SV-JVB-040-PURE-ROS">
-                                                        Rosado - $428.900 COP</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="product-form__info-list">
                                         <div class="product-form__info-item">
                                             <span class="product-form__info-title text--strong">Precio:</span>
                                             <div class="product-form__info-content" role="region"
                                                 aria-live="polite">
                                                 <div class="price-list"><span class="price">
-                                                        <span class="visually-hidden">Precio de
-                                                            venta</span>$428.900
-                                                        COP</span></div>
+                                                        @foreach ($productos as $item)
+                                                            @if ($item->temporada == '1')
+                                                                <p>₡{{ $item->precio }}</p>
+                                                            @endif
+                                                        @endforeach
+                                                </div>
                                                 <div class="product-form__price-info" style="display: none">
                                                     <div class="unit-price-measurement">
                                                         <span class="unit-price-measurement__price"></span>
@@ -1685,8 +916,7 @@
             </div>
         </section>
     </div>
-    <div id="shopify-section-template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c"
-        class="shopify-section">
+    <div id="shopify-section-template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c" class="shopify-section">
         <section class="section section--text-centered"
             data-section-id="template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c"
             data-section-type="rich-text">
@@ -1722,8 +952,8 @@
                                 <p class="footer__aside-title">Síguenos</p>
                                 <ul class="social-media__item-list  list--unstyled" role="list">
                                     <li class="social-media__item social-media__item--facebook">
-                                        <a href="https://www.facebook.com/Balistorecolombia/" target="_blank"
-                                            rel="noopener" aria-label="Síguenos en Facebook"
+                                        <a href="https://www.facebook.com/profile.php?id=100063694886908"
+                                            target="_blank" rel="noopener" aria-label="Síguenos en Facebook"
                                             aria-describedby="a11y-new-window-message"><svg focusable="false"
                                                 class="icon icon--facebook " viewBox="0 0 30 30">
                                                 <path
@@ -1732,7 +962,7 @@
                                             </svg></a>
                                     </li>
                                     <li class="social-media__item social-media__item--instagram">
-                                        <a href="https://www.instagram.com/balisexstore/" target="_blank"
+                                        <a href="https://www.instagram.com/magicsexshop27/?hl=es" target="_blank"
                                             rel="noopener" aria-label="Síguenos en Instagram"
                                             aria-describedby="a11y-new-window-message"><svg focusable="false"
                                                 class="icon icon--instagram " role="presentation"
@@ -1749,16 +979,17 @@
                                                 class="icon" role="presentation" viewBox="2 1 21 21">
                                                 <path
                                                     d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"
-                                                    fill="currentColor" fill-rule="evenodd"
-                                                    class="focusAlWhatapps"></path>
+                                                    fill="currentColor" fill-rule="evenodd" class="focusAlWhatapps">
+                                                </path>
                                             </svg></a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="footer__aside-item footer__aside-item--copyright hidden-lap-and-up">
-                                <p>© 2023 MagicSexShop</p>
-                            </div>
                         </aside>
+                        <br><br>
+                        <div>
+                            <p style="color: white !important">© 2023 MagicSexShop</p>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -1773,11 +1004,6 @@
                         </div>
                     </div>
                 </div>
-            </a>
-
-            </a>
-
-
 </body>
 
 </html>

@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string("imagen");
             $table->string("nombre");
             $table->string("categoria");
-            $table->string("color")->nullable();;
-            $table->string("tamaño")->nullable();;
-            $table->string("descripcion")->nullable();;
+            $table->string("color")->nullable();
+            $table->string("tamaño")->nullable();
+            $table->string("precio")->nullable();
+            $table->string("cantidad")->nullable();
+            $table->string("descripcion")->nullable();
+            $table->string("temporada")->nullable();
             $table->timestamps();
         });
     }
