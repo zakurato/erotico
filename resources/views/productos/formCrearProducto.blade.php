@@ -57,8 +57,13 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Tamaño del producto:</label>
-                <input type="text" class="form-control" name="tamaño">
+                <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
+                <select class="form-control" name="tamaño">
+                    <option>NINGUNO</option>
+                    @foreach ($tamaños as $item)
+                        <option>{{ $item->tamaño }}mm</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label>Precio del producto:</label>

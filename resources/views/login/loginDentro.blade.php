@@ -25,8 +25,12 @@
         <input type="button" value="Crear categoría">
     </a>
     <br><br><br>
-        <a href="{{ route('formCrearColores') }}">
+    <a href="{{ route('formCrearColores') }}">
         <input type="button" value="Crear colores">
+    </a>
+    <br><br><br>
+    <a href="{{ route('formCrearTamaños') }}">
+        <input type="button" value="Crear tamaños">
     </a>
     <br><br><br>
     <a href="{{ route('formCrearProducto') }}">

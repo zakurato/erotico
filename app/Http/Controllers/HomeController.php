@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Color;
 use App\Models\Producto;
+use App\Models\Tamano;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use function PHPUnit\Framework\isEmpty;
 
 class HomeController extends Controller
 {
@@ -47,12 +50,16 @@ class HomeController extends Controller
     public function formCrearProducto(){
         $categorias = Categoria::all();
         $colores = Color::all();
-        return view("productos.formCrearProducto",compact("categorias","colores"));
+        $tamaños = Tamano::all();
+        return view("productos.formCrearProducto",compact("categorias","colores","tamaños"));
     }
 
     public function storeProducto(Request $request){
         // return "imagen","nombre","categoria","color,"tamaño","precio","cantidad","descripcion","temporada"}
         // database "imagen","nombre","categoria","color,"tamaño","precio","cantidad","descripcion","temporada"}
+
+        $tamaño = $request->tamaño; // Valor original: "30mm"
+        $tamaño = str_replace('mm', '', $tamaño); // Eliminar "mm"
 
         $imageName = time().'.'.$request->imagen->extension();  
 
@@ -93,10 +100,24 @@ class HomeController extends Controller
         $producto = Producto::where("id", $request->id)->first();
         $categorias = Categoria::all();
         $colores = Color::all();
-        return view("productos.formActualizarProducto",compact("producto","categorias","colores"));
+        $tamaños = Tamano::all();
+        return view("productos.formActualizarProducto",compact("producto","categorias","colores","tamaños"));
     }
 
     public function storeActualizarProducto(Request $request){
+
+    if(Empty($request->color)){
+        $color = "NINGUNO";
+    }else{
+        $color = $request->color;
+    }
+
+    if(Empty($request->tamaño)){
+        $tamaño = "NINGUNO";
+    }else{
+        $tamaño = $request->tamaño;
+        $tamaño = str_replace('mm', '', $tamaño); // Eliminar "mm"
+    }
 
          // Verifica si el check box esta marcado
     if ($request->has('temporada')) {
@@ -118,8 +139,8 @@ class HomeController extends Controller
 
         $producto->nombre = $request->nombre;
         $producto->categoria = $request->categoria;
-        $producto->color = $request->color;
-        $producto->tamaño = $request->tamaño;
+        $producto->color = $color;
+        $producto->tamaño = $tamaño;
         $producto->precio = $request->precio;
         $producto->cantidad = $request->cantidad;
         $producto->descripcion = $request->descripcion;
@@ -263,6 +284,74 @@ class HomeController extends Controller
                 $color->save();
                 session()->flash("correctoColores","Color editado correctamente");
                 return redirect()->route("formCrearColores");
+            }
+        }
+    }
+
+//--------------------Tamaños------------------------------------------------------------------------------
+    public function formCrearTamaños(){
+        $tamaños = Tamano::all();
+        return view("tamaños.formCrearTamaños",compact("tamaños"));
+    }
+
+    public function storeTamaños(Request $request){
+        $existe = 0;
+        $tamaños = Tamano::all();
+        foreach($tamaños as $item){
+            if($item->tamaño == $request->tamaño){
+                $existe = 1;
+                break;
+            }
+        }
+
+        if($existe == 0){
+            $tamaño = new Tamano();
+            $tamaño->tamaño = $request->tamaño;
+            $tamaño->save();
+            session()->flash("correctoTamaños","Tamaño creado correctamente");
+            return redirect()->route("formCrearTamaños");
+        }else{
+            session()->flash("errorTamaños","El tamaño que intento crear ya existe");
+            return redirect()->route("formCrearTamaños");
+        }
+    }
+
+    public function eliminarTamaño(Request $request){
+        $delete=Tamano::where('id',$request->id)->delete();
+        session()->flash("eliminarTamaños","El tamaño se elimino correctamente");
+        return redirect()->route("formCrearTamaños");
+    }
+    public function actualizarTamaño(Request $request){
+        $tamañoEditar = Tamano::where("id",$request->id)->first();
+        
+        return view("tamaños.formEditarTamaño",compact("tamañoEditar"));
+    }
+
+    public function storeActualizarTamaño(Request $request){
+        
+        if($request->oldTamaño == $request->tamaño){
+            session()->flash("actualizarCorrectoTamaños","El tamaño se actualizo correctamente");
+            return redirect()->route("formCrearTamaños");        
+        }else{
+            $existe = 0;
+            $tamaños = Tamano::all();
+
+            foreach($tamaños as $item){
+                if($item->tamaño == $request->tamaño){
+                    $existe = 1;
+                    break;
+                }
+            }
+
+            if($existe == 1){
+                session()->flash("actualizarExisteTamaños","El tamaño ya existe");
+                return redirect()->route("formCrearTamaños");        
+            }else{
+                $tamaño = Tamano::where("id",$request->id)->first();
+                $tamaño->tamaño = $request->tamaño;
+                $tamaño->save();
+                session()->flash("correctoTamaños","tamaño editado correctamente");
+                return redirect()->route("formCrearTamaños");
             }
         }
     }

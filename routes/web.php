@@ -46,4 +46,17 @@ Route::post('/eliminarColor',[HomeController::class,"eliminarColor"])->name("eli
 Route::get('/actualizarColor',[HomeController::class,"actualizarColor"])->name("actualizarColor")->middleware("auth");
 Route::get('/storeActualizarColor',[HomeController::class,"storeActualizarColor"])->name("storeActualizarColor")->middleware("auth");
 
+//tamaños
+Route::get('/formCrearTamaños',[HomeController::class,"formCrearTamaños"])->name("formCrearTamaños")->middleware("auth");
+Route::get('/storeTamaños',[HomeController::class,"storeTamaños"])->name("storeTamaños")->middleware("auth");
+Route::post('/eliminarTamaño',[HomeController::class,"eliminarTamaño"])->name("eliminarTamaño")->middleware("auth");
+Route::get('/actualizarTamaño',[HomeController::class,"actualizarTamaño"])->name("actualizarTamaño")->middleware("auth");
+Route::get('/storeActualizarTamaño',[HomeController::class,"storeActualizarTamaño"])->name("storeActualizarTamaño")->middleware("auth");
+
+
+
+
+
+
+
 
