@@ -33,9 +33,10 @@
         <form action="{{ 'storeTamaños' }}">
             @csrf
             <div class="form-group" style="display: flex;">
-                <label>Tamaño:</label>
-                <input type="text" class="form-control" name="tamaño" autocomplete="off"
-                    oninput="this.value = this.value.toUpperCase();" required style="width: 20%;"><label style="margin-top: 10px">mm</label>
+                <label style="margin-top: 5px">Tamaño:</label>
+                <input type="number" class="form-control" name="tamaño" autocomplete="off"
+                    oninput="this.value = this.value.toUpperCase();" required style="width: 20%;" id="numericInput">
+                <label style="margin-top: 10px">mm</label>
             </div>
             <button type="submit" class="btn btn-default">Crear tamaño</button>
         </form>
@@ -43,14 +44,14 @@
 
 
     <br><br>
-    <h2>Tabla  tamaños</h2>
+    <h2>Tabla tamaños</h2>
     <br>
     <table class="table">
         <thead>
             <tr>
                 <th>Tamaño</th>
-                <th >Acción editar</th>
-                <th >Acción eliminar</th>
+                <th>Acción editar</th>
+                <th>Acción eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -58,7 +59,7 @@
                 <tr>
                     <td>{{ $item->tamaño }}mm</td>
                     <td>
-                        <form id="actualizarForm" action="{{route("actualizarTamaño")}}" method="GET">
+                        <form id="actualizarForm" action="{{ route('actualizarTamaño') }}" method="GET">
                             @csrf
                             <input type="text" name="id" value="{{ $item->id }}" hidden>
                             <button type="submit" class="bntEliminarCategoria">
@@ -95,5 +96,11 @@
         </tbody>
     </table>
 </body>
+
+<script>
+    document.getElementById("numericInput").addEventListener("input", function() {
+        this.value = this.value.replace(/[^0-9]/g, "");
+    });
+</script>
 
 </html>

@@ -257,7 +257,7 @@
                                         <div class="form-group">
                                             <select class="form-control" name="color">
                                                 <option disabled selected>Seleccione el tamaño</option>
-                                                <option>{{ $item->tamaño }}mm</option>
+                                                <option>{{ $item->tamaño }}</option>
                                             </select>
                                         </div>
                                     @endif

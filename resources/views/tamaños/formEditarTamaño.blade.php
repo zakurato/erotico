@@ -17,7 +17,7 @@
 
     <div class="navbar">
         <ul>
-            <li><a href="{{ route('formCrearColores') }}">Inicio</a></li>
+            <li><a href="{{ route('formCrearTamaños') }}">Inicio</a></li>
             <!-- Agrega aquí más elementos del navbar si es necesario -->
         </ul>
     </div>
@@ -31,8 +31,9 @@
             <input type="text" name="oldTamaño" value="{{$tamañoEditar->tamaño}}" hidden>
             <div class="form-group" style="display: flex;">
                 <label style="margin-top: 10px">Tamaño:</label>
-                <input type="text" class="form-control" name="tamaño" autocomplete="off" value="{{$tamañoEditar->tamaño}}"
-                    oninput="this.value = this.value.toUpperCase();" required style="width: 20%;"><label style="margin-top: 10px">mm</label>
+                <input type="numbre" class="form-control" name="tamaño" autocomplete="off" value="{{$tamañoEditar->tamaño}}"
+                    oninput="this.value = this.value.toUpperCase();" required style="width: 20%;" id="numericInput">
+                    <label style="margin-top: 10px">mm</label>
             </div>
             </div>
             <button type="submit" class="btn btn-default">Editar tamaño</button>
@@ -40,4 +41,9 @@
     </div>
 </body>
 
+<script>
+    document.getElementById("numericInput").addEventListener("input", function() {
+        this.value = this.value.replace(/[^0-9]/g, "");
+    });
+</script>
 </html>
