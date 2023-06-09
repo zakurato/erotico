@@ -1,0 +1,40 @@
+body {
+    position: relative; /* Asegura que el elemento ::before se coloque correctamente */
+  }
+  
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/privacidadFondo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(10px); /* ajusta el valor del desenfoque según tus necesidades */
+    opacity: 0.2; /* Ajusta la opacidad según tu preferencia */
+    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido de la página */
+  }
+
+  .texto {
+    margin-left: auto;
+    margin-right: auto;
+    font: 100% Arial;
+    background-color: white; /* Agrega un fondo blanco al texto */
+    padding: 60px; /* Añade un espacio de relleno alrededor del texto */
+    border-radius: 6px;
+    border: solid 2px;
+    border-color: black;
+  }
+
+  .contenedor {
+    display: flex;
+    align-items: center;
+    height: 100vh; /* Establece la altura del contenedor al 100% del alto de la ventana */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+

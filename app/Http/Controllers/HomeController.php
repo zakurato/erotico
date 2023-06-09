@@ -13,11 +13,15 @@ use function PHPUnit\Framework\isEmpty;
 
 class HomeController extends Controller
 {
-    public function index(){
 
+    public function index(){
+        return view("paginaPrincipal.index");
+    }
+    public function index2(){
+        
         $categorias = Categoria::all();
         $productos = Producto::paginate(5);
-        return view("paginaPrincipal.index",compact("productos","categorias"));
+        return view("paginaPrincipal.index2",compact("productos","categorias"));
     }
 
     public function formLogin(){
@@ -44,7 +48,7 @@ class HomeController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('index2');
     }
     
     public function formCrearProducto(){
