@@ -20,7 +20,7 @@ body {
   .texto {
     margin-left: auto;
     margin-right: auto;
-    font: 100% Arial;
+    font: 120% Arial;
     background-color: white; /* Agrega un fondo blanco al texto */
     padding: 60px; /* Añade un espacio de relleno alrededor del texto */
     border-radius: 6px;

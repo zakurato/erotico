@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap" rel="stylesheet">
     <!--animaciones-->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('index/privacidad.Css?1.0') }}">
+    <link rel="stylesheet" href="{{ asset('index/privacidad.Css') }}">
     <!--iconos-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!--Bootstrap-->
@@ -22,15 +22,12 @@
 <body>
 
     <div class="contenedor">
-        <div class="texto" data-aos="fade-up-left">
+        <div class="texto" data-aos="flip-left">
+            <p style="text-align: center !important"> <strong>Políticas de privacidad</strong></p>
             <p>
-                Política de Privacidad
-                <br><br>
-                En MagicSexShop, nos comprometemos a proteger y respetar tu privacidad. En nuestra Política de Privacidad
-                protegemos la información personal que obtenemos cuando visitas nuestro sitio web o realizas compras en nuestra tienda.
-                <br><br>
+                <br>
                 MagicSexShop es una tienda destinada exclusivamente para mayores de edad. Al utilizar nuestro sitio web
-                y realizar compras en MagicSexShop, confirmas que eres mayor de edad y aceptas los términos y
+                y realizar compras en nuestra tienda, confirmas que eres mayor de edad y aceptas los términos y
                 condiciones de esta Política de Privacidad. Nuestro objetivo es mantener tus datos seguros y utilizarlos
                 de manera responsable, cumpliendo con todas las regulaciones y leyes aplicables relacionadas con la
                 privacidad y protección de datos.
@@ -48,7 +45,6 @@
             </div>
         </div>
     </div>
-
 
     <footer class="bg-dark text-center text-white">
         <!-- Grid container -->
@@ -82,7 +78,6 @@
         </div>
         <!-- Copyright -->
     </footer>
-
 </body>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -91,4 +86,5 @@
         once: true
     });
 </script>
+
 </html>
