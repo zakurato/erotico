@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class,"index"])->name("index");
-
 Route::get('/index2', [HomeController::class,"index2"])->name("index2")->middleware("Check");
 
 

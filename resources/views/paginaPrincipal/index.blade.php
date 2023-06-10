@@ -34,8 +34,7 @@
             </p>
 
             <div style="display: flex; justify-content: center; ">
-                <form action="{{ route('index2') }}">
-                    @csrf
+                <form action="{{ route('index2') }}" >
                     <input type="hidden" name="valor" value="1">
                     <button type="submit" class="btn btn-outline-success" style="margin-right: 20px;!important">ACEPTAR
                 </form>

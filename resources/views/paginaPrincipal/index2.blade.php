@@ -2,6 +2,9 @@
     style="--announcement-bar-height: 43px; --header-height: 230px;">
 
 <head>
+
+
+
     <!--/Css propios public-->
     <link rel="stylesheet" href="{{ asset('index/index.Css?1.0') }}">
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v=120939182865429120021678115775">
@@ -224,8 +227,7 @@
                                 class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
                                 <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%">
 
-                                    <img src="imagesProductos/{{ $item->imagen }}"
-                                        alt=""
+                                    <img src="imagesProductos/{{ $item->imagen }}" alt=""
                                         class="product-item__primary-image">
 
                                     <img src="images/logo.jpg?v=1673978877&amp;width=3126" alt=""
@@ -253,7 +255,7 @@
                                     @endif
                                 </div>
                                 <div class="product-item__info-inner">
-                                    @if ($item->tamaño != "NINGUNO")
+                                    @if ($item->tamaño != 'NINGUNO')
                                         <div class="form-group">
                                             <select class="form-control" name="color">
                                                 <option disabled selected>Seleccione el tamaño</option>
