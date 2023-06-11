@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class Check
@@ -16,21 +17,25 @@ class Check
      */
     public function handle(Request $request, Closure $next): Response
     {
-         if ($request->input('valor') == "1") {
 
-            //OBTENGO el id session 
-            $sessionId = $request->session()->getId();
-            // Verificar si la sesión ya está en caché
-            if (!Cache::has('session:' . $sessionId)) {
-                // La sesión no está en caché, guardarla en caché
-                $sessionData = $request->session()->all();
-                Cache::put('session:' . $sessionId, $sessionData, 60); // Guardar en caché por 60 minutos
-                return $next($request);
-            }else{
-                return $next($request);
-            }
+        
+        //OBTENGO el id session 
+        $sessionId = $request->session()->getId();
+        //Session::put('nombre', $sessionId); obtener el valor de la session para imprimirlo en pantalla
 
-        } else {
+         if ($request->input('valor') == "1" && !Cache::has('session:' . $sessionId)) { //verifico si le dio al boton aceptar y si no tiene session
+            // La sesión no está en caché, guardarla en caché
+            $sessionData = $request->session()->all();
+            Cache::put('session:' . $sessionId, $sessionData, 3600); // Guardar en caché por 60 segundos
+            //dd("verifico si le dio al boton aceptar y si no tiene session");
+            return $next($request);        
+        }
+        if ($request->input('valor') != "1" && Cache::has('session:' . $sessionId)) { //No le dio al boton aceptar y si ya tiene session
+            return $next($request);
+    }
+        else{
+            // Cerrar la sesión de la caché
+            Cache::flush();
             return redirect()->route("index");
         }
     }

@@ -43,17 +43,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     <div class="navbar navbar-inverse"
         style="background-color: black !important; position: fixed; width: 100% !important; z-index: 9999 !important;">
         <div class="container-fluid">
@@ -1000,5 +989,19 @@
                     </div>
                 </div>
 </body>
+
+<script>
+    // Obtiene la URL actual
+    var url = window.location.href;
+
+    // Verifica si el parámetro "?valor=1" existe en la URL
+    if (url.indexOf('?valor=1') > -1) {
+        // Elimina el parámetro "?valor=1" de la URL
+        var newUrl = url.replace('?valor=1', '');
+
+        // Reemplaza la URL actual sin el parámetro "?valor=1" en el historial del navegador
+        window.history.replaceState({}, document.title, newUrl);
+    }
+</script>
 
 </html>
