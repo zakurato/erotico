@@ -253,16 +253,11 @@
                                         </div>
                                     @endif
                                 </div>
-                                <form method="post" action="/cart/add"
-                                    id="product_form_id_7118474084415_template--14562732638271__featured-collection"
-                                    accept-charset="UTF-8" class="product-item__action-list button-stack"
-                                    enctype="multipart/form-data"><input type="hidden" name="form_type"
-                                        value="product"><input type="hidden" name="utf8" value="✓"><input
-                                        type="hidden" name="quantity" value="1">
-                                    <input type="hidden" name="id" value="39977224732735"><button
-                                        type="submit"
-                                        class="product-item__action-button button button--small button--primary"
-                                        data-action="add-to-cart">Añadir al carrito</button>
+                                <form method="" action="" class="product-item__action-list button-stack">
+                                    <input type="hidden" name="id" value="{{$item->id}}">
+                                    <button type="submit"
+                                        class="product-item__action-button button button--small button--primary">Añadir
+                                        al carrito</button>
                                 </form>
                             </div>
                         </div>

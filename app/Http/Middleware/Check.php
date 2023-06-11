@@ -22,7 +22,7 @@ class Check
         //OBTENGO el id session 
         $sessionId = $request->session()->getId();
         //obtener el valor de la session para imprimirlo en pantalla
-        //Session::put('nombre', $sessionId); 
+        Session::put('nombre', $sessionId); 
 
         if ($request->input('valor') == "1" && Cache::has('session:' . $sessionId)) { //verifico si le dio al boton aceptar y si no tiene session
             return $next($request);        

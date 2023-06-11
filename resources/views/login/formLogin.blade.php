@@ -15,7 +15,7 @@
 
     <div class="navbar">
         <ul>
-            <li><a href="{{route("index")}}">Inicio</a></li>
+            <li><a href="{{route("index2")}}">Inicio</a></li>
             <!-- Agrega aquí más elementos del navbar si es necesario -->
         </ul>
     </div>

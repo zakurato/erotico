@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Cliente;
 use App\Models\Color;
 use App\Models\Producto;
 use App\Models\Tamano;
@@ -18,7 +19,23 @@ class HomeController extends Controller
         return view("paginaPrincipal.index");
     }
     public function index2(){
-        
+        $existe = 0;
+        $clientes = Cliente::all();
+
+        foreach($clientes as $item){
+            if(session('nombre') == $item->nombre){
+                $existe = 1;
+                break;
+            }
+        }
+        if($existe == 0){
+            $cliente = new Cliente();
+            //return session('nombre');
+            $cliente->nombre = session('nombre');
+            $cliente->save();
+        }
+
+    
         $categorias = Categoria::all();
         $productos = Producto::paginate(5);
         return view("paginaPrincipal.index2",compact("productos","categorias"));
