@@ -21,8 +21,12 @@ class Check
         
         //OBTENGO el id session 
         $sessionId = $request->session()->getId();
-        //Session::put('nombre', $sessionId); obtener el valor de la session para imprimirlo en pantalla
+        //obtener el valor de la session para imprimirlo en pantalla
+        //Session::put('nombre', $sessionId); 
 
+        if ($request->input('valor') == "1" && Cache::has('session:' . $sessionId)) { //verifico si le dio al boton aceptar y si no tiene session
+            return $next($request);        
+        }
          if ($request->input('valor') == "1" && !Cache::has('session:' . $sessionId)) { //verifico si le dio al boton aceptar y si no tiene session
             // La sesión no está en caché, guardarla en caché
             $sessionData = $request->session()->all();
