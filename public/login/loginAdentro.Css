@@ -55,13 +55,21 @@ body{
 }
 
 
-
-
-
 .bntEliminarCategoria{
     border-color: rgba(250, 235, 215, 0) !important;
     background-color: rgba(245, 245, 220, 0) !important;
 }
+
+
+.editar-mensaje {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .producto:hover .editar-mensaje {
+    opacity: 1;
+  }
+  
 
 
 

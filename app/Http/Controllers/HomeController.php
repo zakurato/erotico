@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Cliente;
 use App\Models\Color;
+use App\Models\Foto;
 use App\Models\Producto;
 use App\Models\Tamano;
 use Illuminate\Http\Request;
@@ -123,7 +124,8 @@ class HomeController extends Controller
         $categorias = Categoria::all();
         $colores = Color::all();
         $tamaños = Tamano::all();
-        return view("productos.formActualizarProducto",compact("producto","categorias","colores","tamaños"));
+        $fotos = Foto::where("idFK",$request->id)->get();
+        return view("productos.formActualizarProducto",compact("producto","categorias","colores","tamaños","fotos"));
     }
 
     public function storeActualizarProducto(Request $request){
@@ -376,5 +378,43 @@ class HomeController extends Controller
                 return redirect()->route("formCrearTamaños");
             }
         }
+    }
+
+    public function formAñadirImagenes(Request $request){
+        $producto = Producto::where("id",$request->id)->first();
+        return view("productos.formAñadirImagenes",compact("producto"));
+    }
+    public function storeImagenes(Request $request){
+
+            foreach ($request->file('image') as $image) {
+                // Genera un nombre único para cada imagen
+                $imageName = uniqid().'.'.$image->extension();
+                // Mueve la imagen a la carpeta "public/images"
+                $image->move(public_path('imagesProductos'), $imageName);
+                
+                $fotos = new Foto();
+                $fotos->imagen = $imageName;
+                $fotos->idFK = $request->id;
+                $fotos->save();
+            }
+
+            $producto = Producto::where("id",$request->id)->first();
+            session()->flash("correctoImagenes","Imagene(s) subidas correctamente del producto: ".$producto->nombre);
+
+            return redirect()->route("loginDentro");
+    
+    }
+
+    public function eliminarProductoImagenes(Request $request){
+
+        $imagenEliminar = Foto::find($request->id);
+        $id = Producto::where("id",$imagenEliminar->idFK)->first();//buscar el id del producto
+        $imagenEliminar = $imagenEliminar->imagen;
+        
+        unlink(public_path('imagesProductos/'.$imagenEliminar));
+        $delete=Foto::where('id',$request->id)->delete();
+
+        session()->flash("eliminarProductoImagenes","La imagen se elimino correctamente en imagenes del producto");
+        return redirect()->route("actualizarProducto", ['id' => $id]);
     }
 }

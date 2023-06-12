@@ -54,6 +54,11 @@ Route::get('/actualizarTamaño',[HomeController::class,"actualizarTamaño"])->na
 Route::get('/storeActualizarTamaño',[HomeController::class,"storeActualizarTamaño"])->name("storeActualizarTamaño")->middleware("auth");
 
 
+//añadirImagenesdeposicionesdiferentes
+Route::get('/formAñadirImagenes',[HomeController::class,"formAñadirImagenes"])->name("formAñadirImagenes")->middleware("auth");
+Route::post('/storeImagenes',[HomeController::class,"storeImagenes"])->name("storeImagenes")->middleware("auth");
+Route::get('/eliminarProductoImagenes',[HomeController::class,"eliminarProductoImagenes"])->name("eliminarProductoImagenes")->middleware("auth");
+
 
 
 

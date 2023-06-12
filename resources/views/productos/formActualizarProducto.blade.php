@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('login/loginAdentro.Css?1.0') }}">
 </head>
 
@@ -25,6 +26,7 @@
         <h2>Actualizar producto</h2>
         <br>
         {{ session('correctoActualizarProducto') }}
+        {{ session('eliminarProductoImagenes') }}
         <br>
         <form action="{{ route('storeActualizarProducto') }}" method="GET">
             <input type="text" name="id" value="{{ $producto->id }}" hidden>
@@ -52,7 +54,7 @@
                 <label for="exampleFormControlSelect1">Seleccione un color</label>
                 <select class="form-control" name="color">
                     <option disabled selected>{{ $producto->color }}</option>
-                    <option >NINGUNO</option>
+                    <option>NINGUNO</option>
                     @foreach ($colores as $item)
                         <option>{{ $item->nombreColor }}</option>
                     @endforeach
@@ -82,7 +84,7 @@
                 <textarea class="form-control" name="descripcion" rows="3">{{ $producto->descripcion }}</textarea>
             </div>
             <div class="form-check">
-                <input type="checkbox" name="temporada" <?php echo ($producto->temporada == 1) ? 'checked' : ''; ?>>
+                <input type="checkbox" name="temporada" <?php echo $producto->temporada == 1 ? 'checked' : ''; ?>>
                 <label class="form-check-label" for="flexCheckDefault">
                     Producto de temporada
                 </label>
@@ -93,8 +95,37 @@
         </form>
     </div>
 
+    <br><br>
 
-
+    <div class="container">
+        <h2>Imagenes del producto</h2>
+        <br><br>
+        <div class="row row-cols-2 g-3">
+            @foreach ($fotos as $item)
+                <div class="col">
+                    <div class="card">
+                        <img style="width: 200px; height: 200px;" src="imagesProductos/{{ $item->imagen }}"
+                            alt="">
+                        <div class="card-body">
+                            <div style="display: flex; align-items: center; gap: 10px; ">
+                                <p class="card-text">
+                                    <br><br>
+                                <form id="eliminarForm" action="{{ route('eliminarProductoImagenes') }}"
+                                    method="GET">
+                                    @csrf
+                                    <input type="text" name="id" value="{{ $item->id }}" hidden>
+                                    <button type="submit" class="bntEliminarCategoria"
+                                        onclick="return confirm('¿Estás seguro de que deseas eliminar la imagen')">
+                                        <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
+                                    </button>
+                                </form>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
 
 </body>
