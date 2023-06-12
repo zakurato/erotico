@@ -23,6 +23,16 @@
     color: white !important;
 }
 
+@keyframes parpadeo {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#parpadeo {
+  animation: parpadeo 2.5s infinite;
+}
+
 
 
 

@@ -6,7 +6,7 @@
 
 
     <!--/Css propios public-->
-    <link rel="stylesheet" href="{{ asset('index/index.Css?1.0') }}">
+    <link rel="stylesheet" href="{{ asset('index/index.Css') }}">
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v=120939182865429120021678115775">
 
     <meta charset="utf-8">
@@ -48,6 +48,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
+                    @if ($contadorCarrito->contadorCarrito > 0)
+                    <div class="navbar-header">
+                        <button id="parpadeo" class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span
+                                class="icon-bar"></span><span class="icon-bar"></span><span
+                                class="icon-bar"></span></button>
+                        <a href="#" class="header__logo-link">
+                            <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
+                        </a>
+                    </div>
+                    @else
                     <div class="navbar-header">
                         <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span
                                 class="icon-bar"></span><span class="icon-bar"></span><span
@@ -56,6 +66,7 @@
                             <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
                         </a>
                     </div>
+                    @endif
 
                     <div class="navbar-collapse collapse" id="mobile_menu">
                         <ul class="nav navbar-nav">
@@ -90,27 +101,51 @@
                                 </form>
                             </li>
                         </ul>
+                        <a href="">
+                            @if ($contadorCarrito->contadorCarrito > 0)
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li>
+                                        <div style="display: inline-flex;">
+                                            <!-- carrito -->
+                                            <svg id="parpadeo" style="color: #9d9d9d"
+                                                xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                                fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                                                    fill="#9d9d9d">
+                                                </path>
+                                            </svg>
+                                            <p id="parpadeo" style="color: #9d9d9d">
+                                                {{ $contadorCarrito->contadorCarrito }}</p>
+                                            <h4 id="parpadeo" style="color: #9d9d9d;">Carrito de compras</h4>
+                                            <!-- carrito -->
+                                        </div>
 
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <form action="">
-                                    <div style="display: inline-flex;">
-                                        <!-- carrito -->
-                                        <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg" width="28"
-                                            height="28" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                                fill="#9d9d9d">
-                                            </path>
-                                        </svg>
-                                        <p style="color: #9d9d9d">0</p>
-                                        <h4 style="color: #9d9d9d;">Carrito de compras</h4>
-                                        <!-- carrito -->
-                                    </div>
-                                </form>
+                                    </li>
+                                </ul>
+                            @else
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li>
+                                        <div style="display: inline-flex;">
+                                            <!-- carrito -->
+                                            <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg"
+                                                width="28" height="28" fill="currentColor"
+                                                class="bi bi-cart3" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                                                    fill="#9d9d9d">
+                                                </path>
+                                            </svg>
+                                            <p style="color: #9d9d9d">{{ $contadorCarrito->contadorCarrito }}</p>
+                                            <h4 style="color: #9d9d9d;">Carrito de compras</h4>
+                                            <!-- carrito -->
+                                        </div>
 
-                            </li>
-                        </ul>
+                                    </li>
+                                </ul>
+                        </a>
+                        @endif
+                        </a>
                     </div>
                 </div>
             </div>
@@ -254,7 +289,7 @@
                                     @endif
                                 </div>
                                 <form method="" action="" class="product-item__action-list button-stack">
-                                    <input type="hidden" name="id" value="{{$item->id}}">
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
                                     <button type="submit"
                                         class="product-item__action-button button button--small button--primary">Añadir
                                         al carrito</button>

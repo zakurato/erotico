@@ -32,13 +32,14 @@ class HomeController extends Controller
             $cliente = new Cliente();
             //return session('nombre');
             $cliente->nombre = session('nombre');
+            $cliente->contadorCarrito = 0;
             $cliente->save();
+        }else{
+            $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
+            $categorias = Categoria::all();
+            $productos = Producto::paginate(5);
+            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito"));
         }
-
-    
-        $categorias = Categoria::all();
-        $productos = Producto::paginate(5);
-        return view("paginaPrincipal.index2",compact("productos","categorias"));
     }
 
     public function formLogin(){
