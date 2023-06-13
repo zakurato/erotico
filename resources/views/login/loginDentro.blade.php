@@ -56,6 +56,7 @@
                         <p class="card-text">
                             Cantidad: {{ $item->cantidad }}
                         </p>
+                        <br>
                         <div style="display: flex; align-items: center; gap: 10px; ">
                             <p>
                             <form id="actualizarForm" action="{{ route('actualizarProducto') }}" method="GET">
@@ -63,9 +64,32 @@
                                 <input type="text" name="id" value="{{ $item->id }}" hidden>
                                 <button type="submit" class="bntEliminarCategoria">
                                     <i style="color: green" class="fa-solid fa-rotate fa-xl"></i>
+                                    <br><br>
+                                    <p>Editar producto</p>
                                 </button>
                             </form>
                             </p>
+                            <p class="card-text">
+                            <form id="formAñadirImagenes" action="{{ route('formAñadirImagenes') }}" method="GET">
+                                @csrf
+                                <input type="text" name="id" value="{{ $item->id }}" hidden>
+                                <button type="submit" class="bntEliminarCategoria">
+                                    <i class="fa-regular fa-images fa-xl"></i>
+                                    <br><br>
+                                    <p>Añadir mas imagenes</p>
+                                </button>
+                            </form>
+                            </p>
+                            <p class="card-text">
+                                <form id="eliminarForm" action="{{ route('formAñadirTamañosPorProducto') }}" method="GET">
+                                    @csrf
+                                    <input type="text" name="id" value="{{ $item->id }}" hidden>
+                                    <button type="submit" class="bntEliminarCategoria">
+                                        <i style="color: royalblue" class="fa-solid fa-arrow-up-9-1 fa-xl"></i>                                        <br><br>
+                                        <p>Añadir mas tamaños</p>
+                                    </button>
+                                </form>
+                                </p>
                             <p class="card-text">
                             <form id="eliminarForm" action="{{ route('eliminarProducto') }}" method="GET">
                                 @csrf
@@ -73,15 +97,8 @@
                                 <button type="submit" class="bntEliminarCategoria"
                                     onclick="return confirm('¿Estás seguro de que deseas eliminar el producto {{ $item->nombre }}')">
                                     <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
-                                </button>
-                            </form>
-                            </p>
-                            <p class="card-text">
-                            <form id="formAñadirImagenes" action="{{route("formAñadirImagenes")}}" method="GET">
-                                @csrf
-                                <input type="text" name="id" value="{{ $item->id }}" hidden>
-                                <button type="submit" class="bntEliminarCategoria">
-                                    <i class="fa-regular fa-images fa-xl"></i>
+                                    <br><br>
+                                    <p>Eliminar</p>
                                 </button>
                             </form>
                             </p>

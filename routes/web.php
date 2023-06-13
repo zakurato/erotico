@@ -60,6 +60,12 @@ Route::post('/storeImagenes',[HomeController::class,"storeImagenes"])->name("sto
 Route::get('/eliminarProductoImagenes',[HomeController::class,"eliminarProductoImagenes"])->name("eliminarProductoImagenes")->middleware("auth");
 
 
+//añadir tamaños por producto
+Route::get('/formAñadirTamañosPorProducto',[HomeController::class,"formAñadirTamañosPorProducto"])->name("formAñadirTamañosPorProducto")->middleware("auth");
+Route::post('/storeAñadirTamaños',[HomeController::class,"storeAñadirTamaños"])->name("storeAñadirTamaños")->middleware("auth");
+
+
+
 
 
 

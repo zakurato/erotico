@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Cliente;
 use App\Models\Color;
 use App\Models\Foto;
+use App\Models\Medida;
 use App\Models\Producto;
 use App\Models\Tamano;
 use Illuminate\Http\Request;
@@ -38,8 +39,9 @@ class HomeController extends Controller
         }else{
             $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
             $categorias = Categoria::all();
+            $medidas = Medida::all();
             $productos = Producto::paginate(5);
-            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito"));
+            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","medidas"));
         }
     }
 
@@ -107,6 +109,17 @@ class HomeController extends Controller
     }
 
     public function eliminarProducto(Request $request){
+
+
+        $fotosEliminadas = Foto::where("idFK", $request->id)->get();
+        //return $fotosEliminadas;
+        foreach($fotosEliminadas as $item){
+            $fotoAEliminar = $item->imagen;//nombre de la imagen
+            $id = $item->id;
+            unlink(public_path('imagesProductos/'.$fotoAEliminar));
+            $delete=Foto::where('id',$id)->delete();
+        }
+
         $imagenEliminar = Producto::find($request->id);
         $imagenEliminar = $imagenEliminar->imagen;
         
@@ -416,5 +429,52 @@ class HomeController extends Controller
 
         session()->flash("eliminarProductoImagenes","La imagen se elimino correctamente en imagenes del producto");
         return redirect()->route("actualizarProducto", ['id' => $id]);
+    }
+
+    public function formAñadirTamañosPorProducto(Request $request){
+        $producto = Producto::where("id",$request->id)->first();
+        $tamaños = Tamano::all();
+        return view("productos.formAñadirTamaños",compact("producto","tamaños"));
+    }
+
+    public function storeAñadirTamaños(Request $request){
+        $guardarPrimerTamañoProducto = Producto::where("id", $request->id)->first();
+
+        if($guardarPrimerTamañoProducto->tamaño == "NINGUNO"){
+            $guardarPrimerTamañoProducto->tamaño = $request->tamaño;
+            $guardarPrimerTamañoProducto->save();
+            session()->flash("repiteTamañoCorrecto","El tamaño ".$request->tamaño." se creo correctamente");
+            return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
+
+        }elseif($guardarPrimerTamañoProducto->tamaño == $request->tamaño){
+            session()->flash("repiteTamaño","El tamaño ".$request->tamaño." ya existe para el producto");
+            return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
+            //return al formulario añadirtamaño por productos con el id del producto con un msj que diga ya el tamaño existe
+        }
+
+        $existe = 0;
+        $medidas = Medida::where("idFK", $request->id)->get();
+        foreach($medidas as $item){
+            if($item->medida == $request->tamaño){
+                $existe = 1;
+                break;
+            }
+        }
+        if($existe == 1){
+            session()->flash("repiteTamaño","El tamaño ".$request->tamaño." ya existe para el producto");
+            return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
+        }else{
+            $guardarTamaño = new Medida();
+            $guardarTamaño->medida = $request->tamaño;
+            $guardarTamaño->idFK = $request->id;
+            $guardarTamaño->save();
+
+            session()->flash("repiteTamañoCorrecto","El tamaño ".$request->tamaño." se creo correctamente");
+            return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
+            //return al formulario añadirtamaño que diga tamaño creado correctamente
+
+        }
+
+
     }
 }

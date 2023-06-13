@@ -284,10 +284,16 @@
                                             <select class="form-control" name="color">
                                                 <option disabled selected>Seleccione el tamaño</option>
                                                 <option>{{ $item->tamaño }}</option>
+                                                @foreach ($medidas as $item2)
+                                                    @if ($item->id == $item2->idFK)
+                                                        <option>{{ $item2->medida }}</option>
+                                                    @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                     @endif
                                 </div>
+                                
                                 <form method="" action="" class="product-item__action-list button-stack">
                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                     <button type="submit"
