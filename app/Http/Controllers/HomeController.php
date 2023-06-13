@@ -438,16 +438,19 @@ class HomeController extends Controller
     }
 
     public function storeAñadirTamaños(Request $request){
-        $guardarPrimerTamañoProducto = Producto::where("id", $request->id)->first();
 
+        $guardarPrimerTamañoProducto = Producto::where("id", $request->id)->first();
         if($guardarPrimerTamañoProducto->tamaño == "NINGUNO"){
             $guardarPrimerTamañoProducto->tamaño = $request->tamaño;
+            $guardarPrimerTamañoProducto->cantidad = $request->cantidad;
             $guardarPrimerTamañoProducto->save();
             session()->flash("repiteTamañoCorrecto","El tamaño ".$request->tamaño." se creo correctamente");
             return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
 
         }elseif($guardarPrimerTamañoProducto->tamaño == $request->tamaño){
-            session()->flash("repiteTamaño","El tamaño ".$request->tamaño." ya existe para el producto");
+            $guardarPrimerTamañoProducto->cantidad = $guardarPrimerTamañoProducto->cantidad + $request->cantidad;
+            $guardarPrimerTamañoProducto->save();
+            session()->flash("repiteTamaño","El tamaño ".$request->tamaño." ya existe para el producto pero se añadio correctamente la cantidad en inventario");
             return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
             //return al formulario añadirtamaño por productos con el id del producto con un msj que diga ya el tamaño existe
         }
@@ -461,12 +464,16 @@ class HomeController extends Controller
             }
         }
         if($existe == 1){
-            session()->flash("repiteTamaño","El tamaño ".$request->tamaño." ya existe para el producto");
+            $medida = Medida::where("medida", $request->tamaño)->first();
+            $medida->cantidad = $medida->cantidad + $request->cantidad;
+            $medida->save();
+            session()->flash("repiteTamaño","El tamaño ".$request->tamaño." ya existe para el producto pero se añadio correctamente la cantidad en inventario");
             return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
         }else{
             $guardarTamaño = new Medida();
             $guardarTamaño->medida = $request->tamaño;
             $guardarTamaño->idFK = $request->id;
+            $guardarTamaño->cantidad = $request->cantidad;
             $guardarTamaño->save();
 
             session()->flash("repiteTamañoCorrecto","El tamaño ".$request->tamaño." se creo correctamente");

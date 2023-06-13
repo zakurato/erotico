@@ -49,23 +49,23 @@
             <div class="row">
                 <div class="col-lg-12">
                     @if ($contadorCarrito->contadorCarrito > 0)
-                    <div class="navbar-header">
-                        <button id="parpadeo" class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span
-                                class="icon-bar"></span><span class="icon-bar"></span><span
-                                class="icon-bar"></span></button>
-                        <a href="#" class="header__logo-link">
-                            <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
-                        </a>
-                    </div>
+                        <div class="navbar-header">
+                            <button id="parpadeo" class="navbar-toggle" data-target="#mobile_menu"
+                                data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
+                                    class="icon-bar"></span></button>
+                            <a href="#" class="header__logo-link">
+                                <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
+                            </a>
+                        </div>
                     @else
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span
-                                class="icon-bar"></span><span class="icon-bar"></span><span
-                                class="icon-bar"></span></button>
-                        <a href="#" class="header__logo-link">
-                            <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
-                        </a>
-                    </div>
+                        <div class="navbar-header">
+                            <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span
+                                    class="icon-bar"></span><span class="icon-bar"></span><span
+                                    class="icon-bar"></span></button>
+                            <a href="#" class="header__logo-link">
+                                <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
+                            </a>
+                        </div>
                     @endif
 
                     <div class="navbar-collapse collapse" id="mobile_menu">
@@ -283,9 +283,11 @@
                                         <div class="form-group">
                                             <select class="form-control" name="color">
                                                 <option disabled selected>Seleccione el tamaño</option>
-                                                <option>{{ $item->tamaño }}</option>
+                                                @if ($item->cantidad > 0)
+                                                    <option>{{ $item->tamaño }}</option>
+                                                @endif
                                                 @foreach ($medidas as $item2)
-                                                    @if ($item->id == $item2->idFK)
+                                                    @if ($item->id == $item2->idFK && $item2->cantidad > 0)
                                                         <option>{{ $item2->medida }}</option>
                                                     @endif
                                                 @endforeach
@@ -293,7 +295,7 @@
                                         </div>
                                     @endif
                                 </div>
-                                
+
                                 <form method="" action="" class="product-item__action-list button-stack">
                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                     <button type="submit"
@@ -1026,6 +1028,8 @@
                 </div>
 </body>
 
+
+
 <script>
     // Obtiene la URL actual
     var url = window.location.href;
@@ -1037,6 +1041,7 @@
 
         // Reemplaza la URL actual sin el parámetro "?valor=1" en el historial del navegador
         window.history.replaceState({}, document.title, newUrl);
+
     }
 </script>
 

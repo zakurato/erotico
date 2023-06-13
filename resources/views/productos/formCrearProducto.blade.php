@@ -61,7 +61,7 @@
                 <select class="form-control" name="tamaño">
                     <option>NINGUNO</option>
                     @foreach ($tamaños as $item)
-                        <option>{{ $item->tamaño }}mm</option>
+                        <option>{{ $item->tamaño }}cm</option>
                     @endforeach
                 </select>
             </div>

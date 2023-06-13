@@ -38,7 +38,7 @@
                 <label style="margin-top: 5px">Tamaño:</label>
                 <input type="number" class="form-control" name="tamaño" autocomplete="off"
                     oninput="this.value = this.value.toUpperCase();" required style="width: 20%;" id="numericInput">
-                <label style="margin-top: 10px">mm</label>
+                <label style="margin-top: 10px">cm</label>
             </div>
             <button type="submit" class="btn btn-default">Crear tamaño</button>
         </form>
@@ -59,7 +59,7 @@
         <tbody>
             @foreach ($tamaños as $item)
                 <tr>
-                    <td>{{ $item->tamaño }}mm</td>
+                    <td>{{ $item->tamaño }}cm</td>
                     <td>
                         <form id="actualizarForm" action="{{ route('actualizarTamaño') }}" method="GET">
                             @csrf

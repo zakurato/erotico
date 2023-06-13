@@ -38,10 +38,15 @@
                 <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
                 <select class="form-control" name="tamaño">
                     @foreach ($tamaños as $item)
-                        <option>{{ $item->tamaño }}mm</option>
+                        <option>{{ $item->tamaño }}cm</option>
                     @endforeach
                 </select>
             </div>
+            <div class="form-group">
+                <label>Cantidad del producto:</label>
+                <input type="text" class="form-control" name="cantidad" required>
+            </div>
+
             <button type="submit" class="btn btn-default">Añadir tamaño</button>
         </form>        
     </div>

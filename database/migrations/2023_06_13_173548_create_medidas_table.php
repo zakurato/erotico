@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("medida");
             $table->string("idFK");
+            $table->string("cantidad");
             $table->timestamps();
         });
     }

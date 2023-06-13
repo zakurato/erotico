@@ -39,7 +39,7 @@
             <div style="display: flex; justify-content: center; ">
                 <form action="{{ route('index2') }}" >
                     <input type="hidden" name="valor" value="1"  id="miCampo">
-                    <button type="submit" class="btn btn-outline-success" style="margin-right: 20px;!important">ACEPTAR
+                    <button type="submit" class="btn btn-outline-success" style="margin-right: 20px;!important" id="miBoton">ACEPTAR
                 </form>
                 <form action="">
                     <button type="submit" class="btn btn-outline-danger" style="margin-right: 20px;!important">RECHAZAR
@@ -88,6 +88,7 @@
         once: true
     });
 </script>
+
 
 
 </html>

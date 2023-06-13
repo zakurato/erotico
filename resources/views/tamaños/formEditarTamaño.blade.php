@@ -33,7 +33,7 @@
                 <label style="margin-top: 10px">Tamaño:</label>
                 <input type="numbre" class="form-control" name="tamaño" autocomplete="off" value="{{$tamañoEditar->tamaño}}"
                     oninput="this.value = this.value.toUpperCase();" required style="width: 20%;" id="numericInput">
-                    <label style="margin-top: 10px">mm</label>
+                    <label style="margin-top: 10px">cm</label>
             </div>
             </div>
             <button type="submit" class="btn btn-default">Editar tamaño</button>
