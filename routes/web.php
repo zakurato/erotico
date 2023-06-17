@@ -56,13 +56,10 @@ Route::get('/storeActualizarTamaño',[HomeController::class,"storeActualizarTama
 
 //añadirImagenesdeposicionesdiferentes
 Route::get('/formAñadirImagenes',[HomeController::class,"formAñadirImagenes"])->name("formAñadirImagenes")->middleware("auth");
-Route::post('/storeImagenes',[HomeController::class,"storeImagenes"])->name("storeImagenes")->middleware("auth");
-Route::get('/eliminarProductoImagenes',[HomeController::class,"eliminarProductoImagenes"])->name("eliminarProductoImagenes")->middleware("auth");
-
-
-//añadir tamaños por producto
-Route::get('/formAñadirTamañosPorProducto',[HomeController::class,"formAñadirTamañosPorProducto"])->name("formAñadirTamañosPorProducto")->middleware("auth");
-Route::post('/storeAñadirTamaños',[HomeController::class,"storeAñadirTamaños"])->name("storeAñadirTamaños")->middleware("auth");
+Route::get('/colorSeleccionado',[HomeController::class,"colorSeleccionado"])->name("colorSeleccionado")->middleware("auth");
+Route::post('/storeProductoFotos',[HomeController::class,"storeProductoFotos"])->name("storeProductoFotos")->middleware("auth");
+Route::post('/storeProductoFotosImagenes',[HomeController::class,"storeProductoFotosImagenes"])->name("storeProductoFotosImagenes")->middleware("auth");
+Route::post('/storeProductoFotosTamañoCantidad',[HomeController::class,"storeProductoFotosTamañoCantidad"])->name("storeProductoFotosTamañoCantidad")->middleware("auth");
 
 
 

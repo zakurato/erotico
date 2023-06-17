@@ -26,14 +26,12 @@
         <img style="width: 380px; height: 380px;" src="imagesProductos/{{ $producto->imagen }}" alt="">
     </div>
 
-    <div>
-        {{session("productoCreadoCorrectamenteFotos")}}
-    </div>
-
+    <h1>Añadir producto con el color {{ $color }} seleccionado</h1>
     <br><br><br>
-    <form action="{{ route("colorSeleccionado") }}" method="GET" id="myForm">
-        @csrf 
-        <input type="hidden" name="id" value="{{$producto->id}}">
+    <form action="{{ route('colorSeleccionado') }}" method="GET" id="myForm">
+        @csrf
+        <!-- Agrega esta directiva si estás utilizando Laravel -->
+        <input type="hidden" name="id" value="{{ $producto->id }}">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Seleccione el color</label>
             <select class="form-control" name="color" required id="campoTexto" onchange="submitForm()">
@@ -44,6 +42,33 @@
                 @endforeach
             </select>
         </div>
+    </form>
+
+
+    <form action="{{ route('storeProductoFotos') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="id" value="{{ $producto->id }}">
+        <input type="hidden" name="color" value="{{ $color }}">
+
+        <div class="form-group">
+            <label>Seleccionar imágenes</label>
+            <input type="file" name="image[]" class="form-control" multiple required id="campoTexto">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
+            <select class="form-control" name="tamaño">
+                <option>NINGUNO</option>
+                @foreach ($tamaños as $item)
+                    <option>{{ $item->tamaño }}cm</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Cantidad del producto:</label>
+            <input type="number" class="form-control" name="cantidad" required>
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-default">Añadir</button>
     </form>
 
 

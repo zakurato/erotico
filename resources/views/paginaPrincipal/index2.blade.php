@@ -286,11 +286,6 @@
                                                 @if ($item->cantidad > 0)
                                                     <option>{{ $item->tamaño }}</option>
                                                 @endif
-                                                @foreach ($medidas as $item2)
-                                                    @if ($item->id == $item2->idFK && $item2->cantidad > 0)
-                                                        <option>{{ $item2->medida }}</option>
-                                                    @endif
-                                                @endforeach
                                             </select>
                                         </div>
                                     @endif

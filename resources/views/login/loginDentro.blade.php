@@ -41,7 +41,6 @@
     <br><br>
     {{ session('eliminarProducto') }}
     {{ session('correctoActualizarProducto') }}
-    {{ session('correctoImagenes') }}
 
 
     <br><br>
@@ -76,20 +75,11 @@
                                 <button type="submit" class="bntEliminarCategoria">
                                     <i class="fa-regular fa-images fa-xl"></i>
                                     <br><br>
-                                    <p>Añadir mas imagenes</p>
+                                    <p>Añadir mas imagenes, colores, tamaños, cantidad</p>
                                 </button>
                             </form>
                             </p>
-                            <p class="card-text">
-                                <form id="eliminarForm" action="{{ route('formAñadirTamañosPorProducto') }}" method="GET">
-                                    @csrf
-                                    <input type="text" name="id" value="{{ $item->id }}" hidden>
-                                    <button type="submit" class="bntEliminarCategoria">
-                                        <i style="color: royalblue" class="fa-solid fa-arrow-up-9-1 fa-xl"></i>                                        <br><br>
-                                        <p>Añadir mas tamaños</p>
-                                    </button>
-                                </form>
-                                </p>
+
                             <p class="card-text">
                             <form id="eliminarForm" action="{{ route('eliminarProducto') }}" method="GET">
                                 @csrf

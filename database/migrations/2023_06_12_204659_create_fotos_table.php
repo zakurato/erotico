@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('fotos', function (Blueprint $table) {
             $table->id();
             $table->string("imagen");
+            $table->string("color");
+            $table->string("tamaño");
+            $table->string("cantidad");
             $table->string("idFK");
             $table->timestamps();
         });

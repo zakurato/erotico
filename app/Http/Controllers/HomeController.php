@@ -39,9 +39,8 @@ class HomeController extends Controller
         }else{
             $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
             $categorias = Categoria::all();
-            $medidas = Medida::all();
             $productos = Producto::paginate(5);
-            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","medidas"));
+            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito"));
         }
     }
 
@@ -395,93 +394,126 @@ class HomeController extends Controller
 
     public function formAñadirImagenes(Request $request){
         $producto = Producto::where("id",$request->id)->first();
-        return view("productos.formAñadirImagenes",compact("producto"));
-    }
-    public function storeImagenes(Request $request){
-
-            foreach ($request->file('image') as $image) {
-                // Genera un nombre único para cada imagen
-                $imageName = uniqid().'.'.$image->extension();
-                // Mueve la imagen a la carpeta "public/images"
-                $image->move(public_path('imagesProductos'), $imageName);
-                
-                $fotos = new Foto();
-                $fotos->imagen = $imageName;
-                $fotos->idFK = $request->id;
-                $fotos->save();
-            }
-
-            $producto = Producto::where("id",$request->id)->first();
-            session()->flash("correctoImagenes","Imagene(s) subidas correctamente del producto: ".$producto->nombre);
-
-            return redirect()->route("loginDentro");
-    
-    }
-
-    public function eliminarProductoImagenes(Request $request){
-
-        $imagenEliminar = Foto::find($request->id);
-        $id = Producto::where("id",$imagenEliminar->idFK)->first();//buscar el id del producto
-        $imagenEliminar = $imagenEliminar->imagen;
-        
-        unlink(public_path('imagesProductos/'.$imagenEliminar));
-        $delete=Foto::where('id',$request->id)->delete();
-
-        session()->flash("eliminarProductoImagenes","La imagen se elimino correctamente en imagenes del producto");
-        return redirect()->route("actualizarProducto", ['id' => $id]);
-    }
-
-    public function formAñadirTamañosPorProducto(Request $request){
-        $producto = Producto::where("id",$request->id)->first();
+        $colores = Color::all();
         $tamaños = Tamano::all();
-        return view("productos.formAñadirTamaños",compact("producto","tamaños"));
+        return view("productos.formAñadirImagenes",compact("producto","colores","tamaños"));
     }
+    public function colorSeleccionado(Request $request){
 
-    public function storeAñadirTamaños(Request $request){
+            $existeColorTablaProducto = 0;
+            $productos = Producto::all();
 
-        $guardarPrimerTamañoProducto = Producto::where("id", $request->id)->first();
-        if($guardarPrimerTamañoProducto->tamaño == "NINGUNO"){
-            $guardarPrimerTamañoProducto->tamaño = $request->tamaño;
-            $guardarPrimerTamañoProducto->cantidad = $request->cantidad;
-            $guardarPrimerTamañoProducto->save();
-            session()->flash("repiteTamañoCorrecto","El tamaño ".$request->tamaño." se creo correctamente");
-            return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
-
-        }elseif($guardarPrimerTamañoProducto->tamaño == $request->tamaño){
-            $guardarPrimerTamañoProducto->cantidad = $guardarPrimerTamañoProducto->cantidad + $request->cantidad;
-            $guardarPrimerTamañoProducto->save();
-            session()->flash("repiteTamaño","El tamaño ".$request->tamaño." ya existe para el producto pero se añadio correctamente la cantidad en inventario");
-            return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
-            //return al formulario añadirtamaño por productos con el id del producto con un msj que diga ya el tamaño existe
-        }
-
-        $existe = 0;
-        $medidas = Medida::where("idFK", $request->id)->get();
-        foreach($medidas as $item){
-            if($item->medida == $request->tamaño){
-                $existe = 1;
-                break;
+            foreach($productos as $item){
+                if($item->id == $request->id && $item->color == $request->color){
+                    $existeColorTablaProducto = 1;
+                    break;
+                }
             }
+
+            if($existeColorTablaProducto == 1){
+                //redireccionar a la vista donde solo va estar para agregar imagenes o solo agregar tamaños y cantidades
+                    $color = $request->color;
+                    $producto = Producto::where("id",$request->id)->first();
+                    $colores = Color::all();
+                    $tamaños = Tamano::all();
+                    $fotos = Foto::all();
+
+                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos"));
+            }else{
+                $existeColorTablafotos = 0;
+                $fotos = Foto::all();
+    
+                foreach($fotos as $item){
+                    if($item->idFK == $request->id && $item->color == $request->color){
+                        $existeColorTablafotos = 1;
+                        break;
+                    }
+                }
+
+                if($existeColorTablafotos == 1){
+                    //redireccionar a la vista donde solo va estar para agregar imagenes o solo agregar tamaños y cantidades
+                    $color = $request->color;
+                    $producto = Producto::where("id",$request->id)->first();
+                    $colores = Color::all();
+                    $tamaños = Tamano::all();
+                    $fotos = Foto::all();
+
+                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos"));
+                }else{
+                    //redireccionar a la vista donde se crea el producto en la parte de fotos osea uno nuevo
+                    $color = $request->color;
+                    $producto = Producto::where("id",$request->id)->first();
+                    $colores = Color::all();
+                    $tamaños = Tamano::all();
+
+                    //este form es llenar un producto nuevo sin la categoria ni el nombre ni descripcion ya que lleva el idFK del producto
+                    return view("productos.formAñadirImagenes2",compact("producto","colores","tamaños","color"));
+                }
+
+            }
+    }
+
+    public function storeProductoFotos(Request $request){//la primera vez que se guarda un color nuevo
+       // return $request;
+
+        foreach ($request->file('image') as $image) {
+            // Genera un nombre único para cada imagen
+            $imageName = uniqid().'.'.$image->extension();
+            // Mueve la imagen a la carpeta "public/images"
+            $image->move(public_path('imagesProductos'), $imageName);
+            
+            $nuevoProductoFotos = new Foto();
+            $nuevoProductoFotos->imagen = $imageName;
+            $nuevoProductoFotos->color = $request->color;
+            $nuevoProductoFotos->tamaño = $request->tamaño;
+            $nuevoProductoFotos->cantidad = $request->cantidad;
+            $nuevoProductoFotos->idFK = $request->id;
+            $nuevoProductoFotos->save();
         }
-        if($existe == 1){
-            $medida = Medida::where("medida", $request->tamaño)->first();
-            $medida->cantidad = $medida->cantidad + $request->cantidad;
-            $medida->save();
-            session()->flash("repiteTamaño","El tamaño ".$request->tamaño." ya existe para el producto pero se añadio correctamente la cantidad en inventario");
-            return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
-        }else{
-            $guardarTamaño = new Medida();
-            $guardarTamaño->medida = $request->tamaño;
-            $guardarTamaño->idFK = $request->id;
-            $guardarTamaño->cantidad = $request->cantidad;
-            $guardarTamaño->save();
+        session()->flash("productoCreadoCorrectamenteFotos","El producto se creo correctamente");
 
-            session()->flash("repiteTamañoCorrecto","El tamaño ".$request->tamaño." se creo correctamente");
-            return redirect()->route("formAñadirTamañosPorProducto", ['id' => $request->id]);
-            //return al formulario añadirtamaño que diga tamaño creado correctamente
-
-        }
-
+        $producto = Producto::where("id",$request->id)->first();
+        return redirect()->route("formAñadirImagenes", ['id' => $request->id]);
 
     }
+
+    public function storeProductoFotosImagenes(Request $request){//para guardar solo imagenes
+        
+        foreach ($request->file('image') as $image) {
+            // Genera un nombre único para cada imagen
+            $imageName = uniqid().'.'.$image->extension();
+            // Mueve la imagen a la carpeta "public/images"
+            $image->move(public_path('imagesProductos'), $imageName);
+            
+            $nuevoProductoFotos = new Foto();
+            $nuevoProductoFotos->imagen = $imageName;
+            $nuevoProductoFotos->color = $request->color;
+            $nuevoProductoFotos->tamaño = "formImagenes";
+            $nuevoProductoFotos->cantidad = "formImagenes";
+            $nuevoProductoFotos->idFK = $request->id;
+            $nuevoProductoFotos->save();
+        }
+        session()->flash("productoCreadoCorrectamenteFotos","Imagenes guardadas para el color ".$request->color." correctamente");
+
+        $producto = Producto::where("id",$request->id)->first();
+        return redirect()->route("formAñadirImagenes", ['id' => $request->id]);
+    }
+
+    public function storeProductoFotosTamañoCantidad(Request $request){//para guardar solo tamaños
+
+            $nuevoProductoFotos = new Foto();
+            $nuevoProductoFotos->imagen = "formTamañosCantidades";
+            $nuevoProductoFotos->color = $request->color;
+            $nuevoProductoFotos->tamaño = $request->tamaño;
+            $nuevoProductoFotos->cantidad = $request->cantidad;
+            $nuevoProductoFotos->idFK = $request->id;
+            $nuevoProductoFotos->save();
+
+        session()->flash("productoCreadoCorrectamenteFotos","Tamaño y cantidad guardadas para el color ".$request->color." correctamente");
+
+        $producto = Producto::where("id",$request->id)->first();
+        return redirect()->route("formAñadirImagenes", ['id' => $request->id]);
+        
+    }
+
 }
