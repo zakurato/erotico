@@ -110,13 +110,19 @@ class HomeController extends Controller
     public function eliminarProducto(Request $request){
 
 
-        $fotosEliminadas = Foto::where("idFK", $request->id)->get();
+        $ProductosEliminadosTablaFotos = Foto::where("idFK", $request->id)->get();
         //return $fotosEliminadas;
-        foreach($fotosEliminadas as $item){
-            $fotoAEliminar = $item->imagen;//nombre de la imagen
-            $id = $item->id;
-            unlink(public_path('imagesProductos/'.$fotoAEliminar));
-            $delete=Foto::where('id',$id)->delete();
+        foreach($ProductosEliminadosTablaFotos as $item){
+
+            if($item->imagen == "formTamañosCantidades"){
+                $id = $item->id;
+                $delete=Foto::where('id',$id)->delete();
+            }else{
+                $fotoAEliminar = $item->imagen;//nombre de la imagen
+                $id = $item->id;
+                unlink(public_path('imagesProductos/'.$fotoAEliminar));
+                $delete=Foto::where('id',$id)->delete();
+            }
         }
 
         $imagenEliminar = Producto::find($request->id);
@@ -171,14 +177,17 @@ class HomeController extends Controller
             $item->temporada = 0;
             $item->save();
         }
-
+        
 
         $producto->nombre = $request->nombre;
         $producto->categoria = $request->categoria;
         $producto->color = $color;
         $producto->tamaño = $tamaño;
         $producto->precio = $request->precio;
-        $producto->cantidad = $request->cantidad;
+        $producto->cantidad =  $producto->cantidad + $request->cantidad;
+        if($producto->cantidad < 0){
+            $producto->cantidad = 0;
+        }
         $producto->descripcion = $request->descripcion;
         $producto->temporada = $temporada;
 
@@ -400,6 +409,8 @@ class HomeController extends Controller
     }
     public function colorSeleccionado(Request $request){
 
+        //return $request;
+
             $existeColorTablaProducto = 0;
             $productos = Producto::all();
 
@@ -417,8 +428,8 @@ class HomeController extends Controller
                     $colores = Color::all();
                     $tamaños = Tamano::all();
                     $fotos = Foto::all();
-
-                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos"));
+                    $fotoColor = Foto::where("color", $request->color)->first();
+                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos","fotoColor"));
             }else{
                 $existeColorTablafotos = 0;
                 $fotos = Foto::all();
@@ -437,8 +448,9 @@ class HomeController extends Controller
                     $colores = Color::all();
                     $tamaños = Tamano::all();
                     $fotos = Foto::all();
+                    $fotoColor = Foto::where("color", $request->color)->first();
 
-                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos"));
+                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos","fotoColor"));
                 }else{
                     //redireccionar a la vista donde se crea el producto en la parte de fotos osea uno nuevo
                     $color = $request->color;
@@ -456,19 +468,39 @@ class HomeController extends Controller
     public function storeProductoFotos(Request $request){//la primera vez que se guarda un color nuevo
        // return $request;
 
+       $contador = 0;
+
         foreach ($request->file('image') as $image) {
-            // Genera un nombre único para cada imagen
-            $imageName = uniqid().'.'.$image->extension();
-            // Mueve la imagen a la carpeta "public/images"
-            $image->move(public_path('imagesProductos'), $imageName);
+
+            if($contador == 0){//este contador es para que solo me guarde 1 vez el tamaño y la cantidad no importa las imagenes que metan
+                // Genera un nombre único para cada imagen
+                $imageName = uniqid().'.'.$image->extension();
+                // Mueve la imagen a la carpeta "public/images"
+                $image->move(public_path('imagesProductos'), $imageName);
             
-            $nuevoProductoFotos = new Foto();
-            $nuevoProductoFotos->imagen = $imageName;
-            $nuevoProductoFotos->color = $request->color;
-            $nuevoProductoFotos->tamaño = $request->tamaño;
-            $nuevoProductoFotos->cantidad = $request->cantidad;
-            $nuevoProductoFotos->idFK = $request->id;
-            $nuevoProductoFotos->save();
+                $nuevoProductoFotos = new Foto();
+                $nuevoProductoFotos->imagen = $imageName;
+                $nuevoProductoFotos->color = $request->color;
+                $nuevoProductoFotos->tamaño = $request->tamaño;
+                $nuevoProductoFotos->cantidad = $request->cantidad;
+                $nuevoProductoFotos->idFK = $request->id;
+                $nuevoProductoFotos->save();
+                $contador = 1;
+                }else{
+                    // Genera un nombre único para cada imagen
+                    $imageName = uniqid().'.'.$image->extension();
+                    // Mueve la imagen a la carpeta "public/images"
+                    $image->move(public_path('imagesProductos'), $imageName);
+                
+                    $nuevoProductoFotos = new Foto();
+                    $nuevoProductoFotos->imagen = $imageName;
+                    $nuevoProductoFotos->color = $request->color;
+                    $nuevoProductoFotos->tamaño = "formImagenes";
+                    $nuevoProductoFotos->cantidad = "formImagenes";
+                    $nuevoProductoFotos->idFK = $request->id;
+                    $nuevoProductoFotos->save();
+                }
+
         }
         session()->flash("productoCreadoCorrectamenteFotos","El producto se creo correctamente");
 
@@ -493,27 +525,111 @@ class HomeController extends Controller
             $nuevoProductoFotos->idFK = $request->id;
             $nuevoProductoFotos->save();
         }
-        session()->flash("productoCreadoCorrectamenteFotos","Imagenes guardadas para el color ".$request->color." correctamente");
+        session()->flash("productoCreadoCorrectamenteFotosImagenes","Imagenes guardadas para el color ".$request->color." correctamente");
 
         $producto = Producto::where("id",$request->id)->first();
-        return redirect()->route("formAñadirImagenes", ['id' => $request->id]);
+        return redirect()->route("colorSeleccionado", ['id' => $request->id, 'color' => $request->color]);
     }
 
     public function storeProductoFotosTamañoCantidad(Request $request){//para guardar solo tamaños
 
-            $nuevoProductoFotos = new Foto();
-            $nuevoProductoFotos->imagen = "formTamañosCantidades";
-            $nuevoProductoFotos->color = $request->color;
-            $nuevoProductoFotos->tamaño = $request->tamaño;
-            $nuevoProductoFotos->cantidad = $request->cantidad;
-            $nuevoProductoFotos->idFK = $request->id;
-            $nuevoProductoFotos->save();
+            //return $request;
 
-        session()->flash("productoCreadoCorrectamenteFotos","Tamaño y cantidad guardadas para el color ".$request->color." correctamente");
+            $existeTamañoTablaProducto = 0;
+            $productos = Producto::all();
+            $id = 0;
 
-        $producto = Producto::where("id",$request->id)->first();
-        return redirect()->route("formAñadirImagenes", ['id' => $request->id]);
+            foreach($productos as $item){
+                if($request->tamaño == $item->tamaño && $request->color == $item->color){
+                    $existeTamañoTablaProducto = 1;
+                    $id = $item->id;
+                    break;
+                }
+            }
+
+            if($existeTamañoTablaProducto == 1){//tablaProductos
+                // guarda la cantidad del tamaño que se digito que esta en la tabla de productos con el color indicado
+                $productoRepiteTamañoEncontradoTablaProducto = Producto::where("id", $id)->first();
+                $productoRepiteTamañoEncontradoTablaProducto->cantidad = $productoRepiteTamañoEncontradoTablaProducto->cantidad + $request->cantidad;
+                if($productoRepiteTamañoEncontradoTablaProducto->cantidad < 0){
+                    $productoRepiteTamañoEncontradoTablaProducto->cantidad = 0;
+                }
+
+                $productoRepiteTamañoEncontradoTablaProducto->save();
+                session()->flash("productoCreadoCorrectamenteFotosTamaño","Tamaño y cantidad guardadas para el color ".$request->color." correctamente");
+
+                $producto = Producto::where("id",$request->id)->first();
+                return redirect()->route("colorSeleccionado", ['id' => $request->id, 'color' => $request->color]);
+            }else{
+
+                //verificar si el tamaño existe en la tabla de fotos
+
+                $existeTamañoTablaFotos = 0;
+                $productosTablaFotos = Foto::all();
+                $id = 0;
+
+                foreach($productosTablaFotos as $item){
+                    if($request->tamaño == $item->tamaño && $request->color == $item->color){
+                        $existeTamañoTablaFotos = 1;
+                        $id = $item->id;
+                        break;
+                    }
+                }
+
+
+                if($existeTamañoTablaFotos == 1){//tablaFotos
+                    // guarda la cantidad del tamaño que se digito que esta en la tabla de fotos con el color indicado
+                    $productoRepiteTamañoEncontradoTablaFotos = Foto::where("id", $id)->first();
+                    $productoRepiteTamañoEncontradoTablaFotos->cantidad = $productoRepiteTamañoEncontradoTablaFotos->cantidad + $request->cantidad;
+                    if($productoRepiteTamañoEncontradoTablaFotos->cantidad < 0){
+                        $productoRepiteTamañoEncontradoTablaFotos->cantidad = 0;
+                    }
+
+                    $productoRepiteTamañoEncontradoTablaFotos->save();
+                    session()->flash("productoCreadoCorrectamenteFotosTamaño","Tamaño y cantidad guardadas para el color ".$request->color." correctamente");
+    
+                    $producto = Producto::where("id",$request->id)->first();
+                    return redirect()->route("colorSeleccionado", ['id' => $request->id, 'color' => $request->color]);
+                }else{
+
+                    // guarda el tamaño que se digito no esta en la tabla de fotos con el color indicado
+                    $nuevoProductoFotos = new Foto();
+                    $nuevoProductoFotos->imagen = "formTamañosCantidades";
+                    $nuevoProductoFotos->color = $request->color;
+                    $nuevoProductoFotos->tamaño = $request->tamaño;
+                    $nuevoProductoFotos->cantidad = $request->cantidad;
+                    if($nuevoProductoFotos->cantidad < 0){
+                        $nuevoProductoFotos->cantidad = 0;
+                    }
+                    $nuevoProductoFotos->idFK = $request->id;
+                    $nuevoProductoFotos->save();
+
+                    session()->flash("productoCreadoCorrectamenteFotosTamaño","Tamaño y cantidad guardadas para el color ".$request->color." correctamente");
+
+                    $producto = Producto::where("id",$request->id)->first();
+                    return redirect()->route("colorSeleccionado", ['id' => $request->id, 'color' => $request->color]);
+                }
+            }
+    }
+
+    public function eliminarProductoTablaFotos(Request $request){
+
+        $ProductosEliminadoTablaFotos = Foto::where("id", $request->id)->first();
         
+
+        if($ProductosEliminadoTablaFotos->imagen == "formTamañosCantidades"){
+            $delete=Foto::where('id',$request->id)->delete();
+            session()->flash("eliminarProducto","EL producto se elimino correctamente");
+            return redirect()->route("loginDentro");
+    
+        }else if($ProductosEliminadoTablaFotos->tamaño == "formImagenes"){
+            unlink(public_path('imagesProductos/'.$ProductosEliminadoTablaFotos->imagen));
+            $delete=Foto::where('id',$request->id)->delete();
+
+            session()->flash("eliminarProducto","EL producto se elimino correctamente");
+            return redirect()->route("colorSeleccionado", ['id' => $ProductosEliminadoTablaFotos->idFK, 'color' => $ProductosEliminadoTablaFotos->color]);
+        }
+
     }
 
 }

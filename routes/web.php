@@ -54,12 +54,13 @@ Route::get('/actualizarTamaño',[HomeController::class,"actualizarTamaño"])->na
 Route::get('/storeActualizarTamaño',[HomeController::class,"storeActualizarTamaño"])->name("storeActualizarTamaño")->middleware("auth");
 
 
-//añadirImagenesdeposicionesdiferentes
+//TablaFotos
 Route::get('/formAñadirImagenes',[HomeController::class,"formAñadirImagenes"])->name("formAñadirImagenes")->middleware("auth");
 Route::get('/colorSeleccionado',[HomeController::class,"colorSeleccionado"])->name("colorSeleccionado")->middleware("auth");
 Route::post('/storeProductoFotos',[HomeController::class,"storeProductoFotos"])->name("storeProductoFotos")->middleware("auth");
 Route::post('/storeProductoFotosImagenes',[HomeController::class,"storeProductoFotosImagenes"])->name("storeProductoFotosImagenes")->middleware("auth");
 Route::post('/storeProductoFotosTamañoCantidad',[HomeController::class,"storeProductoFotosTamañoCantidad"])->name("storeProductoFotosTamañoCantidad")->middleware("auth");
+Route::get('/eliminarProductoTablaFotos',[HomeController::class,"eliminarProductoTablaFotos"])->name("eliminarProductoTablaFotos")->middleware("auth");
 
 
 

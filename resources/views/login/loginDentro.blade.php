@@ -75,7 +75,7 @@
                                 <button type="submit" class="bntEliminarCategoria">
                                     <i class="fa-regular fa-images fa-xl"></i>
                                     <br><br>
-                                    <p>Añadir mas imagenes, colores, tamaños, cantidad</p>
+                                    <p>Añadir mas imagenes, colores, tamaños-cantidad</p>
                                 </button>
                             </form>
                             </p>

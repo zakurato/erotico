@@ -51,33 +51,21 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Seleccione un color</label>
-                <select class="form-control" name="color">
-                    <option disabled selected>{{ $producto->color }}</option>
-                    <option>NINGUNO</option>
-                    @foreach ($colores as $item)
-                        <option>{{ $item->nombreColor }}</option>
-                    @endforeach
-                </select>
+                <label for="exampleFormControlSelect1">Color</label>
+                <input type="text" class="form-control" name="color" disabled value="{{ $producto->color }}">
             </div>
 
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
-                <select class="form-control" name="tamaño">
-                    <option disabled selected>{{ $producto->tamaño }}</option>
-                    <option>NINGUNO</option>
-                    @foreach ($tamaños as $item)
-                        <option>{{ $item->tamaño }}cm</option>
-                    @endforeach
-                </select>
+                <label for="exampleFormControlSelect1">Tamaño</label>
+                <input type="text" class="form-control" name="tamaño" disabled value="{{ $producto->tamaño }}">
             </div>
             <div class="form-group">
                 <label>Precio del producto:</label>
                 <input type="text" class="form-control" name="precio" required value="{{ $producto->precio }}">
             </div>
             <div class="form-group">
-                <label>Cantidad del producto:</label>
-                <input type="text" class="form-control" name="cantidad" required value="{{ $producto->cantidad }}">
+                <label>Cantidad del producto que desea añadir a este color y tamaño: (Existencia actual: {{$producto->cantidad}})</label>
+                <input type="text" class="form-control" name="cantidad" required>
             </div>
             <div class="form-group">
                 <label for="exampleTextarea">Descripción del producto</label>
@@ -97,35 +85,6 @@
 
     <br><br>
 
-    <div class="container">
-        <h2>Imagenes del producto</h2>
-        <br><br>
-        <div class="row row-cols-2 g-3">
-            @foreach ($fotos as $item)
-                <div class="col">
-                    <div class="card">
-                        <img style="width: 200px; height: 200px;" src="imagesProductos/{{ $item->imagen }}"
-                            alt="">
-                        <div class="card-body">
-                            <div style="display: flex; align-items: center; gap: 10px; ">
-                                <p class="card-text">
-                                    <br><br>
-                                <form id="eliminarForm" action="{{ route('eliminarProductoImagenes') }}"
-                                    method="GET">
-                                    @csrf
-                                    <input type="text" name="id" value="{{ $item->id }}" hidden>
-                                    <button type="submit" class="bntEliminarCategoria"
-                                        onclick="return confirm('¿Estás seguro de que deseas eliminar la imagen')">
-                                        <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
-                                    </button>
-                                </form>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
 
 
 </body>

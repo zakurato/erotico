@@ -43,33 +43,35 @@
             </select>
         </div>
     </form>
+    <br><br>
+    <div class="container" style="background-color: darkseagreen; border: solid 1px;">
+        <form action="{{ route('storeProductoFotos') }}" method="POST" accept-charset="UTF-8"
+            enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="id" value="{{ $producto->id }}">
+            <input type="hidden" name="color" value="{{ $color }}">
 
-
-    <form action="{{ route('storeProductoFotos') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="id" value="{{ $producto->id }}">
-        <input type="hidden" name="color" value="{{ $color }}">
-
-        <div class="form-group">
-            <label>Seleccionar imágenes</label>
-            <input type="file" name="image[]" class="form-control" multiple required id="campoTexto">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
-            <select class="form-control" name="tamaño">
-                <option>NINGUNO</option>
-                @foreach ($tamaños as $item)
-                    <option>{{ $item->tamaño }}cm</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Cantidad del producto:</label>
-            <input type="number" class="form-control" name="cantidad" required>
-        </div>
-        <br><br>
-        <button type="submit" class="btn btn-default">Añadir</button>
-    </form>
+            <div class="form-group">
+                <label>Seleccionar imágenes</label>
+                <input type="file" name="image[]" class="form-control" multiple required id="campoTexto">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
+                <select class="form-control" name="tamaño">
+                    <option>NINGUNO</option>
+                    @foreach ($tamaños as $item)
+                        <option>{{ $item->tamaño }}cm</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Cantidad del producto:</label>
+                <input type="number" class="form-control" name="cantidad" required>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-default">Añadir</button>
+        </form>
+    </div>
 
 
 </body>
