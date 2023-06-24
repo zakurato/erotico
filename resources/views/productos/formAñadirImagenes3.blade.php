@@ -178,6 +178,17 @@
                                 <th style="width: 150px; height: 150px;">{{ $item->color }}</td>
                                 <th style="width: 150px; height: 150px;">{{ $item->tamaño }}</td>
                                 <th style="width: 150px; height: 150px;">{{ $item->cantidad }}</td>
+                                    <th>
+                                        <form action="{{ route('eliminarProductoTablaFotos') }}" method="GET">
+                                            @csrf
+                                            <input type="text" name="id" value="{{ $item->id }}" hidden>
+                                            <button type="submit" class="bntEliminarCategoria"
+                                                onclick="return confirm('¿Estás seguro de que deseas eliminar el producto')">
+                                                <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
+                                                <br><br>
+                                            </button>
+                                        </form>
+                                    </th>
                             @endif
                         @endif
                     </tr>

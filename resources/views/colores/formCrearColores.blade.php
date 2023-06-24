@@ -73,7 +73,7 @@
                             @csrf
                             <input type="text" name="id" value="{{ $item->id }}" hidden>
                             <button type="submit" class="bntEliminarCategoria"
-                                onclick="return confirm('¿Estás seguro de que deseas eliminar el producto {{ $item->nombre }}')">
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar el color {{ $item->nombreColor }}')">
                                 <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
                             </button>
                         </form>

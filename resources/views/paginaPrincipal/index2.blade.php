@@ -6,7 +6,7 @@
 
 
     <!--/Css propios public-->
-    <link rel="stylesheet" href="{{ asset('index/index.Css') }}">
+    <link rel="stylesheet" href="{{ asset('index/index.Css?1.0') }}">
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v=120939182865429120021678115775">
 
     <meta charset="utf-8">
@@ -154,34 +154,7 @@
 
 
 
-
-
-
-
-
-
-
     <br><br><br><br><br><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -243,65 +216,216 @@
                 </header>
             </div>
 
-            <div class="container container--flush">
-                {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
-                <div class="product-list product-list--vertical product-list--stackable">
-                    @foreach ($productos as $item)
-                        <div class="product-item product-item--vertical   1/2 1/4--lap 1/3--desk 1/4--wide"><a
-                                class="product-item__image-wrapper product-item__image-wrapper--with-secondary">
-                                <div class="aspect-ratio aspect-ratio--short" style="padding-bottom: 100.0%">
 
-                                    <img src="imagesProductos/{{ $item->imagen }}" alt=""
-                                        class="product-item__primary-image">
+            {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
 
-                                    <img src="images/logo.jpg?v=1673978877&amp;width=3126" alt=""
-                                        width="3126" height="3125" loading="lazy"
-                                        sizes="(max-width: 699px) 100vw, 600px" class="product-item__secondary-image">
+            <section class="py-5">
+                <div class="container px-4 px-lg-5 mt-5">
+                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-                                </div>
-                            </a>
-                            <div class="product-item__info">
-                                <div class="product-item__info-inner">{{ $item->categoria }}
-                                    <p class="product-item__title text--strong link">{{ $item->nombre }}</p>
-                                    <div class="product-item__price-list price-list"><span class="price">
-                                            ₡{{ $item->precio }} </span>
+                        @foreach ($productos as $index => $item)
+                            <form action="">
+                                <div class="col mb-5">
+                                    <div class="card h-100">
+                                        <div id="myCarousel{{ $index }}" class="carousel slide"
+                                            data-ride="carousel">
+                                            <!-- Indicators -->
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner">
+                                                <div class="item active">
+                                                    <!-- Product image-->
+                                                    <img style="width: 380px; height: 260px;" class="card-img-top"
+                                                        src="imagesProductos/{{ $item->imagen }}" alt="..." />
+                                                </div>
+
+
+
+                                                @foreach ($fotos as $item2)
+                                                    @if ($item->id == $item2->idFK)
+                                                        <div class="item">
+                                                            <img style="width: 380px; height: 260px;"
+                                                                class="card-img-top"
+                                                                src="imagesProductos/{{ $item2->imagen }}"
+                                                                alt="..." />
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+
+                                            <!-- Left and right controls -->
+                                            <a class="left carousel-control" href="#myCarousel{{ $index }}"
+                                                data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#myCarousel{{ $index }}"
+                                                data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="product-item__info-inner">
-                                    @if ($item->color != 'NINGUNO')
-                                        <div class="form-group">
-                                            <select class="form-control" name="color">
-                                                <option disabled selected>Seleccione el color</option>
-                                                <option>{{ $item->color }}</option>
-                                            </select>
+                                    <!-- Product details-->
+                                    <div class="card-body p-4">
+                                        <div class="text-center">
+                                            <!-- Product name-->
+                                            <h5 class="fw-bolder"><strong>{{ $item->nombre }}</strong></h5>
+                                            <!-- Product price-->
+                                            <h5 class="fw-bolder">Precio: ₡{{ $item->precio }}</h5>
                                         </div>
-                                    @endif
-                                </div>
-                                <div class="product-item__info-inner">
-                                    @if ($item->tamaño != 'NINGUNO')
-                                        <div class="form-group">
-                                            <select class="form-control" name="color">
-                                                <option disabled selected>Seleccione el tamaño</option>
-                                                @if ($item->cantidad > 0)
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    
+
+
+
+
+
+
+                                    <div class="product-item__info-inner">
+                                            <div class="form-group">
+                                                <select class="form-control" name="color" id="color-select-{{ $item->id }}">
+                                                    <option disabled>Seleccione el color</option>
+                                                    <option disabled selected>{{ $item->color }}</option>
+                                                    <option>{{ $item->color }}</option>
+                                                    <?php $coloresExistentes = []; ?>
+                                                    @foreach ($fotos as $item2)
+                                                        @if ($item->id == $item2->idFK && !in_array($item2->color, $coloresExistentes))
+                                                            @if ($item->color != $item2->color)
+                                                                <option>{{ $item2->color }}</option>
+                                                                <?php $coloresExistentes[] = $item2->color; ?>
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <input type="text" readonly id="selected-color-{{ $item->id }}"
+                                                value="{{ $item->color }}">
+                                            <!--Necesito agarrar el valor que viene de ese id y guardarlo en una variable php-->
+                                    </div>
+                                    
+
+                                        <script>
+                                            $(document).ready(function() {
+                                                $('.form-control').change(function() {
+                                                    var productId = $(this).attr('id').replace('color-select-', '');//obtiene el id del producto del select
+                                                    var selectedColor = $(this).val();//obtiene el color del id producto del select 
+                                                    $('#selected-color-' + productId).val(selectedColor);//cambia el color del input del color seleccionado
+                                                });
+                                            });
+                                        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div class="product-item__info-inner">
+                                        @if ($item->tamaño != 'NINGUNO')
+                                            <div class="form-group">
+                                                <select class="form-control" name="tamaño">
+                                                    <option disabled selected>Seleccione el tamaño</option>
                                                     <option>{{ $item->tamaño }}</option>
-                                                @endif
-                                            </select>
-                                        </div>
-                                    @endif
-                                </div>
+                                                    @if ($item->id == $item2->idFK && $item->color == $item2->color)
+                                                        <option>{{ $item2->tamaño }}</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        @endif
+                                    </div>
 
-                                <form method="" action="" class="product-item__action-list button-stack">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <input type="hidden" name="id" value="{{ $item->id }}">
-                                    <button type="submit"
-                                        class="product-item__action-button button button--small button--primary">Añadir
-                                        al carrito</button>
-                                </form>
-                            </div>
-                        </div>
-                    @endforeach
+                                    <button style="width: 100%" type="submit"
+                                        class="product-item__action-button button button--small button--primary">
+                                        Añadir al carrito</button>
+                                </div>
+                            </form>
+                        @endforeach
+
+
+                    </div>
                 </div>
-            </div>
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div id="modal-quick-view-template--14562732638271__featured-collection" class="modal"
                 aria-hidden="true">
                 <div class="modal__dialog modal__dialog--stretch" role="dialog">
@@ -996,7 +1120,8 @@
                                                 class="icon" role="presentation" viewBox="2 1 21 21">
                                                 <path
                                                     d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"
-                                                    fill="currentColor" fill-rule="evenodd" class="focusAlWhatapps">
+                                                    fill="currentColor" fill-rule="evenodd"
+                                                    class="focusAlWhatapps">
                                                 </path>
                                             </svg></a>
                                     </li>
@@ -1039,5 +1164,8 @@
 
     }
 </script>
+
+
+
 
 </html>

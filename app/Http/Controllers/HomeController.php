@@ -21,6 +21,7 @@ class HomeController extends Controller
         return view("paginaPrincipal.index");
     }
     public function index2(){
+
         $existe = 0;
         $clientes = Cliente::all();
 
@@ -30,17 +31,27 @@ class HomeController extends Controller
                 break;
             }
         }
+
         if($existe == 0){
             $cliente = new Cliente();
             //return session('nombre');
             $cliente->nombre = session('nombre');
             $cliente->contadorCarrito = 0;
             $cliente->save();
+
+            $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
+            $categorias = Categoria::all();
+            $productos = Producto::paginate(5);
+            $fotos = Foto::all();
+
+
+            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos"));
         }else{
             $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
             $categorias = Categoria::all();
             $productos = Producto::paginate(5);
-            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito"));
+            $fotos = Foto::all();
+            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos"));
         }
     }
 
@@ -613,7 +624,7 @@ class HomeController extends Controller
     }
 
     public function eliminarProductoTablaFotos(Request $request){
-
+        //return $request;
         $ProductosEliminadoTablaFotos = Foto::where("id", $request->id)->first();
         
 
@@ -623,6 +634,13 @@ class HomeController extends Controller
             return redirect()->route("loginDentro");
     
         }else if($ProductosEliminadoTablaFotos->tamaño == "formImagenes"){
+            unlink(public_path('imagesProductos/'.$ProductosEliminadoTablaFotos->imagen));
+            $delete=Foto::where('id',$request->id)->delete();
+
+            session()->flash("eliminarProducto","EL producto se elimino correctamente");
+            return redirect()->route("colorSeleccionado", ['id' => $ProductosEliminadoTablaFotos->idFK, 'color' => $ProductosEliminadoTablaFotos->color]);
+        }
+        else{
             unlink(public_path('imagesProductos/'.$ProductosEliminadoTablaFotos->imagen));
             $delete=Foto::where('id',$request->id)->delete();
 

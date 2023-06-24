@@ -45,7 +45,7 @@
 
 
     <br><br>
-    <h2>Tabla categorías</h2>
+    <h2>Tabla de categorías</h2>
     <br>
     <table class="table">
         <thead>
@@ -73,7 +73,7 @@
                             @csrf
                             <input type="text" name="id" value="{{ $item->id }}" hidden>
                             <button type="submit" class="bntEliminarCategoria"
-                                onclick="return confirm('¿Estás seguro de que deseas eliminar el producto {{ $item->nombre }}')">
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar la categoría {{ $item->nombreCategoria }}')">
                                 <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
                             </button>
                         </form>
