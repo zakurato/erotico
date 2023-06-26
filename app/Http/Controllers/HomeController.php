@@ -6,9 +6,9 @@ use App\Models\Categoria;
 use App\Models\Cliente;
 use App\Models\Color;
 use App\Models\Foto;
-use App\Models\Medida;
 use App\Models\Producto;
 use App\Models\Tamano;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -159,6 +159,8 @@ class HomeController extends Controller
 
     public function storeActualizarProducto(Request $request){
 
+
+        
     if(Empty($request->color)){
         $color = "NINGUNO";
     }else{
@@ -649,5 +651,23 @@ class HomeController extends Controller
         }
 
     }
+
+
+    public function jqTamaños(Request $request)
+    {
+        if ($request->ajax()) {
+            $productId = $request->input('productId');
+            $selectedColor = $request->input('selectedColor');
+    
+            $tamañosSelectColorFotos = Foto::where("idFK", $productId)->where("color", $selectedColor)->get();
+            $tamañosSelectColorProducto = Producto::where("id", $productId)->where("color", $selectedColor)->get();
+            
+            $respuesta = $tamañosSelectColorProducto->concat($tamañosSelectColorFotos);
+            
+            $colores = $respuesta->pluck('tamaño')->unique(); // Obtiene los tamanos únicos
+            return response()->json($colores);
+        }
+    }
+    
 
 }

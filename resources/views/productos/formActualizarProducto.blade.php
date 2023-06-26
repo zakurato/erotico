@@ -27,6 +27,8 @@
         <br>
         {{ session('correctoActualizarProducto') }}
         {{ session('eliminarProductoImagenes') }}
+
+        {{$producto->color}}
         <br>
         <form action="{{ route('storeActualizarProducto') }}" method="GET">
             <input type="text" name="id" value="{{ $producto->id }}" hidden>
@@ -52,12 +54,12 @@
 
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Color</label>
-                <input type="text" class="form-control" name="color" disabled value="{{ $producto->color }}">
+                <input type="text" class="form-control" name="color" readonly value="{{ $producto->color }}">
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Tamaño</label>
-                <input type="text" class="form-control" name="tamaño" disabled value="{{ $producto->tamaño }}">
+                <input type="text" class="form-control" name="tamaño" readonly value="{{ $producto->tamaño }}">
             </div>
             <div class="form-group">
                 <label>Precio del producto:</label>

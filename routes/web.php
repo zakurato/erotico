@@ -66,6 +66,8 @@ Route::get('/eliminarProductoTablaFotos',[HomeController::class,"eliminarProduct
 
 
 
+//jQuerySelectColor
 
+Route::get('/jqTamaños',[HomeController::class,"jqTamaños"])->name("jqTamaños")->middleware("auth");
 
 

@@ -242,7 +242,7 @@
 
 
                                                 @foreach ($fotos as $item2)
-                                                    @if ($item->id == $item2->idFK)
+                                                    @if ($item->id == $item2->idFK && $item2->imagen != "formTamañosCantidades")
                                                         <div class="item">
                                                             <img style="width: 380px; height: 260px;"
                                                                 class="card-img-top"
@@ -299,8 +299,7 @@
                                     <div class="product-item__info-inner">
                                             <div class="form-group">
                                                 <select class="form-control" name="color" id="color-select-{{ $item->id }}">
-                                                    <option disabled>Seleccione el color</option>
-                                                    <option disabled selected>{{ $item->color }}</option>
+                                                    <option disabled selected>Seleccione el color</option>
                                                     <option>{{ $item->color }}</option>
                                                     <?php $coloresExistentes = []; ?>
                                                     @foreach ($fotos as $item2)
@@ -313,47 +312,13 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <input type="text" readonly id="selected-color-{{ $item->id }}"
-                                                value="{{ $item->color }}">
-                                            <!--Necesito agarrar el valor que viene de ese id y guardarlo en una variable php-->
                                     </div>
                                     
 
-                                        <script>
-                                            $(document).ready(function() {
-                                                $('.form-control').change(function() {
-                                                    var productId = $(this).attr('id').replace('color-select-', '');//obtiene el id del producto del select
-                                                    var selectedColor = $(this).val();//obtiene el color del id producto del select 
-                                                    $('#selected-color-' + productId).val(selectedColor);//cambia el color del input del color seleccionado
-                                                });
-                                            });
-                                        </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                     <div class="product-item__info-inner">
-                                        @if ($item->tamaño != 'NINGUNO')
                                             <div class="form-group">
-                                                <select class="form-control" name="tamaño">
+                                                <select class="form-control" name="tamaño" id="selectTamaños{{$item->id }}">
                                                     <option disabled selected>Seleccione el tamaño</option>
                                                     <option>{{ $item->tamaño }}</option>
                                                     @if ($item->id == $item2->idFK && $item->color == $item2->color)
@@ -361,8 +326,39 @@
                                                     @endif
                                                 </select>
                                             </div>
-                                        @endif
                                     </div>
+
+
+
+                                    <script>
+                                        $(document).ready(function() {
+                                          $('.form-control').change(function() {
+                                            var productId = $(this).attr('id').replace('color-select-', '');
+                                            var selectedColor = $(this).val();
+                                      
+                                            if ($.trim(productId != "")) {
+                                              $.ajax({
+                                                url: 'jqTamaños', // aqui va el nombre de la ruta
+                                                method: 'GET', // el metodo que se usa en la ruta
+                                                data: {productId: productId, selectedColor: selectedColor}, //los parametros enviados
+                                                dataType: 'json', 
+                                                success: function(response) {
+
+                                                    console.log("asd");
+                                                    
+                                                  $("#selectTamaños"+productId).empty();
+                                                  $("#selectTamaños"+productId).append("<option value=''>Selecciona el tamaño</option>");
+
+                                                  for (var i = 0; i < response.length; i++) {
+                                                    $("#selectTamaños"+productId).append("<option value=''>"+response[i]+"</option>");
+                                                  }
+                                                }
+                                              });
+                                            }
+                                          });
+                                        });
+                                      </script>
+                                      
 
 
 
