@@ -668,6 +668,22 @@ class HomeController extends Controller
             return response()->json($colores);
         }
     }
+
+    public function jqImagenes(Request $request)
+    {
+        if ($request->ajax()) {
+            $productId = $request->input('productId');
+            $selectedColor = $request->input('selectedColor');
+    
+            $imagenesSelectColorFotos = Foto::where("idFK", $productId)->where("color", $selectedColor)->get();
+            $imagenesSelectColorProducto = Producto::where("id", $productId)->where("color", $selectedColor)->get();
+            
+            $respuesta = $imagenesSelectColorProducto->concat($imagenesSelectColorFotos);
+            
+            $imagenes = $respuesta->pluck('imagen')->unique(); // Obtiene las imagenes nada mas
+            return response()->json($imagenes);
+        }
+    }
     
 
 }

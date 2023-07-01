@@ -231,27 +231,152 @@
                                             data-ride="carousel">
                                             <!-- Indicators -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                             <!-- Wrapper for slides -->
                                             <div class="carousel-inner">
-                                                <div class="item active">
+                                                <div class="item active" id="selectImagenes2{{ $item->id }}">
                                                     <!-- Product image-->
-                                                    <img style="width: 380px; height: 260px;" class="card-img-top"
-                                                        src="imagesProductos/{{ $item->imagen }}" alt="..." />
+                                                    <img style="width: 380px; height: 260px;" class="card-img-top"src="imagesProductos/{{ $item->imagen }}" alt="..." >
                                                 </div>
 
-
-
+                                                <!--
                                                 @foreach ($fotos as $item2)
-                                                    @if ($item->id == $item2->idFK && $item2->imagen != "formTamañosCantidades")
-                                                        <div class="item">
-                                                            <img style="width: 380px; height: 260px;"
-                                                                class="card-img-top"
-                                                                src="imagesProductos/{{ $item2->imagen }}"
-                                                                alt="..." />
-                                                        </div>
-                                                    @endif
+                                                <div class="item">
+                                                    <img style="width: 380px; height: 260px;" class="card-img-top"src="imagesProductos/{{ $item2->imagen }}" alt="..." >
+                                                </div> 
                                                 @endforeach
+                                                -->
+
+                                                <div id="selectImagenes{{ $item->id }}">
+                                                    
+                                                </div>
+
                                             </div>
+
+
+
+
+
+
+                                    <script>
+                                        //me trae las imagenes del color seleccionado y del producto seleccionado
+                                        $(document).ready(function() {
+                                            $('#color-select-{{ $item->id }}').change(function() {
+                                                var productId = $(this).attr('id').replace('color-select-', '');
+                                                var selectedColor = $(this).val();
+                                                if ($.trim(productId != "")) {
+                                                    $.ajax({
+                                                        url: 'jqImagenes', // aqui va el nombre de la ruta
+                                                        method: 'GET', // el metodo que se usa en la ruta
+                                                        data: {
+                                                            productId: productId,
+                                                            selectedColor: selectedColor
+                                                        }, //los parametros enviados
+                                                        dataType: 'json',
+                                                        success: function(response) {
+
+                                                            // Obtener el elemento div por su ID
+                                                            var divElement = document.getElementById("selectImagenes{{ $item->id }}"); // class item
+                                                            // Obtener el elemento div por su ID
+                                                            var divElement2 = document.getElementById("selectImagenes2{{ $item->id }}");//class item active
+                                                            
+                                                                        
+                                                        for (var i = 0; i < response.length; i++) {//me trae las imagenes de la consulta que viene del response
+                                                            console.log(response.length);
+                                                            if(response.length == 1){
+                                                                console.log("solo hay 1 elemento");
+                                                                divElement.innerHTML = "";// Limpiar el contenido del div asignando una cadena vacía
+                                                                divElement2.innerHTML = "";// Limpiar el contenido del div asignando una cadena vacía
+                                                                $("#selectImagenes2" + productId).append("<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/"+response[i] +"' >"); //coloca la primera opcion
+
+                                                            }else{
+                                                                if(i == 0){
+                                                                    console.log(i+ " hay mas elementos pero estoy en la posicion 0");
+                                                                    divElement2.innerHTML = "";// Limpiar el contenido del div asignando una cadena vacía
+                                                                    $("#selectImagenes2" + productId).append("<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/"+response[i] +"' >"); //coloca la primera opcion
+                                                                }else{
+                                                                    if(response[i] != "formTamañosCantidades"){
+                                                                        //el detalle es que aqui mete en ese div imagenes y necesito que mas bien me cree mas div iguales 
+                                                                        $("#selectImagenes" + productId).append("<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/"+response[i] +"' >"); //coloca la primera opcion
+                                                                        
+                                                                    }
+                                                            }
+                                                            }
+                                                        }
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        });
+                                    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                             <!-- Left and right controls -->
                                             <a class="left carousel-control" href="#myCarousel{{ $index }}"
@@ -289,7 +414,7 @@
 
 
 
-                                    
+
 
 
 
@@ -297,87 +422,67 @@
 
 
                                     <div class="product-item__info-inner">
-                                            <div class="form-group">
-                                                <select class="form-control" name="color" id="color-select-{{ $item->id }}">
-                                                    <option disabled selected>Seleccione el color</option>
-                                                    <option>{{ $item->color }}</option>
-                                                    <?php $coloresExistentes = []; ?>
-                                                    @foreach ($fotos as $item2)
-                                                        @if ($item->id == $item2->idFK && !in_array($item2->color, $coloresExistentes))
-                                                            @if ($item->color != $item2->color)
-                                                                <option>{{ $item2->color }}</option>
-                                                                <?php $coloresExistentes[] = $item2->color; ?>
-                                                            @endif
+                                        <div class="form-group">
+                                            <select class="form-control" name="color"
+                                                id="color-select-{{ $item->id }}">
+                                                <option disabled selected>Seleccione el color</option>
+                                                <option>{{ $item->color }}</option>
+                                                <?php $coloresExistentes = []; ?>
+                                                @foreach ($fotos as $item2)
+                                                    @if ($item->id == $item2->idFK && !in_array($item2->color, $coloresExistentes))
+                                                        @if ($item->color != $item2->color)
+                                                            <option>{{ $item2->color }}</option>
+                                                            <?php $coloresExistentes[] = $item2->color; ?>
                                                         @endif
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                    
+
 
 
                                     <div class="product-item__info-inner">
-                                            <div class="form-group">
-                                                <select class="form-control" name="tamaño" id="selectTamaños{{$item->id }}">
-                                                    <option disabled selected>Seleccione el tamaño</option>
-                                                    <option>{{ $item->tamaño }}</option>
-                                                    @if ($item->id == $item2->idFK && $item->color == $item2->color)
-                                                        <option>{{ $item2->tamaño }}</option>
-                                                    @endif
-                                                </select>
-                                            </div>
+                                        <div class="form-group">
+                                            <select class="form-control" name="tamaño"id="selectTamaños{{ $item->id }}">
+                                                <option disabled selected>Seleccione el tamaño</option>
+                                            </select>
+                                        </div>
                                     </div>
 
 
 
                                     <script>
+                                        //me trae los tamaños del color seleccionado y del producto seleccionado
                                         $(document).ready(function() {
-                                          $('.form-control').change(function() {
-                                            var productId = $(this).attr('id').replace('color-select-', '');
-                                            var selectedColor = $(this).val();
-                                      
-                                            if ($.trim(productId != "")) {
-                                              $.ajax({
-                                                url: 'jqTamaños', // aqui va el nombre de la ruta
-                                                method: 'GET', // el metodo que se usa en la ruta
-                                                data: {productId: productId, selectedColor: selectedColor}, //los parametros enviados
-                                                dataType: 'json', 
-                                                success: function(response) {
+                                            $('#color-select-{{ $item->id }}').change(function() {
+                                                var productId = $(this).attr('id').replace('color-select-', '');
+                                                var selectedColor = $(this).val();
 
-                                                    console.log("asd");
-                                                    
-                                                  $("#selectTamaños"+productId).empty();
-                                                  $("#selectTamaños"+productId).append("<option value=''>Selecciona el tamaño</option>");
+                                                if ($.trim(productId != "")) {
+                                                    $.ajax({
+                                                        url: 'jqTamaños', // aqui va el nombre de la ruta
+                                                        method: 'GET', // el metodo que se usa en la ruta
+                                                        data: {
+                                                            productId: productId,
+                                                            selectedColor: selectedColor
+                                                        }, //los parametros enviados
+                                                        dataType: 'json',
+                                                        success: function(response) {
+                                                            $("#selectTamaños" + productId).empty(); //limpia el select de tamaños
+                                                            $("#selectTamaños" + productId).append( "<option value=''>Selecciona el tamaño</option>"); //coloca la primera opcion
 
-                                                  for (var i = 0; i < response.length; i++) {
-                                                    $("#selectTamaños"+productId).append("<option value=''>"+response[i]+"</option>");
-                                                  }
+                                                            for (var i = 0; i < response.length; i++) { //me trae los tamaños de la consulta que viene del response
+                                                                if(response[i] != "formImagenes"){
+                                                                    $("#selectTamaños" + productId).append("<option value=''>" +response[i] + "</option>");
+                                                                }
+                                                            }
+                                                        }
+                                                    });
                                                 }
-                                              });
-                                            }
-                                          });
+                                            });
                                         });
-                                      </script>
-                                      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                    </script>
 
 
 
@@ -1116,8 +1221,7 @@
                                                 class="icon" role="presentation" viewBox="2 1 21 21">
                                                 <path
                                                     d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"
-                                                    fill="currentColor" fill-rule="evenodd"
-                                                    class="focusAlWhatapps">
+                                                    fill="currentColor" fill-rule="evenodd" class="focusAlWhatapps">
                                                 </path>
                                             </svg></a>
                                     </li>
