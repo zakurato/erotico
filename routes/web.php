@@ -63,13 +63,14 @@ Route::post('/storeProductoFotosTamañoCantidad',[HomeController::class,"storePr
 Route::get('/eliminarProductoTablaFotos',[HomeController::class,"eliminarProductoTablaFotos"])->name("eliminarProductoTablaFotos")->middleware("auth");
 
 
-
-
-
 //jQuerySelectColor
-
 Route::get('/jqTamaños',[HomeController::class,"jqTamaños"])->name("jqTamaños");
 Route::get('/jqImagenes',[HomeController::class,"jqImagenes"])->name("jqImagenes");
+
+
+//Carrito de compras
+Route::get('/carritoCompra',[HomeController::class,"carritoCompra"])->name("carritoCompra");
+
 
 
 

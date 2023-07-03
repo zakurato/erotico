@@ -43,15 +43,17 @@ class HomeController extends Controller
             $categorias = Categoria::all();
             $productos = Producto::paginate(5);
             $fotos = Foto::all();
+            $sessionCliente = session('nombre');
 
 
-            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos"));
+            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
         }else{
+            $sessionCliente = session('nombre');
             $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
             $categorias = Categoria::all();
             $productos = Producto::paginate(5);
             $fotos = Foto::all();
-            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos"));
+            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
         }
     }
 
@@ -684,6 +686,19 @@ class HomeController extends Controller
             return response()->json($imagenes);
         }
     }
+
+    public function carritoCompra(Request $request){
+        if ($request->ajax()) {
+            $productId = $request->input('productId');
+            $selectedColor = $request->input('selectedColor');
+            $selectedTamaño = $request->input('selectedTamaño');
+            $sessionCliente = $request->input('sessionCliente');
+            //aqui debo aumentar el carrito de ese sessionCliente
+            //tambien debo crear una tabla donde van a ir las las compras de ese carrito
+        }
+    }
+    
+    
     
 
 }

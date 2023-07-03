@@ -215,169 +215,107 @@
                     </div>
                 </header>
             </div>
-
-
             {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
-
             <section class="py-5">
                 <div class="container px-4 px-lg-5 mt-5">
                     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
                         @foreach ($productos as $index => $item)
-                            <form action="">
+                            <form id="miFormulario{{$item->id}}">
+                                @csrf
                                 <div class="col mb-5">
                                     <div class="card h-100">
                                         <div id="myCarousel{{ $index }}" class="carousel slide"
                                             data-ride="carousel">
                                             <!-- Indicators -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                             <!-- Wrapper for slides -->
-                                            <div class="carousel-inner">
-                                                <div class="item active" id="selectImagenes2{{ $item->id }}">
-                                                    <!-- Product image-->
-                                                    <img style="width: 380px; height: 260px;" class="card-img-top"src="imagesProductos/{{ $item->imagen }}" alt="..." >
+                                            <div class="carousel-inner" id="carousel-inner{{ $item->id }}">
+                                                <div id="selectImagenes{{ $item->id }}" class="item active"
+                                                    file-name="{{ $item->imagen }}">
+                                                    <img style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
                                                 </div>
-
-                                                <!--
-                                                @foreach ($fotos as $item2)
-                                                <div class="item">
-                                                    <img style="width: 380px; height: 260px;" class="card-img-top"src="imagesProductos/{{ $item2->imagen }}" alt="..." >
-                                                </div> 
-                                                @endforeach
-                                                -->
-
-                                                <div id="selectImagenes{{ $item->id }}">
-                                                    
-                                                </div>
-
                                             </div>
 
 
-
-
-
-
-                                    <script>
-                                        //me trae las imagenes del color seleccionado y del producto seleccionado
-                                        $(document).ready(function() {
-                                            $('#color-select-{{ $item->id }}').change(function() {
-                                                var productId = $(this).attr('id').replace('color-select-', '');
-                                                var selectedColor = $(this).val();
-                                                if ($.trim(productId != "")) {
-                                                    $.ajax({
-                                                        url: 'jqImagenes', // aqui va el nombre de la ruta
-                                                        method: 'GET', // el metodo que se usa en la ruta
-                                                        data: {
-                                                            productId: productId,
-                                                            selectedColor: selectedColor
-                                                        }, //los parametros enviados
-                                                        dataType: 'json',
-                                                        success: function(response) {
-
-                                                            // Obtener el elemento div por su ID
-                                                            var divElement = document.getElementById("selectImagenes{{ $item->id }}"); // class item
-                                                            // Obtener el elemento div por su ID
-                                                            var divElement2 = document.getElementById("selectImagenes2{{ $item->id }}");//class item active
-                                                            
-                                                                        
-                                                        for (var i = 0; i < response.length; i++) {//me trae las imagenes de la consulta que viene del response
-                                                            console.log(response.length);
-                                                            if(response.length == 1){
-                                                                console.log("solo hay 1 elemento");
-                                                                divElement.innerHTML = "";// Limpiar el contenido del div asignando una cadena vacía
-                                                                divElement2.innerHTML = "";// Limpiar el contenido del div asignando una cadena vacía
-                                                                $("#selectImagenes2" + productId).append("<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/"+response[i] +"' >"); //coloca la primera opcion
-
-                                                            }else{
-                                                                if(i == 0){
-                                                                    console.log(i+ " hay mas elementos pero estoy en la posicion 0");
-                                                                    divElement2.innerHTML = "";// Limpiar el contenido del div asignando una cadena vacía
-                                                                    $("#selectImagenes2" + productId).append("<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/"+response[i] +"' >"); //coloca la primera opcion
-                                                                }else{
-                                                                    if(response[i] != "formTamañosCantidades"){
-                                                                        //el detalle es que aqui mete en ese div imagenes y necesito que mas bien me cree mas div iguales 
-                                                                        $("#selectImagenes" + productId).append("<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/"+response[i] +"' >"); //coloca la primera opcion
-                                                                        
+                                            <script>
+                                                //me trae las imagenes del color seleccionado y del producto seleccionado
+                                                $(document).ready(function() {
+                                                    $('#color-select-{{ $item->id }}').change(function() {
+                                                        //console.log($(this));
+                                                        var productId = $(this).attr('id').replace('color-select-', '');
+                                                        var selectedColor = $(this).val();
+                                                        if ($.trim(productId != "")) {
+                                                            $.ajax({
+                                                                url: 'jqImagenes', // aqui va el nombre de la ruta
+                                                                method: 'GET', // el metodo que se usa en la ruta
+                                                                data: {
+                                                                    productId: productId,
+                                                                    selectedColor: selectedColor
+                                                                }, //los parametros enviados
+                                                                dataType: 'json',
+                                                                success: function(response) {
+                                                                    //console.log(response);
+                                                                    var divElement = document.getElementById(
+                                                                        "selectImagenes{{ $item->id }}"); // class item
+                                                                    divElement.innerHTML =
+                                                                    ""; // Limpiar el contenido del div asignando una cadena vacía
+                                                                    var car_element = document.getElementById("carousel-inner" +
+                                                                        productId);
+                                                                    if (response.length == 1) {
+                                                                        divElement.innerHTML = "";
+                                                                        $("#selectImagenes" + productId).append(
+                                                                            "<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                            response[0] + "' >"); //coloca la primera opcion
+                                                                        divElement.setAttribute("file-name", response[0]);
+                                                                        var images = car_element.querySelectorAll(".item");
+                                                                        images.forEach((element) => {
+                                                                            if (element.getAttribute("file-name") != response[
+                                                                                0]) {
+                                                                                element.remove();
+                                                                            } else {
+                                                                                element.classList.add("active");
+                                                                            }
+                                                                        });
+                                                                    } else {
+                                                                        var array_images = [];
+                                                                        response.forEach((image) => {
+                                                                            array_images.push(image);
+                                                                        });
+                                                                        for (var i = 0; i < response
+                                                                            .length; i++) { //me trae las imagenes de la consulta que viene del response
+                                                                            if (response[i] != "formTamañosCantidades") {
+                                                                                if (i == 0) {
+                                                                                    $("#selectImagenes" + productId).append("<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" + response[i] + "' >"); //coloca la primera opcion
+                                                                                    divElement.setAttribute("file-name", response[i]);
+                                                                                } else {
+                                                                                    var clone = divElement.cloneNode(true);
+                                                                                    clone.firstChild.src = "imagesProductos/" +
+                                                                                        response[i];
+                                                                                    clone.classList.remove("active");
+                                                                                    clone.setAttribute("file-name", response[i]);
+                                                                                    car_element.appendChild(clone);
+                                                                                }
+                                                                                var isactive = false;
+                                                                                var images = car_element.querySelectorAll(".item");
+                                                                                images.forEach((element) => {
+                                                                                    if (!array_images.includes(element
+                                                                                            .getAttribute("file-name"))) {
+                                                                                        element.remove();
+                                                                                    } else {
+                                                                                        if (!isactive) {
+                                                                                            element.classList.add("active");
+                                                                                            isactive = true;
+                                                                                        }
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        }
                                                                     }
-                                                            }
-                                                            }
-                                                        }
+                                                                }
+                                                            });
                                                         }
                                                     });
-                                                }
-                                            });
-                                        });
-                                    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                                });
+                                            </script>
                                             <!-- Left and right controls -->
                                             <a class="left carousel-control" href="#myCarousel{{ $index }}"
                                                 data-slide="prev">
@@ -391,7 +329,6 @@
                                             </a>
                                         </div>
                                     </div>
-
                                     <!-- Product details-->
                                     <div class="card-body p-4">
                                         <div class="text-center">
@@ -401,30 +338,9 @@
                                             <h5 class="fw-bolder">Precio: ₡{{ $item->precio }}</h5>
                                         </div>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     <div class="product-item__info-inner">
                                         <div class="form-group">
-                                            <select class="form-control" name="color"
-                                                id="color-select-{{ $item->id }}">
+                                            <select class="form-control" name="color"id="color-select-{{ $item->id }}">
                                                 <option disabled selected>Seleccione el color</option>
                                                 <option>{{ $item->color }}</option>
                                                 <?php $coloresExistentes = []; ?>
@@ -439,18 +355,13 @@
                                             </select>
                                         </div>
                                     </div>
-
-
-
                                     <div class="product-item__info-inner">
                                         <div class="form-group">
-                                            <select class="form-control" name="tamaño"id="selectTamaños{{ $item->id }}">
+                                            <select class="form-control"name="tamaño"id="selectTamaños{{ $item->id }}">
                                                 <option disabled selected>Seleccione el tamaño</option>
                                             </select>
                                         </div>
                                     </div>
-
-
 
                                     <script>
                                         //me trae los tamaños del color seleccionado y del producto seleccionado
@@ -458,7 +369,7 @@
                                             $('#color-select-{{ $item->id }}').change(function() {
                                                 var productId = $(this).attr('id').replace('color-select-', '');
                                                 var selectedColor = $(this).val();
-
+                                                //console.log(selectedColor);
                                                 if ($.trim(productId != "")) {
                                                     $.ajax({
                                                         url: 'jqTamaños', // aqui va el nombre de la ruta
@@ -470,11 +381,10 @@
                                                         dataType: 'json',
                                                         success: function(response) {
                                                             $("#selectTamaños" + productId).empty(); //limpia el select de tamaños
-                                                            $("#selectTamaños" + productId).append( "<option value=''>Selecciona el tamaño</option>"); //coloca la primera opcion
-
+                                                            $("#selectTamaños" + productId).append("<option value=''>Selecciona el tamaño</option>"); //coloca la primera opcion
                                                             for (var i = 0; i < response.length; i++) { //me trae los tamaños de la consulta que viene del response
-                                                                if(response[i] != "formImagenes"){
-                                                                    $("#selectTamaños" + productId).append("<option value=''>" +response[i] + "</option>");
+                                                                if (response[i] != "formImagenes") {
+                                                                    $("#selectTamaños" + productId).append("<option value='" + response[i] + "'>" + response[i] + "</option>"); // Agrega las opciones con los tamaños
                                                                 }
                                                             }
                                                         }
@@ -483,50 +393,74 @@
                                             });
                                         });
                                     </script>
-
-
-
                                     <input type="hidden" name="id" value="{{ $item->id }}">
-                                    <button style="width: 100%" type="submit"
-                                        class="product-item__action-button button button--small button--primary">
-                                        Añadir al carrito</button>
+                                    <input type="hidden" name="sessionCliente" value="{{$sessionCliente}}">
+                                    <button style="width: 100%" type="submit" id="botonCarrito{{$item->id}}" class="product-item__action-button button button--small button--primary">Añadir al carrito</button>
+
+
+                                    <script>
+                                        $(document).ready(function() {
+                                        // Asigna un controlador de eventos al botón
+                                        $('#botonCarrito{{$item->id}}').click(function(e) {
+                                            e.preventDefault(); // Evita que se envíe el formulario por defecto
+                                            // Obtén los datos del formulario
+                                            var formData = $('#miFormulario{{$item->id}}').serialize();
+                                                // Separar los pares clave-valor por el caracter "&"
+                                                var pairs = formData.split('&');
+                                                // Crear un objeto para almacenar los valores separados
+                                                var data = {};
+                                                // Recorrer los pares clave-valor separados
+                                                for (var i = 0; i < pairs.length; i++) {
+                                                // Separar cada par en clave y valor
+                                                var pair = pairs[i].split('=');
+                                                // Obtener la clave y el valor
+                                                var key = decodeURIComponent(pair[0]);
+                                                //console.log(key);
+                                                var value = decodeURIComponent(pair[1]);
+                                                // Almacenar el valor en el objeto usando la clave
+                                                data[key] = value;
+                                                }
+
+                                                // Acceder a los valores separados por clave
+                                                var id = data['id'];
+                                                var color = data['color'];
+                                                var tamaño = data['tamaño'];
+                                                var sessionCliente = data['sessionCliente'];
+
+                                                if (tamaño != undefined || color != undefined) {
+                                                    if(tamaño != ""){
+                                                        //console.log(sessionCliente);
+                                                        //console.log("si se selecciono el color");
+                                                        $.ajax({
+                                                        url: 'carritoCompra', // aqui va el nombre de la ruta
+                                                        method: 'GET', // el metodo que se usa en la ruta
+                                                        data: {
+                                                            productId: id,
+                                                            selectedColor: color,
+                                                            selectedTamaño: tamaño,
+                                                            sessionCliente: sessionCliente,
+                                                        }, //los parametros enviados
+                                                        dataType: 'json',
+                                                        success: function(response) {
+                                                            
+                                                        }
+                                                    });
+
+
+                                                    }
+                                                }
+
+
+                                        });
+                                        });
+                                    </script>
+
                                 </div>
                             </form>
                         @endforeach
-
-
                     </div>
                 </div>
             </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div id="modal-quick-view-template--14562732638271__featured-collection" class="modal"
                 aria-hidden="true">
                 <div class="modal__dialog modal__dialog--stretch" role="dialog">
