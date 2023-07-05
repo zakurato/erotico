@@ -6,7 +6,7 @@
 
 
     <!--/Css propios public-->
-    <link rel="stylesheet" href="{{ asset('index/index.Css?1.0') }}">
+    <link rel="stylesheet" href="{{ asset('index/index.Css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v=120939182865429120021678115775">
 
     <meta charset="utf-8">
@@ -48,25 +48,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    @if ($contadorCarrito->contadorCarrito > 0)
                         <div class="navbar-header">
-                            <button id="parpadeo" class="navbar-toggle" data-target="#mobile_menu"
+                            <button id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
                                 data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
                                     class="icon-bar"></span></button>
                             <a href="#" class="header__logo-link">
                                 <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
                             </a>
                         </div>
-                    @else
-                        <div class="navbar-header">
-                            <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span
-                                    class="icon-bar"></span><span class="icon-bar"></span><span
-                                    class="icon-bar"></span></button>
-                            <a href="#" class="header__logo-link">
-                                <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
-                            </a>
-                        </div>
-                    @endif
 
                     <div class="navbar-collapse collapse" id="mobile_menu">
                         <ul class="nav navbar-nav">
@@ -102,12 +91,11 @@
                             </li>
                         </ul>
                         <a href="">
-                            @if ($contadorCarrito->contadorCarrito > 0)
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-                                        <div style="display: inline-flex;">
+                                        <div style="display: inline-flex;" id="parpadeo">
                                             <!-- carrito -->
-                                            <svg id="parpadeo" style="color: #9d9d9d"
+                                            <svg style="color: #9d9d9d"
                                                 xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                                                 fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                                                 <path
@@ -115,36 +103,14 @@
                                                     fill="#9d9d9d">
                                                 </path>
                                             </svg>
-                                            <p id="parpadeo" style="color: #9d9d9d">
-                                                {{ $contadorCarrito->contadorCarrito }}</p>
-                                            <h4 id="parpadeo" style="color: #9d9d9d;">Carrito de compras</h4>
-                                            <!-- carrito -->
-                                        </div>
-
-                                    </li>
-                                </ul>
-                            @else
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <div style="display: inline-flex;">
-                                            <!-- carrito -->
-                                            <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg"
-                                                width="28" height="28" fill="currentColor"
-                                                class="bi bi-cart3" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                                    fill="#9d9d9d">
-                                                </path>
-                                            </svg>
-                                            <p style="color: #9d9d9d">{{ $contadorCarrito->contadorCarrito }}</p>
-                                            <h4 style="color: #9d9d9d;">Carrito de compras</h4>
+                                                <div style="color: #9d9d9d" id="contadorCarrito">{{$contadorCarrito->contadorCarrito}}</div>
+                                                <h4 style="color: #9d9d9d;">Carrito de compras</h4>
                                             <!-- carrito -->
                                         </div>
 
                                     </li>
                                 </ul>
                         </a>
-                        @endif
                         </a>
                     </div>
                 </div>
@@ -220,7 +186,7 @@
                 <div class="container px-4 px-lg-5 mt-5">
                     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                         @foreach ($productos as $index => $item)
-                            <form id="miFormulario{{$item->id}}">
+                            <form id="miFormulario{{ $item->id }}">
                                 @csrf
                                 <div class="col mb-5">
                                     <div class="card h-100">
@@ -231,7 +197,8 @@
                                             <div class="carousel-inner" id="carousel-inner{{ $item->id }}">
                                                 <div id="selectImagenes{{ $item->id }}" class="item active"
                                                     file-name="{{ $item->imagen }}">
-                                                    <img style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
+                                                    <img
+                                                        style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
                                                 </div>
                                             </div>
 
@@ -257,7 +224,7 @@
                                                                     var divElement = document.getElementById(
                                                                         "selectImagenes{{ $item->id }}"); // class item
                                                                     divElement.innerHTML =
-                                                                    ""; // Limpiar el contenido del div asignando una cadena vacía
+                                                                        ""; // Limpiar el contenido del div asignando una cadena vacía
                                                                     var car_element = document.getElementById("carousel-inner" +
                                                                         productId);
                                                                     if (response.length == 1) {
@@ -269,7 +236,7 @@
                                                                         var images = car_element.querySelectorAll(".item");
                                                                         images.forEach((element) => {
                                                                             if (element.getAttribute("file-name") != response[
-                                                                                0]) {
+                                                                                    0]) {
                                                                                 element.remove();
                                                                             } else {
                                                                                 element.classList.add("active");
@@ -281,10 +248,13 @@
                                                                             array_images.push(image);
                                                                         });
                                                                         for (var i = 0; i < response
-                                                                            .length; i++) { //me trae las imagenes de la consulta que viene del response
+                                                                            .length; i++
+                                                                            ) { //me trae las imagenes de la consulta que viene del response
                                                                             if (response[i] != "formTamañosCantidades") {
                                                                                 if (i == 0) {
-                                                                                    $("#selectImagenes" + productId).append("<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" + response[i] + "' >"); //coloca la primera opcion
+                                                                                    $("#selectImagenes" + productId).append(
+                                                                                        "<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                                        response[i] + "' >"); //coloca la primera opcion
                                                                                     divElement.setAttribute("file-name", response[i]);
                                                                                 } else {
                                                                                     var clone = divElement.cloneNode(true);
@@ -340,7 +310,8 @@
                                     </div>
                                     <div class="product-item__info-inner">
                                         <div class="form-group">
-                                            <select class="form-control" name="color"id="color-select-{{ $item->id }}">
+                                            <select class="form-control"
+                                                name="color"id="color-select-{{ $item->id }}">
                                                 <option disabled selected>Seleccione el color</option>
                                                 <option>{{ $item->color }}</option>
                                                 <?php $coloresExistentes = []; ?>
@@ -357,7 +328,8 @@
                                     </div>
                                     <div class="product-item__info-inner">
                                         <div class="form-group">
-                                            <select class="form-control"name="tamaño"id="selectTamaños{{ $item->id }}">
+                                            <select
+                                                class="form-control"name="tamaño"id="selectTamaños{{ $item->id }}">
                                                 <option disabled selected>Seleccione el tamaño</option>
                                             </select>
                                         </div>
@@ -380,11 +352,17 @@
                                                         }, //los parametros enviados
                                                         dataType: 'json',
                                                         success: function(response) {
-                                                            $("#selectTamaños" + productId).empty(); //limpia el select de tamaños
-                                                            $("#selectTamaños" + productId).append("<option value=''>Selecciona el tamaño</option>"); //coloca la primera opcion
-                                                            for (var i = 0; i < response.length; i++) { //me trae los tamaños de la consulta que viene del response
+                                                            $("#selectTamaños" + productId)
+                                                        .empty(); //limpia el select de tamaños
+                                                            $("#selectTamaños" + productId).append(
+                                                                "<option value=''>Selecciona el tamaño</option>"
+                                                                ); //coloca la primera opcion
+                                                            for (var i = 0; i < response
+                                                                .length; i++) { //me trae los tamaños de la consulta que viene del response
                                                                 if (response[i] != "formImagenes") {
-                                                                    $("#selectTamaños" + productId).append("<option value='" + response[i] + "'>" + response[i] + "</option>"); // Agrega las opciones con los tamaños
+                                                                    $("#selectTamaños" + productId).append("<option value='" +
+                                                                        response[i] + "'>" + response[i] + "</option>"
+                                                                        ); // Agrega las opciones con los tamaños
                                                                 }
                                                             }
                                                         }
@@ -394,31 +372,32 @@
                                         });
                                     </script>
                                     <input type="hidden" name="id" value="{{ $item->id }}">
-                                    <input type="hidden" name="sessionCliente" value="{{$sessionCliente}}">
-                                    <button style="width: 100%" type="submit" id="botonCarrito{{$item->id}}" class="product-item__action-button button button--small button--primary">Añadir al carrito</button>
-
+                                    <input type="hidden" name="sessionCliente" value="{{ $sessionCliente }}">
+                                    <button style="width: 100%" type="submit" id="botonCarrito{{ $item->id }}"
+                                        class="product-item__action-button button button--small button--primary">Añadir al carrito</button>
+                                        <div id="mensajeContainer{{$item->id}}"></div>
 
                                     <script>
                                         $(document).ready(function() {
-                                        // Asigna un controlador de eventos al botón
-                                        $('#botonCarrito{{$item->id}}').click(function(e) {
-                                            e.preventDefault(); // Evita que se envíe el formulario por defecto
-                                            // Obtén los datos del formulario
-                                            var formData = $('#miFormulario{{$item->id}}').serialize();
+                                            // Asigna un controlador de eventos al botón
+                                            $('#botonCarrito{{ $item->id }}').click(function(e) {
+                                                e.preventDefault(); // Evita que se envíe el formulario por defecto
+                                                // Obtén los datos del formulario
+                                                var formData = $('#miFormulario{{ $item->id }}').serialize();
                                                 // Separar los pares clave-valor por el caracter "&"
                                                 var pairs = formData.split('&');
                                                 // Crear un objeto para almacenar los valores separados
                                                 var data = {};
                                                 // Recorrer los pares clave-valor separados
                                                 for (var i = 0; i < pairs.length; i++) {
-                                                // Separar cada par en clave y valor
-                                                var pair = pairs[i].split('=');
-                                                // Obtener la clave y el valor
-                                                var key = decodeURIComponent(pair[0]);
-                                                //console.log(key);
-                                                var value = decodeURIComponent(pair[1]);
-                                                // Almacenar el valor en el objeto usando la clave
-                                                data[key] = value;
+                                                    // Separar cada par en clave y valor
+                                                    var pair = pairs[i].split('=');
+                                                    // Obtener la clave y el valor
+                                                    var key = decodeURIComponent(pair[0]);
+                                                    //console.log(key);
+                                                    var value = decodeURIComponent(pair[1]);
+                                                    // Almacenar el valor en el objeto usando la clave
+                                                    data[key] = value;
                                                 }
 
                                                 // Acceder a los valores separados por clave
@@ -426,32 +405,132 @@
                                                 var color = data['color'];
                                                 var tamaño = data['tamaño'];
                                                 var sessionCliente = data['sessionCliente'];
-
                                                 if (tamaño != undefined || color != undefined) {
-                                                    if(tamaño != ""){
+                                                    if (tamaño != "") {
+                                                        //console.log("id:" + id);
+                                                        //console.log("color:" + color);
+                                                        //console.log("tamaño:" + tamaño);
                                                         //console.log(sessionCliente);
                                                         //console.log("si se selecciono el color");
                                                         $.ajax({
-                                                        url: 'carritoCompra', // aqui va el nombre de la ruta
-                                                        method: 'GET', // el metodo que se usa en la ruta
-                                                        data: {
-                                                            productId: id,
-                                                            selectedColor: color,
-                                                            selectedTamaño: tamaño,
-                                                            sessionCliente: sessionCliente,
-                                                        }, //los parametros enviados
-                                                        dataType: 'json',
-                                                        success: function(response) {
-                                                            
-                                                        }
-                                                    });
+                                                            url: 'carritoCompraVerificarCantidad', // aqui va el nombre de la ruta
+                                                            method: 'GET', // el metodo que se usa en la ruta
+                                                            data: {
+                                                                productId: id,
+                                                                selectedColor: color,
+                                                                selectedTamaño: tamaño,
+                                                                sessionCliente: sessionCliente,
+                                                            }, //los parametros enviados
+                                                            dataType: 'json',
+                                                            success: function(response) {
+                                                                //respuesta del controlador 
+                                                                //console.log(response);
+                                                                if (response.foto.cantidad == null) {
+                                                                    console.log("Cantidad de producto tabla producto " +response.producto.cantidad + " del tamaño " +response.producto.tamaño);
+                                                                    if (response.producto.cantidad <= 0) {
+
+                                                                        var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
+                                                                        mensajeContainer.innerHTML = "No quedan en inventario del tamaño "+ response.producto.tamaño;
+                                                                        
+                                                                        } else {
+                                                                        //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                                                        console.log("Agregar al carrito");
+                                                                        //tabla productos
+                                                                        $.ajax({
+                                                                            url: 'carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                                                            method: 'GET', // el metodo que se usa en la ruta
+                                                                            data: {
+                                                                                productId: id,
+                                                                                selectedColor: color,
+                                                                                selectedTamaño: tamaño,
+                                                                                sessionCliente: sessionCliente,
+                                                                            }, //los parametros enviados
+                                                                            dataType: 'json',
+                                                                            success: function(response) {
+                                                                                //respuesta del controlador 
+                                                                                console.log(response);
+                                                                                var numeroContadorCarrito = document.getElementById("contadorCarrito");
+                                                                                var parpadeo2 = document.getElementById("parpadeo");
+                                                                                var parpadeo3 = document.getElementById("parpadeoDrop");
+                                                                                // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                                                                function actualizarContador(nuevoValor) {
+                                                                                numeroContadorCarrito.innerHTML = nuevoValor;
+                                                                                parpadeo2.classList.add("parpadeo");
+                                                                                parpadeo3.classList.add("parpadeo");
+
+                                                                                // Eliminar la clase "parpadeo" después de la animación
+                                                                                setTimeout(function() {
+                                                                                    parpadeo2.classList.remove("parpadeo");
+                                                                                    parpadeo3.classList.remove("parpadeo");
+
+                                                                                }, 6000); // 2s * 3 = 6s (duración total de la animación)
+                                                                                }
+
+                                                                                // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                                                                var nuevoValor = response;
+                                                                                actualizarContador(nuevoValor);
+
+                                                                            }
+                                                                        });
+
+                                                                    }
+                                                                } else if (response.producto.cantidad == null) {
+                                                                    console.log("Cantidad de producto tabla foto " + response.foto.cantidad + " del tamaño " + response.foto.tamaño);
+                                                                    if (response.foto.cantidad <= 0) {
+                                                                        console.log("Debo mandar una variable donde se imprima que no se pudo agregar el producto al carrito");
+                                                                        var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
+                                                                        mensajeContainer.innerHTML = "No quedan en inventario del tamaño "+ response.foto.tamaño;
+                                                                    } else {
+                                                                        //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                                                        console.log("Agregar al carrito");
+                                                                        //tabla fotos
+                                                                        $.ajax({
+                                                                            url: 'carritoCompraTablaFotos', // aqui va el nombre de la ruta
+                                                                            method: 'GET', // el metodo que se usa en la ruta
+                                                                            data: {
+                                                                                productId: id,
+                                                                                selectedColor: color,
+                                                                                selectedTamaño: tamaño,
+                                                                                sessionCliente: sessionCliente,
+                                                                            }, //los parametros enviados
+                                                                            dataType: 'json',
+                                                                            success: function(response) {
+                                                                                //respuesta del controlador 
+                                                                                console.log(response);
+                                                                                var numeroContadorCarrito = document.getElementById("contadorCarrito");
+                                                                                var parpadeo2 = document.getElementById("parpadeo");
+                                                                                var parpadeo3 = document.getElementById("parpadeoDrop");
+                                                                                // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                                                                function actualizarContador(nuevoValor) {
+                                                                                numeroContadorCarrito.innerHTML = nuevoValor;
+                                                                                parpadeo2.classList.add("parpadeo");
+                                                                                parpadeo3.classList.add("parpadeo");
+
+                                                                                // Eliminar la clase "parpadeo" después de la animación
+                                                                                setTimeout(function() {
+                                                                                    parpadeo2.classList.remove("parpadeo");
+                                                                                    parpadeo3.classList.remove("parpadeo");
+
+                                                                                }, 6000); // 2s * 3 = 6s (duración total de la animación)
+                                                                                }
+
+                                                                                // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                                                                var nuevoValor = response;
+                                                                                actualizarContador(nuevoValor);
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                }
+
+                                                            }
+                                                        });
 
 
                                                     }
                                                 }
 
 
-                                        });
+                                            });
                                         });
                                     </script>
 
@@ -1155,7 +1234,8 @@
                                                 class="icon" role="presentation" viewBox="2 1 21 21">
                                                 <path
                                                     d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"
-                                                    fill="currentColor" fill-rule="evenodd" class="focusAlWhatapps">
+                                                    fill="currentColor" fill-rule="evenodd"
+                                                    class="focusAlWhatapps">
                                                 </path>
                                             </svg></a>
                                     </li>

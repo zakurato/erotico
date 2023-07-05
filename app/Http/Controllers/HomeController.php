@@ -687,18 +687,85 @@ class HomeController extends Controller
         }
     }
 
-    public function carritoCompra(Request $request){
+    public function carritoCompraVerificarCantidad(Request $request){
         if ($request->ajax()) {
             $productId = $request->input('productId');
             $selectedColor = $request->input('selectedColor');
             $selectedTamaño = $request->input('selectedTamaño');
             $sessionCliente = $request->input('sessionCliente');
-            //aqui debo aumentar el carrito de ese sessionCliente
-            //tambien debo crear una tabla donde van a ir las las compras de ese carrito
+        
+            $cantidadActualProductoElegidoTablaProducto = Producto::where("id", $productId)
+                ->where("tamaño", $selectedTamaño)
+                ->value('cantidad');
+        
+            $cantidadActualProductoElegidoTablaFotos = Foto::where("idFK", $productId)
+                ->where("tamaño", $selectedTamaño)
+                ->where("cantidad", "!=", "formImagenes")
+                ->value('cantidad');
+        
+                return response()->json([
+                    'producto' => [
+                        'cantidad' => $cantidadActualProductoElegidoTablaProducto,
+                        'tamaño' => $selectedTamaño
+                    ],
+                    'foto' => [
+                        'cantidad' => $cantidadActualProductoElegidoTablaFotos,
+                        'tamaño' => $selectedTamaño
+                    ]
+                ]);
         }
     }
-    
-    
-    
 
+    public function carritoCompraTablaProducto(Request $request){
+        if ($request->ajax()) {
+            $productId = $request->input('productId');
+            $selectedColor = $request->input('selectedColor');
+            $selectedTamaño = $request->input('selectedTamaño');
+            $sessionCliente = $request->input('sessionCliente');
+            
+            //Aumenta el carrito del cliente
+            $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
+            $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
+            $clienteSession->save();
+
+            
+            //restar la cantidad del producto de la tabla  de productos
+            $restarCantidadProductoTablaProducto = Producto::where([["id","=",$productId],["tamaño","=",$selectedTamaño]])->first();
+            $restarCantidadProductoTablaProducto->cantidad = $restarCantidadProductoTablaProducto->cantidad - 1;
+            $restarCantidadProductoTablaProducto->save();
+
+            //crear una tabla donde se guarde el producto con la compra que se realiza
+
+
+            return response()->json($clienteSession->contadorCarrito);
+
+        }
+    }
+
+    public function carritoCompraTablaFotos(Request $request){
+        if ($request->ajax()) {
+            $productId = $request->input('productId');
+            $selectedColor = $request->input('selectedColor');
+            $selectedTamaño = $request->input('selectedTamaño');
+            $sessionCliente = $request->input('sessionCliente');
+            
+            //Aumenta el carrito del cliente
+            $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
+            $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
+            $clienteSession->save();
+
+
+            //restar la cantidad del producto de la tabla  de fotos
+            $restarCantidadProductoTablaFoto = Foto::where([["idFK","=",$productId],["imagen","=","formTamañosCantidades"],["color","=",$selectedColor],["tamaño","=",$selectedTamaño]])->first();
+            $restarCantidadProductoTablaFoto->cantidad = $restarCantidadProductoTablaFoto->cantidad - 1;
+            $restarCantidadProductoTablaFoto->save();
+
+            //crear una tabla donde se guarde el producto con la compra que se realiza
+
+
+
+            return response()->json($clienteSession->contadorCarrito);
+
+        }
+    }
 }
