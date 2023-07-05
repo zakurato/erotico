@@ -104,7 +104,7 @@
                                                 </path>
                                             </svg>
                                                 <div style="color: #9d9d9d" id="contadorCarrito">{{$contadorCarrito->contadorCarrito}}</div>
-                                                <h4 style="color: #9d9d9d;">Carrito de compras</h4>
+                                                <h4 style="color: #9d9d9d;">Carrito de comprass</h4>
                                             <!-- carrito -->
                                         </div>
 
