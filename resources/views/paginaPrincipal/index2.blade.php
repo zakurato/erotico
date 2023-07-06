@@ -3,7 +3,8 @@
 
 <head>
 
-
+     <!--animaciones-->
+     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!--/Css propios public-->
     <link rel="stylesheet" href="{{ asset('index/index.Css') }}?v={{ time() }}">
@@ -104,7 +105,7 @@
                                                 </path>
                                             </svg>
                                                 <div style="color: #9d9d9d" id="contadorCarrito">{{$contadorCarrito->contadorCarrito}}</div>
-                                                <h4 style="color: #9d9d9d;">Carrito de comprass</h4>
+                                                <h4 style="color: #9d9d9d;">Carrito de compras</h4>
                                             <!-- carrito -->
                                         </div>
 
@@ -155,7 +156,7 @@
                 <section class="section section--text-centered"
                     data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
                     data-section-type="rich-text">
-                    <div class="container container--narrow">
+                    <div class="container container--narrow" >
                         <h2 class="heading h1">Encuentra la magia dentro de ti en MagicSexShop.</h2>
                         <div class="rte">
                         </div>
@@ -405,9 +406,14 @@
                                                 var color = data['color'];
                                                 var tamaño = data['tamaño'];
                                                 var sessionCliente = data['sessionCliente'];
-                                                if (tamaño != undefined || color != undefined) {
-                                                    if (tamaño != "") {
-                                                        //console.log("id:" + id);
+
+                                                console.log(tamaño);
+
+                                                if(color == undefined || tamaño == ""){
+                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
+                                                    mensajeContainer.innerHTML = "Debe seleccionar un color y un tamaño";// limpio el mensajecontainer
+                                                }else{
+
                                                         //console.log("color:" + color);
                                                         //console.log("tamaño:" + tamaño);
                                                         //console.log(sessionCliente);
@@ -433,6 +439,8 @@
                                                                         mensajeContainer.innerHTML = "No quedan en inventario del tamaño "+ response.producto.tamaño;
                                                                         
                                                                         } else {
+                                                                        var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
+                                                                        mensajeContainer.innerHTML = "";// limpio el mensajecontainer
                                                                         //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
                                                                         console.log("Agregar al carrito");
                                                                         //tabla productos
@@ -447,8 +455,13 @@
                                                                             }, //los parametros enviados
                                                                             dataType: 'json',
                                                                             success: function(response) {
-                                                                                //respuesta del controlador 
-                                                                                console.log(response);
+                                                                                //console.log(response);
+                                                                                if(response == "Si desea sumar mas de este producto entrar al carrito de compra"){
+                                                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
+                                                                                    mensajeContainer.innerHTML = response;// limpio el mensajecontainer
+                                                                                }else{
+                                                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
+                                                                                    mensajeContainer.innerHTML = "Se agrego correctamente al carrito";// limpio el mensajecontainer
                                                                                 var numeroContadorCarrito = document.getElementById("contadorCarrito");
                                                                                 var parpadeo2 = document.getElementById("parpadeo");
                                                                                 var parpadeo3 = document.getElementById("parpadeoDrop");
@@ -469,7 +482,7 @@
                                                                                 // Ejemplo de uso: actualizar el contador con un nuevo valor
                                                                                 var nuevoValor = response;
                                                                                 actualizarContador(nuevoValor);
-
+                                                                                }
                                                                             }
                                                                         });
 
@@ -481,8 +494,10 @@
                                                                         var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
                                                                         mensajeContainer.innerHTML = "No quedan en inventario del tamaño "+ response.foto.tamaño;
                                                                     } else {
+                                                                        var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
+                                                                        mensajeContainer.innerHTML = "";// limpio el mensajecontainer
                                                                         //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
-                                                                        console.log("Agregar al carrito");
+                                                                        //console.log("Agregar al carrito");
                                                                         //tabla fotos
                                                                         $.ajax({
                                                                             url: 'carritoCompraTablaFotos', // aqui va el nombre de la ruta
@@ -497,26 +512,33 @@
                                                                             success: function(response) {
                                                                                 //respuesta del controlador 
                                                                                 console.log(response);
-                                                                                var numeroContadorCarrito = document.getElementById("contadorCarrito");
-                                                                                var parpadeo2 = document.getElementById("parpadeo");
-                                                                                var parpadeo3 = document.getElementById("parpadeoDrop");
-                                                                                // Función para actualizar el valor del contador y añadir la clase "parpadeo"
-                                                                                function actualizarContador(nuevoValor) {
-                                                                                numeroContadorCarrito.innerHTML = nuevoValor;
-                                                                                parpadeo2.classList.add("parpadeo");
-                                                                                parpadeo3.classList.add("parpadeo");
+                                                                                if(response == "Si desea sumar mas de este producto entrar al carrito de compra"){
+                                                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
+                                                                                    mensajeContainer.innerHTML = response;// limpio el mensajecontainer
+                                                                                }else{
+                                                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
+                                                                                    mensajeContainer.innerHTML = "Se agrego correctamente al carrito";// limpio el mensajecontainer
+                                                                                    var numeroContadorCarrito = document.getElementById("contadorCarrito");
+                                                                                    var parpadeo2 = document.getElementById("parpadeo");
+                                                                                    var parpadeo3 = document.getElementById("parpadeoDrop");
+                                                                                    // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                                                                    function actualizarContador(nuevoValor) {
+                                                                                    numeroContadorCarrito.innerHTML = nuevoValor;
+                                                                                    parpadeo2.classList.add("parpadeo");
+                                                                                    parpadeo3.classList.add("parpadeo");
 
-                                                                                // Eliminar la clase "parpadeo" después de la animación
-                                                                                setTimeout(function() {
-                                                                                    parpadeo2.classList.remove("parpadeo");
-                                                                                    parpadeo3.classList.remove("parpadeo");
+                                                                                    // Eliminar la clase "parpadeo" después de la animación
+                                                                                    setTimeout(function() {
+                                                                                        parpadeo2.classList.remove("parpadeo");
+                                                                                        parpadeo3.classList.remove("parpadeo");
 
-                                                                                }, 6000); // 2s * 3 = 6s (duración total de la animación)
+                                                                                    }, 6000); // 2s * 3 = 6s (duración total de la animación)
+                                                                                    }
+
+                                                                                    // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                                                                    var nuevoValor = response;
+                                                                                    actualizarContador(nuevoValor);
                                                                                 }
-
-                                                                                // Ejemplo de uso: actualizar el contador con un nuevo valor
-                                                                                var nuevoValor = response;
-                                                                                actualizarContador(nuevoValor);
                                                                             }
                                                                         });
                                                                     }
@@ -526,8 +548,21 @@
                                                         });
 
 
-                                                    }
                                                 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                               
 
 
                                             });
@@ -567,7 +602,7 @@
         <section class="section section--text-centered"
             data-section-id="template--14562732638271__5199ee47-c016-4657-bf0b-bfd73334618b"
             data-section-type="rich-text">
-            <div class="container container--medium">
+            <div class="container container--medium" data-aos="fade-right">
                 <h2 class="heading h1">Recoge un juguete para tu próxima aventura.</h2>
                 <div class="rte">
                 </div>
@@ -919,7 +954,7 @@
         <section class="section section--text-centered"
             data-section-id="template--14562732638271__127e7bfe-e656-4552-b607-86d223e6a4d2"
             data-section-type="rich-text">
-            <div class="container container--narrow">
+            <div class="container container--narrow" data-aos="fade-right">
                 <h2 class="heading h1">La tienda donde compras placer.</h2>
                 <div class="rte">
                 </div>
@@ -1017,7 +1052,7 @@
         <section class="section section--text-centered"
             data-section-id="template--14562732638271__220c92e8-4944-411d-b5f7-cdc598a18b79"
             data-section-type="rich-text">
-            <div class="container container--narrow">
+            <div class="container container--narrow" data-aos="fade-right">
                 <h2 class="heading h1">¡Estás a un juguete de conseguir un orgasmo!</h2>
                 <div class="rte">
                 </div>
@@ -1175,7 +1210,7 @@
         <section class="section section--text-centered"
             data-section-id="template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c"
             data-section-type="rich-text">
-            <div class="container container--narrow">
+            <div class="container container--narrow" data-aos="fade-right">
                 <h2 class="heading h1">Mejora tu vida sexual con las mejores marcas.</h2>
                 <div class="rte">
                 </div>
@@ -1280,6 +1315,15 @@
 </script>
 
 
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    //animaciones
+</script>
+<script>
+    //animaciones
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+</script>
 
 </html>

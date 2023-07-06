@@ -36,8 +36,8 @@
             @csrf
             <div class="form-group" style="display: flex;">
                 <label style="margin-top: 5px">Tamaño:</label>
-                <input type="number" class="form-control" name="tamaño" autocomplete="off"
-                    oninput="this.value = this.value.toUpperCase();" required style="width: 20%;" id="numericInput">
+                <input type="text" class="form-control" name="tamaño" autocomplete="off"
+                    oninput="this.value = this.value.toUpperCase();" required style="width: 20%;">
                 <label style="margin-top: 10px">cm</label>
             </div>
             <button type="submit" class="btn btn-default">Crear tamaño</button>
@@ -59,7 +59,14 @@
         <tbody>
             @foreach ($tamaños as $item)
                 <tr>
-                    <td>{{ $item->tamaño }}cm</td>
+
+                    <td>
+                        @if (is_numeric($item->tamaño))
+                            {{ $item->tamaño }}cm
+                        @else
+                            {{$item->tamaño}}
+                        @endif
+                    </td>
                     <td>
                         <form id="actualizarForm" action="{{ route('actualizarTamaño') }}" method="GET">
                             @csrf
@@ -85,10 +92,5 @@
     </table>
 </body>
 
-<script>
-    document.getElementById("numericInput").addEventListener("input", function() {
-        this.value = this.value.replace(/[^0-9]/g, "");
-    });
-</script>
 
 </html>

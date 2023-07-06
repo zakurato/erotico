@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Cliente;
 use App\Models\Color;
+use App\Models\Compra;
 use App\Models\Foto;
 use App\Models\Producto;
 use App\Models\Tamano;
@@ -722,22 +723,45 @@ class HomeController extends Controller
             $selectedColor = $request->input('selectedColor');
             $selectedTamaño = $request->input('selectedTamaño');
             $sessionCliente = $request->input('sessionCliente');
-            
-            //Aumenta el carrito del cliente
-            $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
-            $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
-            $clienteSession->save();
 
             
-            //restar la cantidad del producto de la tabla  de productos
-            $restarCantidadProductoTablaProducto = Producto::where([["id","=",$productId],["tamaño","=",$selectedTamaño]])->first();
-            $restarCantidadProductoTablaProducto->cantidad = $restarCantidadProductoTablaProducto->cantidad - 1;
-            $restarCantidadProductoTablaProducto->save();
+            $existeCompraProductoDelSessionCliente = 0;
 
-            //crear una tabla donde se guarde el producto con la compra que se realiza
+            //Añadir compra con a la tabla de compra y comprar si ya existe esa compra
+            $compras = Compra::all();
+            foreach($compras as $item){
+                if($item->nombreClienteSession == $sessionCliente && $item->idFKProducto == $productId && $item->colorSeleccionado == $selectedColor && $item->tamañoSeleccionado == $selectedTamaño){
+                    $existeCompraProductoDelSessionCliente = 1; 
+                    break;
+                }
+            }
+            
+            if($existeCompraProductoDelSessionCliente == 1){
+                return response()->json("Si desea sumar mas de este producto entrar al carrito de compra");
+            }else{
+                //añadir los datos a la tabla de compras
+                $añadirCompra = new Compra();
+                $añadirCompra->nombreClienteSession = $sessionCliente;
+                $añadirCompra->idFKProducto = $productId;
+                $añadirCompra->colorSeleccionado = $selectedColor;
+                $añadirCompra->tamañoSeleccionado = $selectedTamaño;
+                $añadirCompra->cantidad = 1;
+                $añadirCompra->save();
 
 
-            return response()->json($clienteSession->contadorCarrito);
+                //Aumenta el carrito del cliente
+                $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
+                $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
+                $clienteSession->save();
+
+            
+                //restar la cantidad del producto de la tabla  de productos
+                $restarCantidadProductoTablaProducto = Producto::where([["id","=",$productId],["tamaño","=",$selectedTamaño]])->first();
+                $restarCantidadProductoTablaProducto->cantidad = $restarCantidadProductoTablaProducto->cantidad - 1;
+                $restarCantidadProductoTablaProducto->save();
+
+                return response()->json($clienteSession->contadorCarrito);
+            }
 
         }
     }
@@ -748,24 +772,45 @@ class HomeController extends Controller
             $selectedColor = $request->input('selectedColor');
             $selectedTamaño = $request->input('selectedTamaño');
             $sessionCliente = $request->input('sessionCliente');
-            
-            //Aumenta el carrito del cliente
-            $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
-            $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
-            $clienteSession->save();
+
+            $existeCompraProductoDelSessionCliente = 0;
+
+            //Añadir compra con a la tabla de compra y comprar si ya existe esa compra
+            $compras = Compra::all();
+            foreach($compras as $item){
+                if($item->nombreClienteSession == $sessionCliente && $item->idFKProducto == $productId && $item->colorSeleccionado == $selectedColor && $item->tamañoSeleccionado == $selectedTamaño){
+                    $existeCompraProductoDelSessionCliente = 1; 
+                    break;
+                }
+            }
+
+            if($existeCompraProductoDelSessionCliente == 1){
+                return response()->json("Si desea sumar mas de este producto entrar al carrito de compra");
+            }else{
+
+                //añadir los datos a la tabla de compras
+                $añadirCompra = new Compra();
+                $añadirCompra->nombreClienteSession = $sessionCliente;
+                $añadirCompra->idFKProducto = $productId;
+                $añadirCompra->colorSeleccionado = $selectedColor;
+                $añadirCompra->tamañoSeleccionado = $selectedTamaño;
+                $añadirCompra->cantidad = 1;
+                $añadirCompra->save();
 
 
-            //restar la cantidad del producto de la tabla  de fotos
-            $restarCantidadProductoTablaFoto = Foto::where([["idFK","=",$productId],["imagen","=","formTamañosCantidades"],["color","=",$selectedColor],["tamaño","=",$selectedTamaño]])->first();
-            $restarCantidadProductoTablaFoto->cantidad = $restarCantidadProductoTablaFoto->cantidad - 1;
-            $restarCantidadProductoTablaFoto->save();
+                //Aumenta el carrito del cliente
+                $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
+                $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
+                $clienteSession->save();
 
-            //crear una tabla donde se guarde el producto con la compra que se realiza
+                //restar la cantidad del producto de la tabla  de fotos
+                $restarCantidadProductoTablaFoto = Foto::where([["idFK","=",$productId],["imagen","=","formTamañosCantidades"],["color","=",$selectedColor],["tamaño","=",$selectedTamaño]])->first();
+                $restarCantidadProductoTablaFoto->cantidad = $restarCantidadProductoTablaFoto->cantidad - 1;
+                $restarCantidadProductoTablaFoto->save();
 
+                return response()->json($clienteSession->contadorCarrito);
 
-
-            return response()->json($clienteSession->contadorCarrito);
-
+            }
         }
     }
 }

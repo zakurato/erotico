@@ -60,7 +60,13 @@
                 <select class="form-control" name="tamaño">
                     <option>NINGUNO</option>
                     @foreach ($tamaños as $item)
-                        <option>{{ $item->tamaño }}cm</option>
+                        <option>
+                            @if (is_numeric($item->tamaño))
+                            {{ $item->tamaño }}cm
+                            @else
+                                {{$item->tamaño}}
+                            @endif
+                        </option>
                     @endforeach
                 </select>
             </div>
