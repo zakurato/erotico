@@ -114,7 +114,8 @@
                                                                                                         type="text"
                                                                                                         value="{{ $item->cantidad }}"
                                                                                                         style="display: block;"
-                                                                                                        id="inputCantidad{{$item->id}}">
+                                                                                                        id="inputCantidad{{$item->id}}"
+                                                                                                        readonly>
                                                                                                     <button
                                                                                                         class="btn btn-touchspin js-touchspin js-decrease-product-quantity bootstrap-touchspin-up"
                                                                                                         type="button" id="btnMas{{$item->id}}">+</button>
@@ -124,14 +125,22 @@
                                                                                                             var decreaseButton = document.getElementById('btnMenos{{$item->id}}');
                                                                                                             var decreaseInput = document.getElementById('inputCantidad{{$item->id}}');
 
-                                                                                                            console.log(decreaseInput.value);
-                                                                                                            var sum = parseInt(decreaseInput.value) + parseInt(decreaseInput.value) + parseInt(decreaseInput.value);
-                                                                                                            console.log(sum);
 
-                                                                                                            
+                                                                                                            var inputs = document.getElementsByClassName('js-cart-line-product-quantity cart_quantity cart_quantity_206 form-control');
+                                                                                                                    var total = 0;
+
+                                                                                                                    for (var i = 0; i < inputs.length; i++) {
+                                                                                                                    var value = parseInt(inputs[i].value);
+                                                                                                                    if (!isNaN(value)) {
+                                                                                                                        total += value;
+                                                                                                                    }
+                                                                                                                    }
+
+                                                                                                                    var resultadoElemento = document.getElementById("resultado");
+                                                                                                                    // Asignar el valor de la variable "total" al contenido del elemento <p>
+                                                                                                                    resultadoElemento.textContent = total;
+
                                                                                                             decreaseButton.addEventListener('click', function() {     
-                                                                                                                var sumaProducto = <?php echo $SumaProducto; ?>;
-                                                                                                                console.log("variable php: " +sumaProducto);
                                                                                                                 console.log("valor del input seleccionado: "+ decreaseInput.value);
                                                                                                                 // Código a ejecutar cuando se hace clic en el botón
                                                                                                                 // Aquí puedes agregar más lógica según tus necesidades
@@ -144,6 +153,20 @@
                                                                                                                     decreaseInput.value = currentValue;
                                                                                                                     console.log("valor del input restado:" +decreaseInput.value);
 
+                                                                                                                    var inputs = document.getElementsByClassName('js-cart-line-product-quantity cart_quantity cart_quantity_206 form-control');
+                                                                                                                    var total = 0;
+
+                                                                                                                    for (var i = 0; i < inputs.length; i++) {
+                                                                                                                    var value = parseInt(inputs[i].value);
+                                                                                                                    if (!isNaN(value)) {
+                                                                                                                        total += value;
+                                                                                                                    }
+                                                                                                                    }
+
+
+                                                                                                                    var resultadoElemento = document.getElementById("resultado");
+                                                                                                                    // Asignar el valor de la variable "total" al contenido del elemento <p>
+                                                                                                                    resultadoElemento.textContent = total;
                                                                                                             });
                                                                                                             });
                                                                                                           </script>
@@ -163,6 +186,21 @@
                                                                                                                         }
                                                                                                                         // Actualiza el valor del campo de entrada con el nuevo valor calculado
                                                                                                                         decreaseInput.value = currentValue;
+
+                                                                                                                        var inputs = document.getElementsByClassName('js-cart-line-product-quantity cart_quantity cart_quantity_206 form-control');
+                                                                                                                        var total = 0;
+
+                                                                                                                        for (var i = 0; i < inputs.length; i++) {
+                                                                                                                        var value = parseInt(inputs[i].value);
+                                                                                                                        if (!isNaN(value)) {
+                                                                                                                            total += value;
+                                                                                                                        }
+                                                                                                                        }
+
+
+                                                                                                                        var resultadoElemento = document.getElementById("resultado");
+                                                                                                                        // Asignar el valor de la variable "total" al contenido del elemento <p>
+                                                                                                                        resultadoElemento.textContent = total;
                                                                                                                 });
                                                                                                                 });
                                                                                                             </script>
@@ -218,7 +256,7 @@
                                                 <div class="cart-summary-line clearfix"
                                                     id="cart-subtotal-products">
                                                     <span class="label js-subtotal">
-                                                         ({{$SumaProducto}})Total de artículos
+                                                         <div style="display: inline-block;" id="resultado"></div> Total de artículos
                                                     </span>
                                                 </div>
 
