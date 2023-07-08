@@ -91,7 +91,7 @@
                                 </form>
                             </li>
                         </ul>
-                        <a href="">
+                        <a href="{{route("carritoCompras")}}">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
                                         <div style="display: inline-flex;" id="parpadeo">
@@ -108,7 +108,6 @@
                                                 <h4 style="color: #9d9d9d;">Carrito de compras</h4>
                                             <!-- carrito -->
                                         </div>
-
                                     </li>
                                 </ul>
                         </a>
@@ -1284,17 +1283,7 @@
                     </div>
                 </div>
             </footer>
-            <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
-                target="_blank">
-                <div class="joinchat joinchat--right joinchat--btn joinchat--show joinchat--tooltip"
-                    style="--vh:321px;">
-                    <div class="joinchat__button">
-                        <div class="joinchat__button__open"></div>
-                        <div class="joinchat__tooltip">
-                            <div>Hola, ¿en qué puedo ayudarte?</div>
-                        </div>
-                    </div>
-                </div>
+
 </body>
 
 

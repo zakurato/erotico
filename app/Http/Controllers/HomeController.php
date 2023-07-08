@@ -813,4 +813,17 @@ class HomeController extends Controller
             }
         }
     }
+
+    public function carritoCompras(){
+
+        $sessionCache = session('nombre');
+        
+        //debo traer las compras del usuario que esta en la session de cache
+        $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
+
+        //Traer los productos
+        $productos = Producto::all();
+
+        return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache"));
+    }
 }

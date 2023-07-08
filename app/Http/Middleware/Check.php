@@ -30,7 +30,7 @@ class Check
          if ($request->input('valor') == "1" && !Cache::has('session:' . $sessionId)) { //verifico si le dio al boton aceptar y si no tiene session
             // La sesión no está en caché, guardarla en caché
             $sessionData = $request->session()->all();
-            Cache::put('session:' . $sessionId, $sessionData, 3600); // Guardar en caché por 60 segundos
+            Cache::put('session:' . $sessionId, $sessionData, 7200); // Guardar en caché por 60 segundos
             //dd("verifico si le dio al boton aceptar y si no tiene session");
             return $next($request);        
         }

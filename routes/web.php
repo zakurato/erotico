@@ -72,6 +72,7 @@ Route::get('/jqImagenes',[HomeController::class,"jqImagenes"])->name("jqImagenes
 Route::get('/carritoCompraVerificarCantidad',[HomeController::class,"carritoCompraVerificarCantidad"])->name("carritoCompraVerificarCantidad");
 Route::get('/carritoCompraTablaProducto',[HomeController::class,"carritoCompraTablaProducto"])->name("carritoCompraTablaProducto");
 Route::get('/carritoCompraTablaFotos',[HomeController::class,"carritoCompraTablaFotos"])->name("carritoCompraTablaFotos");
+Route::get('/carritoCompras',[HomeController::class,"carritoCompras"])->name("carritoCompras");
 
 
 
