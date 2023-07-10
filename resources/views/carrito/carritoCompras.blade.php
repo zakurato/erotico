@@ -24,15 +24,11 @@
                     <div id="center_column" class="single_column col-sm-12">
                         <section id="main">
                             <div class="row">
-                                @php
-                                    $suma = 0
-                                @endphp
+
                                 @php
                                     $ContadorProducto = 1;
                                 @endphp
-                                @php
-                                    $SumaProducto = 0;
-                                @endphp
+
 
                                 @foreach ($comprasDeClienteCache as $item)
                                     @foreach ($productos as $index => $item2)
@@ -121,13 +117,31 @@
                                                                                                         type="button" id="btnMas{{$item->id}}">+</button>
 
                                                                                                         <script>
+                                                                                                            //para el boton de restar
                                                                                                             document.addEventListener('DOMContentLoaded', function() {
                                                                                                             var decreaseButton = document.getElementById('btnMenos{{$item->id}}');
                                                                                                             var decreaseInput = document.getElementById('inputCantidad{{$item->id}}');
+                                                                                                            
+                                                                                                            var obtenerPrecioProductoUni = document.getElementsByClassName("asdf");
+                                                                                                            //console.log(obtenerPrecioProductoUni); 
+
+                                                                                                            var totalPreciosUnis = 0;
+                                                                                                                    for (var i = 0; i < obtenerPrecioProductoUni.length; i++) {
+                                                                                                                    var value = parseInt(obtenerPrecioProductoUni[i].value);
+                                                                                                                        totalPreciosUnis = totalPreciosUnis + value;
+                                                                                                                    }
+                                                                                                                    console.log(totalPreciosUnis);
+
+
+                                                                                                            //id="sumaTotalProductos" donde guarda el valor de la suma total de todos los productos
+                                                                                                            // Asignar el valor de la variable "total" al contenido del elemento <p>
+                                                                                                            var resultadoElemento2 = document.getElementById("sumaTotalProductos");
+                                                                                                            resultadoElemento2.textContent = totalPreciosUnis;
+
 
 
                                                                                                             var inputs = document.getElementsByClassName('js-cart-line-product-quantity cart_quantity cart_quantity_206 form-control');
-                                                                                                                    var total = 0;
+                                                                                                            var total = 0;
 
                                                                                                                     for (var i = 0; i < inputs.length; i++) {
                                                                                                                     var value = parseInt(inputs[i].value);
@@ -163,9 +177,8 @@
                                                                                                                     }
                                                                                                                     }
 
-
-                                                                                                                    var resultadoElemento = document.getElementById("resultado");
                                                                                                                     // Asignar el valor de la variable "total" al contenido del elemento <p>
+                                                                                                                    var resultadoElemento = document.getElementById("resultado");
                                                                                                                     resultadoElemento.textContent = total;
                                                                                                             });
                                                                                                             });
@@ -197,9 +210,8 @@
                                                                                                                         }
                                                                                                                         }
 
-
-                                                                                                                        var resultadoElemento = document.getElementById("resultado");
                                                                                                                         // Asignar el valor de la variable "total" al contenido del elemento <p>
+                                                                                                                        var resultadoElemento = document.getElementById("resultado");
                                                                                                                         resultadoElemento.textContent = total;
                                                                                                                 });
                                                                                                                 });
@@ -209,9 +221,9 @@
                                                                                         </div>
                                                                                         <div
                                                                                             class="col-md-6 col-2">
-                                                                                            <span class="product-price price">
+                                                                                            <input type="hidden" value="{{$item2->precio}}" class="asdf">
+                                                                                            <span class="product-price price" id="precioProductoUni{{$item2->id}}">
                                                                                                 <strong>₡{{ $item2->precio }}</strong>
-                                                                                                <input type="hidden" value="{{$suma = $suma + $item2->precio}}">
                                                                                             </span>
                                                                                         </div>
                                                                                     </div>
@@ -269,7 +281,7 @@
                                             <div class="card-block">
                                                 <div class="cart-summary-line clearfix cart-total">
                                                     <span class="label">Total (IVA inc.)</span>
-                                                    <span class="value price fs_lg font-weight-bold">₡{{$suma}}</span>
+                                                    <span class="value price fs_lg font-weight-bold" id="sumaTotalProductos"></span>
                                                 </div>
                                                 <div class="cart-summary-line clearfix">
                                                     <span class="label"></span>
