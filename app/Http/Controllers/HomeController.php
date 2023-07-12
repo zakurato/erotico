@@ -824,6 +824,266 @@ class HomeController extends Controller
         //Traer los productos
         $productos = Producto::all();
 
-        return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache"));
+        //traer todas las fotos
+        $fotos = Foto::all();
+
+        return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
     }
-}
+
+
+    public function primeraVezPaginaCarrito(Request $request){
+        if ($request->ajax()) {
+
+            //SumatotalPrecioProductos
+            $productosTablaCompras = Compra::all();
+            $todosProductos = Producto::all();
+            $suma = 0;
+            foreach($productosTablaCompras as $item){
+                foreach($todosProductos as $item2){
+                    if($item2->id == $item->idFKProducto){
+                        $suma = $suma + $item2->precio * $item->cantidad;
+                    }
+                }
+            }
+
+
+            //SumatotalArticulos
+            $sumaArticulos = 0;
+            foreach($productosTablaCompras as $item2){
+                $sumaArticulos = $sumaArticulos + $item2->cantidad;
+            }
+
+
+            $response = [
+                'suma' => $suma,
+                'sumaTotalArticulos' =>  $sumaArticulos
+            ];
+
+            return response()->json($response);
+
+
+            }
+        }
+
+    public function restarCambioInputCambioTotalIva(Request $request){
+        if ($request->ajax()) {
+                $productIdTablaCompras = $request->input('id');
+                $color = $request->input('color');
+                $obtenerIdFKTablaCompra = Compra::where("id",$productIdTablaCompras)->first();
+                
+                //primero verificar si el producto esta en la tabla de productos para poder restarle la cantidad
+                $productoTablaProducto = Producto::where([["id","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
+                //dd($productoTablaProducto);
+
+                if($productoTablaProducto != null){
+                    //dd("rebajar en la tabla de producto");
+                    if($productoTablaProducto->cantidad >= 0){
+                        $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
+                        if($productorEncontrado->cantidad > 0){
+                        //rebajar en la tabla de producto la cantidad
+                        $productoTablaProducto->cantidad = $productoTablaProducto->cantidad + 1;
+                        $productoTablaProducto->save();
+
+                        //rebajar en la tabla de compra
+                        $productorEncontrado->cantidad = $productorEncontrado->cantidad - 1;
+                        $productorEncontrado->save();
+
+
+                        //sumaTotalProductos 
+
+                        $productosTablaCompras = Compra::all();
+                        $todosProductos = Producto::all();
+                        $suma = 0;
+                        foreach($productosTablaCompras as $item){
+                            foreach($todosProductos as $item2){
+                                if($item2->id == $item->idFKProducto){
+                                    $suma = $suma + $item2->precio * $item->cantidad;
+                                }
+                            }
+                        }
+
+
+
+                        //SumatotalArticulos
+                        $sumaArticulos = 0;
+                        foreach($productosTablaCompras as $item2){
+                            $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                        }
+
+
+                        $response = [
+                            'cantidad' => $productorEncontrado->cantidad,
+                            'suma' => $suma,
+                            'sumaTotalArticulos' => $sumaArticulos,
+                        ];
+
+                        return response()->json($response);
+                        }
+                    }
+                }elseif($productoTablaProducto == null){
+                    //dd("rebajar en la tabla de fotos");
+                    $productoTablaFoto = Foto::where([["idFK","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
+                    
+                    if($productoTablaFoto->cantidad >= 0){
+                        $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
+                        if($productorEncontrado->cantidad > 0){
+                        //rebajar en la tabla de producto la cantidad
+                        $productoTablaFoto->cantidad = $productoTablaFoto->cantidad + 1;
+                        $productoTablaFoto->save();
+
+                        //rebajar en la tabla de compra
+                        $productorEncontrado->cantidad = $productorEncontrado->cantidad - 1;
+                        $productorEncontrado->save();
+
+
+
+
+                        //sumaTotalPrecioProductos
+
+                        $productosTablaCompras = Compra::all();
+                        $todosProductos = Producto::all();
+                        $suma = 0;
+                        foreach($productosTablaCompras as $item){
+                            foreach($todosProductos as $item2){
+                                if($item2->id == $item->idFKProducto){
+                                    $suma = $suma + $item2->precio * $item->cantidad;
+                                }
+                            }
+                        }
+
+                        //SumatotalArticulos
+                        $sumaArticulos = 0;
+                        foreach($productosTablaCompras as $item2){
+                            $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                        }
+
+
+                        $response = [
+                            'cantidad' => $productorEncontrado->cantidad,
+                            'suma' => $suma,
+                            'sumaTotalArticulos' => $sumaArticulos,
+                        ];
+                        
+
+                        return response()->json($response);
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+
+
+
+
+        public function sumarCambioInputCambioTotalIva(Request $request){
+            if ($request->ajax()) {
+                    $productIdTablaCompras = $request->input('id');//id tabla compras
+                    $color = $request->input('color');//color producto seleccionado
+                    $obtenerIdFKTablaCompra = Compra::where("id",$productIdTablaCompras)->first();//obtengo el producto completo de la tabla compra
+                    
+                    //primero verificar si el producto esta en la tabla de productos para poder restarle la cantidad
+                    $productoTablaProducto = Producto::where([["id","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
+                    //dd($productoTablaProducto);
+    
+                    if($productoTablaProducto != null){
+                        if($productoTablaProducto->cantidad >= 0){
+                            $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
+                            if($productoTablaProducto->cantidad != 0){
+                            //rebajar en la tabla de producto la cantidad
+                            $productoTablaProducto->cantidad = $productoTablaProducto->cantidad - 1;
+                            $productoTablaProducto->save();
+    
+                            //aumentar en la tabla de compra
+                            $productorEncontrado->cantidad = $productorEncontrado->cantidad + 1;
+                            $productorEncontrado->save();
+    
+    
+                            //sumaTotalProductos 
+                            $productosTablaCompras = Compra::all();
+                            $todosProductos = Producto::all();
+                            $suma = 0;
+                            foreach($productosTablaCompras as $item){
+                                foreach($todosProductos as $item2){
+                                    if($item2->id == $item->idFKProducto){
+                                        $suma = $suma + $item2->precio * $item->cantidad;
+                                    }
+                                }
+                            }
+    
+    
+    
+                            //SumatotalArticulos
+                            $sumaArticulos = 0;
+                            foreach($productosTablaCompras as $item2){
+                                $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                            }
+    
+    
+                            $response = [
+                                'cantidad' => $productorEncontrado->cantidad,
+                                'suma' => $suma,
+                                'sumaTotalArticulos' => $sumaArticulos,
+                            ];
+    
+                            return response()->json($response);
+                            }
+                        }
+                    }elseif($productoTablaProducto == null){
+
+                        
+                        $productoTablaFoto = Foto::where([["idFK","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
+                        if($productoTablaFoto->cantidad != 0){
+                            $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
+                            if($productorEncontrado->cantidad >= 0){
+                            //rebajar en la tabla de producto la cantidad
+
+                            $productoTablaFoto->cantidad = $productoTablaFoto->cantidad - 1;
+                            $productoTablaFoto->save();
+    
+                            //aumentar en la tabla de compra
+                            $productorEncontrado->cantidad = $productorEncontrado->cantidad + 1;
+                            $productorEncontrado->save();
+    
+    
+    
+    
+                            //sumaTotalPrecioProductos
+    
+                            $productosTablaCompras = Compra::all();
+                            $todosProductos = Producto::all();
+                            $suma = 0;
+                            foreach($productosTablaCompras as $item){
+                                foreach($todosProductos as $item2){
+                                    if($item2->id == $item->idFKProducto){
+                                        $suma = $suma + $item2->precio * $item->cantidad;
+                                    }
+                                }
+                            }
+    
+                            //SumatotalArticulos
+                            $sumaArticulos = 0;
+                            foreach($productosTablaCompras as $item2){
+                                $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                            }
+    
+    
+                            $response = [
+                                'cantidad' => $productorEncontrado->cantidad,
+                                'suma' => $suma,
+                                'sumaTotalArticulos' => $sumaArticulos,
+                            ];
+                            
+    
+                            return response()->json($response);
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        
+
+    }
+

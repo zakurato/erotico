@@ -75,5 +75,13 @@ Route::get('/carritoCompraTablaFotos',[HomeController::class,"carritoCompraTabla
 Route::get('/carritoCompras',[HomeController::class,"carritoCompras"])->name("carritoCompras");
 
 
+//vistaCarrito
+Route::get('/primeraVezPaginaCarrito',[HomeController::class,"primeraVezPaginaCarrito"])->name("primeraVezPaginaCarrito");
+
+Route::get('/restarCambioInputCambioTotalIva',[HomeController::class,"restarCambioInputCambioTotalIva"])->name("restarCambioInputCambioTotalIva");
+
+Route::get('/sumarCambioInputCambioTotalIva',[HomeController::class,"sumarCambioInputCambioTotalIva"])->name("sumarCambioInputCambioTotalIva");
+
+
 
 
