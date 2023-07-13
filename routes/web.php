@@ -82,6 +82,8 @@ Route::get('/restarCambioInputCambioTotalIva',[HomeController::class,"restarCamb
 
 Route::get('/sumarCambioInputCambioTotalIva',[HomeController::class,"sumarCambioInputCambioTotalIva"])->name("sumarCambioInputCambioTotalIva");
 
+Route::get('/eliminarTablaCompras',[HomeController::class,"eliminarTablaCompras"])->name("eliminarTablaCompras");
+
 
 
 

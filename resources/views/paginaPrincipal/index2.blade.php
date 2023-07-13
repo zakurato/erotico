@@ -8,7 +8,7 @@
 
     <!--/Css propios public-->
     <link rel="stylesheet" href="{{ asset('index/index.Css') }}?v={{ time() }}">
-    <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v=120939182865429120021678115775">
+    <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
 
     <meta charset="utf-8">
     <meta name="viewport"
@@ -428,8 +428,8 @@
                                                             }, //los parametros enviados
                                                             dataType: 'json',
                                                             success: function(response) {
+
                                                                 //respuesta del controlador 
-                                                                //console.log(response);
                                                                 if (response.foto.cantidad == null) {
                                                                     console.log("Cantidad de producto tabla producto " +response.producto.cantidad + " del tamaño " +response.producto.tamaño);
                                                                     if (response.producto.cantidad <= 0) {

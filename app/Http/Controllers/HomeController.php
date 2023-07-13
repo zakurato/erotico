@@ -694,6 +694,8 @@ class HomeController extends Controller
             $selectedColor = $request->input('selectedColor');
             $selectedTamaño = $request->input('selectedTamaño');
             $sessionCliente = $request->input('sessionCliente');
+
+            //dd($productId);
         
             $cantidadActualProductoElegidoTablaProducto = Producto::where("id", $productId)
                 ->where("tamaño", $selectedTamaño)
@@ -772,7 +774,6 @@ class HomeController extends Controller
             $selectedColor = $request->input('selectedColor');
             $selectedTamaño = $request->input('selectedTamaño');
             $sessionCliente = $request->input('sessionCliente');
-
             $existeCompraProductoDelSessionCliente = 0;
 
             //Añadir compra con a la tabla de compra y comprar si ya existe esa compra
@@ -804,7 +805,7 @@ class HomeController extends Controller
                 $clienteSession->save();
 
                 //restar la cantidad del producto de la tabla  de fotos
-                $restarCantidadProductoTablaFoto = Foto::where([["idFK","=",$productId],["imagen","=","formTamañosCantidades"],["color","=",$selectedColor],["tamaño","=",$selectedTamaño]])->first();
+                $restarCantidadProductoTablaFoto = Foto::where([["idFK","=",$productId],["color","=",$selectedColor],["tamaño","=",$selectedTamaño]])->first();
                 $restarCantidadProductoTablaFoto->cantidad = $restarCantidadProductoTablaFoto->cantidad - 1;
                 $restarCantidadProductoTablaFoto->save();
 
@@ -834,6 +835,8 @@ class HomeController extends Controller
     public function primeraVezPaginaCarrito(Request $request){
         if ($request->ajax()) {
 
+            $sessionCache = session('nombre');
+
             //SumatotalPrecioProductos
             $productosTablaCompras = Compra::all();
             $todosProductos = Producto::all();
@@ -850,7 +853,9 @@ class HomeController extends Controller
             //SumatotalArticulos
             $sumaArticulos = 0;
             foreach($productosTablaCompras as $item2){
-                $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                if($item2->nombreClienteSession == $sessionCache){
+                    $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                }
             }
 
 
@@ -879,7 +884,8 @@ class HomeController extends Controller
                     //dd("rebajar en la tabla de producto");
                     if($productoTablaProducto->cantidad >= 0){
                         $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
-                        if($productorEncontrado->cantidad > 0){
+                        //dd($productorEncontrado);
+                        if($productorEncontrado->cantidad > 1){
                         //rebajar en la tabla de producto la cantidad
                         $productoTablaProducto->cantidad = $productoTablaProducto->cantidad + 1;
                         $productoTablaProducto->save();
@@ -889,7 +895,7 @@ class HomeController extends Controller
                         $productorEncontrado->save();
 
 
-                        //sumaTotalProductos 
+                        //sumaTotalPrecioProductos 
 
                         $productosTablaCompras = Compra::all();
                         $todosProductos = Producto::all();
@@ -907,7 +913,9 @@ class HomeController extends Controller
                         //SumatotalArticulos
                         $sumaArticulos = 0;
                         foreach($productosTablaCompras as $item2){
-                            $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                            if($item2->nombreClienteSession == session('nombre')){
+                                $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                            }
                         }
 
 
@@ -926,7 +934,7 @@ class HomeController extends Controller
                     
                     if($productoTablaFoto->cantidad >= 0){
                         $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
-                        if($productorEncontrado->cantidad > 0){
+                        if($productorEncontrado->cantidad > 1){
                         //rebajar en la tabla de producto la cantidad
                         $productoTablaFoto->cantidad = $productoTablaFoto->cantidad + 1;
                         $productoTablaFoto->save();
@@ -1000,7 +1008,7 @@ class HomeController extends Controller
                             $productorEncontrado->save();
     
     
-                            //sumaTotalProductos 
+                            //sumaTotalPrecioProductos 
                             $productosTablaCompras = Compra::all();
                             $todosProductos = Producto::all();
                             $suma = 0;
@@ -1017,7 +1025,9 @@ class HomeController extends Controller
                             //SumatotalArticulos
                             $sumaArticulos = 0;
                             foreach($productosTablaCompras as $item2){
-                                $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                                if($item2->nombreClienteSession == session('nombre')){
+                                    $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                                }
                             }
     
     
@@ -1083,6 +1093,70 @@ class HomeController extends Controller
                     }
                 }
             }
+
+            public function eliminarTablaCompras(Request $request){
+                if ($request->ajax()) {
+        
+                    $productIdTablaCompras = $request->input('id');//id tabla compras
+                    $color = $request->input('color');//id tabla compras
+
+                    //obtener el producto que se va a eliminar
+                    $productoTablaComprasEliminado = Compra::where([["id","=",$productIdTablaCompras]])->first();
+
+                    $obtengoidFK = $productoTablaComprasEliminado->idFKProducto;
+                    $obtengoCantidad = $productoTablaComprasEliminado->cantidad;
+                    $obtengoColor = $productoTablaComprasEliminado->colorSeleccionado;
+
+
+                    //restar el contadorCarrito de la tabla cliente
+                    $cliente = Cliente::where([["nombre", session("nombre")]])->first();
+                    $cliente->contadorCarrito = $cliente->contadorCarrito -1;
+                    $cliente->save();
+
+
+
+                    /*Buscar en la tabla de productos a ver si esos datos se encontraron 
+                    $obtengoidFK = $productoTablaComprasEliminado->idFKProducto;
+                    $obtengoCantidad = $productoTablaComprasEliminado->cantidad; // este seria para sumarselo
+                    $obtengoColor = $productoTablaComprasEliminado->colorSeleccionado;*/
+
+                    $productoTablaProductos = Producto::where(
+                        [
+                            ["id","=",$obtengoidFK],
+                            ["color","=",$obtengoColor]
+                        ]
+                    )->first();
+
+
+                    if($productoTablaProductos != null){
+                        //Esta en la tabla de productos ahora debo sumarle la cantidad
+                        $productoTablaProductos->cantidad = $productoTablaProductos->cantidad + $obtengoCantidad;
+                        $productoTablaProductos->save();
+
+                        //eliminar el producto ahora si
+                        $productoTablaComprasEliminado = Compra::where([["id","=",$productIdTablaCompras]])->delete();
+
+                        return response()->json("Se elimino correctamente");
+                    }else if($productoTablaProductos == null){
+                        //Esta en la tabla de fotos ahora debo sumarle la cantidad
+                        $productoTablaFotos = Foto::where(
+                            [
+                                ["idFK","=",$obtengoidFK],
+                                ["color","=",$obtengoColor]
+                            ]
+                        )->first();
+                        $productoTablaFotos->cantidad = $productoTablaFotos->cantidad + $obtengoCantidad;
+                        $productoTablaFotos->save();
+
+                        //eliminar el producto ahora si
+                        $productoTablaComprasEliminado = Compra::where([["id","=",$productIdTablaCompras]])->delete();
+
+                        return response()->json("Se elimino correctamente");
+                    }
+
+        
+                    }
+                }
         
 
     }
