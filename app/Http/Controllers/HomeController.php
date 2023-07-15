@@ -12,6 +12,9 @@ use App\Models\Tamano;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
+use DateTime;
+
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -23,38 +26,129 @@ class HomeController extends Controller
     }
     public function index2(){
 
-        $existe = 0;
-        $clientes = Cliente::all();
-
-        foreach($clientes as $item){
-            if(session('nombre') == $item->nombre){
-                $existe = 1;
-                break;
+        $fechaActual = Date::now();
+        $fechaObjeto = new DateTime($fechaActual);
+        $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
+    
+        $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
+        
+        if($clienteSession == ""){
+            //return "estoy aqui si no hay compras de esta session en la tabla de comppras";
+            //return session("nombre");
+            $existe = 0;
+            $clientes = Cliente::all();
+    
+            foreach($clientes as $item){
+                if(session('nombre') == $item->nombre){
+                    $existe = 1;
+                    break;
+                }
             }
-        }
+    
+            if($existe == 0){
+                $cliente = new Cliente();
+                //return session('nombre');
+                $cliente->nombre = session('nombre');
+                $cliente->contadorCarrito = 0;
+                $cliente->save();
+    
+                $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
+                $categorias = Categoria::all();
+                $productos = Producto::paginate(5);
+                $fotos = Foto::all();
+                $sessionCliente = session('nombre');
+    
+    
+                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+            }else{
+                $sessionCliente = session('nombre');
+                $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
+                $categorias = Categoria::all();
+                $productos = Producto::paginate(5);
+                $fotos = Foto::all();
+                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+            }
+        }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
+            //return "estoy aqui para devolver los productos al inventario";
+            //devolver los productos a la tabla de productos
+            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->get();
+            $productos2 = Producto::all();
+            foreach($clienteSession as $item){
+                foreach($productos2 as $item2){
+                    if($item->idFKProducto == $item2->id && $item->colorSeleccionado == $item2->color && $item->tamañoSeleccionado == $item2->tamaño && $item->nombreClienteSession == session("nombre")){
+                        $item2->cantidad = $item2->cantidad + $item->cantidad;
+                        $item2->save();
+                        break;
+                    }
+                }
+            }
+            //devolver los productos a la tabla de fotos
+            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->get();
+            $fotos2 = Foto::all();
+            foreach($clienteSession as $item){
+                foreach($fotos2 as $item2){
+                    if($item->idFKProducto == $item2->idFK && $item->colorSeleccionado == $item2->color && $item->tamañoSeleccionado == $item2->tamaño && $item->nombreClienteSession == session("nombre")){
+                        $item2->cantidad = $item2->cantidad + $item->cantidad;
+                        $item2->save();
+                        break;
+                    }
+                }
+            }
 
-        if($existe == 0){
-            $cliente = new Cliente();
-            //return session('nombre');
-            $cliente->nombre = session('nombre');
-            $cliente->contadorCarrito = 0;
-            $cliente->save();
-
-            $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
-            $categorias = Categoria::all();
-            $productos = Producto::paginate(5);
-            $fotos = Foto::all();
-            $sessionCliente = session('nombre');
 
 
+
+            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->delete();
+            //colocar de la tabla de clientes el contador carrito en 0 de la session que esta iniciada
+            $clienteSession = Cliente::where([["nombre","=", session("nombre")]])->first();
+            $clienteSession->contadorCarrito = 0;
+            $clienteSession->save();
+
+
+                $sessionCliente = session('nombre');
+                $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
+                $categorias = Categoria::all();
+                $productos = Producto::paginate(5);
+                $fotos = Foto::all();
             return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+
+
         }else{
-            $sessionCliente = session('nombre');
-            $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
-            $categorias = Categoria::all();
-            $productos = Producto::paginate(5);
-            $fotos = Foto::all();
-            return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+            //return "estoy aqui si no hay compras de esta session en la tabla de comppras";
+            //return session("nombre");
+            $existe = 0;
+            $clientes = Cliente::all();
+    
+            foreach($clientes as $item){
+                if(session('nombre') == $item->nombre){
+                    $existe = 1;
+                    break;
+                }
+            }
+    
+            if($existe == 0){
+                $cliente = new Cliente();
+                //return session('nombre');
+                $cliente->nombre = session('nombre');
+                $cliente->contadorCarrito = 0;
+                $cliente->save();
+    
+                $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
+                $categorias = Categoria::all();
+                $productos = Producto::paginate(5);
+                $fotos = Foto::all();
+                $sessionCliente = session('nombre');
+    
+    
+                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+            }else{
+                $sessionCliente = session('nombre');
+                $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
+                $categorias = Categoria::all();
+                $productos = Producto::paginate(5);
+                $fotos = Foto::all();
+                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+            }
         }
     }
 
@@ -741,6 +835,7 @@ class HomeController extends Controller
             if($existeCompraProductoDelSessionCliente == 1){
                 return response()->json("Si desea sumar mas de este producto entrar al carrito de compra");
             }else{
+                //dd("estoy aqui");
                 //añadir los datos a la tabla de compras
                 $añadirCompra = new Compra();
                 $añadirCompra->nombreClienteSession = $sessionCliente;
@@ -749,7 +844,6 @@ class HomeController extends Controller
                 $añadirCompra->tamañoSeleccionado = $selectedTamaño;
                 $añadirCompra->cantidad = 1;
                 $añadirCompra->save();
-
 
                 //Aumenta el carrito del cliente
                 $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
@@ -761,6 +855,19 @@ class HomeController extends Controller
                 $restarCantidadProductoTablaProducto = Producto::where([["id","=",$productId],["tamaño","=",$selectedTamaño]])->first();
                 $restarCantidadProductoTablaProducto->cantidad = $restarCantidadProductoTablaProducto->cantidad - 1;
                 $restarCantidadProductoTablaProducto->save();
+
+                //colocar la hora de expiracion por si nunca realiza la compra
+                //$sessionCache = session('nombre');
+                $obtenerPrimeraCompraClienteSession = Compra::where([["id","=",$añadirCompra->id]])->first();
+
+                //crear la fecha de expiracion para eliminar los productos del carrito de esta session
+                $fechaCreacionPrimerItem = $obtenerPrimeraCompraClienteSession->created_at;
+                //$fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (01 * 60));
+
+                $fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (2 * 60 * 60));
+                $obtenerPrimeraCompraClienteSession->expiracion = $fechaExpiracion;
+                $obtenerPrimeraCompraClienteSession->save();
+
 
                 return response()->json($clienteSession->contadorCarrito);
             }
@@ -809,6 +916,18 @@ class HomeController extends Controller
                 $restarCantidadProductoTablaFoto->cantidad = $restarCantidadProductoTablaFoto->cantidad - 1;
                 $restarCantidadProductoTablaFoto->save();
 
+                //colocar la hora de expiracion por si nunca realiza la compra
+                //$sessionCache = session('nombre');
+                $obtenerPrimeraCompraClienteSession = Compra::where([["id","=",$añadirCompra->id]])->first();
+
+                //crear la fecha de expiracion para eliminar los productos del carrito de esta session
+                $fechaCreacionPrimerItem = $obtenerPrimeraCompraClienteSession->created_at;
+                //$fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (01 * 60));
+
+                $fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (2 * 60 * 60));
+                $obtenerPrimeraCompraClienteSession->expiracion = $fechaExpiracion;
+                $obtenerPrimeraCompraClienteSession->save();
+
                 return response()->json($clienteSession->contadorCarrito);
 
             }
@@ -817,18 +936,82 @@ class HomeController extends Controller
 
     public function carritoCompras(){
 
-        $sessionCache = session('nombre');
+
+        $fechaActual = Date::now();
+        $fechaObjeto = new DateTime($fechaActual);
+        $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
+    
+        $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
         
-        //debo traer las compras del usuario que esta en la session de cache
-        $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
+        if($clienteSession == ""){
+            //return "estoy aqui si no hay compras de esta session en la tabla de comppras";
+            $sessionCache = session('nombre');
+            //debo traer las compras del usuario que esta en la session de cache
+            $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
+            //Traer los productos
+            $productos = Producto::all();
+            //traer todas las fotos
+            $fotos = Foto::all();
 
-        //Traer los productos
-        $productos = Producto::all();
+            return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
 
-        //traer todas las fotos
-        $fotos = Foto::all();
+        }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
+            //return "estoy aqui para devolver los productos al inventario";
+            //devolver los productos a la tabla de productos
+            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->get();
+            $productos2 = Producto::all();
+            foreach($clienteSession as $item){
+                foreach($productos2 as $item2){
+                    if($item->idFKProducto == $item2->id && $item->colorSeleccionado == $item2->color && $item->tamañoSeleccionado == $item2->tamaño && $item->nombreClienteSession == session("nombre")){
+                        $item2->cantidad = $item2->cantidad + $item->cantidad;
+                        $item2->save();
+                        break;
+                    }
+                }
+            }
+            //devolver los productos a la tabla de fotos
+            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->get();
+            $fotos2 = Foto::all();
+            foreach($clienteSession as $item){
+                foreach($fotos2 as $item2){
+                    if($item->idFKProducto == $item2->idFK && $item->colorSeleccionado == $item2->color && $item->tamañoSeleccionado == $item2->tamaño && $item->nombreClienteSession == session("nombre")){
+                        $item2->cantidad = $item2->cantidad + $item->cantidad;
+                        $item2->save();
+                        break;
+                    }
+                }
+            }
 
-        return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
+
+
+
+            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->delete();
+            //colocar de la tabla de clientes el contador carrito en 0 de la session que esta iniciada
+            $clienteSession = Cliente::where([["nombre","=", session("nombre")]])->first();
+            $clienteSession->contadorCarrito = 0;
+            $clienteSession->save();
+
+            $sessionCache = session('nombre');
+            //debo traer las compras del usuario que esta en la session de cache
+            $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
+            //Traer los productos
+            $productos = Producto::all();
+            //traer todas las fotos
+            $fotos = Foto::all();
+            return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
+            
+        }else{
+            $sessionCache = session('nombre');
+            //debo traer las compras del usuario que esta en la session de cache
+            $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
+            //Traer los productos
+            $productos = Producto::all();
+            //traer todas las fotos
+            $fotos = Foto::all();
+            return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
+        }
+
+
     }
 
 

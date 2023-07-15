@@ -259,9 +259,14 @@
                                                                                             $(document).ready(function() {
                                                                                                 //funcion de restar
                                                                                                 // Asigna un controlador de eventos al botón
+
                                                                                                 $('#basurero{{ $item->id }}').click(function(e) {
 
-                                                                                                    //btnMenos seleccionado
+                                                                                                    var confirmacion = confirm("¿Estás seguro de que deseas eliminar este producto del carrito?");
+        
+                                                                                                    // Verifica si el usuario confirmó la eliminación
+                                                                                                    if (confirmacion == true) {
+                                                                                                   //btnEliminar seleccionado
                                                                                                     var basureroElement = document.getElementById("basurero{{ $item->id }}");
                                                                                                     var idBasurero = basureroElement.id.replace("basurero", "");
                                                                                                     var colorSeleccionado = document.getElementById("colorSelect{{ $item->id }}");
@@ -285,6 +290,7 @@
 
                                                                                                         }
                                                                                                     });
+                                                                                                    }
 
 
 

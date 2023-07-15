@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("colorSeleccionado");
             $table->string("tamañoSeleccionado");
             $table->string("cantidad");
+            $table->string("expiracion")->nullable();
             $table->timestamps();
         });
     }
