@@ -6,6 +6,8 @@ use App\Models\Categoria;
 use App\Models\Cliente;
 use App\Models\Color;
 use App\Models\Compra;
+use App\Models\Compra2;
+use App\Models\Compras2s;
 use App\Models\Foto;
 use App\Models\Producto;
 use App\Models\Tamano;
@@ -1026,7 +1028,7 @@ class HomeController extends Controller
             $suma = 0;
             foreach($productosTablaCompras as $item){
                 foreach($todosProductos as $item2){
-                    if($item2->id == $item->idFKProducto){
+                    if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
                         $suma = $suma + $item2->precio * $item->cantidad;
                     }
                 }
@@ -1085,7 +1087,7 @@ class HomeController extends Controller
                         $suma = 0;
                         foreach($productosTablaCompras as $item){
                             foreach($todosProductos as $item2){
-                                if($item2->id == $item->idFKProducto){
+                                if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
                                     $suma = $suma + $item2->precio * $item->cantidad;
                                 }
                             }
@@ -1136,7 +1138,7 @@ class HomeController extends Controller
                         $suma = 0;
                         foreach($productosTablaCompras as $item){
                             foreach($todosProductos as $item2){
-                                if($item2->id == $item->idFKProducto){
+                                if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
                                     $suma = $suma + $item2->precio * $item->cantidad;
                                 }
                             }
@@ -1145,7 +1147,9 @@ class HomeController extends Controller
                         //SumatotalArticulos
                         $sumaArticulos = 0;
                         foreach($productosTablaCompras as $item2){
-                            $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                            if($item2->nombreClienteSession == session('nombre')){
+                                $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                            }
                         }
 
 
@@ -1179,6 +1183,8 @@ class HomeController extends Controller
                     //dd($productoTablaProducto);
     
                     if($productoTablaProducto != null){
+                        //estoy en la tabla de productos
+
                         if($productoTablaProducto->cantidad >= 0){
                             $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
                             if($productoTablaProducto->cantidad != 0){
@@ -1197,7 +1203,7 @@ class HomeController extends Controller
                             $suma = 0;
                             foreach($productosTablaCompras as $item){
                                 foreach($todosProductos as $item2){
-                                    if($item2->id == $item->idFKProducto){
+                                    if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
                                         $suma = $suma + $item2->precio * $item->cantidad;
                                     }
                                 }
@@ -1249,7 +1255,7 @@ class HomeController extends Controller
                             $suma = 0;
                             foreach($productosTablaCompras as $item){
                                 foreach($todosProductos as $item2){
-                                    if($item2->id == $item->idFKProducto){
+                                    if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
                                         $suma = $suma + $item2->precio * $item->cantidad;
                                     }
                                 }
@@ -1258,7 +1264,9 @@ class HomeController extends Controller
                             //SumatotalArticulos
                             $sumaArticulos = 0;
                             foreach($productosTablaCompras as $item2){
-                                $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                                if($item2->nombreClienteSession == session('nombre')){
+                                    $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                                }
                             }
     
     
@@ -1339,7 +1347,19 @@ class HomeController extends Controller
 
         
                     }
-                }
+            }
+
+            public function WA(Request $request){
+
+
+                return $request;
+                //obtener las compras del del usuario que esta en session de cache
+                $comprasUserCache = Compra::where([["nombreClienteSession","=",session("nombre")]])->get();
+
+                
+                
+                return view();
+            }
         
 
     }

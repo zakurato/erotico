@@ -8,10 +8,11 @@ use App\Models\Compra;
 use App\Models\Foto;
 use App\Models\Producto;
 use DateTime;
-use Faker\Provider\ar_EG\Company;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class EliminarDevolver extends Command
 {
@@ -32,8 +33,23 @@ class EliminarDevolver extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(Request $request)
     {
+        /*
+        Storage::append("archivo.txt", $request);
+        if (Session::has('nombre')) {
+            Storage::append("archivo.txt", $request);
+        } else {
+            Storage::append("archivo.txt", "no hay session en cache");
+        }
+        
+
+
+
+
+*/
+
+        
          //logica sin colocar el tiempo
         //obtener la fecha y hora actual
         $fechaActual = Date::now();
