@@ -72,20 +72,24 @@ Route::get('/jqImagenes',[HomeController::class,"jqImagenes"])->name("jqImagenes
 Route::get('/carritoCompraVerificarCantidad',[HomeController::class,"carritoCompraVerificarCantidad"])->name("carritoCompraVerificarCantidad");
 Route::get('/carritoCompraTablaProducto',[HomeController::class,"carritoCompraTablaProducto"])->name("carritoCompraTablaProducto");
 Route::get('/carritoCompraTablaFotos',[HomeController::class,"carritoCompraTablaFotos"])->name("carritoCompraTablaFotos");
-Route::get('/carritoCompras',[HomeController::class,"carritoCompras"])->name("carritoCompras");
+Route::get('/carritoCompras',[HomeController::class,"carritoCompras"])->name("carritoCompras")->middleware("Check");
 
 
 //vistaCarrito
 Route::get('/primeraVezPaginaCarrito',[HomeController::class,"primeraVezPaginaCarrito"])->name("primeraVezPaginaCarrito");
-
 Route::get('/restarCambioInputCambioTotalIva',[HomeController::class,"restarCambioInputCambioTotalIva"])->name("restarCambioInputCambioTotalIva");
-
 Route::get('/sumarCambioInputCambioTotalIva',[HomeController::class,"sumarCambioInputCambioTotalIva"])->name("sumarCambioInputCambioTotalIva");
-
 Route::get('/eliminarTablaCompras',[HomeController::class,"eliminarTablaCompras"])->name("eliminarTablaCompras");
+Route::post('/WA',[HomeController::class,"WA"])->name("WA");
+Route::get('/factura/{factura}/{telefono}',[HomeController::class,"factura"])->name("factura");
 
 
-Route::get('/WA',[HomeController::class,"WA"])->name("WA");
+//Mostrar factura
+Route::get('/traerNombreCliente',[HomeController::class,"traerNombreCliente"])->name("traerNombreCliente");
+Route::get('/verFactura',[HomeController::class,"verFactura"])->name("verFactura");
+
+
+
 
 
 

@@ -1351,16 +1351,163 @@ class HomeController extends Controller
 
             public function WA(Request $request){
 
+                if($request->sumaTotal == null){//si le doy finalizar compra sin tener nada agregado al carrito
+                    return redirect()->route("index2");
+                }else{
+                    //obtener imagen de comprobante y guardarla en la carpeta de comprobantes
+                    $imageName = time().'.'.$request->imagen->extension();
+                    $request->imagen->move(public_path('imagesComprobantes'), $imageName);
 
-                return $request;
-                //obtener las compras del del usuario que esta en session de cache
-                $comprasUserCache = Compra::where([["nombreClienteSession","=",session("nombre")]])->get();
+                    //obtener las compras del del usuario que esta en session de cache
+                    $comprasUserCache = Compra::where([["nombreClienteSession","=",session("nombre")]])->get();
 
-                
-                
-                return view();
+
+                    //obtener el ultimo numero de factura
+                    $ultimoIDTablaCompras2s = Compras2s::max('id');
+
+                    $ultimaCompraTablaCompras2s = Compras2s::where([["id","=", $ultimoIDTablaCompras2s]])->first();
+                    //return $ultimaCompraTablaCompras2s->nFactura;
+
+
+                    //$ultimoNumFactura = $ultimoIDTablaCompras2s->nFactura;
+
+                    if($ultimoIDTablaCompras2s == ""){
+                        //aqui debo guardar el numero de factura en 1";
+                        //crear nuevo objeto de compras2
+                        foreach($comprasUserCache as $item){
+                            $compras2 = new Compras2s();
+                            $compras2->nombreClienteSession = $item->nombreClienteSession;
+                            $compras2->idFKProducto = $item->idFKProducto;
+                            $compras2->colorSeleccionado = $item->colorSeleccionado;
+                            $compras2->tamañoSeleccionado = $item->tamañoSeleccionado;
+                            $compras2->cantidad = $item->cantidad;
+                            $compras2->nombre = $request->nombre;
+                            $compras2->telefono = $request->telefono;
+                            $compras2->imagen = $imageName;
+                            $compras2->direccion = $request->direccion;
+                            $compras2->sumaTotal = $request->sumaTotal;
+                            $compras2->nFactura = "1";
+                            $compras2->estatus = "En proceso";
+                            $compras2->save();
+                        }
+
+                        //quitar de la tabla de compras los productos
+                        foreach($comprasUserCache as $item){
+                            $itemDelete = Compra::where([["id","=",$item->id]])->delete();
+                        }
+
+                        //colocar el carrito del cliente en 0
+                        $cliente = Cliente::where([["nombre","=", session("nombre")]])->first();
+                        $cliente->contadorCarrito = 0;
+                        $cliente->save();
+
+                        $factura = 1;
+
+                        // Construir la URL con los datos de compra
+                            $url = 'https://api.whatsapp.com/send?phone=50687249099&text='
+                            . urlencode("DATOS DE COMPRA:\n\nNumero de Factura: ".$factura .
+                            "\nNombre: ".$request->nombre.
+                            "\nTelefono:".$request->telefono.
+                            "\nDireccion: ".$request->direccion.
+                            "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
+
+                        // Redireccionar al enlace de WhatsApp
+                        return redirect($url);
+
+
+
+                    }else{
+                        //aqui debo guardar en nFactura el ultimo nFactura +1";
+                        //crear nuevo objeto de compras2
+                        foreach($comprasUserCache as $item){
+                            $compras2 = new Compras2s();
+                            $compras2->nombreClienteSession = $item->nombreClienteSession;
+                            $compras2->idFKProducto = $item->idFKProducto;
+                            $compras2->colorSeleccionado = $item->colorSeleccionado;
+                            $compras2->tamañoSeleccionado = $item->tamañoSeleccionado;
+                            $compras2->cantidad = $item->cantidad;
+                            $compras2->nombre = $request->nombre;
+                            $compras2->telefono = $request->telefono;
+                            $compras2->imagen = $imageName;
+                            $compras2->direccion = $request->direccion;
+                            $compras2->sumaTotal = $request->sumaTotal;
+                            $compras2->nFactura = $ultimaCompraTablaCompras2s->nFactura +1;
+                            $compras2->estatus = "En proceso";
+                            $compras2->save();
+                        }
+
+
+                                            //quitar de la tabla de compras los productos
+                        foreach($comprasUserCache as $item){
+                            $itemDelete = Compra::where([["id","=",$item->id]])->delete();
+                        }
+
+                        //colocar el carrito del cliente en 0
+                        $cliente = Cliente::where([["nombre","=", session("nombre")]])->first();
+                        $cliente->contadorCarrito = 0;
+                        $cliente->save();
+
+                        $factura = $ultimaCompraTablaCompras2s->nFactura +1;
+
+                        // Construir la URL con los datos de compra
+                            $url = 'https://api.whatsapp.com/send?phone=50687249099&text='
+                            . urlencode("DATOS DE COMPRA:\n\nNumero de Factura: ".$ultimaCompraTablaCompras2s->nFactura +1 .
+                            "\nNombre: ".$request->nombre.
+                            "\nTelefono:".$request->telefono.
+                            "\nDireccion: ".$request->direccion.
+                            "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
+
+                        // Redireccionar al enlace de WhatsApp
+                        return redirect($url);
+                    }
+                }
             }
+
+            public function factura(){
+                $compras2 = Compras2s::all();
+                return view("carrito.factura",compact("compras2"));
+            }
+
+
+
+
+            
+            public function traerNombreCliente(Request $request){
+                if ($request->ajax()) {
+                    
+                    
+                    $nFactura = $request->input('nFactura');
+                    $telefono = $request->input('telefono');
+                    //dd($telefono);  
+                    $nombreCliente = Compras2s::where([["nFactura","=",$nFactura],["telefono","=",$telefono]])->first();
+                    //dd($nombreCliente);
+
+                    return response()->json($nombreCliente);
+                }
+            }
+
+            public function verFactura(Request $request){
+
+                //return $request;
+
+                $facturasCompras = Compras2s::where([["nFactura","=",$request->nFactura],["telefono","=",$request->telefono]])->get();
         
+                //return $facturasCompras;
+                if($facturasCompras->isEmpty()){
+                    return redirect()->route("index2");
+                }else{
+                    $productos = Producto::all();
+                    $fotos = Foto::all();
+                    $suma = 0;
+                    
+                    foreach($facturasCompras as $item){
+                        $suma = $suma + $item->cantidad;
+                    }
+                    return view("carrito.mostrarFactura",compact("facturasCompras","productos","fotos","suma"));
+                }
+               
+            }
+
 
     }
 

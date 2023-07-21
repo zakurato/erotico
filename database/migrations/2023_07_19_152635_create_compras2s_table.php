@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string("nombre");
             $table->string("telefono");
             $table->string("direccion");
+            $table->string("imagen");
+            $table->string("sumaTotal");
+            $table->string("nFactura");
+            $table->string("estatus");
             $table->timestamps();
         });
     }

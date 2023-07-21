@@ -197,11 +197,14 @@
                                             <div class="carousel-inner" id="carousel-inner{{ $item->id }}">
                                                 <div id="selectImagenes{{ $item->id }}" class="item active"
                                                     file-name="{{ $item->imagen }}">
-                                                    <img
+                                                    <img onclick="showImage('imagesProductos/{{$item->imagen}}')"
                                                         style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
                                                 </div>
                                             </div>
 
+                                            <div id="lightbox" onclick="hideImage()">
+                                                <img id="lightbox-image">
+                                            </div>
 
                                             <script>
                                                 //me trae las imagenes del color seleccionado y del producto seleccionado
@@ -230,8 +233,9 @@
                                                                     if (response.length == 1) {
                                                                         divElement.innerHTML = "";
                                                                         $("#selectImagenes" + productId).append(
-                                                                            "<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
-                                                                            response[0] + "' >"); //coloca la primera opcion
+                                                                            "<img onclick=\"showImage('imagesProductos/" + response[0] + "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" + response[0] + "'>"
+                                                                        );
+                                                                        //coloca la primera opcion
                                                                         divElement.setAttribute("file-name", response[0]);
                                                                         var images = car_element.querySelectorAll(".item");
                                                                         images.forEach((element) => {
@@ -252,9 +256,7 @@
                                                                             ) { //me trae las imagenes de la consulta que viene del response
                                                                             if (response[i] != "formTamañosCantidades") {
                                                                                 if (i == 0) {
-                                                                                    $("#selectImagenes" + productId).append(
-                                                                                        "<img style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
-                                                                                        response[i] + "' >"); //coloca la primera opcion
+                                                                                    $("#selectImagenes" + productId).append("<img onclick=\"showImage('imagesProductos/" + response[i] + "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" + response[i] + "'>");
                                                                                     divElement.setAttribute("file-name", response[i]);
                                                                                 } else {
                                                                                     var clone = divElement.cloneNode(true);
@@ -1313,6 +1315,21 @@
         duration: 1000,
         once: true
     });
+</script>
+
+<script>
+    //script para mostrar la imagen en grande
+        function showImage(imageSrc) {
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImage = document.getElementById('lightbox-image');
+            lightboxImage.src = imageSrc;
+            lightbox.style.display = 'flex';
+        }
+
+    function hideImage() {
+        var lightbox = document.getElementById('lightbox');
+        lightbox.style.display = 'none';
+    }
 </script>
 
 </html>

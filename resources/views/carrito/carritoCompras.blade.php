@@ -41,12 +41,11 @@
 
 
     <br><br><br><br><br><br>
-    <form action="">
 
-    </form>
     <div id="st-container" class="st-container st-effect-0">
         <section id="wrapper" class="columns-container">
-            <form action="{{ route('WA') }}">
+            <form action="{{ route('WA') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div id="columns" class="container">
                     <div class="row">
                         <div id="center_column" class="single_column col-sm-12">
@@ -57,8 +56,6 @@
                                     @endphp
 
                                     @foreach ($comprasDeClienteCache as $item)
-                                        @foreach ($productos as $index => $item2)
-                                            @if ($item->idFKProducto == $item2->id && $item->nombreClienteSession == $sessionCache)
                                                 <!-- Left Block: cart product informations & shpping -->
                                                 <div class="cart-grid-body col-12 col-lg-8 mb-3">
                                                     <!-- cart products detailed -->
@@ -85,27 +82,34 @@
                                                                             <!--  $item = Carrito-->
                                                                             <!--  $item2 = productos-->
 
-                                                                            @foreach ($fotos as $item3)
-                                                                                @if ($item->idFKProducto == $item2->id && $item->colorSeleccionado == $item2->color)
+                                                                            @foreach ($productos as $item4)
+                                                                                @if ($item->idFKProducto == $item4->id && $item->colorSeleccionado == $item4->color)
                                                                                     <div
                                                                                         class="product-line-grid-left col-md-2 col-3">
-                                                                                        <img src="imagesProductos/{{ $item2->imagen }}"
+                                                                                        <img src="imagesProductos/{{ $item4->imagen }}"
                                                                                             width="150"
                                                                                             height="150"
                                                                                             alt="">
-                                                                                    </div>
-                                                                                @else
-                                                                                    <div
-                                                                                        class="product-line-grid-left col-md-2 col-3">
-                                                                                        <img src="imagesProductos/{{ $item3->imagen }}"
-                                                                                            width="150"
-                                                                                            height="150"
-                                                                                            alt="">
-                                                                                    </div>
+                                                                                    </div>  
+                                                                                    @break                                                                                  
                                                                                 @endif
                                                                             @endforeach
 
+                                                                            @foreach ($fotos as $item5)
+                                                                            @if ($item->idFKProducto == $item5->idFK && $item->colorSeleccionado == $item5->color)
+                                                                                <div
+                                                                                    class="product-line-grid-left col-md-2 col-3">
+                                                                                    <img src="imagesProductos/{{ $item5->imagen }}"
+                                                                                        width="150"
+                                                                                        height="150"
+                                                                                        alt="">
+                                                                                </div>  
+                                                                                @break                                                                                  
+                                                                            @endif
+                                                                        @endforeach
 
+                                                                            @foreach ($productos as $index => $item2)
+                                                                            @if ($item->idFKProducto == $item2->id && $item->nombreClienteSession == $sessionCache)
                                                                             <!--  product left body: description -->
                                                                             <div
                                                                                 class="product-line-grid-body col-md-5 col-7">
@@ -166,6 +170,8 @@
                                                                                                 document.addEventListener('DOMContentLoaded', function() {
                                                                                                     var precioTotalProductoIva = document.getElementById("sumaTotalProductos");
                                                                                                     var $resultadoTotalArticulos = document.getElementById("resultado");
+                                                                                                    var precioTotalProductoIvaHidden = document.getElementById("sumaTotalProductosHidden");
+
 
                                                                                                     //TOTAL IVA PRECIO TOTAL DE ARTICULOS----------------------------------------------------------------------------
                                                                                                     $.ajax({
@@ -174,8 +180,10 @@
                                                                                                         dataType: 'json',
                                                                                                         success: function(response) {
                                                                                                             //respuesta del controlador 
+
                                                                                                             precioTotalProductoIva.textContent = "₡" + response.suma;
                                                                                                             $resultadoTotalArticulos.textContent = response.sumaTotalArticulos;
+                                                                                                            precioTotalProductoIvaHidden.defaultValue = response.suma;
                                                                                                         }
                                                                                                     });
                                                                                                 });
@@ -196,6 +204,7 @@
                                                                                                         var precioTotalProductoIva = document.getElementById("sumaTotalProductos");
                                                                                                         var idProductoCarrito = restarInput.id.replace("inputCantidad", "");
                                                                                                         var $resultadoTotalArticulos = document.getElementById("resultado");
+                                                                                                        var precioTotalProductoIvaHidden = document.getElementById("sumaTotalProductosHidden");
 
 
                                                                                                         $.ajax({
@@ -211,6 +220,7 @@
                                                                                                                 precioTotalProductoIva.textContent = "₡" + response.suma;
                                                                                                                 restarInput.value = response.cantidad;
                                                                                                                 $resultadoTotalArticulos.textContent = response.sumaTotalArticulos;
+                                                                                                                precioTotalProductoIvaHidden.defaultValue = response.suma;
 
                                                                                                             }
                                                                                                         });
@@ -234,7 +244,7 @@
                                                                                                         var precioTotalProductoIva = document.getElementById("sumaTotalProductos");
                                                                                                         var idProductoCarrito = sumarInput.id.replace("inputCantidad", "");
                                                                                                         var $resultadoTotalArticulos = document.getElementById("resultado");
-
+                                                                                                        var precioTotalProductoIvaHidden = document.getElementById("sumaTotalProductosHidden");
 
                                                                                                         $.ajax({
                                                                                                             url: 'sumarCambioInputCambioTotalIva', // aqui va el nombre de la ruta
@@ -249,7 +259,7 @@
                                                                                                                 precioTotalProductoIva.textContent = "₡" + response.suma;
                                                                                                                 sumarInput.value = response.cantidad;
                                                                                                                 $resultadoTotalArticulos.textContent = response.sumaTotalArticulos;
-
+                                                                                                                precioTotalProductoIvaHidden.defaultValue = response.suma;
                                                                                                             }
                                                                                                         });
 
@@ -327,6 +337,7 @@
                                                 </div>
                                                 <!-- shipping informations -->
                                             @endif
+                                            
                                         @endforeach
                                     @endforeach
                                 </div>
@@ -343,12 +354,28 @@
                                                 <ul class="cart-items base_list_line mb-3 m-t-1">
                                                     <li class="cart-item line_item">
                                                         <div class="product-line-grid container-fluid">
-                                                            <div class="row">
-                                                                
+                                                            <div>
                                                                 <!--  Formulario-->
-                                                                    asd
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Nombre completo:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="nombre" required>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Teléfono:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="telefono" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="exampleImage">Adjuntar imagen del comprobante de pago:</label>
+                                                                    <input type="file" class="form-control-file"
+                                                                        name="imagen" required>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Dirección:</label>
+                                                                    <textarea class="form-control" rows="5" name="direccion" required></textarea>
+                                                                </div>
                                                             </div>
-
                                                         </div>
                                             </div>
                                             </li>
@@ -385,6 +412,8 @@
                                                 <span class="label">Total (IVA inc.)</span>
                                                 <span class="value price fs_lg font-weight-bold"
                                                     id="sumaTotalProductos"></span>
+                                                <input type="hidden" value="" id="sumaTotalProductosHidden"
+                                                    name="sumaTotal">
                                             </div>
                                             <div class="cart-summary-line clearfix">
                                                 <span class="label"></span>
