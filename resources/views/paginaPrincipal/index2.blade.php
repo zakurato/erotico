@@ -61,8 +61,7 @@
                     <div class="navbar-collapse collapse" id="mobile_menu">
                         <ul class="nav navbar-nav">
                             <!--<li class="active"><a href="#">Home</a></li>-->
-                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías<span
-                                        class="caret"></span></a>
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías</a>
                                 <ul class="dropdown-menu">
                                     @foreach ($categorias as $item)
                                         <li><a href="#">{{ $item->nombreCategoria }}</a></li>
@@ -408,7 +407,7 @@
                                                 var tamaño = data['tamaño'];
                                                 var sessionCliente = data['sessionCliente'];
 
-                                                console.log(tamaño);
+                                                //console.log(tamaño);
 
                                                 if(color == undefined || tamaño == ""){
                                                     var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
@@ -433,7 +432,7 @@
 
                                                                 //respuesta del controlador 
                                                                 if (response.foto.cantidad == null) {
-                                                                    console.log("Cantidad de producto tabla producto " +response.producto.cantidad + " del tamaño " +response.producto.tamaño);
+                                                                    //console.log("Cantidad de producto tabla producto " +response.producto.cantidad + " del tamaño " +response.producto.tamaño);
                                                                     if (response.producto.cantidad <= 0) {
 
                                                                         var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
@@ -443,7 +442,7 @@
                                                                         var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
                                                                         mensajeContainer.innerHTML = "";// limpio el mensajecontainer
                                                                         //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
-                                                                        console.log("Agregar al carrito");
+                                                                        //console.log("Agregar al carrito");
                                                                         //tabla productos
                                                                         $.ajax({
                                                                             url: 'carritoCompraTablaProducto', // aqui va el nombre de la ruta

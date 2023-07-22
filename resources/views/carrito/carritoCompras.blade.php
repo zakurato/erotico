@@ -91,7 +91,7 @@
                                                                                             height="150"
                                                                                             alt="">
                                                                                     </div>  
-                                                                                    @break                                                                                  
+                                                                                    @break                                                                               
                                                                                 @endif
                                                                             @endforeach
 
@@ -423,7 +423,7 @@
                                         <hr>
                                     </div>
                                     <div class="checkout cart-detailed-actions card-block">
-                                        <button type="submit" class="btn btn-default btn-full-width">Finalizar
+                                        <button type="submit" class="btn btn-default btn-full-width" style="background-color: #444; color: white">Finalizar
                                             compra</button>
                                     </div>
                                 </div>
