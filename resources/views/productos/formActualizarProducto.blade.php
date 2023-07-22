@@ -28,7 +28,7 @@
         {{ session('correctoActualizarProducto') }}
         {{ session('eliminarProductoImagenes') }}
 
-        {{$producto->color}}
+        
         <br>
         <form action="{{ route('storeActualizarProducto') }}" method="GET">
             <input type="text" name="id" value="{{ $producto->id }}" hidden>

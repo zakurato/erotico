@@ -39,10 +39,10 @@
     </div>
 
     <br>
-    <div style="text-align: center">
+    <div style="text-align: center; background-color: white">
     @foreach ($facturasCompras as $item)
 
-    <table class="table">
+    <table class="table" style="background-color: white">
         <tbody>
           <tr>
             <tr>
@@ -99,7 +99,7 @@
 
     <br><br>
     @foreach ($facturasCompras as $item)
-        <div id="st-container" class="st-container st-effect-0">
+        <div id="st-container" class="st-container st-effect-0" style="background-color: white">
             <section id="wrapper" class="columns-container">
                 <div id="columns" class="container">
                     <div class="row">

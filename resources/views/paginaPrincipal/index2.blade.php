@@ -353,18 +353,18 @@
                                                         }, //los parametros enviados
                                                         dataType: 'json',
                                                         success: function(response) {
-                                                            $("#selectTamaños" + productId)
-                                                        .empty(); //limpia el select de tamaños
-                                                            $("#selectTamaños" + productId).append(
-                                                                "<option value=''>Selecciona el tamaño</option>"
-                                                                ); //coloca la primera opcion
-                                                            for (var i = 0; i < response
-                                                                .length; i++) { //me trae los tamaños de la consulta que viene del response
-                                                                if (response[i] != "formImagenes") {
-                                                                    $("#selectTamaños" + productId).append("<option value='" +
-                                                                        response[i] + "'>" + response[i] + "</option>"
-                                                                        ); // Agrega las opciones con los tamaños
-                                                                }
+                                                            const filteredObj = Object.fromEntries(
+                                                            Object.entries(response).filter(([key, value]) => value !== 'formImagenes')
+                                                            );
+                                                            // Crear un arreglo con los valores filtrados sin que vengan con 'formImagenes'
+                                                            const newArray = Object.values(filteredObj);
+
+                                                            $("#selectTamaños" + productId).empty(); //limpia el select de tamaños
+                                                            $("#selectTamaños" + productId).append("<option value=''>Selecciona el tamaño</option>"); //coloca la primera opcion
+                                                            for (var i = 0; i < newArray.length; i++) { //me trae los tamaños de la consulta que viene del response
+                                                                $("#selectTamaños" + productId).append("<option value='" +
+                                                                    newArray[i] + "'>" + newArray[i] + "</option>"
+                                                                ); // Agrega las opciones con los tamaños
                                                             }
                                                         }
                                                     });

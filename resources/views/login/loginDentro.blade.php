@@ -53,7 +53,16 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ $item->nombre }}</h4>
                         <p class="card-text">
+                            Color: {{ $item->color }}
+                        </p>
+                        <p class="card-text">
+                            Tamaño: {{ $item->tamaño }}
+                        </p>
+                        <p class="card-text">
                             Cantidad: {{ $item->cantidad }}
+                        </p>
+                        <p class="card-text">
+                            Precio: ₡{{ $item->precio }}
                         </p>
                         <br>
                         <div style="display: flex; align-items: center; gap: 10px; ">
