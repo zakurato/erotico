@@ -18,7 +18,8 @@
 </head>
 
 <body id="cart"
-    class="cart lang-es country-es currency-eur layout-full-width page-cart tax-display-enabled lang_es    desktop_device   	 hide-left-column hide-right-column ">
+    class="cart lang-es country-es currency-eur layout-full-width page-cart tax-display-enabled lang_es    desktop_device   	 hide-left-column hide-right-column "
+    style="font: 17px Arial">
 
 
     <div class="navbar navbar-inverse" style="background-color: black !important; width: 100% !important;">
@@ -64,7 +65,7 @@
                                         <div class="cart-grid-body col-12 col-lg-8 mb-3">
                                             <!-- cart products detailed -->
                                             <div class="card card_trans mb-3">
-                                                <div class="card-header">
+                                                <div class="card-header" style="font: 17px Arial">
                                                     Carrito MagicSexShop Producto({{ $ContadorProducto }}) <div
                                                         style="display: inline-block; margin-left: 90%">
                                                         <a ref="#" id="basurero{{ $item->id }}">
@@ -366,7 +367,7 @@
                             <div class="cart-grid-body col-12 col-lg-8 mb-3">
                                 <!-- cart products detailed -->
                                 <div class="card card_trans mb-3">
-                                    <div class="card-header">Formulario envio paquete</div>
+                                    <div class="card-header" style="font: 17px Arial">Detalles de facturación</div>
                                     <div class="cart-overview js-cart"
                                         data-refresh-url="//momakids.es/carrito?ajax=1&amp;action=refresh">
                                         <ul class="cart-items base_list_line mb-3 m-t-1">

@@ -132,6 +132,18 @@
                                                             @endforeach
 
                                                             @foreach ($fotos as $item3)
+
+
+                                                                @if ($item->idFKProducto == $item3->idFK && $item->colorSeleccionado == $item3->color && $item->tamañoSeleccionado == $item3->tamaño && $item3->imagen == "formTamañosCantidades")
+                                                                    @foreach ($productos as $item4)
+                                                                        @if ($item->idFKProducto == $item4->id)
+                                                                            <div class="product-line-grid-left col-md-2 col-3">
+                                                                                <img src="imagesProductos/{{$item4->imagen}}" width="150" height="150" alt="error" onclick="showImage('imagesProductos/{{$item4->imagen}}')">
+                                                                            </div>                                                                    
+                                                                        @endif
+                                                                    @endforeach
+                                                                    @break
+                                                                @endif
                                                                 @if ($item->idFKProducto == $item3->idFK && $item->colorSeleccionado == $item3->color && $item->tamañoSeleccionado == $item3->tamaño)
                                                                     <div class="product-line-grid-left col-md-2 col-3">
                                                                         <img src="imagesProductos/{{$item3->imagen}}" width="150" height="150" alt="error" onclick="showImage('imagesProductos/{{$item3->imagen}}')">

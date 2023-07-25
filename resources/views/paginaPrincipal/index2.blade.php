@@ -3,8 +3,8 @@
 
 <head>
 
-     <!--animaciones-->
-     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!--animaciones-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!--/Css propios public-->
     <link rel="stylesheet" href="{{ asset('index/index.Css') }}?v={{ time() }}">
@@ -35,6 +35,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--iconos-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <body class="warehouse--v4 features--animate-zoom template-index" data-instant-intensity="viewport">
     <!-- END sections: header-group -->
@@ -49,14 +51,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                        <div class="navbar-header">
-                            <button id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
-                                data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
-                                    class="icon-bar"></span></button>
-                            <a href="#" class="header__logo-link">
-                                <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
-                            </a>
-                        </div>
+                    <div class="navbar-header">
+                        <button id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
+                            data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
+                                class="icon-bar"></span></button>
+                        <a href="#" class="header__logo-link">
+                            <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
+                        </a>
+                    </div>
 
                     <div class="navbar-collapse collapse" id="mobile_menu">
                         <ul class="nav navbar-nav">
@@ -90,25 +92,25 @@
                                 </form>
                             </li>
                         </ul>
-                        <a href="{{route("carritoCompras")}}">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <div style="display: inline-flex;" id="parpadeo">
-                                            <!-- carrito -->
-                                            <svg style="color: #9d9d9d"
-                                                xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                                                fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                                    fill="#9d9d9d">
-                                                </path>
-                                            </svg>
-                                                <div style="color: #9d9d9d" id="contadorCarrito">{{$contadorCarrito->contadorCarrito}}</div>
-                                                <h4 style="color: #9d9d9d;">Carrito de compras</h4>
-                                            <!-- carrito -->
-                                        </div>
-                                    </li>
-                                </ul>
+                        <a href="{{ route('carritoCompras') }}">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <div style="display: inline-flex;" id="parpadeo">
+                                        <!-- carrito -->
+                                        <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg" width="28"
+                                            height="28" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                                                fill="#9d9d9d">
+                                            </path>
+                                        </svg>
+                                        <div style="color: #9d9d9d" id="contadorCarrito">
+                                            {{ $contadorCarrito->contadorCarrito }}</div>
+                                        <h4 style="color: #9d9d9d;">Carrito de compras</h4>
+                                        <!-- carrito -->
+                                    </div>
+                                </li>
+                            </ul>
                         </a>
                         </a>
                     </div>
@@ -154,7 +156,7 @@
                 <section class="section section--text-centered"
                     data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
                     data-section-type="rich-text">
-                    <div class="container container--narrow" >
+                    <div class="container container--narrow">
                         <h2 class="heading h1">Encuentra la magia dentro de ti en MagicSexShop.</h2>
                         <div class="rte">
                         </div>
@@ -196,13 +198,14 @@
                                             <div class="carousel-inner" id="carousel-inner{{ $item->id }}">
                                                 <div id="selectImagenes{{ $item->id }}" class="item active"
                                                     file-name="{{ $item->imagen }}">
-                                                    <img onclick="showImage('imagesProductos/{{$item->imagen}}')"
+                                                    <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
                                                         style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
                                                 </div>
                                             </div>
 
                                             <div id="lightbox" onclick="hideImage()">
                                                 <img id="lightbox-image">
+                                                <p style="color: white" id="lightbox-descripcion"></p>
                                             </div>
 
                                             <script>
@@ -232,7 +235,10 @@
                                                                     if (response.length == 1) {
                                                                         divElement.innerHTML = "";
                                                                         $("#selectImagenes" + productId).append(
-                                                                            "<img onclick=\"showImage('imagesProductos/" + response[0] + "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" + response[0] + "'>"
+                                                                            "<img onclick=\"showImage('imagesProductos/" + response[
+                                                                                0] +
+                                                                            "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                            response[0] + "'>"
                                                                         );
                                                                         //coloca la primera opcion
                                                                         divElement.setAttribute("file-name", response[0]);
@@ -250,12 +256,17 @@
                                                                         response.forEach((image) => {
                                                                             array_images.push(image);
                                                                         });
+                                                                        var imageCount = 0;
                                                                         for (var i = 0; i < response
                                                                             .length; i++
-                                                                            ) { //me trae las imagenes de la consulta que viene del response
+                                                                        ) { //me trae las imagenes de la consulta que viene del response
                                                                             if (response[i] != "formTamañosCantidades") {
                                                                                 if (i == 0) {
-                                                                                    $("#selectImagenes" + productId).append("<img onclick=\"showImage('imagesProductos/" + response[i] + "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" + response[i] + "'>");
+                                                                                    $("#selectImagenes" + productId).append(
+                                                                                        "<img onclick=\"showImage('imagesProductos/" +
+                                                                                        response[i] +
+                                                                                        "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                                        response[i] + "'>");
                                                                                     divElement.setAttribute("file-name", response[i]);
                                                                                 } else {
                                                                                     var clone = divElement.cloneNode(true);
@@ -263,6 +274,9 @@
                                                                                         response[i];
                                                                                     clone.classList.remove("active");
                                                                                     clone.setAttribute("file-name", response[i]);
+                                                                                    clone.setAttribute("onclick",
+                                                                                        "showImage('imagesProductos/" + response[
+                                                                                            i] + "')");
                                                                                     car_element.appendChild(clone);
                                                                                 }
                                                                                 var isactive = false;
@@ -304,14 +318,15 @@
                                     <div class="card-body p-4">
                                         <div class="text-center">
                                             <!-- Product name-->
-                                            <h5 class="fw-bolder"><strong>{{ $item->nombre }}</strong></h5>
+                                            <h5 class="fw-bolder nombre">{{ $item->nombre }}</h5>
                                             <!-- Product price-->
-                                            <h5 class="fw-bolder">Precio: ₡{{ $item->precio }}</h5>
+                                            <h5 class="fw-bolder precio">Precio: ₡{{ $item->precio }}</h5>
                                         </div>
                                     </div>
+                                    <br>
                                     <div class="product-item__info-inner">
                                         <div class="form-group">
-                                            <select class="form-control"
+                                            <select class="form-control styleSelect"
                                                 name="color"id="color-select-{{ $item->id }}">
                                                 <option disabled selected>Seleccione el color</option>
                                                 <option>{{ $item->color }}</option>
@@ -330,7 +345,7 @@
                                     <div class="product-item__info-inner">
                                         <div class="form-group">
                                             <select
-                                                class="form-control"name="tamaño"id="selectTamaños{{ $item->id }}">
+                                                class="form-control styleSelect"name="tamaño"id="selectTamaños{{ $item->id }}">
                                                 <option disabled selected>Seleccione el tamaño</option>
                                             </select>
                                         </div>
@@ -354,14 +369,20 @@
                                                         dataType: 'json',
                                                         success: function(response) {
                                                             const filteredObj = Object.fromEntries(
-                                                            Object.entries(response).filter(([key, value]) => value !== 'formImagenes')
+                                                                Object.entries(response).filter(([key, value]) => value !==
+                                                                    'formImagenes')
                                                             );
                                                             // Crear un arreglo con los valores filtrados sin que vengan con 'formImagenes'
                                                             const newArray = Object.values(filteredObj);
 
-                                                            $("#selectTamaños" + productId).empty(); //limpia el select de tamaños
-                                                            $("#selectTamaños" + productId).append("<option value=''>Selecciona el tamaño</option>"); //coloca la primera opcion
-                                                            for (var i = 0; i < newArray.length; i++) { //me trae los tamaños de la consulta que viene del response
+                                                            $("#selectTamaños" + productId)
+                                                                .empty(); //limpia el select de tamaños
+                                                            $("#selectTamaños" + productId).append(
+                                                                "<option value=''>Selecciona el tamaño</option>"
+                                                            ); //coloca la primera opcion
+                                                            for (var i = 0; i < newArray
+                                                                .length; i++
+                                                            ) { //me trae los tamaños de la consulta que viene del response
                                                                 $("#selectTamaños" + productId).append("<option value='" +
                                                                     newArray[i] + "'>" + newArray[i] + "</option>"
                                                                 ); // Agrega las opciones con los tamaños
@@ -375,8 +396,9 @@
                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                     <input type="hidden" name="sessionCliente" value="{{ $sessionCliente }}">
                                     <button style="width: 100%" type="submit" id="botonCarrito{{ $item->id }}"
-                                        class="product-item__action-button button button--small button--primary">Añadir al carrito</button>
-                                        <div id="mensajeContainer{{$item->id}}"></div>
+                                        class="product-item__action-button button button--small button--primary">Añadir
+                                        al carrito</button>
+                                    <div id="mensajeContainer{{ $item->id }}"></div>
 
                                     <script>
                                         $(document).ready(function() {
@@ -409,143 +431,205 @@
 
                                                 //console.log(tamaño);
 
-                                                if(color == undefined || tamaño == ""){
-                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
-                                                    mensajeContainer.innerHTML = "Debe seleccionar un color y un tamaño";// limpio el mensajecontainer
-                                                }else{
+                                                if (color == undefined || tamaño == "") {
+                                                    var mensajeContainer = document.getElementById("mensajeContainer{{ $item->id }}");
+                                                    mensajeContainer.innerHTML =
+                                                        "Debe seleccionar un color y un tamaño"; // limpio el mensajecontainer
+                                                } else {
 
-                                                        //console.log("color:" + color);
-                                                        //console.log("tamaño:" + tamaño);
-                                                        //console.log(sessionCliente);
-                                                        //console.log("si se selecciono el color");
-                                                        $.ajax({
-                                                            url: 'carritoCompraVerificarCantidad', // aqui va el nombre de la ruta
-                                                            method: 'GET', // el metodo que se usa en la ruta
-                                                            data: {
-                                                                productId: id,
-                                                                selectedColor: color,
-                                                                selectedTamaño: tamaño,
-                                                                sessionCliente: sessionCliente,
-                                                            }, //los parametros enviados
-                                                            dataType: 'json',
-                                                            success: function(response) {
+                                                    //console.log("color:" + color);
+                                                    //console.log("tamaño:" + tamaño);
+                                                    //console.log(sessionCliente);
+                                                    //console.log("si se selecciono el color");
+                                                    $.ajax({
+                                                        url: 'carritoCompraVerificarCantidad', // aqui va el nombre de la ruta
+                                                        method: 'GET', // el metodo que se usa en la ruta
+                                                        data: {
+                                                            productId: id,
+                                                            selectedColor: color,
+                                                            selectedTamaño: tamaño,
+                                                            sessionCliente: sessionCliente,
+                                                        }, //los parametros enviados
+                                                        dataType: 'json',
+                                                        success: function(response) {
 
-                                                                //respuesta del controlador 
-                                                                if (response.foto.cantidad == null) {
-                                                                    //console.log("Cantidad de producto tabla producto " +response.producto.cantidad + " del tamaño " +response.producto.tamaño);
-                                                                    if (response.producto.cantidad <= 0) {
+                                                            //respuesta del controlador 
+                                                            if (response.foto.cantidad == null) {
+                                                                //console.log("Cantidad de producto tabla producto " +response.producto.cantidad + " del tamaño " +response.producto.tamaño);
+                                                                if (response.producto.cantidad <= 0) {
 
-                                                                        var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
-                                                                        mensajeContainer.innerHTML = "No quedan en inventario del tamaño "+ response.producto.tamaño;
-                                                                        
-                                                                        } else {
-                                                                        var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
-                                                                        mensajeContainer.innerHTML = "";// limpio el mensajecontainer
-                                                                        //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
-                                                                        //console.log("Agregar al carrito");
-                                                                        //tabla productos
-                                                                        $.ajax({
-                                                                            url: 'carritoCompraTablaProducto', // aqui va el nombre de la ruta
-                                                                            method: 'GET', // el metodo que se usa en la ruta
-                                                                            data: {
-                                                                                productId: id,
-                                                                                selectedColor: color,
-                                                                                selectedTamaño: tamaño,
-                                                                                sessionCliente: sessionCliente,
-                                                                            }, //los parametros enviados
-                                                                            dataType: 'json',
-                                                                            success: function(response) {
-                                                                                //console.log(response);
-                                                                                if(response == "Si desea sumar mas de este producto entrar al carrito de compra"){
-                                                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
-                                                                                    mensajeContainer.innerHTML = response;// limpio el mensajecontainer
-                                                                                }else{
-                                                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
-                                                                                    mensajeContainer.innerHTML = "Se agrego correctamente al carrito";// limpio el mensajecontainer
-                                                                                var numeroContadorCarrito = document.getElementById("contadorCarrito");
-                                                                                var parpadeo2 = document.getElementById("parpadeo");
-                                                                                var parpadeo3 = document.getElementById("parpadeoDrop");
+                                                                    var mensajeContainer = document.getElementById(
+                                                                        "mensajeContainer{{ $item->id }}");
+                                                                    mensajeContainer.innerHTML =
+                                                                        "No quedan en inventario del tamaño " + response
+                                                                        .producto.tamaño;
+
+                                                                } else {
+                                                                    var mensajeContainer = document.getElementById(
+                                                                        "mensajeContainer{{ $item->id }}");
+                                                                    mensajeContainer.innerHTML =
+                                                                        ""; // limpio el mensajecontainer
+                                                                    //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                                                    //console.log("Agregar al carrito");
+                                                                    //tabla productos
+                                                                    $.ajax({
+                                                                        url: 'carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                                                        method: 'GET', // el metodo que se usa en la ruta
+                                                                        data: {
+                                                                            productId: id,
+                                                                            selectedColor: color,
+                                                                            selectedTamaño: tamaño,
+                                                                            sessionCliente: sessionCliente,
+                                                                        }, //los parametros enviados
+                                                                        dataType: 'json',
+                                                                        success: function(response) {
+                                                                            //console.log(response);
+                                                                            if (response ==
+                                                                                "Si desea sumar mas de este producto entrar al carrito de compra"
+                                                                            ) {
+                                                                                var mensajeContainer = document
+                                                                                    .getElementById(
+                                                                                        "mensajeContainer{{ $item->id }}"
+                                                                                    );
+                                                                                mensajeContainer.innerHTML =
+                                                                                    response; // limpio el mensajecontainer
+                                                                            } else {
+                                                                                var mensajeContainer = document
+                                                                                    .getElementById(
+                                                                                        "mensajeContainer{{ $item->id }}"
+                                                                                    );
+                                                                                mensajeContainer.innerHTML =
+                                                                                    "Se agrego correctamente al carrito"; // limpio el mensajecontainer
+                                                                                var numeroContadorCarrito = document
+                                                                                    .getElementById(
+                                                                                        "contadorCarrito");
+                                                                                var parpadeo2 = document
+                                                                                    .getElementById("parpadeo");
+                                                                                var parpadeo3 = document
+                                                                                    .getElementById("parpadeoDrop");
                                                                                 // Función para actualizar el valor del contador y añadir la clase "parpadeo"
-                                                                                function actualizarContador(nuevoValor) {
-                                                                                numeroContadorCarrito.innerHTML = nuevoValor;
-                                                                                parpadeo2.classList.add("parpadeo");
-                                                                                parpadeo3.classList.add("parpadeo");
+                                                                                function actualizarContador(
+                                                                                    nuevoValor) {
+                                                                                    numeroContadorCarrito
+                                                                                        .innerHTML = nuevoValor;
+                                                                                    parpadeo2.classList.add(
+                                                                                        "parpadeo");
+                                                                                    parpadeo3.classList.add(
+                                                                                        "parpadeo");
 
-                                                                                // Eliminar la clase "parpadeo" después de la animación
-                                                                                setTimeout(function() {
-                                                                                    parpadeo2.classList.remove("parpadeo");
-                                                                                    parpadeo3.classList.remove("parpadeo");
+                                                                                    // Eliminar la clase "parpadeo" después de la animación
+                                                                                    setTimeout(function() {
+                                                                                            parpadeo2.classList
+                                                                                                .remove(
+                                                                                                    "parpadeo");
+                                                                                            parpadeo3.classList
+                                                                                                .remove(
+                                                                                                    "parpadeo");
 
-                                                                                }, 6000); // 2s * 3 = 6s (duración total de la animación)
+                                                                                        },
+                                                                                        6000
+                                                                                    ); // 2s * 3 = 6s (duración total de la animación)
                                                                                 }
 
                                                                                 // Ejemplo de uso: actualizar el contador con un nuevo valor
                                                                                 var nuevoValor = response;
                                                                                 actualizarContador(nuevoValor);
-                                                                                }
                                                                             }
-                                                                        });
+                                                                        }
+                                                                    });
 
-                                                                    }
-                                                                } else if (response.producto.cantidad == null) {
-                                                                    console.log("Cantidad de producto tabla foto " + response.foto.cantidad + " del tamaño " + response.foto.tamaño);
-                                                                    if (response.foto.cantidad <= 0) {
-                                                                        console.log("Debo mandar una variable donde se imprima que no se pudo agregar el producto al carrito");
-                                                                        var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
-                                                                        mensajeContainer.innerHTML = "No quedan en inventario del tamaño "+ response.foto.tamaño;
-                                                                    } else {
-                                                                        var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
-                                                                        mensajeContainer.innerHTML = "";// limpio el mensajecontainer
-                                                                        //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
-                                                                        //console.log("Agregar al carrito");
-                                                                        //tabla fotos
-                                                                        $.ajax({
-                                                                            url: 'carritoCompraTablaFotos', // aqui va el nombre de la ruta
-                                                                            method: 'GET', // el metodo que se usa en la ruta
-                                                                            data: {
-                                                                                productId: id,
-                                                                                selectedColor: color,
-                                                                                selectedTamaño: tamaño,
-                                                                                sessionCliente: sessionCliente,
-                                                                            }, //los parametros enviados
-                                                                            dataType: 'json',
-                                                                            success: function(response) {
-                                                                                //respuesta del controlador 
-                                                                                console.log(response);
-                                                                                if(response == "Si desea sumar mas de este producto entrar al carrito de compra"){
-                                                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
-                                                                                    mensajeContainer.innerHTML = response;// limpio el mensajecontainer
-                                                                                }else{
-                                                                                    var mensajeContainer = document.getElementById("mensajeContainer{{$item->id}}");
-                                                                                    mensajeContainer.innerHTML = "Se agrego correctamente al carrito";// limpio el mensajecontainer
-                                                                                    var numeroContadorCarrito = document.getElementById("contadorCarrito");
-                                                                                    var parpadeo2 = document.getElementById("parpadeo");
-                                                                                    var parpadeo3 = document.getElementById("parpadeoDrop");
-                                                                                    // Función para actualizar el valor del contador y añadir la clase "parpadeo"
-                                                                                    function actualizarContador(nuevoValor) {
-                                                                                    numeroContadorCarrito.innerHTML = nuevoValor;
-                                                                                    parpadeo2.classList.add("parpadeo");
-                                                                                    parpadeo3.classList.add("parpadeo");
+                                                                }
+                                                            } else if (response.producto.cantidad == null) {
+                                                                console.log("Cantidad de producto tabla foto " + response.foto
+                                                                    .cantidad + " del tamaño " + response.foto.tamaño);
+                                                                if (response.foto.cantidad <= 0) {
+                                                                    console.log(
+                                                                        "Debo mandar una variable donde se imprima que no se pudo agregar el producto al carrito"
+                                                                    );
+                                                                    var mensajeContainer = document.getElementById(
+                                                                        "mensajeContainer{{ $item->id }}");
+                                                                    mensajeContainer.innerHTML =
+                                                                        "No quedan en inventario del tamaño " + response.foto
+                                                                        .tamaño;
+                                                                } else {
+                                                                    var mensajeContainer = document.getElementById(
+                                                                        "mensajeContainer{{ $item->id }}");
+                                                                    mensajeContainer.innerHTML =
+                                                                        ""; // limpio el mensajecontainer
+                                                                    //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                                                    //console.log("Agregar al carrito");
+                                                                    //tabla fotos
+                                                                    $.ajax({
+                                                                        url: 'carritoCompraTablaFotos', // aqui va el nombre de la ruta
+                                                                        method: 'GET', // el metodo que se usa en la ruta
+                                                                        data: {
+                                                                            productId: id,
+                                                                            selectedColor: color,
+                                                                            selectedTamaño: tamaño,
+                                                                            sessionCliente: sessionCliente,
+                                                                        }, //los parametros enviados
+                                                                        dataType: 'json',
+                                                                        success: function(response) {
+                                                                            //respuesta del controlador 
+                                                                            console.log(response);
+                                                                            if (response ==
+                                                                                "Si desea sumar mas de este producto entrar al carrito de compra"
+                                                                            ) {
+                                                                                var mensajeContainer = document
+                                                                                    .getElementById(
+                                                                                        "mensajeContainer{{ $item->id }}"
+                                                                                    );
+                                                                                mensajeContainer.innerHTML =
+                                                                                    response; // limpio el mensajecontainer
+                                                                            } else {
+                                                                                var mensajeContainer = document
+                                                                                    .getElementById(
+                                                                                        "mensajeContainer{{ $item->id }}"
+                                                                                    );
+                                                                                mensajeContainer.innerHTML =
+                                                                                    "Se agrego correctamente al carrito"; // limpio el mensajecontainer
+                                                                                var numeroContadorCarrito = document
+                                                                                    .getElementById(
+                                                                                        "contadorCarrito");
+                                                                                var parpadeo2 = document
+                                                                                    .getElementById("parpadeo");
+                                                                                var parpadeo3 = document
+                                                                                    .getElementById("parpadeoDrop");
+                                                                                // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                                                                function actualizarContador(
+                                                                                    nuevoValor) {
+                                                                                    numeroContadorCarrito
+                                                                                        .innerHTML = nuevoValor;
+                                                                                    parpadeo2.classList.add(
+                                                                                        "parpadeo");
+                                                                                    parpadeo3.classList.add(
+                                                                                        "parpadeo");
 
                                                                                     // Eliminar la clase "parpadeo" después de la animación
                                                                                     setTimeout(function() {
-                                                                                        parpadeo2.classList.remove("parpadeo");
-                                                                                        parpadeo3.classList.remove("parpadeo");
+                                                                                            parpadeo2.classList
+                                                                                                .remove(
+                                                                                                    "parpadeo");
+                                                                                            parpadeo3.classList
+                                                                                                .remove(
+                                                                                                    "parpadeo");
 
-                                                                                    }, 6000); // 2s * 3 = 6s (duración total de la animación)
-                                                                                    }
-
-                                                                                    // Ejemplo de uso: actualizar el contador con un nuevo valor
-                                                                                    var nuevoValor = response;
-                                                                                    actualizarContador(nuevoValor);
+                                                                                        },
+                                                                                        6000
+                                                                                    ); // 2s * 3 = 6s (duración total de la animación)
                                                                                 }
-                                                                            }
-                                                                        });
-                                                                    }
-                                                                }
 
+                                                                                // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                                                                var nuevoValor = response;
+                                                                                actualizarContador(nuevoValor);
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                }
                                                             }
-                                                        });
+
+                                                        }
+                                                    });
 
 
                                                 }
@@ -562,7 +646,7 @@
 
 
 
-                                               
+
 
 
                                             });
@@ -1269,8 +1353,7 @@
                                                 class="icon" role="presentation" viewBox="2 1 21 21">
                                                 <path
                                                     d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"
-                                                    fill="currentColor" fill-rule="evenodd"
-                                                    class="focusAlWhatapps">
+                                                    fill="currentColor" fill-rule="evenodd" class="focusAlWhatapps">
                                                 </path>
                                             </svg></a>
                                     </li>
@@ -1285,8 +1368,31 @@
                 </div>
             </footer>
 
+
+            <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
+                target="_blank" rel="noopener"
+                aria-describedby="a11y-new-window-message">
+                <div class="wa__btn_popup" style="left: unset; right: 25px; bottom:90px;">
+                    <p>
+                        <span class="fab-container">
+                          <i class="fab fa-whatsapp" style="color: #27d011; font-size: 4em;"></i>
+                          <span class="fab-text">¡Contáctanos por WhatsApp!</span>
+                        </span>
+                      </p>
+                </div>
+            </a>
+
 </body>
 
+
+<script>
+    function toggleText() {
+      const fabText = document.querySelector(".fab-text");
+      fabText.classList.toggle("show-text");
+    }
+
+    setInterval(toggleText, 5000);
+  </script>
 
 
 <script>
@@ -1316,14 +1422,17 @@
     });
 </script>
 
+
 <script>
     //script para mostrar la imagen en grande
-        function showImage(imageSrc) {
-            var lightbox = document.getElementById('lightbox');
-            var lightboxImage = document.getElementById('lightbox-image');
-            lightboxImage.src = imageSrc;
-            lightbox.style.display = 'flex';
-        }
+    function showImage(imageSrc) {
+        console.log(imageSrc);
+
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightbox-image');
+        lightboxImage.src = imageSrc;
+        lightbox.style.display = 'flex';
+    }
 
     function hideImage() {
         var lightbox = document.getElementById('lightbox');

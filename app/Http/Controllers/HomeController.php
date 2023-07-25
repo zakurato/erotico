@@ -1488,14 +1488,12 @@ class HomeController extends Controller
 
             public function verFactura(Request $request){
 
-                //return $request;
-
                 $facturasCompras = Compras2s::where([["nFactura","=",$request->nFactura],["telefono","=",$request->telefono]])->get();
         
-                //return $facturasCompras;
                 if($facturasCompras->isEmpty()){
                     return redirect()->route("index2");
                 }else{
+
                     $productos = Producto::all();
                     $fotos = Foto::all();
                     $suma = 0;
@@ -1507,6 +1505,8 @@ class HomeController extends Controller
                 }
                
             }
+
+
 
 
     }

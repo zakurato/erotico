@@ -14,7 +14,6 @@
 
     <link rel="stylesheet" href="{{ asset('login/loginAdentro.Css?1.0') }}">
 </head>
-
 <body>
 
     <div class="navbar">

@@ -15273,8 +15273,76 @@ shopify-payment-terms {
   border-color: white;
   padding: 50px;
   border-radius: 5px;
-  max-width: 400px;
-  max-height: 400px;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+
+
+.precio{
+  font-size: 17px;
+    font-weight: 400;
+    color: #111;  
+    unicode-bidi: isolate;
+}
+
+.nombre{
+  font-size: 16px;
+  font-weight: 500;
+  color: #8e8e8e;
+}
+
+.styleSelect{
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #8e8e8e !important;
+}
+
+
+/*wa*/
+
+.wa__btn_popup {
+  bottom: 30px;
+  cursor: pointer;
+  position: fixed;
+  right: 30px;
+  z-index: 999999999;
+}
+
+
+.fab-container {
+  position: relative;
+  display: inline-block;
+}
+
+.fab-text {
+  max-width: calc(100vw - 105px);
+  height: 32px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 16px;
+  background-color: white;
+  color: rgba(0,0,0,.8);
+  line-height: 31px;
+  transition: opacity .2s ease-out .4s;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,.4));
+  pointer-events: none;
+  visibility: hidden;
+  text-align: center;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-100%);
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.fab-container:hover .fab-text,
+.show-text {
+  visibility: visible;
+  opacity: 1;
 }
 
 
