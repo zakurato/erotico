@@ -10,7 +10,6 @@
         media="all">
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
 
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -94,7 +93,8 @@
                                                                                 <img src="imagesProductos/{{ $item4->imagen }}"
                                                                                     width="150" height="150"
                                                                                     alt=""
-                                                                                    onclick="showImage('imagesProductos/{{$item4->imagen}}')">
+                                                                                    onclick="showImage('imagesProductos/{{$item4->imagen}}')"
+                                                                                    id="{{$item4->imagen}}">
                                                                             </div>
                                                                             @php
                                                                                 $pasa = 1;
@@ -111,7 +111,8 @@
                                                                                 <img src="imagesProductos/{{ $item5->imagen }}"
                                                                                     width="150" height="150"
                                                                                     alt=""
-                                                                                    onclick="showImage('imagesProductos/{{$item5->imagen}}')">
+                                                                                    onclick="showImage('imagesProductos/{{$item5->imagen}}')"
+                                                                                    >
                                                                             </div>
                                                                         @break
                                                                     @endif
@@ -139,7 +140,7 @@
                                                                                 Color:
                                                                                 {{ $item->colorSeleccionado }}
                                                                             </div>
-                                                                            <div class="current-price">
+                                                                            <div class="current-price" id="tamañoSelect{{ $item->id }}">
                                                                                 Tamaño:
                                                                                 {{ $item->tamañoSeleccionado }}
                                                                             </div>
@@ -257,21 +258,28 @@
                                                                                             $('#btnMas{{ $item->id }}').click(function(e) {
 
                                                                                                 //btnMenos seleccionado
+                                                                                                /*
                                                                                                 var btnMas = document.getElementById("btnMas{{ $item->id }}");
-                                                                                                var sumarInput = document.getElementById('inputCantidad{{ $item->id }}');
                                                                                                 var colorSeleccionado = document.getElementById("colorSelect{{ $item->id }}");
                                                                                                 var soloDejarColor = colorSeleccionado.textContent.replace("Color:", "");
+                                                                                                var tamañoSeleccionado = document.getElementById("tamañoSelect{{ $item->id }}");
+                                                                                                var soloDejarTamaño = tamañoSeleccionado.textContent.replace("Tamaño:", "");
+                                                                                                var imagenSeleccionado = document.getElementById("{{ $item4->imagen }}");
+                                                                                                */
+
+                                                                                                var sumarInput = document.getElementById('inputCantidad{{ $item->id }}');
                                                                                                 var precioTotalProductoIva = document.getElementById("sumaTotalProductos");
                                                                                                 var idProductoCarrito = sumarInput.id.replace("inputCantidad", "");
                                                                                                 var $resultadoTotalArticulos = document.getElementById("resultado");
                                                                                                 var precioTotalProductoIvaHidden = document.getElementById("sumaTotalProductosHidden");
+                                                                                                
+                                                                                                //aqui debo arreglar para traer el $item5->imagen que es la imagen de la foto para poder sumarla o restarla
 
-                                                                                                $.ajax({
+                                                                                                    $.ajax({
                                                                                                     url: 'sumarCambioInputCambioTotalIva', // aqui va el nombre de la ruta
                                                                                                     method: 'GET', // el metodo que se usa en la ruta
                                                                                                     data: {
                                                                                                         id: idProductoCarrito,
-                                                                                                        color: soloDejarColor,
                                                                                                     }, //los parametros enviados
                                                                                                     dataType: 'json',
                                                                                                     success: function(response) {
@@ -282,7 +290,7 @@
                                                                                                         precioTotalProductoIvaHidden.defaultValue = response.suma;
                                                                                                     }
                                                                                                 });
-
+                                                                                                
 
                                                                                             });
                                                                                         });
@@ -291,7 +299,6 @@
 
                                                                                     <script>
                                                                                         $(document).ready(function() {
-                                                                                            //funcion de restar
                                                                                             // Asigna un controlador de eventos al botón
 
                                                                                             $('#basurero{{ $item->id }}').click(function(e) {
@@ -486,7 +493,7 @@ role="contentinfo">
 <div class="container">
     <div class="footer__wrapper">
         <div class="footer__block-list">
-            <div class="footer__block-item footer__block-item--text">
+            <div class="footer_block-item footer_block-item--text">
                 <button class="footer__title heading h6" aria-expanded="false" aria-controls="block-footer-0"
                     data-action="toggle-collapsible" disabled="disabled">
                     <span>Acerca de nosotros</span>
@@ -500,10 +507,10 @@ role="contentinfo">
             </div>
         </div>
         <aside class="footer__aside">
-            <div class="footer__aside-item footer__aside-item--social">
+            <div class="footer_aside-item footer_aside-item--social">
                 <p class="footer__aside-title">Síguenos</p>
                 <ul class="social-media__item-list  list--unstyled" role="list">
-                    <li class="social-media__item social-media__item--facebook">
+                    <li class="social-media_item social-media_item--facebook">
                         <a href="https://www.facebook.com/profile.php?id=100063694886908" target="_blank"
                             rel="noopener" aria-label="Síguenos en Facebook"
                             aria-describedby="a11y-new-window-message"><svg focusable="false"
@@ -513,7 +520,7 @@ role="contentinfo">
                                     fill="currentColor" fill-rule="evenodd"></path>
                             </svg></a>
                     </li>
-                    <li class="social-media__item social-media__item--instagram">
+                    <li class="social-media_item social-media_item--instagram">
                         <a href="https://www.instagram.com/magicsexshop27/?hl=es" target="_blank"
                             rel="noopener" aria-label="Síguenos en Instagram"
                             aria-describedby="a11y-new-window-message"><svg focusable="false"
@@ -523,7 +530,7 @@ role="contentinfo">
                                     fill="currentColor" fill-rule="evenodd"></path>
                             </svg></a>
                     </li>
-                    <li class="social-media__item social-media__item--whatsapp">
+                    <li class="social-media_item social-media_item--whatsapp">
                         <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
                             target="_blank" rel="noopener" aria-label="Síguenos en Instagram"
                             aria-describedby="a11y-new-window-message"><svg focusable="false" class="icon"
@@ -545,8 +552,22 @@ role="contentinfo">
 </div>
 </footer>
 
+<a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
+target="_blank" rel="noopener"
+aria-describedby="a11y-new-window-message">
+<div class="wa__btn_popup" style="left: unset; right: 25px; bottom:90px;">
+    <p>
+        <span class="fab-container">
+          <i class="fab fa-whatsapp" style="color: #27d011; font-size: 3em;"></i>
+          <span class="fab-text">¡Contáctanos por WhatsApp!</span>
+        </span>
+      </p>
+</div>
+</a>
+
 
 </body>
+
 
 <script>
     //script para mostrar la imagen en grande

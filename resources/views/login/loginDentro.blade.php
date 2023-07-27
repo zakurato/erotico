@@ -17,6 +17,7 @@
 
     <div class="navbar">
         <ul>
+            <li><a href="{{ route('vistaReporteFacturas') }}">Reportes de facturas</a></li>
             <li><a href="{{ route('logout') }}">Cerrar sesion</a></li>
             <!-- Agrega aquí más elementos del navbar si es necesario -->
         </ul>

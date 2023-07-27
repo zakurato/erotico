@@ -807,281 +807,392 @@ class HomeController extends Controller
                         'cantidad' => $cantidadActualProductoElegidoTablaProducto,
                         'tamaño' => $selectedTamaño
                     ],
-                    'foto' => [
-                        'cantidad' => $cantidadActualProductoElegidoTablaFotos,
-                        'tamaño' => $selectedTamaño
-                    ]
-                ]);
-        }
+                    'foto' => ['cantidad' => $cantidadActualProductoElegidoTablaFotos,
+                    'tamaño' => $selectedTamaño
+                ]
+            ]);
     }
+}
 
-    public function carritoCompraTablaProducto(Request $request){
-        if ($request->ajax()) {
-            $productId = $request->input('productId');
-            $selectedColor = $request->input('selectedColor');
-            $selectedTamaño = $request->input('selectedTamaño');
-            $sessionCliente = $request->input('sessionCliente');
+public function carritoCompraTablaProducto(Request $request){
+    if ($request->ajax()) {
+        $productId = $request->input('productId');
+        $selectedColor = $request->input('selectedColor');
+        $selectedTamaño = $request->input('selectedTamaño');
+        $sessionCliente = $request->input('sessionCliente');
 
-            
-            $existeCompraProductoDelSessionCliente = 0;
-
-            //Añadir compra con a la tabla de compra y comprar si ya existe esa compra
-            $compras = Compra::all();
-            foreach($compras as $item){
-                if($item->nombreClienteSession == $sessionCliente && $item->idFKProducto == $productId && $item->colorSeleccionado == $selectedColor && $item->tamañoSeleccionado == $selectedTamaño){
-                    $existeCompraProductoDelSessionCliente = 1; 
-                    break;
-                }
-            }
-            
-            if($existeCompraProductoDelSessionCliente == 1){
-                return response()->json("Si desea sumar mas de este producto entrar al carrito de compra");
-            }else{
-                //dd("estoy aqui");
-                //añadir los datos a la tabla de compras
-                $añadirCompra = new Compra();
-                $añadirCompra->nombreClienteSession = $sessionCliente;
-                $añadirCompra->idFKProducto = $productId;
-                $añadirCompra->colorSeleccionado = $selectedColor;
-                $añadirCompra->tamañoSeleccionado = $selectedTamaño;
-                $añadirCompra->cantidad = 1;
-                $añadirCompra->save();
-
-                //Aumenta el carrito del cliente
-                $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
-                $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
-                $clienteSession->save();
-
-            
-                //restar la cantidad del producto de la tabla  de productos
-                $restarCantidadProductoTablaProducto = Producto::where([["id","=",$productId],["tamaño","=",$selectedTamaño]])->first();
-                $restarCantidadProductoTablaProducto->cantidad = $restarCantidadProductoTablaProducto->cantidad - 1;
-                $restarCantidadProductoTablaProducto->save();
-
-                //colocar la hora de expiracion por si nunca realiza la compra
-                //$sessionCache = session('nombre');
-                $obtenerPrimeraCompraClienteSession = Compra::where([["id","=",$añadirCompra->id]])->first();
-
-                //crear la fecha de expiracion para eliminar los productos del carrito de esta session
-                $fechaCreacionPrimerItem = $obtenerPrimeraCompraClienteSession->created_at;
-                //$fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (01 * 60));
-
-                $fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (2 * 60 * 60));
-                $obtenerPrimeraCompraClienteSession->expiracion = $fechaExpiracion;
-                $obtenerPrimeraCompraClienteSession->save();
-
-
-                return response()->json($clienteSession->contadorCarrito);
-            }
-
-        }
-    }
-
-    public function carritoCompraTablaFotos(Request $request){
-        if ($request->ajax()) {
-            $productId = $request->input('productId');
-            $selectedColor = $request->input('selectedColor');
-            $selectedTamaño = $request->input('selectedTamaño');
-            $sessionCliente = $request->input('sessionCliente');
-            $existeCompraProductoDelSessionCliente = 0;
-
-            //Añadir compra con a la tabla de compra y comprar si ya existe esa compra
-            $compras = Compra::all();
-            foreach($compras as $item){
-                if($item->nombreClienteSession == $sessionCliente && $item->idFKProducto == $productId && $item->colorSeleccionado == $selectedColor && $item->tamañoSeleccionado == $selectedTamaño){
-                    $existeCompraProductoDelSessionCliente = 1; 
-                    break;
-                }
-            }
-
-            if($existeCompraProductoDelSessionCliente == 1){
-                return response()->json("Si desea sumar mas de este producto entrar al carrito de compra");
-            }else{
-
-                //añadir los datos a la tabla de compras
-                $añadirCompra = new Compra();
-                $añadirCompra->nombreClienteSession = $sessionCliente;
-                $añadirCompra->idFKProducto = $productId;
-                $añadirCompra->colorSeleccionado = $selectedColor;
-                $añadirCompra->tamañoSeleccionado = $selectedTamaño;
-                $añadirCompra->cantidad = 1;
-                $añadirCompra->save();
-
-
-                //Aumenta el carrito del cliente
-                $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
-                $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
-                $clienteSession->save();
-
-                //restar la cantidad del producto de la tabla  de fotos
-                $restarCantidadProductoTablaFoto = Foto::where([["idFK","=",$productId],["color","=",$selectedColor],["tamaño","=",$selectedTamaño]])->first();
-                $restarCantidadProductoTablaFoto->cantidad = $restarCantidadProductoTablaFoto->cantidad - 1;
-                $restarCantidadProductoTablaFoto->save();
-
-                //colocar la hora de expiracion por si nunca realiza la compra
-                //$sessionCache = session('nombre');
-                $obtenerPrimeraCompraClienteSession = Compra::where([["id","=",$añadirCompra->id]])->first();
-
-                //crear la fecha de expiracion para eliminar los productos del carrito de esta session
-                $fechaCreacionPrimerItem = $obtenerPrimeraCompraClienteSession->created_at;
-                //$fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (01 * 60));
-
-                $fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (2 * 60 * 60));
-                $obtenerPrimeraCompraClienteSession->expiracion = $fechaExpiracion;
-                $obtenerPrimeraCompraClienteSession->save();
-
-                return response()->json($clienteSession->contadorCarrito);
-
-            }
-        }
-    }
-
-    public function carritoCompras(){
-
-
-        $fechaActual = Date::now();
-        $fechaObjeto = new DateTime($fechaActual);
-        $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
-    
-        $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
         
-        if($clienteSession == ""){
-            //return "estoy aqui si no hay compras de esta session en la tabla de comppras";
-            $sessionCache = session('nombre');
-            //debo traer las compras del usuario que esta en la session de cache
-            $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
-            //Traer los productos
-            $productos = Producto::all();
-            //traer todas las fotos
-            $fotos = Foto::all();
+        $existeCompraProductoDelSessionCliente = 0;
 
-            return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
-
-        }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
-            //return "estoy aqui para devolver los productos al inventario";
-            //devolver los productos a la tabla de productos
-            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->get();
-            $productos2 = Producto::all();
-            foreach($clienteSession as $item){
-                foreach($productos2 as $item2){
-                    if($item->idFKProducto == $item2->id && $item->colorSeleccionado == $item2->color && $item->tamañoSeleccionado == $item2->tamaño && $item->nombreClienteSession == session("nombre")){
-                        $item2->cantidad = $item2->cantidad + $item->cantidad;
-                        $item2->save();
-                        break;
-                    }
-                }
+        //Añadir compra con a la tabla de compra y comprar si ya existe esa compra
+        $compras = Compra::all();
+        foreach($compras as $item){
+            if($item->nombreClienteSession == $sessionCliente && $item->idFKProducto == $productId && $item->colorSeleccionado == $selectedColor && $item->tamañoSeleccionado == $selectedTamaño){
+                $existeCompraProductoDelSessionCliente = 1; 
+                break;
             }
-            //devolver los productos a la tabla de fotos
-            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->get();
-            $fotos2 = Foto::all();
-            foreach($clienteSession as $item){
-                foreach($fotos2 as $item2){
-                    if($item->idFKProducto == $item2->idFK && $item->colorSeleccionado == $item2->color && $item->tamañoSeleccionado == $item2->tamaño && $item->nombreClienteSession == session("nombre")){
-                        $item2->cantidad = $item2->cantidad + $item->cantidad;
-                        $item2->save();
-                        break;
-                    }
-                }
-            }
+        }
+        
+        if($existeCompraProductoDelSessionCliente == 1){
+            return response()->json("Si desea sumar mas de este producto entrar al carrito de compra");
+        }else{
+            //dd("estoy aqui");
+            //añadir los datos a la tabla de compras
+            $añadirCompra = new Compra();
+            $añadirCompra->nombreClienteSession = $sessionCliente;
+            $añadirCompra->idFKProducto = $productId;
+            $añadirCompra->colorSeleccionado = $selectedColor;
+            $añadirCompra->tamañoSeleccionado = $selectedTamaño;
+            $añadirCompra->cantidad = 1;
+            $añadirCompra->save();
 
-
-
-
-            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->delete();
-            //colocar de la tabla de clientes el contador carrito en 0 de la session que esta iniciada
-            $clienteSession = Cliente::where([["nombre","=", session("nombre")]])->first();
-            $clienteSession->contadorCarrito = 0;
+            //Aumenta el carrito del cliente
+            $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
+            $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
             $clienteSession->save();
 
-            $sessionCache = session('nombre');
-            //debo traer las compras del usuario que esta en la session de cache
-            $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
-            //Traer los productos
-            $productos = Producto::all();
-            //traer todas las fotos
-            $fotos = Foto::all();
-            return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
-            
+        
+            //restar la cantidad del producto de la tabla  de productos
+            $restarCantidadProductoTablaProducto = Producto::where([["id","=",$productId],["tamaño","=",$selectedTamaño]])->first();
+            $restarCantidadProductoTablaProducto->cantidad = $restarCantidadProductoTablaProducto->cantidad - 1;
+            $restarCantidadProductoTablaProducto->save();
+
+            //colocar la hora de expiracion por si nunca realiza la compra
+            //$sessionCache = session('nombre');
+            $obtenerPrimeraCompraClienteSession = Compra::where([["id","=",$añadirCompra->id]])->first();
+
+            //crear la fecha de expiracion para eliminar los productos del carrito de esta session
+            $fechaCreacionPrimerItem = $obtenerPrimeraCompraClienteSession->created_at;
+            //$fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (01 * 60));
+
+            $fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (2 * 60 * 60));
+            $obtenerPrimeraCompraClienteSession->expiracion = $fechaExpiracion;
+            $obtenerPrimeraCompraClienteSession->save();
+
+
+            return response()->json($clienteSession->contadorCarrito);
+        }
+
+    }
+}
+
+public function carritoCompraTablaFotos(Request $request){
+    if ($request->ajax()) {
+        $productId = $request->input('productId');
+        $selectedColor = $request->input('selectedColor');
+        $selectedTamaño = $request->input('selectedTamaño');
+        $sessionCliente = $request->input('sessionCliente');
+        $existeCompraProductoDelSessionCliente = 0;
+
+        //Añadir compra con a la tabla de compra y comprar si ya existe esa compra
+        $compras = Compra::all();
+        foreach($compras as $item){
+            if($item->nombreClienteSession == $sessionCliente && $item->idFKProducto == $productId && $item->colorSeleccionado == $selectedColor && $item->tamañoSeleccionado == $selectedTamaño){
+                $existeCompraProductoDelSessionCliente = 1; 
+                break;
+            }
+        }
+
+        if($existeCompraProductoDelSessionCliente == 1){
+            return response()->json("Si desea sumar mas de este producto entrar al carrito de compra");
         }else{
-            $sessionCache = session('nombre');
-            //debo traer las compras del usuario que esta en la session de cache
-            $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
-            //Traer los productos
-            $productos = Producto::all();
-            //traer todas las fotos
-            $fotos = Foto::all();
-            return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
+
+            //añadir los datos a la tabla de compras
+            $añadirCompra = new Compra();
+            $añadirCompra->nombreClienteSession = $sessionCliente;
+            $añadirCompra->idFKProducto = $productId;
+            $añadirCompra->colorSeleccionado = $selectedColor;
+            $añadirCompra->tamañoSeleccionado = $selectedTamaño;
+            $añadirCompra->cantidad = 1;
+            $añadirCompra->save();
+
+
+            //Aumenta el carrito del cliente
+            $clienteSession = Cliente::where("nombre", $sessionCliente)->first();
+            $clienteSession->contadorCarrito = $clienteSession->contadorCarrito + 1;
+            $clienteSession->save();
+
+            //restar la cantidad del producto de la tabla  de fotos
+            $restarCantidadProductoTablaFoto = Foto::where([["idFK","=",$productId],["color","=",$selectedColor],["tamaño","=",$selectedTamaño]])->first();
+            $restarCantidadProductoTablaFoto->cantidad = $restarCantidadProductoTablaFoto->cantidad - 1;
+            $restarCantidadProductoTablaFoto->save();
+
+            //colocar la hora de expiracion por si nunca realiza la compra
+            //$sessionCache = session('nombre');
+            $obtenerPrimeraCompraClienteSession = Compra::where([["id","=",$añadirCompra->id]])->first();
+
+            //crear la fecha de expiracion para eliminar los productos del carrito de esta session
+            $fechaCreacionPrimerItem = $obtenerPrimeraCompraClienteSession->created_at;
+            //$fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (01 * 60));
+
+            $fechaExpiracion = date('Y-m-d H:i:s', strtotime($fechaCreacionPrimerItem) + (2 * 60 * 60));
+            $obtenerPrimeraCompraClienteSession->expiracion = $fechaExpiracion;
+            $obtenerPrimeraCompraClienteSession->save();
+
+            return response()->json($clienteSession->contadorCarrito);
+
+        }
+    }
+}
+
+public function carritoCompras(){
+
+
+    $fechaActual = Date::now();
+    $fechaObjeto = new DateTime($fechaActual);
+    $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
+
+    $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
+    
+    if($clienteSession == ""){
+        //return "estoy aqui si no hay compras de esta session en la tabla de comppras";
+        $sessionCache = session('nombre');
+        //debo traer las compras del usuario que esta en la session de cache
+        $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
+        //Traer los productos
+        $productos = Producto::all();
+        //traer todas las fotos
+        $fotos = Foto::all();
+
+        return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
+
+    }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
+        //return "estoy aqui para devolver los productos al inventario";
+        //devolver los productos a la tabla de productos
+        $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->get();
+        $productos2 = Producto::all();
+        foreach($clienteSession as $item){
+            foreach($productos2 as $item2){
+                if($item->idFKProducto == $item2->id && $item->colorSeleccionado == $item2->color && $item->tamañoSeleccionado == $item2->tamaño && $item->nombreClienteSession == session("nombre")){
+                    $item2->cantidad = $item2->cantidad + $item->cantidad;
+                    $item2->save();
+                    break;
+                }
+            }
+        }
+        //devolver los productos a la tabla de fotos
+        $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->get();
+        $fotos2 = Foto::all();
+        foreach($clienteSession as $item){
+            foreach($fotos2 as $item2){
+                if($item->idFKProducto == $item2->idFK && $item->colorSeleccionado == $item2->color && $item->tamañoSeleccionado == $item2->tamaño && $item->nombreClienteSession == session("nombre")){
+                    $item2->cantidad = $item2->cantidad + $item->cantidad;
+                    $item2->save();
+                    break;
+                }
+            }
         }
 
 
+
+
+        $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->delete();
+        //colocar de la tabla de clientes el contador carrito en 0 de la session que esta iniciada
+        $clienteSession = Cliente::where([["nombre","=", session("nombre")]])->first();
+        $clienteSession->contadorCarrito = 0;
+        $clienteSession->save();
+
+        $sessionCache = session('nombre');
+        //debo traer las compras del usuario que esta en la session de cache
+        $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
+        //Traer los productos
+        $productos = Producto::all();
+        //traer todas las fotos
+        $fotos = Foto::all();
+        return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
+        
+    }else{
+        $sessionCache = session('nombre');
+        //debo traer las compras del usuario que esta en la session de cache
+        $comprasDeClienteCache = Compra::where("nombreClienteSession",$sessionCache)->get();
+        //Traer los productos
+        $productos = Producto::all();
+        //traer todas las fotos
+        $fotos = Foto::all();
+        return view("carrito.carritoCompras",compact("comprasDeClienteCache","productos","sessionCache","fotos"));
     }
 
 
-    public function primeraVezPaginaCarrito(Request $request){
-        if ($request->ajax()) {
+}
 
-            $sessionCache = session('nombre');
 
-            //SumatotalPrecioProductos
-            $productosTablaCompras = Compra::all();
-            $todosProductos = Producto::all();
-            $suma = 0;
-            foreach($productosTablaCompras as $item){
-                foreach($todosProductos as $item2){
-                    if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
-                        $suma = $suma + $item2->precio * $item->cantidad;
-                    }
+public function primeraVezPaginaCarrito(Request $request){
+    if ($request->ajax()) {
+
+        $sessionCache = session('nombre');
+
+        //SumatotalPrecioProductos
+        $productosTablaCompras = Compra::all();
+        $todosProductos = Producto::all();
+        $suma = 0;
+        foreach($productosTablaCompras as $item){
+            foreach($todosProductos as $item2){
+                if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
+                    $suma = $suma + $item2->precio * $item->cantidad;
                 }
-            }
-
-
-            //SumatotalArticulos
-            $sumaArticulos = 0;
-            foreach($productosTablaCompras as $item2){
-                if($item2->nombreClienteSession == $sessionCache){
-                    $sumaArticulos = $sumaArticulos + $item2->cantidad;
-                }
-            }
-
-
-            $response = [
-                'suma' => $suma,
-                'sumaTotalArticulos' =>  $sumaArticulos
-            ];
-
-            return response()->json($response);
-
-
             }
         }
 
-    public function restarCambioInputCambioTotalIva(Request $request){
-        if ($request->ajax()) {
-                $productIdTablaCompras = $request->input('id');
-                $color = $request->input('color');
-                $obtenerIdFKTablaCompra = Compra::where("id",$productIdTablaCompras)->first();
+
+        //SumatotalArticulos
+        $sumaArticulos = 0;
+        foreach($productosTablaCompras as $item2){
+            if($item2->nombreClienteSession == $sessionCache){
+                $sumaArticulos = $sumaArticulos + $item2->cantidad;
+            }
+        }
+
+
+        $response = [
+            'suma' => $suma,
+            'sumaTotalArticulos' =>  $sumaArticulos
+        ];
+
+        return response()->json($response);
+
+
+        }
+    }
+
+public function restarCambioInputCambioTotalIva(Request $request){
+    if ($request->ajax()) {
+            $productIdTablaCompras = $request->input('id');
+            $color = $request->input('color');
+            $obtenerIdFKTablaCompra = Compra::where("id",$productIdTablaCompras)->first();
+            
+            //primero verificar si el producto esta en la tabla de productos para poder restarle la cantidad
+            $productoTablaProducto = Producto::where([["id","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
+            //dd($productoTablaProducto);
+
+            if($productoTablaProducto != null){
+                //dd("rebajar en la tabla de producto");
+                if($productoTablaProducto->cantidad >= 0){
+                    $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
+                    //dd($productorEncontrado);
+                    if($productorEncontrado->cantidad > 1){
+                    //rebajar en la tabla de producto la cantidad
+                    $productoTablaProducto->cantidad = $productoTablaProducto->cantidad + 1;
+                    $productoTablaProducto->save();
+
+                    //rebajar en la tabla de compra
+                    $productorEncontrado->cantidad = $productorEncontrado->cantidad - 1;
+                    $productorEncontrado->save();
+
+
+                    //sumaTotalPrecioProductos 
+
+                    $productosTablaCompras = Compra::all();
+                    $todosProductos = Producto::all();
+                    $suma = 0;
+                    foreach($productosTablaCompras as $item){
+                        foreach($todosProductos as $item2){
+                            if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
+                                $suma = $suma + $item2->precio * $item->cantidad;
+                            }
+                        }
+                    }
+
+
+
+                    //SumatotalArticulos
+                    $sumaArticulos = 0;
+                    foreach($productosTablaCompras as $item2){
+                        if($item2->nombreClienteSession == session('nombre')){
+                            $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                        }
+                    }
+
+
+                    $response = [
+                        'cantidad' => $productorEncontrado->cantidad,
+                        'suma' => $suma,
+                        'sumaTotalArticulos' => $sumaArticulos,
+                    ];
+
+                    return response()->json($response);
+                    }
+                }
+            }elseif($productoTablaProducto == null){
+                //dd("rebajar en la tabla de fotos");
+                $productoTablaFoto = Foto::where([["idFK","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
                 
+                if($productoTablaFoto->cantidad >= 0){
+                    $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
+                    if($productorEncontrado->cantidad > 1){
+                    //rebajar en la tabla de producto la cantidad
+                    $productoTablaFoto->cantidad = $productoTablaFoto->cantidad + 1;
+                    $productoTablaFoto->save();
+
+                    //rebajar en la tabla de compra
+                    $productorEncontrado->cantidad = $productorEncontrado->cantidad - 1;
+                    $productorEncontrado->save();
+
+                    //sumaTotalPrecioProductos
+                    $productosTablaCompras = Compra::all();
+                    $todosProductos = Producto::all();
+                    $suma = 0;
+                    foreach($productosTablaCompras as $item){
+                        foreach($todosProductos as $item2){
+                            if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
+                                $suma = $suma + $item2->precio * $item->cantidad;
+                            }
+                        }
+                    }
+
+                    //SumatotalArticulos
+                    $sumaArticulos = 0;
+                    foreach($productosTablaCompras as $item2){
+                        if($item2->nombreClienteSession == session('nombre')){
+                            $sumaArticulos = $sumaArticulos + $item2->cantidad;
+                        }
+                    }
+
+
+                    $response = [
+                        'cantidad' => $productorEncontrado->cantidad,
+                        'suma' => $suma,
+                        'sumaTotalArticulos' => $sumaArticulos,
+                    ];
+                    
+
+                    return response()->json($response);
+                    }
+                }
+                
+            }
+        }
+    }
+
+
+
+
+
+    public function sumarCambioInputCambioTotalIva(Request $request){
+        if ($request->ajax()) {
+           
+                $productIdTablaCompras = $request->input('id');//id tabla compras
+
+            
+                $obtenerIdFKTablaCompra = Compra::where("id",$productIdTablaCompras)->first();//obtengo el producto completo de la tabla compra
                 //primero verificar si el producto esta en la tabla de productos para poder restarle la cantidad
-                $productoTablaProducto = Producto::where([["id","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
+                $productoTablaProducto = Producto::where([["id","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$obtenerIdFKTablaCompra->colorSeleccionado],["tamaño","=",$obtenerIdFKTablaCompra->tamañoSeleccionado]])->first();
                 //dd($productoTablaProducto);
 
                 if($productoTablaProducto != null){
-                    //dd("rebajar en la tabla de producto");
-                    if($productoTablaProducto->cantidad >= 0){
+                    //estoy en la tabla de productos
+
+                    if($productoTablaProducto->cantidad > 0){
                         $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
-                        //dd($productorEncontrado);
-                        if($productorEncontrado->cantidad > 1){
                         //rebajar en la tabla de producto la cantidad
-                        $productoTablaProducto->cantidad = $productoTablaProducto->cantidad + 1;
+                        $productoTablaProducto->cantidad = $productoTablaProducto->cantidad - 1;
                         $productoTablaProducto->save();
 
-                        //rebajar en la tabla de compra
-                        $productorEncontrado->cantidad = $productorEncontrado->cantidad - 1;
+                        //aumentar en la tabla de compra
+                        $productorEncontrado->cantidad = $productorEncontrado->cantidad + 1;
                         $productorEncontrado->save();
 
 
                         //sumaTotalPrecioProductos 
-
                         $productosTablaCompras = Compra::all();
                         $todosProductos = Producto::all();
                         $suma = 0;
@@ -1111,24 +1222,25 @@ class HomeController extends Controller
                         ];
 
                         return response()->json($response);
-                        }
+                        
                     }
                 }elseif($productoTablaProducto == null){
-                    //dd("rebajar en la tabla de fotos");
-                    $productoTablaFoto = Foto::where([["idFK","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
+                    $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
+                    //dd($productorEncontrado)
+                    $productoTablaFoto = Foto::where([["idFK","=",$productorEncontrado->idFKProducto],["color","=",$productorEncontrado->colorSeleccionado],["tamaño","=",$productorEncontrado->tamañoSeleccionado]])->first();
+
+                    //dd($productoTablaFoto);
                     
-                    if($productoTablaFoto->cantidad >= 0){
+                    if($productoTablaFoto->cantidad > 0){
                         $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
-                        if($productorEncontrado->cantidad > 1){
                         //rebajar en la tabla de producto la cantidad
-                        $productoTablaFoto->cantidad = $productoTablaFoto->cantidad + 1;
+
+                        $productoTablaFoto->cantidad = $productoTablaFoto->cantidad - 1;
                         $productoTablaFoto->save();
 
-                        //rebajar en la tabla de compra
-                        $productorEncontrado->cantidad = $productorEncontrado->cantidad - 1;
+                        //aumentar en la tabla de compra
+                        $productorEncontrado->cantidad = $productorEncontrado->cantidad + 1;
                         $productorEncontrado->save();
-
-
 
 
                         //sumaTotalPrecioProductos
@@ -1161,353 +1273,248 @@ class HomeController extends Controller
                         
 
                         return response()->json($response);
-                        }
+                        
                     }
                     
                 }
             }
         }
 
-
-
-
-
-        public function sumarCambioInputCambioTotalIva(Request $request){
+        public function eliminarTablaCompras(Request $request){
             if ($request->ajax()) {
-                    $productIdTablaCompras = $request->input('id');//id tabla compras
-                    $color = $request->input('color');//color producto seleccionado
-                    $obtenerIdFKTablaCompra = Compra::where("id",$productIdTablaCompras)->first();//obtengo el producto completo de la tabla compra
-                    
-                    //primero verificar si el producto esta en la tabla de productos para poder restarle la cantidad
-                    $productoTablaProducto = Producto::where([["id","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
-                    //dd($productoTablaProducto);
     
-                    if($productoTablaProducto != null){
-                        //estoy en la tabla de productos
+                $productIdTablaCompras = $request->input('id');//id tabla compras
+                $color = $request->input('color');//id tabla compras
 
-                        if($productoTablaProducto->cantidad >= 0){
-                            $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
-                            if($productoTablaProducto->cantidad != 0){
-                            //rebajar en la tabla de producto la cantidad
-                            $productoTablaProducto->cantidad = $productoTablaProducto->cantidad - 1;
-                            $productoTablaProducto->save();
-    
-                            //aumentar en la tabla de compra
-                            $productorEncontrado->cantidad = $productorEncontrado->cantidad + 1;
-                            $productorEncontrado->save();
-    
-    
-                            //sumaTotalPrecioProductos 
-                            $productosTablaCompras = Compra::all();
-                            $todosProductos = Producto::all();
-                            $suma = 0;
-                            foreach($productosTablaCompras as $item){
-                                foreach($todosProductos as $item2){
-                                    if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
-                                        $suma = $suma + $item2->precio * $item->cantidad;
-                                    }
-                                }
-                            }
-    
-    
-    
-                            //SumatotalArticulos
-                            $sumaArticulos = 0;
-                            foreach($productosTablaCompras as $item2){
-                                if($item2->nombreClienteSession == session('nombre')){
-                                    $sumaArticulos = $sumaArticulos + $item2->cantidad;
-                                }
-                            }
-    
-    
-                            $response = [
-                                'cantidad' => $productorEncontrado->cantidad,
-                                'suma' => $suma,
-                                'sumaTotalArticulos' => $sumaArticulos,
-                            ];
-    
-                            return response()->json($response);
-                            }
-                        }
-                    }elseif($productoTablaProducto == null){
+                //obtener el producto que se va a eliminar
+                $productoTablaComprasEliminado = Compra::where([["id","=",$productIdTablaCompras]])->first();
 
-                        
-                        $productoTablaFoto = Foto::where([["idFK","=",$obtenerIdFKTablaCompra->idFKProducto],["color","=",$color]])->first();
-                        if($productoTablaFoto->cantidad != 0){
-                            $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
-                            if($productorEncontrado->cantidad >= 0){
-                            //rebajar en la tabla de producto la cantidad
-
-                            $productoTablaFoto->cantidad = $productoTablaFoto->cantidad - 1;
-                            $productoTablaFoto->save();
-    
-                            //aumentar en la tabla de compra
-                            $productorEncontrado->cantidad = $productorEncontrado->cantidad + 1;
-                            $productorEncontrado->save();
-    
-    
-    
-    
-                            //sumaTotalPrecioProductos
-    
-                            $productosTablaCompras = Compra::all();
-                            $todosProductos = Producto::all();
-                            $suma = 0;
-                            foreach($productosTablaCompras as $item){
-                                foreach($todosProductos as $item2){
-                                    if($item2->id == $item->idFKProducto && $item->nombreClienteSession == session("nombre")){
-                                        $suma = $suma + $item2->precio * $item->cantidad;
-                                    }
-                                }
-                            }
-    
-                            //SumatotalArticulos
-                            $sumaArticulos = 0;
-                            foreach($productosTablaCompras as $item2){
-                                if($item2->nombreClienteSession == session('nombre')){
-                                    $sumaArticulos = $sumaArticulos + $item2->cantidad;
-                                }
-                            }
-    
-    
-                            $response = [
-                                'cantidad' => $productorEncontrado->cantidad,
-                                'suma' => $suma,
-                                'sumaTotalArticulos' => $sumaArticulos,
-                            ];
-                            
-    
-                            return response()->json($response);
-                            }
-                        }
-                        
-                    }
-                }
-            }
-
-            public function eliminarTablaCompras(Request $request){
-                if ($request->ajax()) {
-        
-                    $productIdTablaCompras = $request->input('id');//id tabla compras
-                    $color = $request->input('color');//id tabla compras
-
-                    //obtener el producto que se va a eliminar
-                    $productoTablaComprasEliminado = Compra::where([["id","=",$productIdTablaCompras]])->first();
-
-                    $obtengoidFK = $productoTablaComprasEliminado->idFKProducto;
-                    $obtengoCantidad = $productoTablaComprasEliminado->cantidad;
-                    $obtengoColor = $productoTablaComprasEliminado->colorSeleccionado;
+                $obtengoidFK = $productoTablaComprasEliminado->idFKProducto;
+                $obtengoCantidad = $productoTablaComprasEliminado->cantidad;
+                $obtengoColor = $productoTablaComprasEliminado->colorSeleccionado;
 
 
-                    //restar el contadorCarrito de la tabla cliente
-                    $cliente = Cliente::where([["nombre", session("nombre")]])->first();
-                    $cliente->contadorCarrito = $cliente->contadorCarrito -1;
-                    $cliente->save();
+                //restar el contadorCarrito de la tabla cliente
+                $cliente = Cliente::where([["nombre", session("nombre")]])->first();
+                $cliente->contadorCarrito = $cliente->contadorCarrito -1;
+                $cliente->save();
 
 
 
-                    /*Buscar en la tabla de productos a ver si esos datos se encontraron 
-                    $obtengoidFK = $productoTablaComprasEliminado->idFKProducto;
-                    $obtengoCantidad = $productoTablaComprasEliminado->cantidad; // este seria para sumarselo
-                    $obtengoColor = $productoTablaComprasEliminado->colorSeleccionado;*/
+                /*Buscar en la tabla de productos a ver si esos datos se encontraron 
+                $obtengoidFK = $productoTablaComprasEliminado->idFKProducto;
+                $obtengoCantidad = $productoTablaComprasEliminado->cantidad; // este seria para sumarselo
+                $obtengoColor = $productoTablaComprasEliminado->colorSeleccionado;*/
 
-                    $productoTablaProductos = Producto::where(
+                $productoTablaProductos = Producto::where(
+                    [
+                        ["id","=",$obtengoidFK],
+                        ["color","=",$obtengoColor]
+                    ]
+                )->first();
+
+
+                if($productoTablaProductos != null){
+                    //Esta en la tabla de productos ahora debo sumarle la cantidad
+                    $productoTablaProductos->cantidad = $productoTablaProductos->cantidad + $obtengoCantidad;
+                    $productoTablaProductos->save();
+
+                    //eliminar el producto ahora si
+                    $productoTablaComprasEliminado = Compra::where([["id","=",$productIdTablaCompras]])->delete();
+
+                    return response()->json("Se elimino correctamente");
+                }else if($productoTablaProductos == null){
+                    //Esta en la tabla de fotos ahora debo sumarle la cantidad
+                    $productoTablaFotos = Foto::where(
                         [
-                            ["id","=",$obtengoidFK],
+                            ["idFK","=",$obtengoidFK],
                             ["color","=",$obtengoColor]
                         ]
                     )->first();
+                    $productoTablaFotos->cantidad = $productoTablaFotos->cantidad + $obtengoCantidad;
+                    $productoTablaFotos->save();
+
+                    //eliminar el producto ahora si
+                    $productoTablaComprasEliminado = Compra::where([["id","=",$productIdTablaCompras]])->delete();
+
+                    return response()->json("Se elimino correctamente");
+                }
+
+    
+                }
+        }
+
+        public function WA(Request $request){
+
+            if($request->sumaTotal == null){//si le doy finalizar compra sin tener nada agregado al carrito
+                return redirect()->route("index2");
+            }else{
+                //obtener imagen de comprobante y guardarla en la carpeta de comprobantes
+                $imageName = time().'.'.$request->imagen->extension();
+                $request->imagen->move(public_path('imagesComprobantes'), $imageName);
+
+                //obtener las compras del del usuario que esta en session de cache
+                $comprasUserCache = Compra::where([["nombreClienteSession","=",session("nombre")]])->get();
 
 
-                    if($productoTablaProductos != null){
-                        //Esta en la tabla de productos ahora debo sumarle la cantidad
-                        $productoTablaProductos->cantidad = $productoTablaProductos->cantidad + $obtengoCantidad;
-                        $productoTablaProductos->save();
+                //obtener el ultimo numero de factura
+                $ultimoIDTablaCompras2s = Compras2s::max('id');
 
-                        //eliminar el producto ahora si
-                        $productoTablaComprasEliminado = Compra::where([["id","=",$productIdTablaCompras]])->delete();
+                $ultimaCompraTablaCompras2s = Compras2s::where([["id","=", $ultimoIDTablaCompras2s]])->first();
+                //return $ultimaCompraTablaCompras2s->nFactura;
 
-                        return response()->json("Se elimino correctamente");
-                    }else if($productoTablaProductos == null){
-                        //Esta en la tabla de fotos ahora debo sumarle la cantidad
-                        $productoTablaFotos = Foto::where(
-                            [
-                                ["idFK","=",$obtengoidFK],
-                                ["color","=",$obtengoColor]
-                            ]
-                        )->first();
-                        $productoTablaFotos->cantidad = $productoTablaFotos->cantidad + $obtengoCantidad;
-                        $productoTablaFotos->save();
 
-                        //eliminar el producto ahora si
-                        $productoTablaComprasEliminado = Compra::where([["id","=",$productIdTablaCompras]])->delete();
+                //$ultimoNumFactura = $ultimoIDTablaCompras2s->nFactura;
 
-                        return response()->json("Se elimino correctamente");
+                if($ultimoIDTablaCompras2s == ""){
+                    //aqui debo guardar el numero de factura en 1";
+                    //crear nuevo objeto de compras2
+                    foreach($comprasUserCache as $item){
+                        $compras2 = new Compras2s();
+                        $compras2->nombreClienteSession = $item->nombreClienteSession;
+                        $compras2->idFKProducto = $item->idFKProducto;
+                        $compras2->colorSeleccionado = $item->colorSeleccionado;
+                        $compras2->tamañoSeleccionado = $item->tamañoSeleccionado;
+                        $compras2->cantidad = $item->cantidad;
+                        $compras2->nombre = $request->nombre;
+                        $compras2->telefono = $request->telefono;
+                        $compras2->imagen = $imageName;
+                        $compras2->direccion = $request->direccion;
+                        $compras2->sumaTotal = $request->sumaTotal;
+                        $compras2->nFactura = "1";
+                        $compras2->estatus = "En proceso";
+                        $compras2->save();
                     }
+
+                    //quitar de la tabla de compras los productos
+                    foreach($comprasUserCache as $item){
+                        $itemDelete = Compra::where([["id","=",$item->id]])->delete();
+                    }
+
+                    //colocar el carrito del cliente en 0
+                    $cliente = Cliente::where([["nombre","=", session("nombre")]])->first();
+                    $cliente->contadorCarrito = 0;
+                    $cliente->save();
+
+                    $factura = 1;
+
+                    // Construir la URL con los datos de compra
+                        $url = 'https://api.whatsapp.com/send?phone=50687249099&text='
+                        . urlencode("DATOS DE COMPRA:\n\nNumero de Factura: ".$factura .
+                        "\nNombre: ".$request->nombre.
+                        "\nTelefono:".$request->telefono.
+                        "\nDireccion: ".$request->direccion.
+                        "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
+
+                    // Redireccionar al enlace de WhatsApp
+                    return redirect($url);
+
+
+
+                }else{
+                    //aqui debo guardar en nFactura el ultimo nFactura +1";
+                    //crear nuevo objeto de compras2
+                    foreach($comprasUserCache as $item){
+                        $compras2 = new Compras2s();
+                        $compras2->nombreClienteSession = $item->nombreClienteSession;
+                        $compras2->idFKProducto = $item->idFKProducto;
+                        $compras2->colorSeleccionado = $item->colorSeleccionado;
+                        $compras2->tamañoSeleccionado = $item->tamañoSeleccionado;
+                        $compras2->cantidad = $item->cantidad;
+                        $compras2->nombre = $request->nombre;
+                        $compras2->telefono = $request->telefono;
+                        $compras2->imagen = $imageName;
+                        $compras2->direccion = $request->direccion;
+                        $compras2->sumaTotal = $request->sumaTotal;
+                        $compras2->nFactura = $ultimaCompraTablaCompras2s->nFactura +1;
+                        $compras2->estatus = "En proceso";
+                        $compras2->save();
+                    }
+
+
+                                        //quitar de la tabla de compras los productos
+                    foreach($comprasUserCache as $item){
+                        $itemDelete = Compra::where([["id","=",$item->id]])->delete();
+                    }
+
+                    //colocar el carrito del cliente en 0
+                    $cliente = Cliente::where([["nombre","=", session("nombre")]])->first();
+                    $cliente->contadorCarrito = 0;
+                    $cliente->save();
+
+                    $factura = $ultimaCompraTablaCompras2s->nFactura +1;
+
+                    // Construir la URL con los datos de compra
+                        $url = 'https://api.whatsapp.com/send?phone=50687249099&text='
+                        . urlencode("DATOS DE COMPRA:\n\nNumero de Factura: ".$ultimaCompraTablaCompras2s->nFactura +1 .
+                        "\nNombre: ".$request->nombre.
+                        "\nTelefono:".$request->telefono.
+                        "\nDireccion: ".$request->direccion.
+                        "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
+
+                    // Redireccionar al enlace de WhatsApp
+                    return redirect($url);
+                }
+            }
+        }
+
+        public function factura(){
+            $compras2 = Compras2s::all();
+            return view("carrito.factura",compact("compras2"));
+        }
+
+
+
 
         
-                    }
+        public function traerNombreCliente(Request $request){
+            if ($request->ajax()) {
+                
+                
+                $nFactura = $request->input('nFactura');
+                $telefono = $request->input('telefono');
+                //dd($telefono);  
+                $nombreCliente = Compras2s::where([["nFactura","=",$nFactura],["telefono","=",$telefono]])->first();
+                //dd($nombreCliente);
+
+                return response()->json($nombreCliente);
             }
+        }
 
-            public function WA(Request $request){
+        public function verFactura(Request $request){
 
-                if($request->sumaTotal == null){//si le doy finalizar compra sin tener nada agregado al carrito
-                    return redirect()->route("index2");
-                }else{
-                    //obtener imagen de comprobante y guardarla en la carpeta de comprobantes
-                    $imageName = time().'.'.$request->imagen->extension();
-                    $request->imagen->move(public_path('imagesComprobantes'), $imageName);
+            $facturasCompras = Compras2s::where([["nFactura","=",$request->nFactura],["telefono","=",$request->telefono]])->get();
+    
+            if($facturasCompras->isEmpty()){
+                return redirect()->route("index2");
+            }else{
 
-                    //obtener las compras del del usuario que esta en session de cache
-                    $comprasUserCache = Compra::where([["nombreClienteSession","=",session("nombre")]])->get();
-
-
-                    //obtener el ultimo numero de factura
-                    $ultimoIDTablaCompras2s = Compras2s::max('id');
-
-                    $ultimaCompraTablaCompras2s = Compras2s::where([["id","=", $ultimoIDTablaCompras2s]])->first();
-                    //return $ultimaCompraTablaCompras2s->nFactura;
-
-
-                    //$ultimoNumFactura = $ultimoIDTablaCompras2s->nFactura;
-
-                    if($ultimoIDTablaCompras2s == ""){
-                        //aqui debo guardar el numero de factura en 1";
-                        //crear nuevo objeto de compras2
-                        foreach($comprasUserCache as $item){
-                            $compras2 = new Compras2s();
-                            $compras2->nombreClienteSession = $item->nombreClienteSession;
-                            $compras2->idFKProducto = $item->idFKProducto;
-                            $compras2->colorSeleccionado = $item->colorSeleccionado;
-                            $compras2->tamañoSeleccionado = $item->tamañoSeleccionado;
-                            $compras2->cantidad = $item->cantidad;
-                            $compras2->nombre = $request->nombre;
-                            $compras2->telefono = $request->telefono;
-                            $compras2->imagen = $imageName;
-                            $compras2->direccion = $request->direccion;
-                            $compras2->sumaTotal = $request->sumaTotal;
-                            $compras2->nFactura = "1";
-                            $compras2->estatus = "En proceso";
-                            $compras2->save();
-                        }
-
-                        //quitar de la tabla de compras los productos
-                        foreach($comprasUserCache as $item){
-                            $itemDelete = Compra::where([["id","=",$item->id]])->delete();
-                        }
-
-                        //colocar el carrito del cliente en 0
-                        $cliente = Cliente::where([["nombre","=", session("nombre")]])->first();
-                        $cliente->contadorCarrito = 0;
-                        $cliente->save();
-
-                        $factura = 1;
-
-                        // Construir la URL con los datos de compra
-                            $url = 'https://api.whatsapp.com/send?phone=50687249099&text='
-                            . urlencode("DATOS DE COMPRA:\n\nNumero de Factura: ".$factura .
-                            "\nNombre: ".$request->nombre.
-                            "\nTelefono:".$request->telefono.
-                            "\nDireccion: ".$request->direccion.
-                            "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
-
-                        // Redireccionar al enlace de WhatsApp
-                        return redirect($url);
-
-
-
-                    }else{
-                        //aqui debo guardar en nFactura el ultimo nFactura +1";
-                        //crear nuevo objeto de compras2
-                        foreach($comprasUserCache as $item){
-                            $compras2 = new Compras2s();
-                            $compras2->nombreClienteSession = $item->nombreClienteSession;
-                            $compras2->idFKProducto = $item->idFKProducto;
-                            $compras2->colorSeleccionado = $item->colorSeleccionado;
-                            $compras2->tamañoSeleccionado = $item->tamañoSeleccionado;
-                            $compras2->cantidad = $item->cantidad;
-                            $compras2->nombre = $request->nombre;
-                            $compras2->telefono = $request->telefono;
-                            $compras2->imagen = $imageName;
-                            $compras2->direccion = $request->direccion;
-                            $compras2->sumaTotal = $request->sumaTotal;
-                            $compras2->nFactura = $ultimaCompraTablaCompras2s->nFactura +1;
-                            $compras2->estatus = "En proceso";
-                            $compras2->save();
-                        }
-
-
-                                            //quitar de la tabla de compras los productos
-                        foreach($comprasUserCache as $item){
-                            $itemDelete = Compra::where([["id","=",$item->id]])->delete();
-                        }
-
-                        //colocar el carrito del cliente en 0
-                        $cliente = Cliente::where([["nombre","=", session("nombre")]])->first();
-                        $cliente->contadorCarrito = 0;
-                        $cliente->save();
-
-                        $factura = $ultimaCompraTablaCompras2s->nFactura +1;
-
-                        // Construir la URL con los datos de compra
-                            $url = 'https://api.whatsapp.com/send?phone=50687249099&text='
-                            . urlencode("DATOS DE COMPRA:\n\nNumero de Factura: ".$ultimaCompraTablaCompras2s->nFactura +1 .
-                            "\nNombre: ".$request->nombre.
-                            "\nTelefono:".$request->telefono.
-                            "\nDireccion: ".$request->direccion.
-                            "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
-
-                        // Redireccionar al enlace de WhatsApp
-                        return redirect($url);
-                    }
+                $productos = Producto::all();
+                $fotos = Foto::all();
+                $suma = 0;
+                
+                foreach($facturasCompras as $item){
+                    $suma = $suma + $item->cantidad;
                 }
+                return view("carrito.mostrarFactura",compact("facturasCompras","productos","fotos","suma"));
             }
-
-            public function factura(){
-                $compras2 = Compras2s::all();
-                return view("carrito.factura",compact("compras2"));
-            }
+           
+        }
 
 
-
-
-            
-            public function traerNombreCliente(Request $request){
-                if ($request->ajax()) {
-                    
-                    
-                    $nFactura = $request->input('nFactura');
-                    $telefono = $request->input('telefono');
-                    //dd($telefono);  
-                    $nombreCliente = Compras2s::where([["nFactura","=",$nFactura],["telefono","=",$telefono]])->first();
-                    //dd($nombreCliente);
-
-                    return response()->json($nombreCliente);
-                }
-            }
-
-            public function verFactura(Request $request){
-
-                $facturasCompras = Compras2s::where([["nFactura","=",$request->nFactura],["telefono","=",$request->telefono]])->get();
-        
-                if($facturasCompras->isEmpty()){
-                    return redirect()->route("index2");
-                }else{
-
-                    $productos = Producto::all();
-                    $fotos = Foto::all();
-                    $suma = 0;
-                    
-                    foreach($facturasCompras as $item){
-                        $suma = $suma + $item->cantidad;
-                    }
-                    return view("carrito.mostrarFactura",compact("facturasCompras","productos","fotos","suma"));
-                }
-               
-            }
+        public function vistaReporteFacturas(){
+            return view("reportes.reportesFacturas");
+        }
 
 
 
 
-    }
 
+        public function niki(){
+            return view("niki");
+        }
+
+
+
+
+}
