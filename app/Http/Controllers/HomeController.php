@@ -1503,7 +1503,20 @@ public function restarCambioInputCambioTotalIva(Request $request){
 
 
         public function vistaReporteFacturas(){
-            return view("reportes.reportesFacturas");
+            $compras2 = Compras2s::all();
+            return view("reportes.reportesFacturas",compact("compras2"));
+        }
+
+        public function verFacturaIndividual(Request $request){
+
+            $facturas = Compras2s::where([["nFactura","=",$request->nFactura]])->get();
+
+            $suma = 0;
+                
+            foreach($facturas as $item){
+                $suma = $suma + $item->cantidad;
+            }
+            return view("reportes.facturaIndividual",compact("facturas","suma"));
         }
 
 

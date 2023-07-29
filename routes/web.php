@@ -92,6 +92,18 @@ Route::get('/verFactura',[HomeController::class,"verFactura"])->name("verFactura
 
 //reportes de Facturas
 Route::get('/vistaReporteFacturas',[HomeController::class,"vistaReporteFacturas"])->name("vistaReporteFacturas")->middleware("auth");
+Route::get('/verFacturaIndividual',[HomeController::class,"verFacturaIndividual"])->name("verFacturaIndividual")->middleware("auth");
+
+
+
+
+
+
+
+
+
+
+
 
 
 
