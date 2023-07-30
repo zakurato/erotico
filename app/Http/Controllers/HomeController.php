@@ -795,10 +795,12 @@ class HomeController extends Controller
         
             $cantidadActualProductoElegidoTablaProducto = Producto::where("id", $productId)
                 ->where("tamaño", $selectedTamaño)
+                ->where("color", $selectedColor)
                 ->value('cantidad');
         
             $cantidadActualProductoElegidoTablaFotos = Foto::where("idFK", $productId)
                 ->where("tamaño", $selectedTamaño)
+                ->where("color", $selectedColor)
                 ->where("cantidad", "!=", "formImagenes")
                 ->value('cantidad');
         
@@ -816,6 +818,8 @@ class HomeController extends Controller
 
 public function carritoCompraTablaProducto(Request $request){
     if ($request->ajax()) {
+
+        //dd("estoy aqui");
         $productId = $request->input('productId');
         $selectedColor = $request->input('selectedColor');
         $selectedTamaño = $request->input('selectedTamaño');
@@ -1292,6 +1296,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                 $obtengoidFK = $productoTablaComprasEliminado->idFKProducto;
                 $obtengoCantidad = $productoTablaComprasEliminado->cantidad;
                 $obtengoColor = $productoTablaComprasEliminado->colorSeleccionado;
+                $obtengoTamaño = $productoTablaComprasEliminado->tamañoSeleccionado;
 
 
                 //restar el contadorCarrito de la tabla cliente
@@ -1309,10 +1314,12 @@ public function restarCambioInputCambioTotalIva(Request $request){
                 $productoTablaProductos = Producto::where(
                     [
                         ["id","=",$obtengoidFK],
-                        ["color","=",$obtengoColor]
+                        ["color","=",$obtengoColor],
+                        ["tamaño","=",$obtengoTamaño]
                     ]
                 )->first();
 
+                
 
                 if($productoTablaProductos != null){
                     //Esta en la tabla de productos ahora debo sumarle la cantidad
@@ -1328,9 +1335,12 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     $productoTablaFotos = Foto::where(
                         [
                             ["idFK","=",$obtengoidFK],
-                            ["color","=",$obtengoColor]
+                            ["color","=",$obtengoColor],
+                            ["tamaño","=",$obtengoTamaño]
                         ]
                     )->first();
+
+                    
                     $productoTablaFotos->cantidad = $productoTablaFotos->cantidad + $obtengoCantidad;
                     $productoTablaFotos->save();
 

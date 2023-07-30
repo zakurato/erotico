@@ -453,9 +453,13 @@
                                                         dataType: 'json',
                                                         success: function(response) {
 
+                                                            //arreglar
                                                             //respuesta del controlador 
-                                                            if (response.foto.cantidad == null) {
-                                                                //console.log("Cantidad de producto tabla producto " +response.producto.cantidad + " del tamaño " +response.producto.tamaño);
+                                                            console.log(response.producto.cantidad);
+                                                            console.log(response.foto.cantidad);
+                                                            
+                                                            if (response.producto.cantidad != null) {
+                                                                console.log("Cantidad de producto tabla producto " +response.producto.cantidad + " del tamaño " +response.producto.tamaño);
                                                                 if (response.producto.cantidad <= 0) {
 
                                                                     var mensajeContainer = document.getElementById(
@@ -473,7 +477,7 @@
                                                                     //console.log("Agregar al carrito");
                                                                     //tabla productos
                                                                     $.ajax({
-                                                                        url: 'carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                                                        url: 'http://localhost/erotico/public/carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                                                         method: 'GET', // el metodo que se usa en la ruta
                                                                         data: {
                                                                             productId: id,
@@ -539,7 +543,7 @@
                                                                     });
 
                                                                 }
-                                                            } else if (response.producto.cantidad == null) {
+                                                            } else if (response.foto.cantidad != null) {
                                                                 console.log("Cantidad de producto tabla foto " + response.foto
                                                                     .cantidad + " del tamaño " + response.foto.tamaño);
                                                                 if (response.foto.cantidad <= 0) {
@@ -1357,7 +1361,7 @@
                                                 </path>
                                             </svg></a>
                                     </li>
-                                </ul>
+                                </ul>   
                             </div>
                         </aside>
                         <br><br>
