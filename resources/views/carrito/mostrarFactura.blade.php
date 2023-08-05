@@ -46,18 +46,19 @@
         <tbody>
           <tr>
             <tr>
-                <th scope="row" style="text-align: right">Fecha:</th>
+                <th scope="row" style="text-align: left">Fecha:
+                    <div style="display: inline; position: absolute; left: 90;">
+                        <?php
+                            $fechaCompleta = $item->created_at; // "2023-07-19 15:45:33"
+                            $fechaSinHora = date('Y-m-d', strtotime($fechaCompleta));
+                            $fechaSinHora; // Esto imprimirá "2023-07-19"
+                        ?>
+                        {{$fechaSinHora}}
+                    </div>
+                </th>
             </tr>
             <th scope="row">
                 Número de factura: #{{$item->nFactura}}
-                <div style="display: inline; position: absolute; right: 20;">
-                    <?php
-                        $fechaCompleta = $item->created_at; // "2023-07-19 15:45:33"
-                        $fechaSinHora = date('Y-m-d', strtotime($fechaCompleta));
-                        $fechaSinHora; // Esto imprimirá "2023-07-19"
-                    ?>
-                    {{$fechaSinHora}}
-                </div>
             </th>
           </tr>
           <tr>
@@ -80,14 +81,16 @@
             </th>
           </tr>
           <tr>
-            <th scope="row" style="text-align: right">Total de artículos: {{ $suma }}</th>
+            <th scope="row" style="text-align: left">Total de artículos: {{ $suma }}</th>
           </tr>
           <tr>
-            <th scope="row" style="text-align: right">TOTAL: ₡{{ $item->sumaTotal }}</th>
+            <th scope="row" style="text-align: left">TOTAL: ₡{{ $item->sumaTotal }}</th>
           </tr>
-
         </tbody>
       </table>
+
+      <h1 style="font: 15px Arial; text-align: left">Los artículos de bateria tienen 15 días de garantía, o tengan daños de fabrica</h1>
+      <h1 style="font: 15px Arial; text-align: left">Los artículos recargables tienen 30 días de garantía, o tengan daños de fabrica</h1>
 
 
         @break
@@ -308,7 +311,7 @@
                 </div>
                 <aside class="footer__aside">
                     <div class="footer__aside-item footer__aside-item--social">
-                        <p class="footer__aside-title">Síguenos</p>
+                        <p class="footer__aside-title" style="text-align: left">Síguenos</p>
                         <ul class="social-media__item-list  list--unstyled" role="list">
                             <li class="social-media__item social-media__item--facebook">
                                 <a href="https://www.facebook.com/profile.php?id=100063694886908" target="_blank"
@@ -346,7 +349,7 @@
                 </aside>
                 <br><br>
                 <div>
-                    <p style="color: white !important">© 2023 MagicSexShop</p>
+                    <p style="color: white !important; text-align: left !important">© 2023 MagicSexShop</p>
                 </div>
             </div>
         </div>

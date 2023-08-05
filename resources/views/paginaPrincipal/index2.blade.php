@@ -60,60 +60,70 @@
                         </a>
                     </div>
 
-                    <div class="navbar-collapse collapse" id="mobile_menu">
-                        <ul class="nav navbar-nav">
-                            <!--<li class="active"><a href="#">Home</a></li>-->
-                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías</a>
-                                <ul class="dropdown-menu">
-                                    @foreach ($categorias as $item)
-                                        <li><a href="#">{{ $item->nombreCategoria }}</a></li>
-                                    @endforeach
+                    <form action="{{ route('index2') }}" method="GET">
 
-                                </ul>
-                            </li>
-                            <!--
+                        <div class="navbar-collapse collapse" id="mobile_menu">
+                            <ul class="nav navbar-nav">
+                                <!--<li class="active"><a href="#">Home</a></li>-->
+                                <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
+                                    <a style="color: white !important; background-color: black; position: relative; top: 10px"class="dropdown-toggle"
+                                        data-toggle="dropdown">Categorías</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('index2', ['categoria' => 'TODOS']) }}">TODOS</a></li>
+                                        @foreach ($categorias as $item)
+                                            <li>
+                                                <a href="{{ route('index2', ['categoria' => $item->nombreCategoria]) }}">{{ $item->nombreCategoria }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+
+
+                                <!--
                             <li><a href="#">Welcome</a></li>
                             <li><a href="#">Services</a></li>
                             <li><a href="#">Gallery</a></li>
                             <li><a href="#">Contact Us</a></li>
                             -->
-                        </ul>
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <form action="" class="navbar-form" style="width: 100%">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input type="search" name="search" id="" placeholder="Buscar..."
-                                                class="form-control">
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-search">
-                                        </div>
-                                    </div>
-                                </form>
-                            </li>
-                        </ul>
-                        <a href="{{ route('carritoCompras') }}">
-                            <ul class="nav navbar-nav navbar-right">
+                            </ul>
+                            <ul class="nav navbar-nav">
                                 <li>
-                                    <div style="display: inline-flex;" id="parpadeo">
-                                        <!-- carrito -->
-                                        <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg" width="28"
-                                            height="28" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                                fill="#9d9d9d">
-                                            </path>
-                                        </svg>
-                                        <div style="color: #9d9d9d" id="contadorCarrito">
-                                            {{ $contadorCarrito->contadorCarrito }}</div>
-                                        <h4 style="color: #9d9d9d;">Carrito de compras</h4>
-                                        <!-- carrito -->
-                                    </div>
+                                    <form action="" class="navbar-form" style="width: 100%">
+                                        <div class="form-group">
+                                            <div style="display: flex;align-items: center; position: relative; top: 15px">
+                                                <input type="search" name="search" id="search-input" placeholder="Buscar..." class="form-control">
+                                                <button type="submit">
+                                                    <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>                                                </button>                                            
+                                            </div>
+                                    </form>
                                 </li>
                             </ul>
-                        </a>
-                        </a>
-                    </div>
+
+
+                            <a href="{{ route('carritoCompras') }}">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li>
+                                        <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
+                                            <!-- carrito -->
+                                            <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg"
+                                                width="28" height="28" fill="currentColor" class="bi bi-cart3"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                                                    fill="#9d9d9d">
+                                                </path>
+                                            </svg>
+                                            <div style="color: #9d9d9d" id="contadorCarrito">
+                                                {{ $contadorCarrito->contadorCarrito }}</div>
+                                            <h4 style="color: #9d9d9d;">Carrito de compras</h4>
+                                            <!-- carrito -->
+                                        </div>
+                                    </li>
+                                </ul>
+                            </a>
+                            </a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -407,6 +417,8 @@
                                                 e.preventDefault(); // Evita que se envíe el formulario por defecto
                                                 // Obtén los datos del formulario
                                                 var formData = $('#miFormulario{{ $item->id }}').serialize();
+
+
                                                 // Separar los pares clave-valor por el caracter "&"
                                                 var pairs = formData.split('&');
                                                 // Crear un objeto para almacenar los valores separados
@@ -428,8 +440,6 @@
                                                 var color = data['color'];
                                                 var tamaño = data['tamaño'];
                                                 var sessionCliente = data['sessionCliente'];
-
-                                                //console.log(tamaño);
 
                                                 if (color == undefined || tamaño == "") {
                                                     var mensajeContainer = document.getElementById("mensajeContainer{{ $item->id }}");
@@ -457,9 +467,11 @@
                                                             //respuesta del controlador 
                                                             console.log(response.producto.cantidad);
                                                             console.log(response.foto.cantidad);
-                                                            
+
                                                             if (response.producto.cantidad != null) {
-                                                                console.log("Cantidad de producto tabla producto " +response.producto.cantidad + " del tamaño " +response.producto.tamaño);
+                                                                console.log("Cantidad de producto tabla producto " + response
+                                                                    .producto.cantidad + " del tamaño " + response.producto
+                                                                    .tamaño);
                                                                 if (response.producto.cantidad <= 0) {
 
                                                                     var mensajeContainer = document.getElementById(
@@ -1185,115 +1197,232 @@
             <h2 class="section__title heading h3">El mejor artículo de la temporada</h2>
         </header>
     </div>
-    <div class="container container--flush">
-        <div class="featured-product">
-            <div class="card">
-                <div class="card__section card__section--tight">
-                    <div class="product-gallery product-gallery--with-thumbnails">
-                        <div class="product-gallery__carousel-wrapper">
-                            <div class="product-gallery__carousel product-gallery__carousel--zoomable flickity-enabled is-fade"
-                                data-media-count="20" data-initial-media-id="22584943902783" style="">
-                                <div class="flickity-viewport" style="height: 695px; touch-action: pan-y;">
-                                    <div class="flickity-slider" style="left: 0px; transform: translateX(50%);">
-                                        <div class="product-gallery__carousel-item is-selected" tabindex="-1"
-                                            data-media-id="22584943902783" data-media-type="image"
-                                            style="position: absolute; left: -50%; opacity: 1;">
-                                            <div class="product-gallery__size-limiter" style="max-width: 1000px">
 
-                                                <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                    @foreach ($productos as $item)
-                                                        @if ($item->temporada == '1')
-                                                            <img style="width: 380px; height: 380px;"
-                                                                src="imagesProductos/{{ $item->imagen }}"
-                                                                alt="">
-                                                        @endif
-                                                    @endforeach
+
+    <div>
+        @foreach ($productos as $item)
+            @if ($item->temporada == '1')
+                <div class="container container--flush">
+                    <div class="featured-product">
+                        <div class="card">
+                            <div class="card__section card__section--tight">
+                                <div class="product-gallery product-gallery--with-thumbnails">
+                                    <div class="product-gallery__carousel-wrapper">
+                                        <div class="product-gallery__carousel product-gallery__carousel--zoomable flickity-enabled is-fade"
+                                            data-media-count="20" data-initial-media-id="22584943902783"
+                                            style="">
+                                            <div class="flickity-viewport"
+                                                style="height: 695px; touch-action: pan-y;">
+                                                <div class="flickity-slider"
+                                                    style="left: 0px; transform: translateX(50%);">
+                                                    <div class="product-gallery__carousel-item is-selected"
+                                                        tabindex="-1" data-media-id="22584943902783"
+                                                        data-media-type="image"
+                                                        style="position: absolute; left: -50%; opacity: 1;">
+                                                        <div class="product-gallery__size-limiter"
+                                                            style="max-width: 1000px">
+
+                                                            <div class="aspect-ratio" style="padding-bottom: 100.0%">
+                                                                <img style="width: 380px; height: 380px;"
+                                                                    src="imagesProductos/{{ $item->imagen }}"
+                                                                    alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
 
-                    </div>
-                </div>
-            </div>
-            <div class="card card--collapsed ">
-                <div id="product-zoom-template--14562732638271__featured-product" class="product__zoom-wrapper"></div>
-                <div class="card__section">
-                    <form method="post" action="/cart/add"
-                        id="product_form_template--14562732638271__featured-product7064984518719"
-                        accept-charset="UTF-8" class="product-form" enctype="multipart/form-data">
-                        <div class="product-meta">
-                            <h3 class="product-meta__title heading h2">
-                                @foreach ($productos as $item)
-                                    @if ($item->temporada == '1')
-                                        <p>{{ $item->nombre }}</p>
-                                    @endif
-                                @endforeach
-                            </h3>
-                            <hr class="card__separator">
 
-                            <div class="product-form__info-list">
-                                <div class="product-form__info-item">
-                                    <span class="product-form__info-title text--strong">Precio:</span>
-                                    <div class="product-form__info-content" role="region" aria-live="polite">
-                                        <div class="price-list"><span class="price">
-                                                @foreach ($productos as $item)
-                                                    @if ($item->temporada == '1')
+                        <div class="card card--collapsed ">
+                            <div id="product-zoom-template--14562732638271__featured-product"
+                                class="product__zoom-wrapper">
+                            </div>
+                            <div class="card__section">
+                                <div class="product-meta">
+                                    <h3 class="product-meta__title heading h2">
+                                        <p>{{ $item->nombre }}</p>
+                                    </h3>
+                                    <hr class="card__separator">
+
+                                    <div class="product-form__info-list">
+                                        <div class="product-form__info-item">
+                                            <span class="product-form__info-title text--strong">Precio:</span>
+                                            <div class="product-form__info-content" role="region"
+                                                aria-live="polite">
+                                                <div class="price-list"><span class="price">
                                                         <p>₡{{ $item->precio }}</p>
-                                                    @endif
-                                                @endforeach
-                                        </div>
-                                        <div class="product-form__price-info" style="display: none">
-                                            <div class="unit-price-measurement">
-                                                <span class="unit-price-measurement__price"></span>
-                                                <span class="unit-price-measurement__separator">/ </span>
-                                                <span class="unit-price-measurement__reference-value"></span>
-                                                <span class="unit-price-measurement__reference-unit"></span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="product-form__info-item product-form__info-item--quantity">
-                                    <label for="template--14562732638271__featured-product-7064984518719-quantity"
-                                        class="product-form__info-title text--strong">Cantidad:</label>
-                                    <div class="product-form__info-content">
-                                        <div class="quantity-selector quantity-selector--product">
-                                            <button type="button" class="quantity-selector__button"
-                                                data-action="decrease-picker-quantity"
-                                                aria-label="Disminuir la cantidad en 1"
-                                                title="Disminuir la cantidad en 1"><svg focusable="false"
-                                                    class="icon icon--minus " viewBox="0 0 10 2" role="presentation">
-                                                    <path d="M10 0v2H0V0z" fill="currentColor"></path>
-                                                </svg></button>
-                                            <input name="quantity" aria-label="Cantidad"
-                                                class="quantity-selector__value" inputmode="numeric" value="1"
-                                                size="3">
-                                            <button type="button" class="quantity-selector__button"
-                                                data-action="increase-picker-quantity"
-                                                aria-label="Aumentar la cantidad en 1"
-                                                title="Aumentar la cantidad en 1"><svg focusable="false"
-                                                    class="icon icon--plus " viewBox="0 0 10 10" role="presentation">
-                                                    <path d="M6 4h4v2H6v4H4V6H0V4h4V0h2v4z" fill="currentColor"
-                                                        fill-rule="evenodd"></path>
-                                                </svg></button>
+                                        <div class="product-form__info-item">
+                                            <span class="product-form__info-title text--strong">Color:</span>
+                                            <div class="product-form__info-content" role="region"
+                                                aria-live="polite">
+                                                <div class="price-list" id="colorTemporada{{ $item->color }}"><span
+                                                        class="price">
+                                                        <p>{{ $item->color }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-form__info-item">
+                                            <span class="product-form__info-title text--strong">Tamaño:</span>
+                                            <div class="product-form__info-content" role="region"
+                                                aria-live="polite">
+                                                <div class="price-list"><span class="price">
+                                                        <p>{{ $item->tamaño }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-form__info-item product-form__info-item--quantity">
+                                            <label
+                                                for="template--14562732638271__featured-product-7064984518719-quantity"
+                                                class="product-form__info-title text--strong">Descripción:
+                                                <p>{{ $item->descripcion }}</p>
+                                            </label>
                                         </div>
                                     </div>
+                                    <button style="width: 100%" type="submit"
+                                        id="botonCarritoTemporada{{ $item->id }}"
+                                        class="product-item__action-button button button--small button--primary">Añadir
+                                        al carrito</button>
+                                    <br><br>
+                                    <div id="mensajeContainer2{{ $item->id }}"></div>
+
+                                    <script>
+                                        $(document).ready(function() {
+                                            $("#botonCarritoTemporada{{ $item->id }}").click(function() {
+                                                // Obtener el ID del botón que se ha hecho clic
+
+
+                                                var id = this.id;
+                                                var idSinBotonCarritoTemporada = id.replace("botonCarritoTemporada", "");
+                                                console.log(idSinBotonCarritoTemporada);
+                                                var mensajeContainer = document.getElementById("mensajeContainer2{{ $item->id }}");
+                                                console.log(mensajeContainer);
+
+                                                $.ajax({
+                                                    url: 'http://localhost/erotico/public/carritoCompraVerificarCantidad2', // aqui va el nombre de la ruta
+                                                    method: 'GET', // el metodo que se usa en la ruta
+                                                    data: {
+                                                        productId: idSinBotonCarritoTemporada,
+                                                    }, //los parametros enviados
+                                                    dataType: 'json',
+                                                    success: function(response) {
+
+                                                        //arreglar
+                                                        //respuesta del controlador 
+                                                        console.log(response.producto.cantidad);
+
+                                                        if (response.producto.cantidad != null) {
+                                                            console.log("Cantidad de producto tabla producto " + response
+                                                                .producto.cantidad + " del tamaño " + response.producto
+                                                                .tamaño);
+                                                            if (response.producto.cantidad <= 0) {
+
+                                                                var mensajeContainer = document.getElementById(
+                                                                    "mensajeContainer2{{ $item->id }}");
+                                                                mensajeContainer.innerHTML =
+                                                                    "No quedan en inventario del tamaño " + response
+                                                                    .producto.tamaño;
+
+                                                            } else {
+                                                                var mensajeContainer = document.getElementById(
+                                                                    "mensajeContainer2{{ $item->id }}");
+                                                                mensajeContainer.innerHTML =
+                                                                    ""; // limpio el mensajecontainer
+                                                                //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                                                //console.log("Agregar al carrito");
+                                                                //tabla productos
+                                                                $.ajax({
+                                                                    url: 'http://localhost/erotico/public/carritoCompraTablaProducto2', // aqui va el nombre de la ruta
+                                                                    method: 'GET', // el metodo que se usa en la ruta
+                                                                    data: {
+                                                                        productId: idSinBotonCarritoTemporada,
+                                                                    }, //los parametros enviados
+                                                                    dataType: 'json',
+                                                                    success: function(response) {
+                                                                        //console.log(response);
+                                                                        if (response ==
+                                                                            "Si desea sumar mas de este producto entrar al carrito de compra"
+                                                                        ) {
+                                                                            var mensajeContainer = document
+                                                                                .getElementById(
+                                                                                    "mensajeContainer2{{ $item->id }}"
+                                                                                );
+                                                                            mensajeContainer.innerHTML =
+                                                                                response; // limpio el mensajecontainer
+                                                                        } else {
+                                                                            var mensajeContainer = document
+                                                                                .getElementById(
+                                                                                    "mensajeContainer2{{ $item->id }}"
+                                                                                );
+                                                                            mensajeContainer.innerHTML =
+                                                                                "Se agrego correctamente al carrito"; // limpio el mensajecontainer
+                                                                            var numeroContadorCarrito = document
+                                                                                .getElementById(
+                                                                                    "contadorCarrito");
+                                                                            var parpadeo2 = document
+                                                                                .getElementById("parpadeo");
+                                                                            var parpadeo3 = document
+                                                                                .getElementById("parpadeoDrop");
+                                                                            // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                                                            function actualizarContador(
+                                                                                nuevoValor) {
+                                                                                numeroContadorCarrito
+                                                                                    .innerHTML = nuevoValor;
+                                                                                parpadeo2.classList.add(
+                                                                                    "parpadeo");
+                                                                                parpadeo3.classList.add(
+                                                                                    "parpadeo");
+
+                                                                                // Eliminar la clase "parpadeo" después de la animación
+                                                                                setTimeout(function() {
+                                                                                        parpadeo2.classList
+                                                                                            .remove(
+                                                                                                "parpadeo");
+                                                                                        parpadeo3.classList
+                                                                                            .remove(
+                                                                                                "parpadeo");
+
+                                                                                    },
+                                                                                    6000
+                                                                                ); // 2s * 3 = 6s (duración total de la animación)
+                                                                            }
+
+                                                                            // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                                                            var nuevoValor = response;
+                                                                            actualizarContador(nuevoValor);
+                                                                        }
+                                                                    }
+                                                                });
+
+                                                            }
+                                                        }
+
+                                                    }
+                                                });
+
+
+
+
+                                            });
+                                        });
+                                    </script>
                                 </div>
                             </div>
-                            <div class="product-form__payment-container"><button type="submit"
-                                    class="product-form__add-button button button--primary"
-                                    data-action="add-to-cart">Añadir al carrito</button>
-                            </div>
-                    </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            @endif
+        @endforeach
     </div>
-    </section>
-    </div>
+
     <div id="shopify-section-template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c" class="shopify-section">
         <section class="section section--text-centered"
             data-section-id="template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c"
@@ -1361,7 +1490,7 @@
                                                 </path>
                                             </svg></a>
                                     </li>
-                                </ul>   
+                                </ul>
                             </div>
                         </aside>
                         <br><br>
@@ -1374,29 +1503,29 @@
 
 
             <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
-                target="_blank" rel="noopener"
-                aria-describedby="a11y-new-window-message">
+                target="_blank" rel="noopener" aria-describedby="a11y-new-window-message">
                 <div class="wa__btn_popup" style="left: unset; right: 25px; bottom:90px;">
                     <p>
                         <span class="fab-container">
-                          <i class="fab fa-whatsapp" style="color: #27d011; font-size: 4em;"></i>
-                          <span class="fab-text">¡Contáctanos por WhatsApp!</span>
+                            <i class="fab fa-whatsapp" style="color: #27d011; font-size: 4em;"></i>
+                            <span class="fab-text">¡Contáctanos por WhatsApp!</span>
                         </span>
-                      </p>
+                    </p>
                 </div>
             </a>
-
+        </div>
+    </div>
 </body>
 
 
 <script>
     function toggleText() {
-      const fabText = document.querySelector(".fab-text");
-      fabText.classList.toggle("show-text");
+        const fabText = document.querySelector(".fab-text");
+        fabText.classList.toggle("show-text");
     }
 
     setInterval(toggleText, 5000);
-  </script>
+</script>
 
 
 <script>

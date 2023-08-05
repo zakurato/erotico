@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('login/loginAdentro.Css') }}?v={{ time() }}">
 
+    
+
     <title>Factura</title>
 </head>
 
@@ -22,11 +24,41 @@
             <!-- Agrega aquí más elementos del navbar si es necesario -->
         </ul>
     </div>
+    <br>
+
+    <form action="{{route("cambiarEstadoFactura")}}" method="GET" id="miFormulario">
+
+        @foreach ($facturas as $item)
+                <input type="hidden" name="nFactura" value="{{$item->nFactura}}">
+            @break
+        @endforeach
+        <select name="estatus" class="form-select" aria-label="Default select example" onchange="enviarFormulario()">
+            <option selected>Cambiar el estado de la factura</option>
+            <option value="En proceso">En proceso</option>
+            <option value="Aceptada">Aceptada</option>
+            <option value="Rechazada">Rechazada</option>
+          </select>
+    </form>
+
+    <script>
+        function enviarFormulario() {
+            document.getElementById('miFormulario').submit();
+        }
+    </script>
+    
+    
+    
+    
 
     <table class="table" style="background-color: white">
         <tbody>
             <tr>
-                <th scope="row" style="text-align:">
+                <th scope="row" style="font: 30px Arial">
+                    MagicSexShop
+                </th>
+            </tr>
+            <tr>
+                <th scope="row">
                     Fecha:
                     @foreach ($facturas as $item)
                         <?php
@@ -40,7 +72,7 @@
                     @break
                 @endforeach
             </th>
-            </tr>
+        </tr>
 
 
         <tr>
@@ -50,8 +82,8 @@
                     #{{ $item->nFactura }}
                 @break
             @endforeach
-            </th>
-        </tr>
+        </th>
+    </tr>
 
     <tr>
         <th scope="row">
@@ -60,82 +92,95 @@
                 {{ $item->estatus }}
             @break
         @endforeach
-        </th>
-    </tr>
+    </th>
+</tr>
 <tr>
     <th scope="row">Nombre del cliente:
         @foreach ($facturas as $item)
-                {{ $item->nombre }}
-            @break
-        @endforeach
-    </th>
-</tr>
-<tr>
-    <th scope="row">Teléfono: 
-        @foreach ($facturas as $item)
-                {{ $item->telefono }}
-            @break
-        @endforeach
-    </th>
-</tr>
-<tr>
-    <th scope="row">Direccion: 
-        @foreach ($facturas as $item)
-                {{ $item->direccion }}
-            @break
-        @endforeach
-    </th>
-</tr>
-<tr>
-    <th scope="row">
-
-        @php
-            $imagenComprobante = "";
-        @endphp
-        @foreach ($facturas as $item)
-            @php
-                $imagenComprobante = $item->imagen
-            @endphp
+            {{ $item->nombre }}
         @break
     @endforeach
-
-
-
-        <button class="btn btn-primary btn-lg" onclick="showImage('imagesComprobantes/{{$imagenComprobante}}')">
-            Ver imagen del comprobante
-        </button>
-    </th>
+</th>
 </tr>
 <tr>
-    <th scope="row" style="text-align: right">Total de artículos: 
-        {{$suma}}
-    </th>
+<th scope="row">Teléfono:
+    @foreach ($facturas as $item)
+        {{ $item->telefono }}
+    @break
+@endforeach
+</th>
 </tr>
 <tr>
-    <th scope="row" style="text-align: right">TOTAL: 
-        @foreach ($facturas as $item)
-        ₡{{ $item->sumaTotal }}
-            @break
-        @endforeach
-    </th>
+<th scope="row">Direccion:
+@foreach ($facturas as $item)
+    {{ $item->direccion }}
+@break
+@endforeach
+</th>
+</tr>
+<tr>
+<th scope="row">
+
+@php
+    $imagenComprobante = '';
+@endphp
+@foreach ($facturas as $item)
+@php
+    $imagenComprobante = $item->imagen;
+@endphp
+@break
+@endforeach
+
+
+
+<button class="btn btn-primary btn-lg"
+onclick="showImage('imagesComprobantes/{{ $imagenComprobante }}')">
+Ver imagen del comprobante
+</button>
+</th>
+</tr>
+<tr>
+<th scope="row" style="text-align: left">Total de artículos:
+{{ $suma }}
+</th>
+</tr>
+<tr>
+<th scope="row" style="text-align: left">TOTAL:
+@foreach ($facturas as $item)
+₡{{ $item->sumaTotal }}
+@break
+@endforeach
+</th>
+</tr>
+
+<tr>
+<th scope="row">
+Los artículos de bateria tienen 15 días de garantía, o tengan daños de fabrica
+,los artículos recargables tienen 30 días de garantía, o tengan daños de fabrica
+</th>
+</tr>
+<tr>
+<th scope="row">
+Gracias por preferirnos
+</th>
 </tr>
 
 </tbody>
 </table>
 
 <div id="lightbox" onclick="hideImage()">
-    <img id="lightbox-image">
+<img id="lightbox-image">
 </div>
 </body>
 
 <script>
     //script para mostrar la imagen en grande
-        function showImage(imageSrc) {
-            var lightbox = document.getElementById('lightbox');
-            var lightboxImage = document.getElementById('lightbox-image');
-            lightboxImage.src = imageSrc;
-            lightbox.style.display = 'flex';
-        }
+    function showImage(imageSrc) {
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightbox-image');
+        lightboxImage.src = imageSrc;
+        lightbox.style.display = 'flex';
+    }
 
     function hideImage() {
         var lightbox = document.getElementById('lightbox');

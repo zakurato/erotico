@@ -20,7 +20,7 @@
                 <form action="{{route("vistaReporteFacturas")}}" method="GET">
                     <div class="input-group">
                         <div class="form-outline">
-                            <input style="width: 300px" type="search" id="form1" class="form-control" placeholder="#Factura/Nombre/Teléfono/Estado"/>
+                            <input style="width: 300px" name="txtBuscar" class="form-control" placeholder="#Factura/Nombre/Teléfono/Estado"/>
                             <label class="form-label" for="form1">Search</label>
                         </div>
                         <button type="submit" class="btn btn-primary"

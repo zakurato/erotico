@@ -71,7 +71,10 @@ Route::get('/jqImagenes',[HomeController::class,"jqImagenes"])->name("jqImagenes
 
 //Carrito de compras
 Route::get('/carritoCompraVerificarCantidad',[HomeController::class,"carritoCompraVerificarCantidad"])->name("carritoCompraVerificarCantidad");
+Route::get('/carritoCompraVerificarCantidad2',[HomeController::class,"carritoCompraVerificarCantidad2"])->name("carritoCompraVerificarCantidad2");
+
 Route::get('/carritoCompraTablaProducto',[HomeController::class,"carritoCompraTablaProducto"])->name("carritoCompraTablaProducto");
+Route::get('/carritoCompraTablaProducto2',[HomeController::class,"carritoCompraTablaProducto2"])->name("carritoCompraTablaProducto2");
 Route::get('/carritoCompraTablaFotos',[HomeController::class,"carritoCompraTablaFotos"])->name("carritoCompraTablaFotos");
 Route::get('/carritoCompras',[HomeController::class,"carritoCompras"])->name("carritoCompras")->middleware("Check");
 
@@ -93,10 +96,7 @@ Route::get('/verFactura',[HomeController::class,"verFactura"])->name("verFactura
 //reportes de Facturas
 Route::get('/vistaReporteFacturas',[HomeController::class,"vistaReporteFacturas"])->name("vistaReporteFacturas")->middleware("auth");
 Route::get('/verFacturaIndividual',[HomeController::class,"verFacturaIndividual"])->name("verFacturaIndividual")->middleware("auth");
-
-
-
-
+Route::get('/cambiarEstadoFactura',[HomeController::class,"cambiarEstadoFactura"])->name("cambiarEstadoFactura")->middleware("auth");
 
 
 
