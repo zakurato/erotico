@@ -72,7 +72,8 @@
                                         <li><a href="{{ route('index2', ['categoria' => 'TODOS']) }}">TODOS</a></li>
                                         @foreach ($categorias as $item)
                                             <li>
-                                                <a href="{{ route('index2', ['categoria' => $item->nombreCategoria]) }}">{{ $item->nombreCategoria }}</a>
+                                                <a
+                                                    href="{{ route('index2', ['categoria' => $item->nombreCategoria]) }}">{{ $item->nombreCategoria }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -90,10 +91,13 @@
                                 <li>
                                     <form action="" class="navbar-form" style="width: 100%">
                                         <div class="form-group">
-                                            <div style="display: flex;align-items: center; position: relative; top: 15px">
-                                                <input type="search" name="search" id="search-input" placeholder="Buscar..." class="form-control">
+                                            <div
+                                                style="display: flex;align-items: center; position: relative; top: 15px">
+                                                <input type="search" name="txtBuscar" id="search-input"
+                                                    placeholder="Buscar..." class="form-control">
                                                 <button type="submit">
-                                                    <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>                                                </button>                                            
+                                                    <i class="fa-solid fa-magnifying-glass fa-xl"
+                                                        style="color: #ffffff;"></i> </button>
                                             </div>
                                     </form>
                                 </li>
@@ -199,7 +203,7 @@
                         @foreach ($productos as $index => $item)
                             <form id="miFormulario{{ $item->id }}">
                                 @csrf
-                                <div class="col mb-5">
+                                <div class="col mb-5" style="padding-top: 70px">
                                     <div class="card h-100">
                                         <div id="myCarousel{{ $index }}" class="carousel slide"
                                             data-ride="carousel">
@@ -211,11 +215,6 @@
                                                     <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
                                                         style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
                                                 </div>
-                                            </div>
-
-                                            <div id="lightbox" onclick="hideImage()">
-                                                <img id="lightbox-image">
-                                                <p style="color: white" id="lightbox-descripcion"></p>
                                             </div>
 
                                             <script>
@@ -1061,93 +1060,100 @@
             </div>
         </section>
     </div>
-    <div id="shopify-section-template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8" class="shopify-section">
-        <section class="section" data-section-id="template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8"
-            data-section-type="mosaic">
-            <div class="container">
-                <div class="mosaic mosaic--medium mosaic--three-columns">
-                    <div class="mosaic__column">
-                        <div class="mosaic__item">
-                            <a href="/collections/bondage"
-                                id="block-template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8-1676133389dee69932-0"
-                                class="promo-block promo-block--bottom-left ">
-                                <div class="promo-block__image-clip">
-                                    <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
-                                            src="images/lubricantes.jpeg?v=1675344482&amp;width=801" alt=""
-                                            width="801" height="520" loading="lazy" sizes="min(100vw, 560px)"
-                                            class="image-background">
-                                        <h1 class="overlay-heading">Lubricantes</h1>
-                                    </div>
-                                </div>
-                                </noscript>
-                            </a>
-                        </div>
-                        <div class="mosaic__item">
-                            <a href="/collections/elixir"
-                                id="block-template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8-1676133389dee69932-1"
-                                class="promo-block promo-block--bottom-left ">
 
-                                <div class="promo-block__image-clip">
-                                    <div class="promo-block__image-wrapper promo-block__image-wrapper--cover">
-                                        <img src="images/vibradores.jpeg?v=1675344516&amp;width=1101" alt=""
-                                            width="801" height="520" loading="lazy" sizes="min(100vw, 560px)"
-                                            class="image-background">
-                                        <h1 class="overlay-heading">Vibradores</h1>
+    <form id="categoryForm" action="{{ route('index2') }}" method="GET">
+        <input type="hidden" id="categoryInput" name="categoria" value="">
+    </form>
+        <div class="shopify-section">
+            <section class="section" data-section-id="template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8"
+                data-section-type="mosaic">
+                <div class="container">
+                    <div class="mosaic mosaic--medium mosaic--three-columns">
+                        <div class="mosaic__column">
+                            <div class="mosaic__item">
+                                <a href="#" class="promo-block promo-block--bottom-left"
+                                    onclick="submitCategoryForm('Lubricantes'); return false;">
+                                    <div class="promo-block__image-clip">
+                                        <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
+                                                src="images/lubricantes.jpeg?v=1675344482&amp;width=801"
+                                                alt="" width="801" height="520" loading="lazy"
+                                                sizes="min(100vw, 560px)" class="image-background">
+                                            <h1 class="overlay-heading">Lubricantes</h1>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                    </noscript>
+                                </a>
+                            </div>
+                            <div class="mosaic__item">
+                                <a href="#" class="promo-block promo-block--bottom-left"
+                                    onclick="submitCategoryForm('DILDOS'); return false;">
+
+                                    <div class="promo-block__image-clip">
+                                        <div class="promo-block__image-wrapper promo-block__image-wrapper--cover">
+                                            <img src="images/vibradores.jpeg?v=1675344516&amp;width=1101"
+                                                alt="" width="801" height="520" loading="lazy"
+                                                sizes="min(100vw, 560px)" class="image-background">
+                                            <h1 class="overlay-heading">Dildos</h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mosaic__column">
-                        <div class="mosaic__item">
-                            <a href="/collections/modelos-webcam"
-                                id="block-template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8-1676133389dee69932-2"
-                                class="promo-block promo-block--bottom-left ">
-                                <div class="promo-block__image-clip">
-                                    <div class="promo-block__image-wrapper promo-block__image-wrapper--cover">
-                                        <img src="images/lenceria.jpeg?v=1675344516&amp;width=1101" alt=""
-                                            width="1101" height="1101" loading="lazy" sizes="min(100vw, 560px)"
-                                            class="image-background">
-                                        <h1 class="overlay-heading">Lencería</h1>
+                        <div class="mosaic__column">
+                            <div class="mosaic__item">
+                                <a href="#" class="promo-block promo-block--bottom-left"
+                                    onclick="submitCategoryForm('Lencería'); return false;">
+                                    <div class="promo-block__image-clip">
+                                        <div class="promo-block__image-wrapper promo-block__image-wrapper--cover">
+                                            <img src="images/lenceria.jpeg?v=1675344516&amp;width=1101" alt=""
+                                                width="1101" height="1101" loading="lazy"
+                                                sizes="min(100vw, 560px)" class="image-background">
+                                            <h1 class="overlay-heading">Lencería</h1>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mosaic__column">
-                        <div class="mosaic__item">
-                            <a href="/collections/wanna"
-                                id="block-template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8-1676133389dee69932-3"
-                                class="promo-block promo-block--bottom-left ">
-                                <div class="promo-block__image-clip">
-                                    <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
-                                            src="images/anales.jpeg?v=1675344531&amp;width=801" alt=""
-                                            width="801" height="520" loading="lazy" sizes="min(100vw, 560px)"
-                                            class="image-background">
-                                        <h1 class="overlay-heading">Accesorios anales</h1>
+                        <div class="mosaic__column">
+                            <div class="mosaic__item">
+                                <a href="#" class="promo-block promo-block--bottom-left"
+                                    onclick="submitCategoryForm('Accesorios anales'); return false;">
+                                    <div class="promo-block__image-clip">
+                                        <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
+                                                src="images/anales.jpeg?v=1675344531&amp;width=801" alt=""
+                                                width="801" height="520" loading="lazy"
+                                                sizes="min(100vw, 560px)" class="image-background">
+                                            <h1 class="overlay-heading">Accesorios anales</h1>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="mosaic__item">
-                            <a href="/collections/lerot"
-                                id="block-template--14562732638271__a1776496-d8d8-4585-84dd-e0eee5f7a9a8-1676133389dee69932-4"
-                                class="promo-block promo-block--bottom-left ">
-                                <div class="promo-block__image-clip">
-                                    <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
-                                            src="images/bondage2.jpeg?v=1675344549&amp;width=801" alt=""
-                                            width="801" height="520" loading="lazy" sizes="min(100vw, 560px)"
-                                            class="image-background">
-                                        <h1 class="overlay-heading">Bondage</h1>
+                                </a>
+                            </div>
+                            <div class="mosaic__item">
+                                <a href="#" class="promo-block promo-block--bottom-left"
+                                    onclick="submitCategoryForm('BONDAGE'); return false;">
+                                    <div class="promo-block__image-clip">
+                                        <div class="promo-block__image-wrapper promo-block__image-wrapper--cover"><img
+                                                src="images/bondage2.jpeg?v=1675344549&amp;width=801" alt=""
+                                                width="801" height="520" loading="lazy"
+                                                sizes="min(100vw, 560px)" class="image-background">
+                                            <h1 class="overlay-heading">Bondage</h1>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
+
+        <script>
+            function submitCategoryForm(category) {
+                document.getElementById('categoryInput').value = category;
+                document.getElementById('categoryForm').submit();
+            }
+        </script>
+
     <div id="shopify-section-template--14562732638271__220c92e8-4944-411d-b5f7-cdc598a18b79" class="shopify-section">
         <section class="section section--text-centered"
             data-section-id="template--14562732638271__220c92e8-4944-411d-b5f7-cdc598a18b79"
@@ -1422,6 +1428,9 @@
             @endif
         @endforeach
     </div>
+    <form id="miFormularioImage" action="{{route("descriccionProducto")}}" method="GET">
+        <input type="hidden" id="imagenInput" name="imagen" value="">
+    </form>
 
     <div id="shopify-section-template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c" class="shopify-section">
         <section class="section section--text-centered"
@@ -1515,6 +1524,7 @@
             </a>
         </div>
     </div>
+
 </body>
 
 
@@ -1559,17 +1569,13 @@
 <script>
     //script para mostrar la imagen en grande
     function showImage(imageSrc) {
-        console.log(imageSrc);
 
-        var lightbox = document.getElementById('lightbox');
-        var lightboxImage = document.getElementById('lightbox-image');
-        lightboxImage.src = imageSrc;
-        lightbox.style.display = 'flex';
-    }
+        // Actualizar el valor del campo oculto en el formulario
+        document.getElementById('imagenInput').value = imageSrc.replace("imagesProductos/","");
+        
+        // Enviar el formulario
+        document.getElementById('miFormularioImage').submit();
 
-    function hideImage() {
-        var lightbox = document.getElementById('lightbox');
-        lightbox.style.display = 'none';
     }
 </script>
 

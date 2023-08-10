@@ -17,10 +17,11 @@
         <ul>
             <li><a href="{{ route('loginDentro') }}">Inicio</a></li>
             <li style="padding-left: 20px">
-                <form action="{{route("vistaReporteFacturas")}}" method="GET">
+                <form action="{{ route('vistaReporteFacturas') }}" method="GET">
                     <div class="input-group">
                         <div class="form-outline">
-                            <input style="width: 300px" name="txtBuscar" class="form-control" placeholder="#Factura/Nombre/Teléfono/Estado"/>
+                            <input style="width: 320px" name="txtBuscar" class="form-control"
+                                placeholder="#Factura/Nombre/Teléfono/Estado/Fecha" />
                             <label class="form-label" for="form1">Search</label>
                         </div>
                         <button type="submit" class="btn btn-primary"
@@ -34,14 +35,42 @@
     </div>
 
 
+
+    <table class="table">
+        <tbody>
+            @php
+                $prevNumFactura = null;
+                $suma = 0;
+            @endphp
+            @foreach ($compras2 as $index => $item)
+                @if ($item->metodoPago == 'SINPE' && $item->estatus == 'Aceptada' && $prevNumFactura !== $item->nFactura)
+                    @php
+                        $suma = $suma + $item->sumaTotal;
+                    @endphp
+                @endif
+                @php
+                    $prevNumFactura = $item->nFactura;
+                @endphp
+            @endforeach
+            @if ($suma > 0)
+                <tr>
+                    <th scope="row" style="background-color: black; color: white">Total Sinpes:</th>
+                    <th style="background-color: black; color: white">₡{{ $suma }}</th>
+                </tr>
+            @endif
+        </tbody>
+
+    </table>
+
     <br>
     <table class="table">
         <thead>
             <tr>
-                <th>Numero de factura</th>
-                <th>Nombre</th>
+                <th style="width: 12%">N° de factura</th>
+                <th style="width: 18%">Nombre</th>
                 <th>Teléfono</th>
                 <th>Estado</th>
+                <th>Fecha</th>
                 <th>Acción</th>
             </tr>
         </thead>
@@ -56,7 +85,13 @@
                         <th scope="row">{{ $item->nombre }}</th>
                         <th scope="row">{{ $item->telefono }}</th>
                         <th scope="row">{{ $item->estatus }}</th>
-
+                        <th scope="row">
+                            @php
+                                $dateString = $item->created_at; //fecha y hora
+                                $fecha = date('Y-m-d', strtotime($dateString)); // solo fecha
+                            @endphp
+                            {{ $fecha }}
+                        </th>
                         <td>
                             <form action="verFacturaIndividual" method="GET">
                                 @csrf

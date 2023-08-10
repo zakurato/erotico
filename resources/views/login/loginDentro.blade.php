@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
     <div class="navbar">
         <ul>
             <li><a href="{{ route('vistaReporteFacturas') }}">Reportes de facturas</a></li>

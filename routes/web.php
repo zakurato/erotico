@@ -99,7 +99,8 @@ Route::get('/verFacturaIndividual',[HomeController::class,"verFacturaIndividual"
 Route::get('/cambiarEstadoFactura',[HomeController::class,"cambiarEstadoFactura"])->name("cambiarEstadoFactura")->middleware("auth");
 
 
-
+//Descripcion del producto 
+Route::get('/descriccionProducto',[HomeController::class,"descriccionProducto"])->name("descriccionProducto");
 
 
 

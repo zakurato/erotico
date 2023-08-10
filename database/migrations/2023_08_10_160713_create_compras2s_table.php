@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string("sumaTotal");
             $table->string("nFactura");
             $table->string("estatus");
+            $table->string("metodoPago");
             $table->timestamps();
         });
     }

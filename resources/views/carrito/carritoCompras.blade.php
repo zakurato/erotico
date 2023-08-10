@@ -369,6 +369,10 @@
                         </div>
                         <br>
                         <h1 style="font: 28px Arial">Metodo de pago <strong> SINPE MÓVIL o transferencia bancaria. </strong> </h1>
+                        <h1 style="font: 20px Arial">Teléfono SINPE MÓVIL: 60168568</h1>
+                        <h1 style="font: 20px Arial">Cuenta tranferencia: CR86015101220010656228</h1>
+
+
                         <br>
                         <div class="row">
 
@@ -395,7 +399,7 @@
                                                                 name="telefono" required>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label class="form-label">Dirección:</label>
+                                                            <label class="form-label">Dirección exacta:</label>
                                                             <textarea class="form-control" rows="5" name="direccion" required></textarea>
                                                         </div>
                                                         <div class="form-group">

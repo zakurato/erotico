@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('login/loginAdentro.Css') }}?v={{ time() }}">
 
-    
+
 
     <title>Factura</title>
 </head>
@@ -25,95 +25,107 @@
         </ul>
     </div>
     <br>
+    @if ($estatus != 'Rechazada' )
+        <form action="{{ route('cambiarEstadoFactura') }}" method="GET" id="miFormulario">
 
-    <form action="{{route("cambiarEstadoFactura")}}" method="GET" id="miFormulario">
-
-        @foreach ($facturas as $item)
-                <input type="hidden" name="nFactura" value="{{$item->nFactura}}">
+            @foreach ($facturas as $item)
+                <input type="hidden" name="nFactura" value="{{ $item->nFactura }}">
             @break
         @endforeach
-        <select name="estatus" class="form-select" aria-label="Default select example" onchange="enviarFormulario()">
-            <option selected>Cambiar el estado de la factura</option>
-            <option value="En proceso">En proceso</option>
-            <option value="Aceptada">Aceptada</option>
-            <option value="Rechazada">Rechazada</option>
-          </select>
-    </form>
+            <select id="selectMiFormulario" name="estatus" class="form-select" aria-label="Default select example"
+                onchange="enviarFormulario()">
+                <option selected>Cambiar el estado de la factura</option>
+                <option value="En proceso">En proceso</option>
+                <option value="Aceptada">Aceptada</option>
+                <option value="Rechazada">Rechazada</option>
+            </select>
+        </form>
+    @endif
+<script>
+    function enviarFormulario() {
 
-    <script>
-        function enviarFormulario() {
+        var estado = document.getElementById('selectMiFormulario');
+        var estadoValue = estado.value;
+        console.log(estadoValue);
+
+        if (estadoValue == "Rechazada") {
+            //preguntar si de verdad quiero devolver los productos al inventario
+            var respuesta = confirm("¿Estás seguro de que deseas devolver los productos al inventario?");
+
+            if (respuesta) {
+                document.getElementById('miFormulario').submit();
+            }
+        } else {
             document.getElementById('miFormulario').submit();
-        }
-    </script>
-    
-    
-    
-    
 
-    <table class="table" style="background-color: white">
-        <tbody>
-            <tr>
-                <th scope="row" style="font: 30px Arial">
-                    MagicSexShop
-                </th>
-            </tr>
-            <tr>
-                <th scope="row">
-                    Fecha:
-                    @foreach ($facturas as $item)
-                        <?php
-                        $created_at = $item->created_at; // Suponiendo que $item->created_at contiene un objeto Carbon
-                        
-                        // Formatear la fecha en formato "YYYY-MM-DD"
-                        $fecha = $created_at->format('Y-m-d');
-                        
-                        echo $fecha; // Esto mostrará la fecha en formato "YYYY-MM-DD"
-                        ?>
-                    @break
-                @endforeach
+        }
+    }
+</script>
+
+<table class="table" style="background-color: white">
+    <tbody>
+        <tr>
+            <th scope="row" style="font: 30px Arial">
+                MagicSexShop
             </th>
         </tr>
-
-
         <tr>
             <th scope="row">
-                Número de factura:
+                Fecha:
                 @foreach ($facturas as $item)
-                    #{{ $item->nFactura }}
+                    <?php
+                    $created_at = $item->created_at; // Suponiendo que $item->created_at contiene un objeto Carbon
+                    
+                    // Formatear la fecha en formato "YYYY-MM-DD"
+                    $fecha = $created_at->format('Y-m-d');
+                    
+                    echo $fecha; // Esto mostrará la fecha en formato "YYYY-MM-DD"
+                    ?>
                 @break
             @endforeach
         </th>
     </tr>
 
+
     <tr>
-        <th scope="row">
-            Estado de la factura:
+        <th scope="row" id="nFacturaDevolver">
+            Número de factura:
             @foreach ($facturas as $item)
-                {{ $item->estatus }}
+                #{{ $item->nFactura }}
             @break
         @endforeach
     </th>
 </tr>
+
 <tr>
-    <th scope="row">Nombre del cliente:
+    <th scope="row">
+        Estado de la factura:
         @foreach ($facturas as $item)
-            {{ $item->nombre }}
+            {{ $item->estatus }}
         @break
     @endforeach
 </th>
 </tr>
 <tr>
-<th scope="row">Teléfono:
+<th scope="row">Nombre del cliente:
     @foreach ($facturas as $item)
-        {{ $item->telefono }}
+        {{ $item->nombre }}
     @break
+@endforeach
+</th>
+</tr>
+<tr>
+<th scope="row">Teléfono:
+@foreach ($facturas as $item)
+    {{ $item->telefono }}
+@break
 @endforeach
 </th>
 </tr>
 <tr>
 <th scope="row">Direccion:
 @foreach ($facturas as $item)
-    {{ $item->direccion }}
+{{ $item->direccion }}
 @break
 @endforeach
 </th>
