@@ -1884,7 +1884,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         "\nNombre: ".$request->nombre.
                         "\nTelefono:".$request->telefono.
                         "\nDireccion: ".$request->direccion.
-                        "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
+                        "\nLink: http://54.89.124.204/erotico/public/factura/".$factura."/".$request->telefono);
 
                     // Redireccionar al enlace de WhatsApp
                     return redirect($url);
@@ -1931,7 +1931,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         "\nNombre: ".$request->nombre.
                         "\nTelefono:".$request->telefono.
                         "\nDireccion: ".$request->direccion.
-                        "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
+                        "\nLink: http://54.89.124.204/erotico/public/factura/".$factura."/".$request->telefono);
 
                     // Redireccionar al enlace de WhatsApp
                     return redirect($url);
