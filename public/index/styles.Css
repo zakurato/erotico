@@ -15356,3 +15356,16 @@ shopify-payment-terms {
   color: #28c850;
 }
 
+@keyframes parpadeo {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.parpadeo {
+  animation: parpadeo 2s 3;
+}
+
+
+
+

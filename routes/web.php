@@ -30,6 +30,8 @@ Route::post('/storeProducto',[HomeController::class,"storeProducto"])->name("sto
 Route::get('/eliminarProducto',[HomeController::class,"eliminarProducto"])->name("eliminarProducto")->middleware("auth");
 Route::get('/actualizarProducto',[HomeController::class,"actualizarProducto"])->name("actualizarProducto")->middleware("auth");
 Route::get('/storeActualizarProducto',[HomeController::class,"storeActualizarProducto"])->name("storeActualizarProducto")->middleware("auth");
+Route::get('/crearProducto',[HomeController::class,"crearProducto"])->name("crearProducto")->middleware("auth");
+
 
 
 //categoria
@@ -101,10 +103,21 @@ Route::get('/cambiarEstadoFactura',[HomeController::class,"cambiarEstadoFactura"
 
 //Descripcion del producto 
 Route::get('/descriccionProducto',[HomeController::class,"descriccionProducto"])->name("descriccionProducto");
+Route::get('/descriccionProducto2',[HomeController::class,"descriccionProducto2"])->name("descriccionProducto2");
 
 
 
+//seccionImagenesCategoria
+Route::get('/seccionImagenesCategoria',[HomeController::class,"seccionImagenesCategoria"])->name("seccionImagenesCategoria")->middleware("auth");
+Route::get('/formCrearProductoSeccionCategoria',[HomeController::class,"formCrearProductoSeccionCategoria"])->name("formCrearProductoSeccionCategoria")->middleware("auth");
+Route::post('/storeSeccionCrearProductoCategoria',[HomeController::class,"storeSeccionCrearProductoCategoria"])->name("storeSeccionCrearProductoCategoria")->middleware("auth");
+Route::post('/eliminarSeccionCategoria',[HomeController::class,"eliminarSeccionCategoria"])->name("eliminarSeccionCategoria")->middleware("auth");
+Route::get('/editarSeccionCategoria',[HomeController::class,"editarSeccionCategoria"])->name("editarSeccionCategoria")->middleware("auth");
+Route::post('/storeEditarSeccionCrearProductoCategoria',[HomeController::class,"storeEditarSeccionCrearProductoCategoria"])->name("storeEditarSeccionCrearProductoCategoria")->middleware("auth");
 
+
+//cambiarTemporadaEnParteDeFotos
+Route::get('/cambiarTemporadaFotos',[HomeController::class,"cambiarTemporadaFotos"])->name("cambiarTemporadaFotos")->middleware("auth");
 
 
 

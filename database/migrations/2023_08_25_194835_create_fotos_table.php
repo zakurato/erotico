@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("tamaño");
             $table->string("cantidad");
             $table->string("idFK");
+            $table->string("temporada")->nullable();
             $table->timestamps();
         });
     }

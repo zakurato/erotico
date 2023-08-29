@@ -8,6 +8,7 @@ use App\Models\Color;
 use App\Models\Compra;
 use App\Models\Compra2;
 use App\Models\Compras2s;
+use App\Models\CreateSeccionProductoCategory;
 use App\Models\Foto;
 use App\Models\Producto;
 use App\Models\Tamano;
@@ -17,8 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use DateTime;
 use Illuminate\Pagination\LengthAwarePaginator;
-
-
+use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\returnSelf;
@@ -30,13 +30,72 @@ class HomeController extends Controller
         return view("paginaPrincipal.index");
     }
     public function index2(Request $request){
+        $productoTemporada = "";
+
+        $productosTemporada = Producto::all();
+        $existeProductoTemporadaTablaTemporada = 0;
+        foreach($productosTemporada as $item){
+            if($item->temporada == 1){
+                $existeProductoTemporadaTablaTemporada = 1;
+                break;
+            }
+        }
+
+        if($existeProductoTemporadaTablaTemporada == 1){
+            //el producto con temporada esta en la tabla de productos
+            $productoTemporada = Producto::where([["temporada","=","1"]])->first();
+
+        }else{
+            //el producto con temporada esta en la tabla de fotos
+            $fotoEncontrada = Foto::where("temporada", "=", "1")->first(["imagen", "color","idFK","tamaño"]);
+            $fotoEncontradaSoloTamaño = Foto::where("idFK", "=", $fotoEncontrada->idFK)
+            ->where("tamaño", "!=", "formImagenes")
+            ->where("color", "=", $fotoEncontrada->color)
+            ->first(["tamaño"]);
+            
+               
+            $atributosProducto = Producto::where([["id", "=", $fotoEncontrada->idFK]])
+            ->first(["nombre", "categoria", "precio", "descripcion","id"]);
+                    
+            $productoTemporada2 = [
+                "id" => $atributosProducto->id,
+                "imagen" => $fotoEncontrada->imagen,
+                "nombre" => $atributosProducto->nombre,
+                "categoria" => $atributosProducto->categoria,
+                "color" => $fotoEncontrada->color,
+                "tamaño" => $fotoEncontradaSoloTamaño->tamaño,
+                "precio" => $atributosProducto->precio,
+                "descripcion" => $atributosProducto->descripcion,
+            ];
+            
+            $productoTemporada = json_decode(json_encode($productoTemporada2), false);
+                        
+        }
+
+
         //return $request;
         if(Empty($request) || $request->txtBuscar == "" && $request->categoria == ""){
             $fechaActual = Date::now();
             $fechaObjeto = new DateTime($fechaActual);
             $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
             $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
-            
+            $top5IdProductosMasVendidos = Compras2s::select('idFKProducto')
+            ->groupBy('idFKProducto')
+            ->orderByDesc(DB::raw('COUNT(*)'))
+            ->limit(5)
+            ->pluck('idFKProducto');
+            $top5ProductosMasActuales = Producto::orderByDesc('created_at')->limit(4)->get();
+
+            $productosSeccionCategoria = CreateSeccionProductoCategory::all();
+            $productosMasVendidos = Producto::whereIn('id', 
+                                [$top5IdProductosMasVendidos[0],
+                                 $top5IdProductosMasVendidos[1],
+                                 $top5IdProductosMasVendidos[2],
+                                 $top5IdProductosMasVendidos[3],
+                                 ]
+                                 )
+                                 ->get();               
+        
             if($clienteSession == ""){
                 //return "estoy aqui si no hay compras de esta session en la tabla de comppras";
                 //return session("nombre");
@@ -62,16 +121,18 @@ class HomeController extends Controller
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
                     $sessionCliente = session('nombre');
+
+            
         
-        
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
                     $categorias = Categoria::all();
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                    //return $productos;
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
                 }
             }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
                 //return "estoy aqui para devolver los productos al inventario";
@@ -115,7 +176,7 @@ class HomeController extends Controller
                     $categorias = Categoria::all();
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
-                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
     
     
             }else{
@@ -145,21 +206,36 @@ class HomeController extends Controller
                     $sessionCliente = session('nombre');
         
         
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
                     $categorias = Categoria::all();
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
                 }
             }
         }else{
+            $productosSeccionCategoria = CreateSeccionProductoCategory::all();
             $fechaActual = Date::now();
             $fechaObjeto = new DateTime($fechaActual);
             $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
             $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
+            $top5ProductosMasActuales = Producto::orderByDesc('created_at')->limit(4)->get();
+            $top5IdProductosMasVendidos = Compras2s::select('idFKProducto')
+            ->groupBy('idFKProducto')
+            ->orderByDesc(DB::raw('COUNT(*)'))
+            ->limit(5)
+            ->pluck('idFKProducto');
+            $productosMasVendidos = Producto::whereIn('id', 
+                                [$top5IdProductosMasVendidos[0],
+                                 $top5IdProductosMasVendidos[1],
+                                 $top5IdProductosMasVendidos[2],
+                                 $top5IdProductosMasVendidos[3],
+                                 ]
+                                 )
+                                 ->get();
             
             if($clienteSession == ""){
                 $existe = 0;
@@ -220,7 +296,7 @@ class HomeController extends Controller
                     }
                     $fotos = Foto::all();
                     $sessionCliente = session('nombre');
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
@@ -266,7 +342,7 @@ class HomeController extends Controller
 
                     }
                     $fotos = Foto::all();
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
                 }
             }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
                 
@@ -346,7 +422,7 @@ class HomeController extends Controller
 
                     }
                     $fotos = Foto::all();
-                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
     
     
             }else{
@@ -412,7 +488,7 @@ class HomeController extends Controller
                     $sessionCliente = session('nombre');
         
         
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
@@ -458,7 +534,7 @@ class HomeController extends Controller
 
                     }
                     $fotos = Foto::all();
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
                 }
             }
         }
@@ -597,6 +673,11 @@ class HomeController extends Controller
         $producto = Producto::where("id",$request->id)->first();
         
         foreach($productos as $item){
+            $item->temporada = 0;
+            $item->save();
+        }
+        $fotos = Foto::all();        
+        foreach($fotos as $item){
             $item->temporada = 0;
             $item->save();
         }
@@ -851,7 +932,7 @@ class HomeController extends Controller
                     $colores = Color::all();
                     $tamaños = Tamano::all();
                     $fotos = Foto::all();
-                    $fotoColor = Foto::where("color", $request->color)->first();
+                    $fotoColor = Foto::where([["color", $request->color],["idFK","=",$producto->id]])->first();
                     return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos","fotoColor"));
             }else{
                 $existeColorTablafotos = 0;
@@ -871,7 +952,7 @@ class HomeController extends Controller
                     $colores = Color::all();
                     $tamaños = Tamano::all();
                     $fotos = Foto::all();
-                    $fotoColor = Foto::where("color", $request->color)->first();
+                    $fotoColor = Foto::where([["color", $request->color],["idFK","=",$producto->id]])->first();
 
                     return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos","fotoColor"));
                 }else{
@@ -889,8 +970,6 @@ class HomeController extends Controller
     }
 
     public function storeProductoFotos(Request $request){//la primera vez que se guarda un color nuevo
-       // return $request;
-
        $contador = 0;
 
         foreach ($request->file('image') as $image) {
@@ -907,6 +986,7 @@ class HomeController extends Controller
                 $nuevoProductoFotos->tamaño = $request->tamaño;
                 $nuevoProductoFotos->cantidad = $request->cantidad;
                 $nuevoProductoFotos->idFK = $request->id;
+                $nuevoProductoFotos->temporada = "0";
                 $nuevoProductoFotos->save();
                 $contador = 1;
                 }else{
@@ -921,6 +1001,7 @@ class HomeController extends Controller
                     $nuevoProductoFotos->tamaño = "formImagenes";
                     $nuevoProductoFotos->cantidad = "formImagenes";
                     $nuevoProductoFotos->idFK = $request->id;
+                    $nuevoProductoFotos->temporada = "0";
                     $nuevoProductoFotos->save();
                 }
 
@@ -933,7 +1014,6 @@ class HomeController extends Controller
     }
 
     public function storeProductoFotosImagenes(Request $request){//para guardar solo imagenes
-        
         foreach ($request->file('image') as $image) {
             // Genera un nombre único para cada imagen
             $imageName = uniqid().'.'.$image->extension();
@@ -946,6 +1026,7 @@ class HomeController extends Controller
             $nuevoProductoFotos->tamaño = "formImagenes";
             $nuevoProductoFotos->cantidad = "formImagenes";
             $nuevoProductoFotos->idFK = $request->id;
+            $nuevoProductoFotos->temporada = "0";
             $nuevoProductoFotos->save();
         }
         session()->flash("productoCreadoCorrectamenteFotosImagenes","Imagenes guardadas para el color ".$request->color." correctamente");
@@ -956,7 +1037,6 @@ class HomeController extends Controller
 
     public function storeProductoFotosTamañoCantidad(Request $request){//para guardar solo tamaños
 
-            //return $request;
 
             $existeTamañoTablaProducto = 0;
             $productos = Producto::all();
@@ -1127,22 +1207,6 @@ class HomeController extends Controller
     }
 }
 
-public function carritoCompraVerificarCantidad2(Request $request){
-    if ($request->ajax()) {
-        $productId = $request->input('productId');
-        
-    
-        $cantidadActualProductoElegidoTablaProducto = Producto::where("id", $productId)
-            ->value('cantidad');
-    
-    
-            return response()->json([
-                'producto' => [
-                    'cantidad' => $cantidadActualProductoElegidoTablaProducto,
-                ]
-        ]);
-}
-}
 
 public function carritoCompraTablaProducto(Request $request){
     if ($request->ajax()) {
@@ -2023,6 +2087,11 @@ public function restarCambioInputCambioTotalIva(Request $request){
             /*aqui debo buscar el producto en la tabla de productos con esa imagen y tambien el color y guardarla en un
             arreglo debo hacer lo mismo con la tabla de Fotos
             */
+            $sessionCliente = session('nombre');
+            $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
+
+
+
 
             //primero busco la imagen en la tabla de productos y la guardo en una coleccion
             $productoImagen = Producto::where([["imagen","=",$request->imagen]])->first();
@@ -2035,46 +2104,289 @@ public function restarCambioInputCambioTotalIva(Request $request){
                  $fotos = Foto::where([["idFK","=",$producto2Imagen->idFK],["color","=",$producto2Imagen->color]])->get();
                  $productos = Producto::where([["id","=",$producto2Imagen->idFK],["color","=",$producto2Imagen->color]])->get();
                  $combinadosImages = $productos->concat($fotos);//aqui van los productos del color seleccionado
-                 //buscar los colores que tiene ese id que no sea el que ya se encontro guardarlos en una coleccion
 
+                //return "estoy aqui";
+
+                 //buscar los colores que tiene ese id y guardarlos en una coleccion
                  $coloresDiferentesAProductoSeleccionadoTablaFotos = Foto::where([
                     ["idFK", "=", $producto2Imagen->idFK],
-                    ["color", "!=", $producto2Imagen->color]
                 ])->distinct()->pluck('color');   
+
 
                 $coloresDiferentesAProductoSeleccionadoTablaProductos = Producto::where([
                     ["id", "=", $producto2Imagen->idFK],
-                    ["color", "!=", $producto2Imagen->color]
                 ])->distinct()->pluck('color'); 
+
+                
                 
                 //colores direfentes al color del producto que se selecciono
-                $coloresDiferentesAProductoSeleccionado = $coloresDiferentesAProductoSeleccionadoTablaFotos->concat($coloresDiferentesAProductoSeleccionadoTablaProductos);
+                $coloresDiferentesAProductoSeleccionado = $coloresDiferentesAProductoSeleccionadoTablaFotos->concat($coloresDiferentesAProductoSeleccionadoTablaProductos)->unique();
 
-                return $coloresDiferentesAProductoSeleccionado;
+                //obtener todos los tamaños del id de la imagen seleccionada
+                $tamañosTablaFotos = Foto::where([
+                    ["idFK", "=", $producto2Imagen->idFK],
+                    ["color", "=", $producto2Imagen->color],
+                    ["tamaño", "!=", "formImagenes"]
+                ])->distinct()->pluck('tamaño');   
+
+                $tamañosTablaProductos = Producto::where([
+                    ["id", "=", $producto2Imagen->idFK],
+                    ["color", "=", $producto2Imagen->color],
+                    ["tamaño", "!=", "formImagenes"]
+                ])->distinct()->pluck('tamaño'); 
+
+                $tamañosCombinados = $tamañosTablaFotos->concat($tamañosTablaProductos);
 
 
-            }else{
-                //return "estoy aqui por que el producto SI esta en la tabla de productos";
-                //Si esta la foto en la tabla de productos
-                $productos = Producto::where([["id","=",$productoImagen->id],["color","=",$productoImagen->color]])->get();
-                $fotos = Foto::where([["idFK","=",$productoImagen->id],["color","=",$productoImagen->color]])->get();
-                $combinadosImages = $productos->concat($fotos);//aqui van los productos del color seleccionado
+                //todos los tamaños del color seleccionado 
+                // $tamañosCombinados;
+        
+                //colores del producto seleccionado menos la del la imagen del producto 
+                //return $coloresDiferentesAProductoSeleccionado; 
+
+                //imagenes del producto seleccionado y el color seleccionado
+                // $combinadosImages;
+
+                $idFK = "";
+                foreach($combinadosImages as $item){
+                    $idFK = $item->idFK;
+                    break;
+                }
+
+                //traer el producto para luego pasar la descripcion y el precio
+                $producto = Producto::where([["id","=",$idFK]])->first();
+                $descripcion = "";
+                $precio = "";
+                $nombre = "";
+                $color = "";
+                $id = "";
+                //return $producto;
+                if($producto != ""){
+                    $descripcion = $producto->descripcion;
+                    $precio = $producto->precio;
+                    $nombre = $producto->nombre;
+                    $color = $item->color;
+                    $id = $item->idFK;
+                }else{
+                foreach($combinadosImages as $item){
+                    $descripcion = $item->descripcion;
+                    $precio = $item->precio;
+                    $nombre = $item->nombre;
+                    $color = $item->color;
+                    $id = $item->id;
+                    break;
+                }
+                }
 
 
-                //buscar los colores que tiene ese id que no sea el que ya se encontro guardarlos en una coleccion
-                $coloresDiferentesAProductoSeleccionado = Foto::where([
-                    ["idFK", "=", $productoImagen->id],
-                    ["color", "!=", $productoImagen->color]
-                ])->distinct()->pluck('color');              
 
-                //colores direfentes al color del producto que se selecciono
-                return $coloresDiferentesAProductoSeleccionado;
+                //idFK de la tabla de fotos
+                //return $id;
 
-                return $combinadosImages;
-            }
+                return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito"));
+                }
+                else{
+                    //return "estoy aqui por que el producto SI esta en la tabla de productos";
+                    //Si esta la foto en la tabla de productos
+                    $productos = Producto::where([["id","=",$productoImagen->id],["color","=",$productoImagen->color]])->get();
+                    $fotos = Foto::where([["idFK","=",$productoImagen->id],["color","=",$productoImagen->color]])->get();
+                    $combinadosImages = $productos->concat($fotos);//aqui van los productos del color seleccionado
+
+
+                    //buscar los colores que tiene ese id y guardarlos en una coleccion
+                    $coloresDiferentesAProductoSeleccionadoTablaFotos = Foto::where([
+                        ["idFK", "=", $productoImagen->id],
+                    ])->distinct()->pluck('color');   
+
+                    $coloresDiferentesAProductoSeleccionadoTablaProductos = Producto::where([
+                        ["id", "=", $productoImagen->id],
+                    ])->distinct()->pluck('color'); 
+
+
+
+                    //colores direfentes al color del producto que se selecciono
+                    $coloresDiferentesAProductoSeleccionado = $coloresDiferentesAProductoSeleccionadoTablaFotos->concat($coloresDiferentesAProductoSeleccionadoTablaProductos)->unique();
+
+
+                    //obtener todos los tamaños del id de la imagen seleccionada
+                    $tamañosTablaFotos = Foto::where([
+                        ["idFK", "=", $productoImagen->id],
+                        ["color", "=", $productoImagen->color],
+                        ["tamaño", "!=", "formImagenes"]
+                    ])->distinct()->pluck('tamaño');   
+                    
+                    $tamañosTablaProductos = Producto::where([
+                        ["id", "=", $productoImagen->id],
+                        ["color", "=", $productoImagen->color],
+                        ["tamaño", "!=", "formImagenes"]
+                    ])->distinct()->pluck('tamaño'); 
+                    
+                    $tamañosCombinados = $tamañosTablaFotos->concat($tamañosTablaProductos);
+                
+                    $descripcion = "";
+                    $precio = "";
+                    $nombre = "";
+                    $color = "";
+                    $id = "";
+                    foreach($combinadosImages as $item){
+                        $descripcion = $item->descripcion;
+                        $precio = $item->precio;
+                        $nombre = $item->nombre;
+                        $color = $item->color;
+                        $id = $item->id;
+                        break;
+                    }
+
+                    //productosConLaMismaCategoriaTablaProductos
+                    $productosCategoriaTablaProductos = Producto::where([["id","=",$id]])->first();
+                    $productosCategoriaTablaProductos = Producto::where('categoria', $productosCategoriaTablaProductos->categoria)
+                    ->take(5)
+                    ->get();
+
+        
+                    //todos los tamaños del color seleccionado 
+                    // $tamañosCombinados;
+
+                    //imagenes del producto seleccionado y el color seleccionado
+                    // $combinadosImages;
+                    //return $combinadosImages;
+                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos"));
+
+
+                }
 
 
         }
+
+        public function descriccionProducto2(Request $request){
+
+            $imagen = Producto::where([["id","=",$request->id],["color","=",$request->color]])->first();
+
+            if(Empty($imagen)){
+                $imagen = Foto::where([["idFK","=",$request->id],["color","=",$request->color],["imagen","!=","formTamañosCantidades"]])->first();
+                return redirect()->route("descriccionProducto",["imagen"=>$imagen->imagen]);
+            }else{
+                return redirect()->route("descriccionProducto",["imagen"=>$imagen->imagen]);
+            }
+        }
+
+        public function seccionImagenesCategoria(){
+            $seccionProductoCategories = CreateSeccionProductoCategory::all();
+            return view("productos.seccionImagenesCategoria",compact("seccionProductoCategories"));
+        }
+
+        public function crearProducto(){
+            $productos = Producto::all();
+            return view("login.crearProducto",compact("productos"));
+        }
+
+        public function formCrearProductoSeccionCategoria(){
+            
+            $categorias = Categoria::all();
+            return view("productos.formCrearProductoSeccionCategoria",compact("categorias"));
+        }
+
+        public function storeSeccionCrearProductoCategoria(Request $request){
+            //traer la cantidad de seccion_producto_categories para ver si es menor a 5 o si esta vacio
+            $seccionProductoCategories = CreateSeccionProductoCategory::count();
+
+            if($seccionProductoCategories < 5){
+                $imageName = time().'.'.$request->imagen->extension();  
+                $request->imagen->move(public_path('imagesSeccionProductoCategoria'), $imageName);
+
+                $storeSeccionProductoCategoria = new CreateSeccionProductoCategory();
+    
+                $storeSeccionProductoCategoria->imagenName = $imageName;
+                $storeSeccionProductoCategoria->categoria = $request->categoria;
+                $storeSeccionProductoCategoria->save();
+
+                session()->flash("creadoCorrectamente","Se creo correctamente");
+
+                return redirect()->route("formCrearProductoSeccionCategoria");
+            }else{
+                //returnar un session flash que me diga que no se puede meter mas de 5 
+                session()->flash("max","No se puede crear mas de 5");
+                return redirect()->route("formCrearProductoSeccionCategoria");
+            }
+        }
+
+
+        public function eliminarSeccionCategoria(Request $request){
+            $eliminarSeccionCategoria2 = CreateSeccionProductoCategory::where([
+                ["id","=",$request->idEliminar]
+                ])->first();  
+            $eliminarSeccionCategoria = CreateSeccionProductoCategory::where([
+                ["id","=",$request->idEliminar]
+                ])->delete();
+            unlink(public_path('imagesSeccionProductoCategoria/'.$eliminarSeccionCategoria2->imagenName));
+            return redirect()->route("seccionImagenesCategoria");
+        }
+
+        public function editarSeccionCategoria(Request $request){
+            $editarSeccionCategoria = CreateSeccionProductoCategory::where([
+                ["id","=",$request->idEditar]
+                ])->first();
+            $categorias = Categoria::all();
+            return view("productos.formEditarSeccionCategoria",compact("editarSeccionCategoria","categorias"));
+        }
+        public function storeEditarSeccionCrearProductoCategoria(Request $request){
+            //return $request; 
+            //"imagenAntigua":"1692894051.jpg",
+            //"id":"20",
+            //"categoria":"MONTERO",
+            //"imagen":{}}
+            $seccionEditar = CreateSeccionProductoCategory::where([
+                ["id","=",$request->id]])->first();
+
+            if($request->imagen == ""){
+            //solo se cambio la categoria
+                $seccionEditar->categoria = $request->categoria;
+                $seccionEditar->save();
+
+            }else{
+                //si se cambio la imagen
+                $imageName = time().'.'.$request->imagen->extension();  //nombre de la imagen
+                //meto la nueva imagen a la carpeta 
+                $request->imagen->move(public_path('imagesSeccionProductoCategoria'), $imageName);
+                //elimino la imagen antigua
+                unlink(public_path('imagesSeccionProductoCategoria/'.$seccionEditar->imagenName));
+
+                $seccionEditar->imagenName = $imageName;
+                $seccionEditar->categoria = $request->categoria;
+                $seccionEditar->save();
+
+
+            }
+            return redirect()->route("seccionImagenesCategoria");
+        }
+
+        public function cambiarTemporadaFotos(Request $request){
+
+            //pasar todos los productos en la temporada a 0
+
+            $productos = Producto::all();
+            foreach($productos as $item){
+                $item->temporada = 0;
+                $item->save();
+            }
+            //pasar todos las fotos en la temporada a 0
+            $fotos = Foto::all();        
+            foreach($fotos as $item2){
+                $item2->temporada = 0;
+                $item2->save();
+            }
+
+            $productId = $request->input('id');
+
+            $fotoEncontrada = Foto::where([["id","=",$productId]])->first();    
+            $fotoEncontrada->temporada = "1";
+            $fotoEncontrada->save();
+            
+            
+        }
+
+
+
 
 
 
@@ -2087,15 +2399,9 @@ public function restarCambioInputCambioTotalIva(Request $request){
 
 
 
-
-
-
-
         public function niki(){
             return view("niki");
         }
-
-
 
 
 }

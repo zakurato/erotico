@@ -127,82 +127,89 @@
                 <th>Color</th>
                 <th>Tamaño</th>
                 <th>Cantidad</th>
+                <th>Producto de temporada</th>
                 <th>Acción</th>
             </tr>
         </thead>
         <tbody>
-            @if ($producto->color == $color)
-                <tr>
-                    <th style="width: 150px; height: 150px;"><img style="width: 100px; height: 100px;"
-                            src="imagesProductos/{{ $producto->imagen }}" alt=""></td>
-                    <th style="width: 150px; height: 150px;">{{ $producto->color }}</td>
-                    <th style="width: 150px; height: 150px;">{{ $producto->tamaño }}</td>
-                    <th style="width: 150px; height: 150px;">{{ $producto->cantidad }}</td>
-                </tr>
-            @endif
+            {{-- Filas con imágenes --}}
             @foreach ($fotos as $item)
-                @if ($item->color == $color && $item->idFK == $producto->id)
+                @if ($item->color == $color && $item->idFK == $producto->id && $item->imagen != 'formTamañosCantidades')
                     <tr>
-
-                        @if ($item->imagen == 'formTamañosCantidades')
-                            <th style="width: 150px; height: 150px;">Solo se inserto tamaño y cantidad</td>
-                            <th style="width: 150px; height: 150px;">{{ $item->color }}</td>
-                            <th style="width: 150px; height: 150px;">{{ $item->tamaño }}</td>
-                            <th style="width: 150px; height: 150px;">{{ $item->cantidad }}</td>
-                            <th>
-                                <form action="{{ route('eliminarProductoTablaFotos') }}" method="GET">
-                                    @csrf
-                                    <input type="text" name="id" value="{{ $item->id }}" hidden>
-                                    <button type="submit" class="bntEliminarCategoria"
-                                        onclick="return confirm('¿Estás seguro de que deseas eliminar el producto')">
-                                        <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
-                                        <br><br>
-                                    </button>
-                                </form>
-                            </th>
-                        @else
-                            @if ($item->tamaño == 'formImagenes')
-                                <th style="width: 150px; height: 150px;"><img style="width: 100px; height: 100px;"
-                                        src="imagesProductos/{{ $item->imagen }}" alt=""></td>
-                                <th style="width: 150px; height: 150px;">{{ $item->color }}</td>
-                                <th style="width: 150px; height: 150px;">Solo se interto imagen</td>
-                                <th style="width: 150px; height: 150px;">Solo se interto imagen</td>
-                                <th>
-                                    <form action="{{ route('eliminarProductoTablaFotos') }}" method="GET">
-                                        @csrf
-                                        <input type="text" name="id" value="{{ $item->id }}" hidden>
-                                        <button type="submit" class="bntEliminarCategoria"
-                                            onclick="return confirm('¿Estás seguro de que deseas eliminar el producto')">
-                                            <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
-                                            <br><br>
-                                        </button>
-                                    </form>
-                                </th>
-                            @else
-                                <th style="width: 150px; height: 150px;"><img style="width: 100px; height: 100px;"
-                                        src="imagesProductos/{{ $item->imagen }}" alt=""></td>
-                                <th style="width: 150px; height: 150px;">{{ $item->color }}</td>
-                                <th style="width: 150px; height: 150px;">{{ $item->tamaño }}</td>
-                                <th style="width: 150px; height: 150px;">{{ $item->cantidad }}</td>
-                                    <th>
-                                        <form action="{{ route('eliminarProductoTablaFotos') }}" method="GET">
-                                            @csrf
-                                            <input type="text" name="id" value="{{ $item->id }}" hidden>
-                                            <button type="submit" class="bntEliminarCategoria"
-                                                onclick="return confirm('¿Estás seguro de que deseas eliminar el producto')">
-                                                <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
-                                                <br><br>
-                                            </button>
-                                        </form>
-                                    </th>
-                            @endif
-                        @endif
+                        <td style="width: 150px; height: 150px;"><img style="width: 100px; height: 100px;" src="imagesProductos/{{ $item->imagen }}" alt=""></td>
+                        <td style="width: 150px; height: 150px;">{{ $item->color }}</td>
+                        <td style="width: 150px; height: 150px;">{{ $item->tamaño }}</td>
+                        <td style="width: 150px; height: 150px;">{{ $item->cantidad }}</td>
+                        <td style="width: 150px; height: 150px;">
+                                <div class="form-check">
+                                    <input id="temporadaCheckbox{{$item->id}}" type="checkbox" name="temporada" <?php echo $item->temporada == 1 ? 'checked' : ''; ?>>
+                                </div>
+                        </td>
+                        <td>
+                            <form action="{{ route('eliminarProductoTablaFotos') }}" method="GET">
+                                @csrf
+                                <input type="text" name="id" value="{{ $item->id }}" hidden>
+                                <button type="submit" class="bntEliminarCategoria" onclick="return confirm('¿Estás seguro de que deseas eliminar el producto')">
+                                    <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endif
             @endforeach
 
+
+            <script>
+                // Obtén todos los checkboxes por su nombre
+                var checkboxes = document.querySelectorAll('input[name="temporada"]');
+            
+                // Agrega un evento de escucha a cada checkbox
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            var id =  this.id.replace("temporadaCheckbox","");
+                            console.log(id);
+
+                            // Realizar la petición AJAX
+                        $.ajax({
+                            type: "GET",
+                            url: "http://localhost/erotico/public/cambiarTemporadaFotos",  // Reemplaza con la URL de tu script de procesamiento
+                            data: { id: id },
+                            success: function(response) {
+                                // Aquí puedes manejar la respuesta del servidor si es necesario
+                                location.reload();
+                            }
+                        });
+                        } 
+                    });
+                });
+            </script>
+
+
+    
+            {{-- Filas con texto "Solo se inserto tamaño y cantidad" --}}
+            @foreach ($fotos as $item)
+                @if ($item->color == $color && $item->idFK == $producto->id && $item->imagen == 'formTamañosCantidades')
+                    <tr>
+                        <td style="width: 150px; height: 150px;">{{ $item->imagen }}</td>
+                        <td style="width: 150px; height: 150px;">{{ $item->color }}</td>
+                        <td style="width: 150px; height: 150px;">{{ $item->tamaño }}</td>
+                        <td style="width: 150px; height: 150px;">{{ $item->cantidad }}</td>
+                        <td>
+                            <form action="{{ route('eliminarProductoTablaFotos') }}" method="GET">
+                                @csrf
+                                <input type="text" name="id" value="{{ $item->id }}" hidden>
+                                <button type="submit" class="bntEliminarCategoria" onclick="return confirm('¿Estás seguro de que deseas eliminar el producto')">
+                                    <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                @endif
+            @endforeach
         </tbody>
     </table>
+    
 
 
 </body>
