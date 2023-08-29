@@ -52,7 +52,7 @@
                     </div>
                     <form action="http://54.89.124.204/erotico/public/index2" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
-                            <a href="http://54.89.124.204/erotico/public/carritoCompras">
+                            <a href="http://54.89.124.204/carritoCompras">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
                                         <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
