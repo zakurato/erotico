@@ -88,14 +88,23 @@ class HomeController extends Controller
             $top5ProductosMasActuales = Producto::orderByDesc('created_at')->limit(4)->get();
 
             $productosSeccionCategoria = CreateSeccionProductoCategory::all();
-            $productosMasVendidos = Producto::whereIn('id', 
-                                [$top5IdProductosMasVendidos[0],
-                                 $top5IdProductosMasVendidos[1],
-                                 $top5IdProductosMasVendidos[2],
-                                 $top5IdProductosMasVendidos[3],
-                                 ]
-                                 )
-                                 ->get();               
+            
+
+            if (isset($top5IdProductosMasVendidos[0]) && isset($top5IdProductosMasVendidos[1]) &&
+                isset($top5IdProductosMasVendidos[2]) && isset($top5IdProductosMasVendidos[3])) {
+                             
+                $productosMasVendidos = Producto::whereIn('id', [
+                                     $top5IdProductosMasVendidos[0],
+                                     $top5IdProductosMasVendidos[1],
+                                     $top5IdProductosMasVendidos[2],
+                                     $top5IdProductosMasVendidos[3]
+                                    ])->get();
+                }
+
+
+                                 
+            
+            
         
             if($clienteSession == ""){
                 //return "estoy aqui si no hay compras de esta session en la tabla de comppras";
