@@ -1964,8 +1964,6 @@ public function restarCambioInputCambioTotalIva(Request $request){
 
         public function verFactura(Request $request){
 
-            return $request;
-
             $facturasCompras = Compras2s::where([["nFactura","=",$request->nFactura],["telefono","=",$request->telefono]])->get();
     
             if($facturasCompras->isEmpty()){
