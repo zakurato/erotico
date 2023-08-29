@@ -99,12 +99,11 @@ class HomeController extends Controller
                                      $top5IdProductosMasVendidos[2],
                                      $top5IdProductosMasVendidos[3]
                                     ])->get();
+                }else{
+                    $productosMasVendidos = [];  // Inicializar como un array vacío
                 }
 
 
-                                 
-            
-            
         
             if($clienteSession == ""){
                 //return "estoy aqui si no hay compras de esta session en la tabla de comppras";
