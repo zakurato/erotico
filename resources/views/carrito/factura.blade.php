@@ -124,8 +124,8 @@
         var partes = url.split('/');
 
         // Obtener los valores deseados
-        var valor1 = partes[2]; // numero factura
-        var valor2 = partes[3]; // telefono
+        var valor1 = partes[4]; // numero factura
+        var valor2 = partes[5]; // telefono
 
         //quitarle el signo numeral al telefono
         valor2 = valor2.replace("#", "")
