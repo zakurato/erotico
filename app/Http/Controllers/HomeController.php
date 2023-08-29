@@ -48,7 +48,8 @@ class HomeController extends Controller
         }else{
             //el producto con temporada esta en la tabla de fotos
             $fotoEncontrada = Foto::where("temporada", "=", "1")->first(["imagen", "color","idFK","tamaño"]);
-            $fotoEncontradaSoloTamaño = Foto::where("idFK", "=", $fotoEncontrada->idFK)
+            if($fotoEncontrada != ""){
+                $fotoEncontradaSoloTamaño = Foto::where("idFK", "=", $fotoEncontrada->idFK)
             ->where("tamaño", "!=", "formImagenes")
             ->where("color", "=", $fotoEncontrada->color)
             ->first(["tamaño"]);
@@ -69,7 +70,7 @@ class HomeController extends Controller
             ];
             
             $productoTemporada = json_decode(json_encode($productoTemporada2), false);
-                        
+            }       
         }
 
 

@@ -906,6 +906,8 @@
         <h2 class="section__title heading h3">El mejor artículo de la temporada</h2>
     </header>
 </div>
+
+@if(isset($productoTemporada->id))
 <div>
     <div class="container container--flush">
         <div class="featured-product">
@@ -1194,6 +1196,8 @@
         });
     });
 </script>
+
+@endif
 <form id="miFormularioImage" action="{{ route('descriccionProducto') }}" method="GET">
     <input type="hidden" id="imagenInput" name="imagen" value="">
 </form>
