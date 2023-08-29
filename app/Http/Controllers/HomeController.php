@@ -237,14 +237,20 @@ class HomeController extends Controller
             ->orderByDesc(DB::raw('COUNT(*)'))
             ->limit(5)
             ->pluck('idFKProducto');
-            $productosMasVendidos = Producto::whereIn('id', 
-                                [$top5IdProductosMasVendidos[0],
-                                 $top5IdProductosMasVendidos[1],
-                                 $top5IdProductosMasVendidos[2],
-                                 $top5IdProductosMasVendidos[3],
-                                 ]
-                                 )
-                                 ->get();
+           
+
+            if (isset($top5IdProductosMasVendidos[0]) && isset($top5IdProductosMasVendidos[1]) &&
+                 isset($top5IdProductosMasVendidos[2]) && isset($top5IdProductosMasVendidos[3])) {
+                                              
+            $productosMasVendidos = Producto::whereIn('id', [
+                                                      $top5IdProductosMasVendidos[0],
+                                                      $top5IdProductosMasVendidos[1],
+                                                      $top5IdProductosMasVendidos[2],
+                                                      $top5IdProductosMasVendidos[3]
+                                                     ])->get();
+            }else{
+                $productosMasVendidos = [];  // Inicializar como un array vacío
+            }
             
             if($clienteSession == ""){
                 $existe = 0;
