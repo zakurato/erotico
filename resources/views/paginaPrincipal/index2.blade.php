@@ -45,7 +45,7 @@
                             data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
                                 class="icon-bar"></span></button>
                         <a href="#" class="header__logo-link">
-                            <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
+                            <img style="height: 80px;" class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
                         </a>
                     </div>
                     <form action="{{ route('index2') }}" method="GET">
@@ -115,9 +115,9 @@
             </div>
         </div>
     </div>
+    <div style="height: 100px;"></div>
 
 
-    <div style="margin-bottom: 100px"></div>
     <section class="animacion1">
         <div id="shopify-section-sections--14562733359167__popups"
             class="shopify-section shopify-section-group-overlay-group">
@@ -138,25 +138,20 @@
                     data-section-type="collection-list">
                 </section>
             </div>
-            <div id="shopify-section-template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
-                class="shopify-section">
+
                 <section class="section section--text-centered"
                     data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
                     data-section-type="rich-text">
                     <div class="container container--narrow">
-                        <h2 class="heading h1">Encuentra la magia dentro de ti en MagicSexShop.</h2>
-                        <div class="rte">
-                        </div>
+                        <h2 class="heading h1">Encuentra la magia dentro de ti</h2>
                     </div>
                 </section>
-            </div>
-            </div>
+
     </section>
 
 
 
-
-
+    
     <!--hasta aqui llega la seccion -->
     <div id="shopify-section-template--14562732638271__featured-collection" class="shopify-section">
         <section class="section" data-section-id="template--14562732638271__featured-collection"
