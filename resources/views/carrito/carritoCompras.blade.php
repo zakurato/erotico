@@ -30,18 +30,6 @@
     content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
 <meta name="theme-color" content="#000000">
 
-
-
-
-
-
-
-
-
-
-
-
-
 </head>
 
 <body id="cart"
@@ -94,7 +82,7 @@
                                             <div class="card card_trans mb-3">
                                                 <div class="card-header" style="font: 17px Arial">
                                                     Carrito MagicSexShop Producto({{ $ContadorProducto }}) <div
-                                                        style="display: inline-block; margin-left: 90%">
+                                                        style="display: inline-block; margin-left: 90%; margin-bottom: 15px">
                                                         <a ref="#" id="basurero{{ $item->id }}">
                                                             <i class="fa-solid fa-trash-can fa-xl"
                                                                 style="color: #db0a0a;">
@@ -190,27 +178,20 @@
                                                                                     <div
                                                                                         class="col-md-6 col-6 qty">
                                                                                         <div class="qty_wrap">
-                                                                                            <div
-                                                                                                class="input-group bootstrap-touchspin" style="width: 90px !important">
-                                                                                                <button
-                                                                                                    class="btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-down"
-                                                                                                    type="button"
-                                                                                                    id="btnMenos{{ $item->id }}"
-                                                                                                    style="width: 30px !important; border-radius: 20px">-</button>
-                                                                                                <input
-                                                                                                    class="js-cart-line-product-quantity cart_quantity cart_quantity_206 form-control"
-                                                                                                    type="text"
-                                                                                                    value="{{ $item->cantidad }}"
-                                                                                                    style="display: block; color: black; background-color: #44444400;
-                                                                                                    border-color: #44444400"
-                                                                                                    id="inputCantidad{{ $item->id }}"
-                                                                                                    readonly>
-                                                                                                <button
-                                                                                                    class="btn btn-touchspin js-touchspin js-decrease-product-quantity bootstrap-touchspin-up"
-                                                                                                    type="button"
-                                                                                                    id="btnMas{{ $item->id }}"
-                                                                                                    style="width: 30px !important; border-radius: 20px" >+</button>
+                                                                                            <div class="input-group bootstrap-touchspin" style="width: 90px !important;">
+                                                                                                <button class="btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-down"
+                                                                                                        type="button" id="btnMenos{{ $item->id }}"
+                                                                                                        style="width: 30px !important; border-radius: 20px; margin-right: 29px;">-</button>
+                                                                                                <input class="js-cart-line-product-quantity cart_quantity cart_quantity_206 form-control"
+                                                                                                       type="text" value="{{ $item->cantidad }}"
+                                                                                                       style="display: block; color: black; background-color: #44444400;
+                                                                                                       border-color: #44444400;"
+                                                                                                       id="inputCantidad{{ $item->id }}" readonly>
+                                                                                                <button class="btn btn-touchspin js-touchspin js-decrease-product-quantity bootstrap-touchspin-up"
+                                                                                                        type="button" id="btnMas{{ $item->id }}"
+                                                                                                        style="width: 30px !important; border-radius: 20px; ">+</button>
                                                                                             </div>
+                                                                                            
                                                                                         </div>
                                                                                     </div>
 
@@ -474,14 +455,17 @@
 
 
                     <!-- Right Block: cart subtotal & cart total -->
-                    <div class="cart-grid-right col-12 col-lg-4  mb-3">
+                    <div class="cart-grid-right col-12 col-lg-4  mb-3" >
                         <div class="card card_trans cart-summary">
                             <div class="cart-detailed-totals">
                                 <div class="card-block">
                                     <div class="cart-summary-line clearfix" id="cart-subtotal-products">
                                         <span class="label js-subtotal">
-                                            <div style="display: inline-block;" id="resultado"></div>
-                                            Total de artículos
+                                            <div style="display: inline-block; color: black !important" id="resultado">
+                                            </div>
+                                            <div style="display: inline-block; color: black !important">
+                                                Total de artículos
+                                            </div>
                                         </span>
                                     </div>
 
@@ -493,7 +477,7 @@
                                 <hr>
                                 <div class="card-block">
                                     <div class="cart-summary-line clearfix cart-total">
-                                        <span class="label">Total (IVA inc.)</span>
+                                        <span class="label" style="color: black">Total (IVA inc.)</span>
                                         <span class="value price fs_lg font-weight-bold"
                                             id="sumaTotalProductos"></span>
                                         <input type="hidden" value="" id="sumaTotalProductosHidden"
