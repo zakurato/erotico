@@ -9,10 +9,38 @@
     <link rel="stylesheet" href="{{ asset('carrito/carritoForm.Css') }}?v={{ time() }}" type="text/css"
         media="all">
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+
+
+<!--animaciones-->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!--/Css propios public-->
+<link rel="stylesheet" href="{{ asset('index/index.Css') }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--iconos-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#000000">
+
+
+
+
+
+
+
+
+
+
+
+
 
 </head>
 
