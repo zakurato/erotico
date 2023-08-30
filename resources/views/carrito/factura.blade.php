@@ -24,7 +24,7 @@
                 <div class="col-lg-12">
                     <div class="navbar-header">
                         <a href="#" class="header__logo-link">
-                            <img class="header__logo-image" src="{{ asset('images/logo4.png') }}" alt="">
+                            <img style="height: 80px;" class="header__logo-image" src="{{ asset('images/logo4.png') }}" alt="">
                         </a>
                     </div>
                 </div>
