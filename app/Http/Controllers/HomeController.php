@@ -90,8 +90,9 @@ class HomeController extends Controller
             $productosSeccionCategoria = CreateSeccionProductoCategory::all();
             
 
-            if (isset($top5IdProductosMasVendidos[0])) {
-
+            if (isset($top5IdProductosMasVendidos[0]) && isset($top5IdProductosMasVendidos[1]) &&
+                isset($top5IdProductosMasVendidos[2]) && isset($top5IdProductosMasVendidos[3])) {
+                                    
                 $productosMasVendidos = Producto::whereIn('id', [
                                      $top5IdProductosMasVendidos[0],
                                      $top5IdProductosMasVendidos[1],
@@ -238,7 +239,8 @@ class HomeController extends Controller
             ->pluck('idFKProducto');
            
 
-            if (isset($top5IdProductosMasVendidos[0])) {
+            if (isset($top5IdProductosMasVendidos[0]) && isset($top5IdProductosMasVendidos[1]) &&
+                 isset($top5IdProductosMasVendidos[2]) && isset($top5IdProductosMasVendidos[3])) {
                                               
             $productosMasVendidos = Producto::whereIn('id', [
                                                       $top5IdProductosMasVendidos[0],
