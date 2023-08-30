@@ -41,7 +41,7 @@
                 <div class="col-lg-12">
                     <div class="navbar-header">
                         <a href="{{ route('index2') }}" class="header__logo-link">
-                            <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
+                            <img style="height: 80px;" class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
                         </a>
                     </div>
                 </div>
@@ -49,9 +49,6 @@
         </div>
     </div>
 
-    <br><br><br>
-    
-    <br><br><br>
 
     <div id="st-container" class="st-container st-effect-0" style="background-color: white">
         <section id="wrapper" class="columns-container">
