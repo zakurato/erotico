@@ -90,6 +90,7 @@ class HomeController extends Controller
             $productosSeccionCategoria = CreateSeccionProductoCategory::all();
             
             //solo la posicion 0
+            return $top5IdProductosMasVendidos[1];
             if (isset($top5IdProductosMasVendidos[0])) {
                 $productosMasVendidos = Producto::whereIn('id', [
                                      $top5IdProductosMasVendidos[0],
