@@ -906,7 +906,6 @@
         <h2 class="section__title heading h3">El mejor artículo de la temporada</h2>
     </header>
 </div>
-
 @if(isset($productoTemporada->id))
 <div>
     <div class="container container--flush">
@@ -917,7 +916,7 @@
                         <div class="product-gallery__carousel-wrapper">
                             <div class="product-gallery__carousel product-gallery__carousel--zoomable flickity-enabled is-fade"
                                 data-media-count="20" data-initial-media-id="22584943902783" style="">
-                                <div class="flickity-viewport" style="height: 695px; touch-action: pan-y;">
+                                <div class="flickity-viewport" style="height: 400px; touch-action: pan-y;">
                                     <div class="flickity-slider" style="left: 0px; transform: translateX(50%);">
                                         <div class="product-gallery__carousel-item is-selected" tabindex="-1"
                                             data-media-id="22584943902783" data-media-type="image"
