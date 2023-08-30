@@ -115,7 +115,9 @@
             </div>
         </div>
     </div>
-    <br><br><br><br><br><br>
+
+
+    <div style="margin-bottom: 100px"></div>
     <section class="animacion1">
         <div id="shopify-section-sections--14562733359167__popups"
             class="shopify-section shopify-section-group-overlay-group">
@@ -150,6 +152,11 @@
             </div>
             </div>
     </section>
+
+
+
+
+
     <!--hasta aqui llega la seccion -->
     <div id="shopify-section-template--14562732638271__featured-collection" class="shopify-section">
         <section class="section" data-section-id="template--14562732638271__featured-collection"
