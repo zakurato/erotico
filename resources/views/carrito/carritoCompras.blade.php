@@ -35,16 +35,11 @@
 <body id="cart"
     class="cart lang-es country-es currency-eur layout-full-width page-cart tax-display-enabled lang_es    desktop_device   	 hide-left-column hide-right-column "
     style="font: 17px Arial">
-
-
     <div class="navbar navbar-inverse" style="background-color: black !important; width: 100% !important;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-header">
-                        <button id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
-                            data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
-                                class="icon-bar"></span></button>
                         <a href="{{ route('index2') }}" class="header__logo-link">
                             <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
                         </a>
