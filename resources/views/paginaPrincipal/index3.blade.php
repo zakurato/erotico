@@ -47,7 +47,7 @@
                         </button>
 
                         <a href="{{ route('index2') }}" class="header__logo-link">
-                            <img style="height: 40px;" class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
+                            <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
                         </a>
                     </div>
                     <form action="http://54.89.124.204/index2" method="GET">
