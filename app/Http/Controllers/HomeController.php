@@ -250,8 +250,6 @@ class HomeController extends Controller
 
 
 
-
-
             if($clienteSession == ""){
                 $existe = 0;
                 $clientes = Cliente::all();

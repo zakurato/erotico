@@ -8,6 +8,9 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 
 <body id="cart"
