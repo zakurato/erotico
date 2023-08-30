@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-header">
-                        <a href="http://54.89.124.204/index2" class="header__logo-link">
+                        <a href="{{ route('index2') }}" class="header__logo-link">
                             <img class="header__logo-image" src="images/logo4.png?v=1676468577" alt="">
                         </a>
                     </div>
