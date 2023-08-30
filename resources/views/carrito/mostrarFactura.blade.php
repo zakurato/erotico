@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="{{ asset('carrito/carritoForm.Css') }}?v={{ time() }}" type="text/css"
         media="all">
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
-
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
