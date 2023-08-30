@@ -255,19 +255,41 @@ class HomeController extends Controller
             ->pluck('idFKProducto');
            
 
-            if (isset($top5IdProductosMasVendidos[0]) && isset($top5IdProductosMasVendidos[1]) &&
-                 isset($top5IdProductosMasVendidos[2]) && isset($top5IdProductosMasVendidos[3])) {
-                                              
-            $productosMasVendidos = Producto::whereIn('id', [
-                                                      $top5IdProductosMasVendidos[0],
-                                                      $top5IdProductosMasVendidos[1],
-                                                      $top5IdProductosMasVendidos[2],
-                                                      $top5IdProductosMasVendidos[3]
-                                                     ])->get();
-            }else{
-                $productosMasVendidos = [];  // Inicializar como un array vacío
-            }
+            //solo la posicion 0
+            if (isset($top5IdProductosMasVendidos[0])) {
+                $productosMasVendidos = Producto::whereIn('id', [
+                                     $top5IdProductosMasVendidos[0],
+                                    ])->get();
+                }else if(isset($top5IdProductosMasVendidos[0]) && isset($top5IdProductosMasVendidos[1])){
+                    $productosMasVendidos = Producto::whereIn('id', [
+                        $top5IdProductosMasVendidos[0],
+                        $top5IdProductosMasVendidos[1],
+                       ])->get();
+                }
+                else if(isset($top5IdProductosMasVendidos[0]) && isset($top5IdProductosMasVendidos[1]) && isset($top5IdProductosMasVendidos[2])){
+                    $productosMasVendidos = Producto::whereIn('id', [
+                        $top5IdProductosMasVendidos[0],
+                        $top5IdProductosMasVendidos[1],
+                        $top5IdProductosMasVendidos[2],
+                       ])->get();
+                }
+                else if(isset($top5IdProductosMasVendidos[0]) && isset($top5IdProductosMasVendidos[1]) && isset($top5IdProductosMasVendidos[2]) && isset($top5IdProductosMasVendidos[3])){
+                    $productosMasVendidos = Producto::whereIn('id', [
+                        $top5IdProductosMasVendidos[0],
+                        $top5IdProductosMasVendidos[1],
+                        $top5IdProductosMasVendidos[2],
+                        $top5IdProductosMasVendidos[3],
+                       ])->get();
+                }
+                else{
+                    $productosMasVendidos = [];  // Inicializar como un array vacío
+                }
             
+
+
+
+
+
             if($clienteSession == ""){
                 $existe = 0;
                 $clientes = Cliente::all();
