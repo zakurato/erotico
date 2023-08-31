@@ -170,19 +170,20 @@
                                                                                     <div
                                                                                         class="col-md-6 col-6 qty">
                                                                                         <div class="qty_wrap">
-                                                                                            <div class="input-group bootstrap-touchspin" style="width: 90px !important;">
+                                                                                            <div class="input-group bootstrap-touchspin" style="width: 100px !important; display: flex; align-items: center;">
                                                                                                 <button class="btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-down"
                                                                                                         type="button" id="btnMenos{{ $item->id }}"
-                                                                                                        style="width: 30px !important; border-radius: 20px; margin-right: 29px;">-</button>
+                                                                                                        style="width: 30px !important; border-radius: 20px; margin-right: 10px;">-</button>
                                                                                                 <input class="js-cart-line-product-quantity cart_quantity cart_quantity_206 form-control"
                                                                                                        type="text" value="{{ $item->cantidad }}"
                                                                                                        style="display: block; color: black; background-color: #44444400;
-                                                                                                       border-color: #44444400;"
+                                                                                                       border-color: #44444400; flex: 1;"
                                                                                                        id="inputCantidad{{ $item->id }}" readonly>
                                                                                                 <button class="btn btn-touchspin js-touchspin js-decrease-product-quantity bootstrap-touchspin-up"
                                                                                                         type="button" id="btnMas{{ $item->id }}"
-                                                                                                        style="width: 30px !important; border-radius: 20px; ">+</button>
+                                                                                                        style="width: 30px !important; border-radius: 20px; margin-left: 10px;">+</button>
                                                                                             </div>
+                                                                                            
                                                                                             
                                                                                         </div>
                                                                                     </div>
