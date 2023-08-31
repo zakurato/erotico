@@ -76,6 +76,7 @@
                                 <button type="submit" class="bntEliminarCategoria">
                                     <i style="color: green" class="fa-solid fa-rotate fa-xl"></i>
                                     <br><br>
+                                    <p style="color: black">Editar producto</p>
                                 </button>
                             </form>
                             </p>
@@ -84,8 +85,9 @@
                                 @csrf
                                 <input type="text" name="id" value="{{ $item->id }}" hidden>
                                 <button type="submit" class="bntEliminarCategoria">
-                                    <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
+                                    <i class="fa-regular fa-images fa-xl"></i>
                                     <br><br>
+                                    <p style="color: black">Añadir mas imagenes, colores, tamaños-cantidad</p>
                                 </button>
                             </form>
                             </p>
@@ -98,6 +100,7 @@
                                     onclick="return confirm('¿Estás seguro de que deseas eliminar el producto {{ $item->nombre }}')">
                                     <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
                                     <br><br>
+                                    <p style="color: black">Eliminar</p>
                                 </button>
                             </form>
                             </p>
