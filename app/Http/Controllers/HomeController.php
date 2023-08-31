@@ -642,7 +642,7 @@ class HomeController extends Controller
         $delete=Producto::where('id',$request->id)->delete();
 
         session()->flash("eliminarProducto","EL producto se elimino correctamente");
-        return redirect()->route("loginDentro");
+        return redirect()->route("crearProducto");
     }
 
 
