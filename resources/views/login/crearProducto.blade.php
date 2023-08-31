@@ -85,7 +85,7 @@
                                 @csrf
                                 <input type="text" name="id" value="{{ $item->id }}" hidden>
                                 <button type="submit" class="bntEliminarCategoria">
-                                    <i class="fa-regular fa-images fa-xl"></i>
+                                    <i style="color: black" class="fa-regular fa-images fa-xl"></i>
                                     <br><br>
                                     <p style="color: black">Añadir mas imagenes, colores, tamaños-cantidad</p>
                                 </button>
