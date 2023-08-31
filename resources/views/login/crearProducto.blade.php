@@ -84,7 +84,7 @@
                                 @csrf
                                 <input type="text" name="id" value="{{ $item->id }}" hidden>
                                 <button type="submit" class="bntEliminarCategoria">
-                                    <i class="fa-regular fa-images fa-xl"></i>
+                                    <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
                                     <br><br>
                                 </button>
                             </form>
