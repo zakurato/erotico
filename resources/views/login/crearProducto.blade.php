@@ -74,8 +74,8 @@
                                 @csrf
                                 <input type="text" name="id" value="{{ $item->id }}" hidden>
                                 <button type="submit" class="bntEliminarCategoria">
+                                    <i style="color: green" class="fa-solid fa-rotate fa-xl"></i>
                                     <br><br>
-                                    <p>Editar producto</p>
                                 </button>
                             </form>
                             </p>
@@ -84,8 +84,8 @@
                                 @csrf
                                 <input type="text" name="id" value="{{ $item->id }}" hidden>
                                 <button type="submit" class="bntEliminarCategoria">
+                                    <i class="fa-regular fa-images fa-xl"></i>
                                     <br><br>
-                                    <p>Añadir </p>
                                 </button>
                             </form>
                             </p>
@@ -96,8 +96,8 @@
                                 <input type="text" name="id" value="{{ $item->id }}" hidden>
                                 <button type="submit" class="bntEliminarCategoria"
                                     onclick="return confirm('¿Estás seguro de que deseas eliminar el producto {{ $item->nombre }}')">
+                                    <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
                                     <br><br>
-                                    <p>Eliminar</p>
                                 </button>
                             </form>
                             </p>
