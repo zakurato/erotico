@@ -1281,7 +1281,7 @@
         </footer>
         <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
             target="_blank" rel="noopener" aria-describedby="a11y-new-window-message">
-            <div class="wa__btn_popup" style="left: unset; right: 25px; bottom:60px;">
+            <div class="wa__btn_popup" style="left: unset; right: 25px; bottom:45px;">
                 <p>
                     <span class="fab-container">
                         <i class="fab fa-whatsapp" style="color: #27d011; font-size: 4em;"></i>
