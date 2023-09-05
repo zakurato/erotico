@@ -2110,6 +2110,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
             $productoImagen = Producto::where([["imagen","=",$request->imagen]])->first();
 
             if(Empty($productoImagen)){
+
                 //return "estoy aqui por que el producto NO esta en la tabla de productos";
                 //No esta la foto en la tabla de productos
                 //busco la foto en la tabla de fotos
@@ -2196,7 +2197,15 @@ public function restarCambioInputCambioTotalIva(Request $request){
                 //idFK de la tabla de fotos
                 //return $id;
 
-                return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito"));
+
+                
+                if($contadorCarrito == null){
+                    return view("paginaPrincipal.index");
+                }else{
+                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito"));
+                }
+                
+
                 }
                 else{
                     //return "estoy aqui por que el producto SI esta en la tabla de productos";
@@ -2263,9 +2272,15 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     //imagenes del producto seleccionado y el color seleccionado
                     // $combinadosImages;
                     //return $combinadosImages;
-                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos"));
 
 
+                    
+                    if($contadorCarrito == null){
+                        return view("paginaPrincipal.index");
+                    }else{
+                        return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos"));
+                    }
+                    
                 }
 
 
