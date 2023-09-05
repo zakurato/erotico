@@ -35,7 +35,7 @@
                 <br>
                 @if (isset($imagenPrincipal) && $imagenPrincipal->imagen != null)
                     <img src="images/{{ $imagenPrincipal->imagen }}" alt=""
-                        style="width: 200px; height: 200px;">
+                        style="width: 100%; height: 300px;">
                     <input type="hidden" name="imagenAntigua" value="{{ $imagenPrincipal->imagen }}">
                 @endif
 
