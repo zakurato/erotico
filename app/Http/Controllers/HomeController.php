@@ -10,6 +10,7 @@ use App\Models\Compra2;
 use App\Models\Compras2s;
 use App\Models\CreateSeccionProductoCategory;
 use App\Models\Foto;
+use App\Models\ImagenPrincipal;
 use App\Models\Producto;
 use App\Models\Tamano;
 use GuzzleHttp\Handler\Proxy;
@@ -30,8 +31,10 @@ class HomeController extends Controller
         return view("paginaPrincipal.index");
     }
     public function index2(Request $request){
-        $productoTemporada = "";
 
+        $imagenPrincipal = ImagenPrincipal::first();
+
+        $productoTemporada = "";
         $productosTemporada = Producto::all();
         $existeProductoTemporadaTablaTemporada = 0;
         foreach($productosTemporada as $item){
@@ -130,7 +133,7 @@ class HomeController extends Controller
 
             
         
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
@@ -138,7 +141,7 @@ class HomeController extends Controller
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
                     //return $productos;
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }
             }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
                 //return "estoy aqui para devolver los productos al inventario";
@@ -182,7 +185,7 @@ class HomeController extends Controller
                     $categorias = Categoria::all();
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
-                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
     
     
             }else{
@@ -212,14 +215,14 @@ class HomeController extends Controller
                     $sessionCliente = session('nombre');
         
         
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
                     $categorias = Categoria::all();
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }
             }
         }else{
@@ -309,7 +312,7 @@ class HomeController extends Controller
                     }
                     $fotos = Foto::all();
                     $sessionCliente = session('nombre');
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
@@ -355,7 +358,7 @@ class HomeController extends Controller
 
                     }
                     $fotos = Foto::all();
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }
             }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
                 
@@ -435,7 +438,7 @@ class HomeController extends Controller
 
                     }
                     $fotos = Foto::all();
-                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
     
     
             }else{
@@ -501,7 +504,7 @@ class HomeController extends Controller
                     $sessionCliente = session('nombre');
         
         
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
@@ -547,7 +550,7 @@ class HomeController extends Controller
 
                     }
                     $fotos = Foto::all();
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada"));
+                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }
             }
         }
@@ -2414,12 +2417,49 @@ public function restarCambioInputCambioTotalIva(Request $request){
         }
 
 
+        public function seccionImagenInicial(){
+
+            $imagenPrincipal = ImagenPrincipal::first();
+            //enviar la imagen que esta actualmente para cambiarla
+            return view("seccionImagenPrincipal.seccionImagenPrincipal",compact("imagenPrincipal"));
+        }
+
+        public function storeSeccionImagenPrincipal(Request $request){
+
+            //si se cambio la imagen
+            $imageName = time().'.'.$request->imagen->extension();  //nombre de la imagen
+            //meto la imagen a la carpeta 
+            $request->imagen->move(public_path('images'), $imageName);
+            //elimino la imagen antigua
+            if($request->imagenAntigua != null){
+                unlink(public_path('images/'.$request->imagenAntigua));
+            }
+
+            $imagenPrincipal = ImagenPrincipal::first();
+
+            if ($imagenPrincipal) {
+                $imagenPrincipal->imagen = $imageName;
+                $imagenPrincipal->save();
+            } else {
+                $imagenPrincipal = new ImagenPrincipal();
+                $imagenPrincipal->imagen = $imageName;
+                $imagenPrincipal->save();
+            }
+
+            return redirect()->route("seccionImagenInicial");
+        }
+
+
 
 
 
 
 
         
+
+
+
+
 
 
 

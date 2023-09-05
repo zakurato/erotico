@@ -30,11 +30,14 @@
                     <li><a href="{{ route('vistaReporteFacturas') }}">Reportes de facturas</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                  <li><a href="{{ route('seccionImagenesCategoria') }}">Seccion de imagenes categorias</a></li>
+                    <li><a href="{{ route('seccionImagenesCategoria') }}">Seccion de imagenes categorias</a></li>
                 </ul>
-              <ul class="nav navbar-nav">
-                <li><a href="{{ route('logout') }}">Cerrar sesion</a></li>
-              </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ route('seccionImagenInicial') }}">Seccion de imagen inicial</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ route('logout') }}">Cerrar sesion</a></li>
+                </ul>
 
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

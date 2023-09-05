@@ -126,10 +126,10 @@
         <!-- END sections: overlay-group -->
         <main id="main" role="main" class="component">
             <div class="hidden-phone">
-                <img src="images/inicio3.png?v=1680025258&amp;width=1920" alt="" width="1920"
+                <img src="images/{{$imagenPrincipal->imagen}}?v=1680025258&amp;width=1920" alt="" width="1920"
                     height="600" loading="lazy" class="slideshow__image zoom">
             </div>
-            <div class="hidden-tablet-and-up zoom"><img src="images/inicio3.png?v=1680025277&amp;width=1200"
+            <div class="hidden-tablet-and-up zoom"><img src="images/{{$imagenPrincipal->imagen}}?v=1680025277&amp;width=1200"
                     alt="" width="1200" height="1080" loading="lazy" class="slideshow__image ">
             </div>
             </div>

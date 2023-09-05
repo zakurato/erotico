@@ -42,6 +42,9 @@
                 <ul class="nav navbar-nav">
                   <li><a href="{{ route('seccionImagenesCategoria') }}">Seccion de imagenes categorias</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ route('seccionImagenInicial') }}">Seccion de imagen inicial</a></li>
+                </ul>
               <ul class="nav navbar-nav">
                 <li><a href="{{ route('logout') }}">Cerrar sesion</a></li>
               </ul>
@@ -50,7 +53,7 @@
         </div><!-- /.container-fluid -->
     </nav>
 
-    <div class="container" style="width: auto; text-align: center !important">
+    <div class="container" style="width: auto; text-align: center !important;">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">

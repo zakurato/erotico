@@ -120,6 +120,15 @@ Route::post('/storeEditarSeccionCrearProductoCategoria',[HomeController::class,"
 Route::get('/cambiarTemporadaFotos',[HomeController::class,"cambiarTemporadaFotos"])->name("cambiarTemporadaFotos")->middleware("auth");
 
 
+//seccionImagenInicial
+Route::get('/seccionImagenInicial',[HomeController::class,"seccionImagenInicial"])->name("seccionImagenInicial")->middleware("auth");
+Route::post('/storeSeccionImagenPrincipal',[HomeController::class,"storeSeccionImagenPrincipal"])->name("storeSeccionImagenPrincipal")->middleware("auth");
+
+
+
+
+
+
 
 Route::get("/niki",[HomeController::class,"niki"])->name("niki");
 
