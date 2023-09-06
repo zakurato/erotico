@@ -404,7 +404,7 @@
     $(document).ready(function() {
         // Asigna un controlador de eventos al botón
         $('#botonCarrito{{ $id }}').click(function(e) {
-
+            
             // Obtener el valor actual del span y asignarlo al campo oculto antes de enviar el formulario
             var colorValue = document.getElementById("colorValue").innerText;
             document.getElementById("color").value = colorValue;
@@ -447,7 +447,214 @@
                     tamaño = "NINGUNO";
                 }
 
-                
+            if (color == undefined || tamaño == null) {
+                var mensajeContainer = document.getElementById("mensajeContainer{{ $id }}");
+                mensajeContainer.innerHTML =
+                    "Debe seleccionar un tamaño"; // limpio el mensajecontainer
+            } else {
+
+                //console.log("color:" + color);
+                //console.log("tamaño:" + tamaño);
+                //console.log(sessionCliente);
+                //console.log("si se selecciono el color");
+                $.ajax({
+                    url: 'carritoCompraVerificarCantidad', // aqui va el nombre de la ruta
+                    method: 'GET', // el metodo que se usa en la ruta
+                    data: {
+                        productId: id,
+                        selectedColor: color,
+                        selectedTamaño: tamaño,
+                        sessionCliente: sessionCliente,
+                    }, //los parametros enviados
+                    dataType: 'json',
+                    success: function(response) {
+
+                        //arreglar
+                        //respuesta del controlador 
+                        console.log(response.producto.cantidad);
+                        console.log(response.foto.cantidad);
+
+                        if (response.producto.cantidad != null) {
+                            console.log("Cantidad de producto tabla producto " + response
+                                .producto.cantidad + " del tamaño " + response.producto
+                                .tamaño);
+                            if (response.producto.cantidad <= 0) {
+
+                                var mensajeContainer = document.getElementById(
+                                    "mensajeContainer{{ $id }}");
+                                mensajeContainer.innerHTML =
+                                    "No quedan en inventario del tamaño " + response
+                                    .producto.tamaño;
+
+                            } else {
+                                var mensajeContainer = document.getElementById(
+                                    "mensajeContainer{{ $id }}");
+                                mensajeContainer.innerHTML =
+                                    ""; // limpio el mensajecontainer
+                                //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                //console.log("Agregar al carrito");
+                                //tabla productos
+                                $.ajax({
+                                    url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                    method: 'GET', // el metodo que se usa en la ruta
+                                    data: {
+                                        productId: id,
+                                        selectedColor: color,
+                                        selectedTamaño: tamaño,
+                                        sessionCliente: sessionCliente,
+                                    }, //los parametros enviados
+                                    dataType: 'json',
+                                    success: function(response) {
+                                        //console.log(response);
+                                        if (response ==
+                                            "Si desea sumar mas de este producto entrar al carrito de compra"
+                                        ) {
+                                            var mensajeContainer = document
+                                                .getElementById(
+                                                    "mensajeContainer{{ $id }}"
+                                                );
+                                            mensajeContainer.innerHTML =
+                                                response; // limpio el mensajecontainer
+                                        } else {
+                                            var mensajeContainer = document
+                                                .getElementById(
+                                                    "mensajeContainer{{ $id }}"
+                                                );
+                                            mensajeContainer.innerHTML =
+                                                "Se agrego correctamente al carrito"; // limpio el mensajecontainer
+                                            var numeroContadorCarrito = document
+                                                .getElementById(
+                                                    "contadorCarrito");
+                                            var parpadeo2 = document
+                                                .getElementById("parpadeo");
+                                            var parpadeo3 = document
+                                                .getElementById("parpadeoDrop");
+                                            // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                            function actualizarContador(
+                                                nuevoValor) {
+                                                numeroContadorCarrito
+                                                    .innerHTML = nuevoValor;
+                                                parpadeo2.classList.add(
+                                                    "parpadeo");
+                                                parpadeo3.classList.add(
+                                                    "parpadeo");
+
+                                                // Eliminar la clase "parpadeo" después de la animación
+                                                setTimeout(function() {
+                                                        parpadeo2.classList
+                                                            .remove(
+                                                                "parpadeo");
+                                                        parpadeo3.classList
+                                                            .remove(
+                                                                "parpadeo");
+
+                                                    },
+                                                    6000
+                                                ); // 2s * 3 = 6s (duración total de la animación)
+                                            }
+
+                                            // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                            var nuevoValor = response;
+                                            actualizarContador(nuevoValor);
+                                        }
+                                    }
+                                });
+
+                            }
+                        } else if (response.foto.cantidad != null) {
+                            console.log("Cantidad de producto tabla foto " + response.foto
+                                .cantidad + " del tamaño " + response.foto.tamaño);
+                            if (response.foto.cantidad <= 0) {
+                                console.log(
+                                    "Debo mandar una variable donde se imprima que no se pudo agregar el producto al carrito"
+                                );
+                                var mensajeContainer = document.getElementById(
+                                    "mensajeContainer{{ $id }}");
+                                mensajeContainer.innerHTML =
+                                    "No quedan en inventario del tamaño " + response.foto
+                                    .tamaño;
+                            } else {
+                                var mensajeContainer = document.getElementById(
+                                    "mensajeContainer{{ $id }}");
+                                mensajeContainer.innerHTML =
+                                    ""; // limpio el mensajecontainer
+                                //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                //console.log("Agregar al carrito");
+                                //tabla fotos
+                                $.ajax({
+                                    url: 'carritoCompraTablaFotos', // aqui va el nombre de la ruta
+                                    method: 'GET', // el metodo que se usa en la ruta
+                                    data: {
+                                        productId: id,
+                                        selectedColor: color,
+                                        selectedTamaño: tamaño,
+                                        sessionCliente: sessionCliente,
+                                    }, //los parametros enviados
+                                    dataType: 'json',
+                                    success: function(response) {
+                                        //respuesta del controlador 
+                                        console.log(response);
+                                        if (response ==
+                                            "Si desea sumar mas de este producto entrar al carrito de compra"
+                                        ) {
+                                            var mensajeContainer = document
+                                                .getElementById(
+                                                    "mensajeContainer{{ $id }}"
+                                                );
+                                            mensajeContainer.innerHTML =
+                                                response; // limpio el mensajecontainer
+                                        } else {
+                                            var mensajeContainer = document
+                                                .getElementById(
+                                                    "mensajeContainer{{ $id }}"
+                                                );
+                                            mensajeContainer.innerHTML =
+                                                "Se agrego correctamente al carrito"; // limpio el mensajecontainer
+                                            var numeroContadorCarrito = document
+                                                .getElementById(
+                                                    "contadorCarrito");
+                                            var parpadeo2 = document
+                                                .getElementById("parpadeo");
+                                            var parpadeo3 = document
+                                                .getElementById("parpadeoDrop");
+                                            // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                            function actualizarContador(
+                                                nuevoValor) {
+                                                numeroContadorCarrito
+                                                    .innerHTML = nuevoValor;
+                                                parpadeo2.classList.add(
+                                                    "parpadeo");
+                                                parpadeo3.classList.add(
+                                                    "parpadeo");
+
+                                                // Eliminar la clase "parpadeo" después de la animación
+                                                setTimeout(function() {
+                                                        parpadeo2.classList
+                                                            .remove(
+                                                                "parpadeo");
+                                                        parpadeo3.classList
+                                                            .remove(
+                                                                "parpadeo");
+
+                                                    },
+                                                    6000
+                                                ); // 2s * 3 = 6s (duración total de la animación)
+                                            }
+
+                                            // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                            var nuevoValor = response;
+                                            actualizarContador(nuevoValor);
+                                        }
+                                    }
+                                });
+                            }
+                        }
+
+                    }
+                });
+
+
+            }
 
         });
     });
