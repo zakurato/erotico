@@ -295,6 +295,7 @@
         <input type="hidden" name="color" id="color" value="">
         <input type="hidden" name="id" value="{{ $id }}">
         <input type="hidden" name="sessionCliente" value="{{ $sessionCliente }}">
+        <input type="hidden" name="categoria" value="{{ $categoria }}">
         <br><br><br>
         <button style="width: 100%" type="submit" id="botonCarrito{{ $id }}"
             class="product-item__action-button button button--small button--primary">Añadir
@@ -432,11 +433,16 @@
                 data[key] = value;
             }
 
-            // Acceder a los valores separados por clave
-            var id = data['id'];
-            var color = data['color'];
-            var tamaño = data['tamaño'];
-            var sessionCliente = data['sessionCliente'];
+                // Acceder a los valores separados por clave
+                var categoria = data['categoria'];
+                var id = data['id'];
+                var color = data['color'];
+                var tamaño = data['tamaño'];
+                var sessionCliente = data['sessionCliente'];
+                if(categoria == "RAPTOR FORD"){
+                    color = "NINGUNO";
+                    tamaño = "NINGUNO";
+                }
 
             if (color == undefined || tamaño == null) {
                 var mensajeContainer = document.getElementById("mensajeContainer{{ $id }}");
