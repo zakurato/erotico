@@ -141,16 +141,7 @@ class HomeController extends Controller
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
 
-                    //solo la posicion 0
-                    for ($i = 0; $i < min(count($top5IdProductosMasVendidos), 4); $i++) {
-                        if (isset($top5IdProductosMasVendidos[$i])) {
-                            $productosMasVendidos[] = $top5IdProductosMasVendidos[$i];
-                        }
-                    }
-                    
-                    if (!empty($productosMasVendidos)) {
-                        $productosMasVendidos = Producto::whereIn('id', $productosMasVendidos)->get();
-                    }
+                    $productosMasVendidos = [];
 
                     return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }
