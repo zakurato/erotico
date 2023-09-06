@@ -2106,9 +2106,6 @@ public function restarCambioInputCambioTotalIva(Request $request){
             $sessionCliente = session('nombre');
             $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
 
-
-
-
             //primero busco la imagen en la tabla de productos y la guardo en una coleccion
             $productoImagen = Producto::where([["imagen","=",$request->imagen]])->first();
 

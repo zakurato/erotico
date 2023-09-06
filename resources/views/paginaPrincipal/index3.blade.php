@@ -435,6 +435,8 @@
 
                 // Acceder a los valores separados por clave
                 var categoria = data['categoria'];
+
+                console.log(categoria);
                 var id = data['id'];
                 var color = data['color'];
                 var tamaño = data['tamaño'];
