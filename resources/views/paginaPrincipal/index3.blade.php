@@ -197,9 +197,9 @@
                                     </div>
                                 </div>
                             </div>
+                            @if ($categoria != "RAPTOR FORD")
                             <div class="row attr-type-selecter" data-attr="color">
                                 <div class="col-12">
-                                    @if ($categoria != "RAPTOR FORD")
                                     <div class="attribute">
                                         <div class="row mb-2">
                                             <div
@@ -226,7 +226,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                    @endif
                                     <!-- container end -->
                                 </div>
                             </div>
@@ -262,6 +261,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div>
                     <!-- isCartQuickView Start -->
                     <div class="description-and-detail mt-4 pt-5">
