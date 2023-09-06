@@ -140,7 +140,7 @@ class HomeController extends Controller
                     $categorias = Categoria::all();
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
-                    //return $productos;
+                    return "estoy aqui";
                     return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }
             }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
