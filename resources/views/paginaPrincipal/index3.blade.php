@@ -46,7 +46,7 @@
                         </button>
 
                         <a href="{{ route('index2') }}" class="header__logo-link">
-                            <img style="height: 80px;" class="header__logo-image" src="images/logo5.jpg?v=1676468577"
+                            <img style="height: 70px;" class="header__logo-image" src="images/logo5.jpg?v=1676468577"
                                 alt="">
                         </a>
                     </div>

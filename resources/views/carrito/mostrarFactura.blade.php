@@ -31,7 +31,7 @@
                             data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
                                 class="icon-bar"></span></button>
                         <a href="#" class="header__logo-link">
-                            <img style="height: 80px;" class="header__logo-image" src="images/logo5.jpg?v=1676468577" alt="">
+                            <img style="height: 70px;" class="header__logo-image" src="images/logo5.jpg?v=1676468577" alt="">
                         </a>
                     </div>
                 </div>
