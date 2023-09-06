@@ -144,7 +144,7 @@
                     data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
                     data-section-type="rich-text">
                     <div class="container container--narrow">
-                        <h2 class="heading h1">Encuentra la magia dentro de ti</h2>
+                        <h2 class="heading h1">No pain, no gain.</h2>
                     </div>
                 </section>
 
@@ -165,7 +165,7 @@
             <div class="container">
                 <header class="section__header">
                     <div class="section__header-stack">
-                        <h2 class="section__title heading h3">Únete a la diversión con nuestros nuevos productos
+                        <h2 class="section__title heading h3">Tu cuerpo, tu mayor proyecto.
                         </h2>
                     </div>
                 </header>
@@ -622,7 +622,7 @@
             data-section-id="template--14562732638271__5199ee47-c016-4657-bf0b-bfd73334618b"
             data-section-type="rich-text">
             <div class="container container--medium" data-aos="fade-right">
-                <h2 class="heading h1">Recoge un juguete para tu próxima aventura.</h2>
+                <h2 class="heading h1">Tu único límite es tu mente.</h2>
                 <div class="rte">
                 </div>
             </div>
@@ -740,7 +740,7 @@
         <div class="container">
             <header class="section__header">
                 <div class="section__header-stack">
-                    <h2 class="section__title heading h3">Lo más nuevo, conecta con el placer</h2>
+                    <h2 class="section__title heading h3">Lo más nuevo.</h2>
                 </div>
             </header>
         </div>
@@ -788,7 +788,7 @@
             data-section-id="template--14562732638271__127e7bfe-e656-4552-b607-86d223e6a4d2"
             data-section-type="rich-text">
             <div class="container container--narrow" data-aos="fade-right">
-                <h2 class="heading h1">La tienda donde compras placer.</h2>
+                <h2 class="heading h1">La tienda donde tu esfuerzo se traduce en resultados.</h2>
                 <div class="rte">
                 </div>
             </div>
@@ -879,7 +879,7 @@
         data-section-id="template--14562732638271__220c92e8-4944-411d-b5f7-cdc598a18b79"
         data-section-type="rich-text">
         <div class="container container--narrow" data-aos="fade-right">
-            <h2 class="heading h1">¡Estás a un juguete de conseguir un orgasmo!</h2>
+            <h2 class="heading h1">Rompe tus límites, haz historia.</h2>
             <div class="rte">
             </div>
         </div>
@@ -1220,7 +1220,7 @@
         data-section-id="template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c"
         data-section-type="rich-text">
         <div class="container container--narrow" data-aos="fade-right">
-            <h2 class="heading h1">Mejora tu vida sexual con las mejores marcas.</h2>
+            <h2 class="heading h1">Elige FitFusion Store con las mejores marcas.</h2>
             <div class="rte">
             </div>
         </div>
