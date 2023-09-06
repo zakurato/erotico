@@ -219,7 +219,7 @@
                                                     @endforeach
                                                 </span>
                                                 <br><br>
-                                                @if ($categoria != 'RAPTOR FORD')
+                                                @if ($categoria != 'EMINENCE')
                                                     <select class="a-native-dropdown a-declarative">
                                                         <option> Seleccionar </option>
                                                         @foreach ($coloresDiferentesAProductoSeleccionado as $item)
@@ -236,7 +236,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @if ($categoria != 'RAPTOR FORD')
+                            @if ($categoria != 'EMINENCE')
 
                             <div class="row attr-type-selecter" data-attr="size">
                                 <div class="col-12">
@@ -437,7 +437,7 @@ class="shopify-section shopify-section-group-footer-group">
             var categoria = document.getElementById("categoria");
             var colorValue = document.getElementById("colorValue").innerText;
             
-            if (categoria.value == "RAPTOR FORD") {
+            if (categoria.value == "EMINENCE") {
                 document.getElementById("color").value = "NINGUNO";
 
             } else {
@@ -474,7 +474,7 @@ class="shopify-section shopify-section-group-footer-group">
             var color = data['color'];
             var tamaño = data['tamaño'];
             var sessionCliente = data['sessionCliente'];
-            if (categoria == "RAPTOR FORD") {
+            if (categoria == "EMINENCE") {
                 tamaño = "NINGUNO";
             }
 

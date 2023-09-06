@@ -307,7 +307,7 @@
                                     </div>
                                     <br>
                                     <!-- Dependiendo la categoria muestra las opciones-->
-                                    @if ($item->categoria != "RAPTOR FORD")
+                                    @if ($item->categoria != "EMINENCE")
                                     <div class="product-item__info-inner">
                                         <div class="form-group">
                                             <select class="form-control styleSelect"
@@ -413,7 +413,7 @@
                                                 var color = data['color'];
                                                 var tamaño = data['tamaño'];
                                                 var sessionCliente = data['sessionCliente'];
-                                                if(categoria == "RAPTOR FORD"){
+                                                if(categoria == "EMINENCE"){
                                                     color = "NINGUNO";
                                                     tamaño = "NINGUNO";
                                                 }
