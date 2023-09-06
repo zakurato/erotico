@@ -308,8 +308,8 @@ class HomeController extends Controller
                         count($productos),
                         12
                     );
-
                     }
+                    
                     $fotos = Foto::all();
                     $sessionCliente = session('nombre');
                     return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));

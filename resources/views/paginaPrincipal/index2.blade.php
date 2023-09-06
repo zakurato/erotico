@@ -117,7 +117,8 @@
     </div>
     <div style="height: 100px;"></div>
 
-
+    
+    @if (isset($imagenPrincipal->imagen))
     <section class="animacion1">
         <div id="shopify-section-sections--14562733359167__popups"
             class="shopify-section shopify-section-group-overlay-group">
@@ -148,6 +149,7 @@
                 </section>
 
     </section>
+    @endif
 
 
 
@@ -304,6 +306,7 @@
                                         </div>
                                     </div>
                                     <br>
+                                    @if ($item->categoria != "RAPTOR FORD")
                                     <div class="product-item__info-inner">
                                         <div class="form-group">
                                             <select class="form-control styleSelect"
@@ -330,6 +333,7 @@
                                             </select>
                                         </div>
                                     </div>
+                                    @endif
                                     <script>
                                         //me trae los tamaños del color seleccionado y del producto seleccionado
                                         $(document).ready(function() {
@@ -373,6 +377,7 @@
                                     </script>
                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                     <input type="hidden" name="sessionCliente" value="{{ $sessionCliente }}">
+                                    <input type="hidden" name="categoria" value="{{ $item->categoria }}">
                                     <button style="width: 100%" type="submit" id="botonCarrito{{ $item->id }}"
                                         class="product-item__action-button button button--small button--primary">Añadir
                                         al carrito</button>
@@ -384,7 +389,7 @@
                                                 e.preventDefault(); // Evita que se envíe el formulario por defecto
                                                 // Obtén los datos del formulario
                                                 var formData = $('#miFormulario{{ $item->id }}').serialize();
-                                                //console.log(formData);
+                                                console.log(formData);
                                                 // Separar los pares clave-valor por el caracter "&"
                                                 var pairs = formData.split('&');
                                                 // Crear un objeto para almacenar los valores separados
@@ -400,11 +405,19 @@
                                                     // Almacenar el valor en el objeto usando la clave
                                                     data[key] = value;
                                                 }
+
                                                 // Acceder a los valores separados por clave
+                                                var categoria = data['categoria'];
                                                 var id = data['id'];
                                                 var color = data['color'];
                                                 var tamaño = data['tamaño'];
                                                 var sessionCliente = data['sessionCliente'];
+                                                if(categoria == "RAPTOR FORD"){
+                                                    color = "NINGUNO";
+                                                    tamaño = "NINGUNO";
+                                                }
+
+
                                                 if (color == undefined || tamaño == "") {
                                                     var mensajeContainer = document.getElementById("mensajeContainer{{ $item->id }}");
                                                     mensajeContainer.innerHTML =
@@ -425,10 +438,9 @@
                                                         }, //los parametros enviados
                                                         dataType: 'json',
                                                         success: function(response) {
-                                                            //arreglar
                                                             //respuesta del controlador 
-                                                            //console.log(response.producto.cantidad);
-                                                            //console.log(response.foto.cantidad);
+                                                            console.log(response.producto.cantidad);
+                                                            console.log(response.foto.cantidad);
                                                             if (response.producto.cantidad != null) {
                                                                 //console.log("Cantidad de producto tabla producto " + response.producto.cantidad + " del tamaño " + response.producto.tamaño);
                                                                 if (response.producto.cantidad <= 0) {
