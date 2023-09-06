@@ -2177,6 +2177,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                 $nombre = "";
                 $color = "";
                 $id = "";
+                $categoria = "";
                 //return $producto;
                 if($producto != ""){
                     $descripcion = $producto->descripcion;
@@ -2184,6 +2185,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     $nombre = $producto->nombre;
                     $color = $item->color;
                     $id = $item->idFK;
+                    $categoria = $producto->categoria;
                 }else{
                 foreach($combinadosImages as $item){
                     $descripcion = $item->descripcion;
@@ -2191,21 +2193,21 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     $nombre = $item->nombre;
                     $color = $item->color;
                     $id = $item->id;
+                    $categoria = $item->categoria;
                     break;
                 }
                 }
 
 
-
+                return $categoria;
                 //idFK de la tabla de fotos
                 //return $id;
 
-
-                
                 if($contadorCarrito == null){
                     return view("paginaPrincipal.index");
                 }else{
-                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito"));
+
+                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","categoria"));
                 }
                 
 
@@ -2253,12 +2255,14 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     $nombre = "";
                     $color = "";
                     $id = "";
+                    $categoria = "";
                     foreach($combinadosImages as $item){
                         $descripcion = $item->descripcion;
                         $precio = $item->precio;
                         $nombre = $item->nombre;
                         $color = $item->color;
                         $id = $item->id;
+                        $categoria = $item->categoria;
                         break;
                     }
 
@@ -2281,7 +2285,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     if($contadorCarrito == null){
                         return view("paginaPrincipal.index");
                     }else{
-                        return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos"));
+                        return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos","categoria"));
                     }
                     
                 }

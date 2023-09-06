@@ -306,6 +306,7 @@
                                         </div>
                                     </div>
                                     <br>
+                                    <!-- Dependiendo la categoria muestra las opciones-->
                                     @if ($item->categoria != "RAPTOR FORD")
                                     <div class="product-item__info-inner">
                                         <div class="form-group">
