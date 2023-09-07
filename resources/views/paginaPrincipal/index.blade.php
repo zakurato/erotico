@@ -66,7 +66,7 @@
 
                 <!-- whatsapp -->
                 <a class="btn btn-outline-light btn-floating m-1"
-                    href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20las%20políticas%3F"
+                    href="https://wa.me/50687249099?text=¿Me%20gustaría%20consultar%20sobre%20las%20políticas%3F"
                     role="button"><i class="fab fa-whatsapp"></i></a>
             </section>
             <!-- Section: Social media -->
