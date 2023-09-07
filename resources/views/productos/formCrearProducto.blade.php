@@ -84,7 +84,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleTextarea">Descripción del producto</label>
-                <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                <textarea class="form-control" name="descripcion" rows="50"></textarea>
             </div>
             <div>
                 <button type="submit" class="btn btn-default">Crear producto</button>
