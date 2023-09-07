@@ -698,7 +698,7 @@ class HomeController extends Controller
         if($producto->cantidad < 0){
             $producto->cantidad = 0;
         }
-        $producto->descripcion = $request->descripcion;
+        $producto->descripcion = substr($request->descripcion, 0, 255); // Ajusta el número 255 según la longitud máxima de tu columna
         $producto->temporada = $temporada;
 
         $producto->save();

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("tamaño")->nullable();
             $table->string("precio")->nullable();
             $table->string("cantidad")->nullable();
-            $table->string("descripcion")->nullable();
+            $table->longText("descripcion")->nullable();
             $table->string("temporada")->nullable();
             $table->timestamps();
         });
