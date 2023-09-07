@@ -602,7 +602,7 @@ class HomeController extends Controller
         $producto->tamaño = $request->tamaño;
         $producto->precio = $request->precio;
         $producto->cantidad = $request->cantidad;
-        $producto->descripcion = substr($request->descripcion, 0, 255); // Ajusta el número 255 según la longitud máxima de tu columna
+        $producto->descripcion = $request->descripcion;
         $producto->temporada = 0;
         $producto->save();
 
@@ -698,7 +698,7 @@ class HomeController extends Controller
         if($producto->cantidad < 0){
             $producto->cantidad = 0;
         }
-        $producto->descripcion = substr($request->descripcion, 0, 255); // Ajusta el número 255 según la longitud máxima de tu columna
+        $producto->descripcion = $request->descripcion;
         $producto->temporada = $temporada;
 
         $producto->save();
