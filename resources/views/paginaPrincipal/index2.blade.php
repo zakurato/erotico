@@ -398,7 +398,7 @@
                                         var color = data['color'];
                                         var tamaño = data['tamaño'];
                                         var sessionCliente = data['sessionCliente'];
-                                        if (categoria == "EMINENCE" && categoria == "PROTEINAS") {
+                                        if (categoria == "EMINENCE" || categoria == "PROTEINAS") {
                                             color = "NINGUNO";
                                             tamaño = "NINGUNO";
                                         }
