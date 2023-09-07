@@ -77,21 +77,16 @@ class HomeController extends Controller
         }
 
 
-        //return $request;
-        if(Empty($request) || $request->txtBuscar == "" && $request->categoria == ""){
-            $fechaActual = Date::now();
-            $fechaObjeto = new DateTime($fechaActual);
-            $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
-            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
-            $top5IdProductosMasVendidos = Compras2s::select('idFKProducto')
+        $top5IdProductosMasVendidos = Compras2s::select('idFKProducto')
             ->groupBy('idFKProducto')
             ->orderByDesc(DB::raw('COUNT(*)'))
             ->limit(5)
             ->pluck('idFKProducto');
-            $top5ProductosMasActuales = Producto::orderByDesc('created_at')->limit(4)->get();
+        $productosMasVendidos = [];
 
-            $productosSeccionCategoria = CreateSeccionProductoCategory::all();
-            
+        if(empty($top5IdProductosMasVendidos)){
+            $productosMasVendidos = [];
+        }else{
             //solo la posicion 0
             for ($i = 0; $i < min(count($top5IdProductosMasVendidos), 4); $i++) {
                 if (isset($top5IdProductosMasVendidos[$i])) {
@@ -102,8 +97,22 @@ class HomeController extends Controller
             if (!empty($productosMasVendidos)) {
                 $productosMasVendidos = Producto::whereIn('id', $productosMasVendidos)->get();
             }
+        }
 
 
+
+
+        //return $request;
+        if(Empty($request) || $request->txtBuscar == "" && $request->categoria == ""){
+            $fechaActual = Date::now();
+            $fechaObjeto = new DateTime($fechaActual);
+            $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
+            $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
+           
+            $top5ProductosMasActuales = Producto::orderByDesc('created_at')->limit(4)->get();
+
+            $productosSeccionCategoria = CreateSeccionProductoCategory::all();
+            
         
             if($clienteSession == ""){
                 //return "estoy aqui si no hay compras de esta session en la tabla de comppras";
@@ -141,7 +150,6 @@ class HomeController extends Controller
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
 
-                    $productosMasVendidos = [];
 
                     return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }
@@ -234,26 +242,6 @@ class HomeController extends Controller
             $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
             $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
             $top5ProductosMasActuales = Producto::orderByDesc('created_at')->limit(4)->get();
-            $top5IdProductosMasVendidos = Compras2s::select('idFKProducto')
-            ->groupBy('idFKProducto')
-            ->orderByDesc(DB::raw('COUNT(*)'))
-            ->limit(5)
-            ->pluck('idFKProducto');
-           
-
-            //solo la posicion 0
-            for ($i = 0; $i < min(count($top5IdProductosMasVendidos), 4); $i++) {
-                if (isset($top5IdProductosMasVendidos[$i])) {
-                    $productosMasVendidos[] = $top5IdProductosMasVendidos[$i];
-                }
-            }
-            
-            if (!empty($productosMasVendidos)) {
-                $productosMasVendidos = Producto::whereIn('id', $productosMasVendidos)->get();
-            }
-            
-
-
 
             if($clienteSession == ""){
                 $existe = 0;
@@ -360,7 +348,6 @@ class HomeController extends Controller
 
                     }
                     $fotos = Foto::all();
-                    $productosMasVendidos = [];
                     return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
                 }
             }else if($fechaFormateada >= $clienteSession->expiracion && session('nombre') == $clienteSession->nombreClienteSession){
