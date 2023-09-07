@@ -148,7 +148,7 @@
                     data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
                     data-section-type="rich-text">
                     <div class="container container--narrow">
-                        <h3 class="heading h1">Tu cuerpo puede resistir todo lo que tu mente le diga que puede.</h3>
+                        <h4 class="heading h1">Tu cuerpo puede resistir todo lo que tu mente le diga que puede.</h4>
                     </div>
                 </section>
 
