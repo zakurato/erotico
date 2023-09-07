@@ -72,7 +72,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleTextarea">Descripción del producto</label>
-                <textarea class="form-control" name="descripcion" rows="50">{{ $producto->descripcion }}</textarea>
+                <textarea class="form-control" name="descripcion" rows="10">{{ $producto->descripcion }}</textarea>
             </div>
             <div class="form-check">
                 <input type="checkbox" name="temporada" <?php echo $producto->temporada == 1 ? 'checked' : ''; ?>>
