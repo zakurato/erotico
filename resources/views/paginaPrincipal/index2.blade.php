@@ -163,7 +163,7 @@
                 @foreach ($productos as $index => $item)
                     <form id="miFormulario{{ $item->id }}">
                         @csrf
-                        <div class="col mb-5" style="padding-top: 70px">
+                        <div class="col mb-5" style="padding-top: 60px">
                             <div class="card h-100">
                                 <div id="myCarousel{{ $index }}" class="carousel slide" data-ride="carousel">
                                     <!-- Indicators -->
