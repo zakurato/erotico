@@ -338,8 +338,7 @@ role="contentinfo">
                     <span>Acerca de nosotros</span>
                 </button>
                 <p>
-                    FitFusion Store ofrece variedad en productos para personas deportivas que quieran
-                    cambiar su fisico y mejorar su salud.
+                    FitFusion Store ofrece una amplia variedad de productos de alta calidad para satisfacer todas las necesidades de las personas deportivas que desean transformar su físico y alcanzar sus metas de acondicionamiento físico.
                 </p>
             </div>
         </div>
