@@ -158,7 +158,7 @@
                                                     <h1 class="attribute-detail-selected selected-color"
                                                         aria-live="off">
                                                         {{ $nombre }}
-                                                        @if ($categoria != 'EMINENCE' || $categoria != "PROTEINAS")
+                                                        @if ($categoria != 'EMINENCE' && $categoria != "PROTEINAS")
                                                             {{ $color }}
                                                         @endif
                                                     </h1>
@@ -208,7 +208,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($categoria != "EMINENCE" || $categoria != "PROTEINAS")
+                                @if ($categoria != "EMINENCE" && $categoria != "PROTEINAS")
                                 <div class="row attr-type-selecter" data-attr="color">
                                     <div class="col-12">
                                         <div class="attribute">
@@ -247,7 +247,7 @@
                         @endforeach
                             </div>
                         </div>
-                        @if ($categoria != 'EMINENCE' || $categoria != "PROTEINAS")
+                        @if ($categoria != 'EMINENCE' && $categoria != "PROTEINAS")
 
                             <div class="row attr-type-selecter" data-attr="size">
                                 <div class="col-12">
@@ -446,7 +446,7 @@ role="contentinfo">
             var colorValue = document.getElementById("colorValue").value;
 
             console.log(colorValue);
-            if (categoria.value == "EMINENCE" || categoria.value == "PROTEINAS") {
+            if (categoria.value == "EMINENCE" && categoria.value == "PROTEINAS") {
                 document.getElementById("color").value = "NINGUNO";
 
             } else {
@@ -483,7 +483,7 @@ role="contentinfo">
             var color = data['color'];
             var tamaño = data['tamaño'];
             var sessionCliente = data['sessionCliente'];
-            if (categoria == "EMINENCE" || categoria == "PROTEINAS") {
+            if (categoria == "EMINENCE" && categoria == "PROTEINAS") {
                 tamaño = "NINGUNO";
             }
 
