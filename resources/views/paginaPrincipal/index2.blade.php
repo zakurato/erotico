@@ -1,5 +1,6 @@
 <html class="js hydrated shopify-features__smart-payment-buttons--enabled" lang="es"
     style="--announcement-bar-height: 43px; --header-height: 230px;">
+
 <head>
     <!--animaciones-->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -32,6 +33,7 @@
     <!--/ Yoast SEO -->
     <!-- END app app block -->
 </head>
+
 <body class="warehouse--v4 features--animate-zoom template-index" data-instant-intensity="viewport">
     <!-- END sections: header-group -->
     <!-- BEGIN sections: overlay-group -->
@@ -45,7 +47,8 @@
                             data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
                                 class="icon-bar"></span></button>
                         <a href="#" class="header__logo-link">
-                            <img style="height: 70px;" class="header__logo-image" src="images/logo5.jpg?v=1676468577" alt="">
+                            <img style="height: 70px;" class="header__logo-image" src="images/logo5.jpg?v=1676468577"
+                                alt="">
                         </a>
                     </div>
                     <form action="{{ route('index2') }}" method="GET">
@@ -117,217 +120,71 @@
     </div>
     <div style="height: 145px;"></div>
 
-    
+
     @if (isset($imagenPrincipal->imagen))
-    <section class="animacion1">
-        <div id="shopify-section-sections--14562733359167__popups"
-            class="shopify-section shopify-section-group-overlay-group">
-            <div data-section-id="sections--14562733359167__popups" data-section-type="popups"></div>
-        </div>
-        <!-- END sections: overlay-group -->
-        <main id="main" role="main" class="component">
-            <div class="hidden-phone">
-                <img src="images/{{$imagenPrincipal->imagen}}?v=1680025258&amp;width=1920" alt="" width="1920"
-                    height="600" loading="lazy" class="slideshow__image zoom">
+        <section class="animacion1">
+            <div id="shopify-section-sections--14562733359167__popups"
+                class="shopify-section shopify-section-group-overlay-group">
+                <div data-section-id="sections--14562733359167__popups" data-section-type="popups"></div>
             </div>
-            <div class="hidden-tablet-and-up zoom"><img src="images/{{$imagenPrincipal->imagen}}?v=1680025277&amp;width=1200"
-                    alt="" width="1200" height="1080" loading="lazy" class="slideshow__image ">
-            </div>
-            </div>
-            <div id="shopify-section-template--14562732638271__collection-list" class="shopify-section">
-                <section class="section" data-section-id="template--14562732638271__collection-list"
-                    data-section-type="collection-list">
-                </section>
-            </div>
+            <!-- END sections: overlay-group -->
+            <main id="main" role="main" class="component">
+                <div class="hidden-phone">
+                    <img src="images/{{ $imagenPrincipal->imagen }}?v=1680025258&amp;width=1920" alt=""
+                        width="1920" height="600" loading="lazy" class="slideshow__image zoom">
+                </div>
+                <div class="hidden-tablet-and-up zoom"><img
+                        src="images/{{ $imagenPrincipal->imagen }}?v=1680025277&amp;width=1200" alt=""
+                        width="1200" height="1080" loading="lazy" class="slideshow__image ">
+                </div>
+                </div>
+                <div id="shopify-section-template--14562732638271__collection-list" class="shopify-section">
+                    <section class="section" data-section-id="template--14562732638271__collection-list"
+                        data-section-type="collection-list">
+                    </section>
+                </div>
 
                 <section class="section section--text-centered"
                     data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
                     data-section-type="rich-text">
                     <div class="container container--narrow">
-                        <h2 class="heading h1">Tu cuerpo puede resistir todo lo que tu mente le diga que puede.</h2>
+                        <h3 class="heading h1">Tu cuerpo puede resistir todo lo que tu mente le diga que puede.</h3>
                     </div>
                 </section>
 
-    </section>
+        </section>
     @endif
 
 
-
-            {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
-            <section class="py-5">
-                <div class="container px-4 px-lg-5 mt-5">
-                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                        @foreach ($productos as $index => $item)
-                            <form id="miFormulario{{ $item->id }}">
-                                @csrf
-                                <div class="col mb-5" style="padding-top: 70px">
-                                    <div class="card h-100">
-                                        <div id="myCarousel{{ $index }}" class="carousel slide"
-                                            data-ride="carousel">
-                                            <!-- Indicators -->
-                                            <!-- Wrapper for slides -->
-                                            <div class="carousel-inner" id="carousel-inner{{ $item->id }}">
-                                                <div id="selectImagenes{{ $item->id }}" class="item active"
-                                                    file-name="{{ $item->imagen }}">
-                                                    <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                        style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
-                                                </div>
-                                            </div>
-                                            <script>
-                                                //me trae las imagenes del color seleccionado y del producto seleccionado
-                                                $(document).ready(function() {
-                                                    $('#color-select-{{ $item->id }}').change(function() {
-                                                        //console.log($(this));
-                                                        var productId = $(this).attr('id').replace('color-select-', '');
-                                                        var selectedColor = $(this).val();
-                                                        if ($.trim(productId != "")) {
-                                                            $.ajax({
-                                                                url: 'jqImagenes', // aqui va el nombre de la ruta
-                                                                method: 'GET', // el metodo que se usa en la ruta
-                                                                data: {
-                                                                    productId: productId,
-                                                                    selectedColor: selectedColor
-                                                                }, //los parametros enviados
-                                                                dataType: 'json',
-                                                                success: function(response) {
-                                                                    //console.log(response);
-                                                                    var divElement = document.getElementById(
-                                                                        "selectImagenes{{ $item->id }}"); // class item
-                                                                    divElement.innerHTML =
-                                                                        ""; // Limpiar el contenido del div asignando una cadena vacía
-                                                                    var car_element = document.getElementById("carousel-inner" +
-                                                                        productId);
-                                                                    if (response.length == 1) {
-                                                                        divElement.innerHTML = "";
-                                                                        $("#selectImagenes" + productId).append(
-                                                                            "<img onclick=\"showImage('imagesProductos/" + response[
-                                                                                0] +
-                                                                            "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
-                                                                            response[0] + "'>"
-                                                                        );
-                                                                        //coloca la primera opcion
-                                                                        divElement.setAttribute("file-name", response[0]);
-                                                                        var images = car_element.querySelectorAll(".item");
-                                                                        images.forEach((element) => {
-                                                                            if (element.getAttribute("file-name") != response[
-                                                                                    0]) {
-                                                                                element.remove();
-                                                                            } else {
-                                                                                element.classList.add("active");
-                                                                            }
-                                                                        });
-                                                                    } else {
-                                                                        var array_images = [];
-                                                                        response.forEach((image) => {
-                                                                            array_images.push(image);
-                                                                        });
-                                                                        var imageCount = 0;
-                                                                        for (var i = 0; i < response
-                                                                            .length; i++
-                                                                        ) { //me trae las imagenes de la consulta que viene del response
-                                                                            if (response[i] != "formTamañosCantidades") {
-                                                                                if (i == 0) {
-                                                                                    $("#selectImagenes" + productId).append(
-                                                                                        "<img onclick=\"showImage('imagesProductos/" +
-                                                                                        response[i] +
-                                                                                        "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
-                                                                                        response[i] + "'>");
-                                                                                    divElement.setAttribute("file-name", response[i]);
-                                                                                } else {
-                                                                                    var clone = divElement.cloneNode(true);
-                                                                                    clone.firstChild.src = "imagesProductos/" +
-                                                                                        response[i];
-                                                                                    clone.classList.remove("active");
-                                                                                    clone.setAttribute("file-name", response[i]);
-                                                                                    clone.setAttribute("onclick",
-                                                                                        "showImage('imagesProductos/" + response[
-                                                                                            i] + "')");
-                                                                                    car_element.appendChild(clone);
-                                                                                }
-                                                                                var isactive = false;
-                                                                                var images = car_element.querySelectorAll(".item");
-                                                                                images.forEach((element) => {
-                                                                                    if (!array_images.includes(element
-                                                                                            .getAttribute("file-name"))) {
-                                                                                        element.remove();
-                                                                                    } else {
-                                                                                        if (!isactive) {
-                                                                                            element.classList.add("active");
-                                                                                            isactive = true;
-                                                                                        }
-                                                                                    }
-                                                                                });
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            });
-                                                        }
-                                                    });
-                                                });
-                                            </script>
-                                            <!-- Left and right controls -->
-                                            <a class="left carousel-control" href="#myCarousel{{ $index }}"
-                                                data-slide="prev">
-                                                <span class="glyphicon glyphicon-chevron-left"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="right carousel-control" href="#myCarousel{{ $index }}"
-                                                data-slide="next">
-                                                <span class="glyphicon glyphicon-chevron-right"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
+    {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                @foreach ($productos as $index => $item)
+                    <form id="miFormulario{{ $item->id }}">
+                        @csrf
+                        <div class="col mb-5" style="padding-top: 70px">
+                            <div class="card h-100">
+                                <div id="myCarousel{{ $index }}" class="carousel slide" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" id="carousel-inner{{ $item->id }}">
+                                        <div id="selectImagenes{{ $item->id }}" class="item active"
+                                            file-name="{{ $item->imagen }}">
+                                            <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
+                                                style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
                                         </div>
                                     </div>
-                                    <!-- Product details-->
-                                    <div class="card-body p-4">
-                                        <div class="text-center">
-                                            <!-- Product name-->
-                                            <h5 class="fw-bolder nombre">{{ $item->nombre }}</h5>
-                                            <!-- Product price-->
-                                            <h5 class="fw-bolder precio">Precio: ₡{{ $item->precio }}</h5>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <!-- Dependiendo la categoria muestra las opciones-->
-                                    @if ($item->categoria != "EMINENCE")
-                                    <div class="product-item__info-inner">
-                                        <div class="form-group">
-                                            <select class="form-control styleSelect"
-                                                name="color"id="color-select-{{ $item->id }}">
-                                                <option disabled selected>Seleccione el color</option>
-                                                <option>{{ $item->color }}</option>
-                                                <?php $coloresExistentes = []; ?>
-                                                @foreach ($fotos as $item2)
-                                                    @if ($item->id == $item2->idFK && !in_array($item2->color, $coloresExistentes))
-                                                        @if ($item->color != $item2->color)
-                                                            <option>{{ $item2->color }}</option>
-                                                            <?php $coloresExistentes[] = $item2->color; ?>
-                                                        @endif
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="product-item__info-inner">
-                                        <div class="form-group">
-                                            <select
-                                                class="form-control styleSelect"name="tamaño"id="selectTamaños{{ $item->id }}">
-                                                <option disabled selected>Seleccione el tamaño</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    @endif
                                     <script>
-                                        //me trae los tamaños del color seleccionado y del producto seleccionado
+                                        //me trae las imagenes del color seleccionado y del producto seleccionado
                                         $(document).ready(function() {
                                             $('#color-select-{{ $item->id }}').change(function() {
+                                                //console.log($(this));
                                                 var productId = $(this).attr('id').replace('color-select-', '');
                                                 var selectedColor = $(this).val();
-                                                //console.log(selectedColor);
                                                 if ($.trim(productId != "")) {
                                                     $.ajax({
-                                                        url: 'jqTamaños', // aqui va el nombre de la ruta
+                                                        url: 'jqImagenes', // aqui va el nombre de la ruta
                                                         method: 'GET', // el metodo que se usa en la ruta
                                                         data: {
                                                             productId: productId,
@@ -335,255 +192,74 @@
                                                         }, //los parametros enviados
                                                         dataType: 'json',
                                                         success: function(response) {
-                                                            const filteredObj = Object.fromEntries(
-                                                                Object.entries(response).filter(([key, value]) => value !==
-                                                                    'formImagenes')
-                                                            );
-                                                            // Crear un arreglo con los valores filtrados sin que vengan con 'formImagenes'
-                                                            const newArray = Object.values(filteredObj);
-                                                            $("#selectTamaños" + productId)
-                                                                .empty(); //limpia el select de tamaños
-                                                            $("#selectTamaños" + productId).append(
-                                                                "<option value=''>Selecciona el tamaño</option>"
-                                                            ); //coloca la primera opcion
-                                                            for (var i = 0; i < newArray
-                                                                .length; i++
-                                                            ) { //me trae los tamaños de la consulta que viene del response
-                                                                $("#selectTamaños" + productId).append("<option value='" +
-                                                                    newArray[i] + "'>" + newArray[i] + "</option>"
-                                                                ); // Agrega las opciones con los tamaños
-                                                            }
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        });
-                                    </script>
-                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                    <input type="hidden" name="sessionCliente" value="{{ $sessionCliente }}">
-                                    <input type="hidden" name="categoria" value="{{ $item->categoria }}">
-                                    <button style="width: 100%" type="submit" id="botonCarrito{{ $item->id }}"
-                                        class="product-item__action-button button button--small button--primary">Añadir
-                                        al carrito</button>
-                                    <div id="mensajeContainer{{ $item->id }}"></div>
-                                    <script>
-                                        $(document).ready(function() {
-                                            // Asigna un controlador de eventos al botón
-                                            $('#botonCarrito{{ $item->id }}').click(function(e) {
-                                                e.preventDefault(); // Evita que se envíe el formulario por defecto
-                                                // Obtén los datos del formulario
-                                                var formData = $('#miFormulario{{ $item->id }}').serialize();
-                                                console.log(formData);
-                                                // Separar los pares clave-valor por el caracter "&"
-                                                var pairs = formData.split('&');
-                                                // Crear un objeto para almacenar los valores separados
-                                                var data = {};
-                                                // Recorrer los pares clave-valor separados
-                                                for (var i = 0; i < pairs.length; i++) {
-                                                    // Separar cada par en clave y valor
-                                                    var pair = pairs[i].split('=');
-                                                    // Obtener la clave y el valor
-                                                    var key = decodeURIComponent(pair[0]);
-                                                    //console.log(key);
-                                                    var value = decodeURIComponent(pair[1]);
-                                                    // Almacenar el valor en el objeto usando la clave
-                                                    data[key] = value;
-                                                }
-
-                                                // Acceder a los valores separados por clave
-                                                var categoria = data['categoria'];
-                                                var id = data['id'];
-                                                var color = data['color'];
-                                                var tamaño = data['tamaño'];
-                                                var sessionCliente = data['sessionCliente'];
-                                                if(categoria == "EMINENCE"){
-                                                    color = "NINGUNO";
-                                                    tamaño = "NINGUNO";
-                                                }
-
-
-                                                if (color == undefined || tamaño == "") {
-                                                    var mensajeContainer = document.getElementById("mensajeContainer{{ $item->id }}");
-                                                    mensajeContainer.innerHTML =
-                                                        "Debe seleccionar un color y un tamaño"; // limpio el mensajecontainer
-                                                } else {
-                                                    //console.log("color:" + color);
-                                                    //console.log("tamaño:" + tamaño);
-                                                    //console.log(sessionCliente);
-                                                    //console.log("si se selecciono el color");
-                                                    $.ajax({
-                                                        url: 'carritoCompraVerificarCantidad', // aqui va el nombre de la ruta
-                                                        method: 'GET', // el metodo que se usa en la ruta
-                                                        data: {
-                                                            productId: id,
-                                                            selectedColor: color,
-                                                            selectedTamaño: tamaño,
-                                                            sessionCliente: sessionCliente,
-                                                        }, //los parametros enviados
-                                                        dataType: 'json',
-                                                        success: function(response) {
-                                                            //respuesta del controlador 
-                                                            console.log(response.producto.cantidad);
-                                                            console.log(response.foto.cantidad);
-                                                            if (response.producto.cantidad != null) {
-                                                                //console.log("Cantidad de producto tabla producto " + response.producto.cantidad + " del tamaño " + response.producto.tamaño);
-                                                                if (response.producto.cantidad <= 0) {
-                                                                    var mensajeContainer = document.getElementById(
-                                                                        "mensajeContainer{{ $item->id }}");
-                                                                    mensajeContainer.innerHTML =
-                                                                        "No quedan en inventario del tamaño " + response
-                                                                        .producto.tamaño;
-                                                                } else {
-                                                                    var mensajeContainer = document.getElementById(
-                                                                        "mensajeContainer{{ $item->id }}");
-                                                                    mensajeContainer.innerHTML =
-                                                                        ""; // limpio el mensajecontainer
-                                                                    //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
-                                                                    //console.log("Agregar al carrito");
-                                                                    //tabla productos
-                                                                    $.ajax({
-                                                                        url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
-                                                                        method: 'GET', // el metodo que se usa en la ruta
-                                                                        data: {
-                                                                            productId: id,
-                                                                            selectedColor: color,
-                                                                            selectedTamaño: tamaño,
-                                                                            sessionCliente: sessionCliente,
-                                                                        }, //los parametros enviados
-                                                                        dataType: 'json',
-                                                                        success: function(response) {
-                                                                            //console.log(response);
-                                                                            if (response ==
-                                                                                "Si desea sumar mas de este producto entrar al carrito de compra"
-                                                                            ) {
-                                                                                var mensajeContainer = document
-                                                                                    .getElementById(
-                                                                                        "mensajeContainer{{ $item->id }}"
-                                                                                    );
-                                                                                mensajeContainer.innerHTML =
-                                                                                    response; // limpio el mensajecontainer
-                                                                            } else {
-                                                                                var mensajeContainer = document
-                                                                                    .getElementById(
-                                                                                        "mensajeContainer{{ $item->id }}"
-                                                                                    );
-                                                                                mensajeContainer.innerHTML =
-                                                                                    "Se agrego correctamente al carrito"; // limpio el mensajecontainer
-                                                                                var numeroContadorCarrito = document
-                                                                                    .getElementById(
-                                                                                        "contadorCarrito");
-                                                                                var parpadeo2 = document
-                                                                                    .getElementById("parpadeo");
-                                                                                var parpadeo3 = document
-                                                                                    .getElementById("parpadeoDrop");
-                                                                                // Función para actualizar el valor del contador y añadir la clase "parpadeo"
-                                                                                function actualizarContador(
-                                                                                    nuevoValor) {
-                                                                                    numeroContadorCarrito
-                                                                                        .innerHTML = nuevoValor;
-                                                                                    parpadeo2.classList.add(
-                                                                                        "parpadeo");
-                                                                                    parpadeo3.classList.add(
-                                                                                        "parpadeo");
-                                                                                    // Eliminar la clase "parpadeo" después de la animación
-                                                                                    setTimeout(function() {
-                                                                                            parpadeo2.classList
-                                                                                                .remove(
-                                                                                                    "parpadeo");
-                                                                                            parpadeo3.classList
-                                                                                                .remove(
-                                                                                                    "parpadeo");
-                                                                                        },
-                                                                                        6000
-                                                                                    ); // 2s * 3 = 6s (duración total de la animación)
-                                                                                }
-                                                                                // Ejemplo de uso: actualizar el contador con un nuevo valor
-                                                                                var nuevoValor = response;
-                                                                                actualizarContador(nuevoValor);
-                                                                            }
+                                                            //console.log(response);
+                                                            var divElement = document.getElementById(
+                                                                "selectImagenes{{ $item->id }}"); // class item
+                                                            divElement.innerHTML =
+                                                                ""; // Limpiar el contenido del div asignando una cadena vacía
+                                                            var car_element = document.getElementById("carousel-inner" +
+                                                                productId);
+                                                            if (response.length == 1) {
+                                                                divElement.innerHTML = "";
+                                                                $("#selectImagenes" + productId).append(
+                                                                    "<img onclick=\"showImage('imagesProductos/" + response[
+                                                                        0] +
+                                                                    "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                    response[0] + "'>"
+                                                                );
+                                                                //coloca la primera opcion
+                                                                divElement.setAttribute("file-name", response[0]);
+                                                                var images = car_element.querySelectorAll(".item");
+                                                                images.forEach((element) => {
+                                                                    if (element.getAttribute("file-name") != response[
+                                                                            0]) {
+                                                                        element.remove();
+                                                                    } else {
+                                                                        element.classList.add("active");
+                                                                    }
+                                                                });
+                                                            } else {
+                                                                var array_images = [];
+                                                                response.forEach((image) => {
+                                                                    array_images.push(image);
+                                                                });
+                                                                var imageCount = 0;
+                                                                for (var i = 0; i < response
+                                                                    .length; i++
+                                                                ) { //me trae las imagenes de la consulta que viene del response
+                                                                    if (response[i] != "formTamañosCantidades") {
+                                                                        if (i == 0) {
+                                                                            $("#selectImagenes" + productId).append(
+                                                                                "<img onclick=\"showImage('imagesProductos/" +
+                                                                                response[i] +
+                                                                                "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                                response[i] + "'>");
+                                                                            divElement.setAttribute("file-name", response[i]);
+                                                                        } else {
+                                                                            var clone = divElement.cloneNode(true);
+                                                                            clone.firstChild.src = "imagesProductos/" +
+                                                                                response[i];
+                                                                            clone.classList.remove("active");
+                                                                            clone.setAttribute("file-name", response[i]);
+                                                                            clone.setAttribute("onclick",
+                                                                                "showImage('imagesProductos/" + response[
+                                                                                    i] + "')");
+                                                                            car_element.appendChild(clone);
                                                                         }
-                                                                    });
-                                                                }
-                                                            } else if (response.foto.cantidad != null) {
-                                                                //console.log("Cantidad de producto tabla foto " + response.foto.cantidad + " del tamaño " + response.foto.tamaño);
-                                                                if (response.foto.cantidad <= 0) {
-                                                                    //console.log("Debo mandar una variable donde se imprima que no se pudo agregar el producto al carrito");
-                                                                    var mensajeContainer = document.getElementById(
-                                                                        "mensajeContainer{{ $item->id }}");
-                                                                    mensajeContainer.innerHTML =
-                                                                        "No quedan en inventario del tamaño " + response.foto
-                                                                        .tamaño;
-                                                                } else {
-                                                                    var mensajeContainer = document.getElementById(
-                                                                        "mensajeContainer{{ $item->id }}");
-                                                                    mensajeContainer.innerHTML =
-                                                                        ""; // limpio el mensajecontainer
-                                                                    //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
-                                                                    //console.log("Agregar al carrito");
-                                                                    //tabla fotos
-                                                                    $.ajax({
-                                                                        url: 'carritoCompraTablaFotos', // aqui va el nombre de la ruta
-                                                                        method: 'GET', // el metodo que se usa en la ruta
-                                                                        data: {
-                                                                            productId: id,
-                                                                            selectedColor: color,
-                                                                            selectedTamaño: tamaño,
-                                                                            sessionCliente: sessionCliente,
-                                                                        }, //los parametros enviados
-                                                                        dataType: 'json',
-                                                                        success: function(response) {
-                                                                            //respuesta del controlador 
-                                                                            //console.log(response);
-                                                                            if (response ==
-                                                                                "Si desea sumar mas de este producto entrar al carrito de compra"
-                                                                            ) {
-                                                                                var mensajeContainer = document
-                                                                                    .getElementById(
-                                                                                        "mensajeContainer{{ $item->id }}"
-                                                                                    );
-                                                                                mensajeContainer.innerHTML =
-                                                                                    response; // limpio el mensajecontainer
+                                                                        var isactive = false;
+                                                                        var images = car_element.querySelectorAll(".item");
+                                                                        images.forEach((element) => {
+                                                                            if (!array_images.includes(element
+                                                                                    .getAttribute("file-name"))) {
+                                                                                element.remove();
                                                                             } else {
-                                                                                var mensajeContainer = document
-                                                                                    .getElementById(
-                                                                                        "mensajeContainer{{ $item->id }}"
-                                                                                    );
-                                                                                mensajeContainer.innerHTML =
-                                                                                    "Se agrego correctamente al carrito"; // limpio el mensajecontainer
-                                                                                var numeroContadorCarrito = document
-                                                                                    .getElementById(
-                                                                                        "contadorCarrito");
-                                                                                var parpadeo2 = document
-                                                                                    .getElementById("parpadeo");
-                                                                                var parpadeo3 = document
-                                                                                    .getElementById("parpadeoDrop");
-                                                                                // Función para actualizar el valor del contador y añadir la clase "parpadeo"
-                                                                                function actualizarContador(
-                                                                                    nuevoValor) {
-                                                                                    numeroContadorCarrito
-                                                                                        .innerHTML = nuevoValor;
-                                                                                    parpadeo2.classList.add(
-                                                                                        "parpadeo");
-                                                                                    parpadeo3.classList.add(
-                                                                                        "parpadeo");
-                                                                                    // Eliminar la clase "parpadeo" después de la animación
-                                                                                    setTimeout(function() {
-                                                                                            parpadeo2.classList
-                                                                                                .remove(
-                                                                                                    "parpadeo");
-                                                                                            parpadeo3.classList
-                                                                                                .remove(
-                                                                                                    "parpadeo");
-                                                                                        },
-                                                                                        6000
-                                                                                    ); // 2s * 3 = 6s (duración total de la animación)
+                                                                                if (!isactive) {
+                                                                                    element.classList.add("active");
+                                                                                    isactive = true;
                                                                                 }
-                                                                                // Ejemplo de uso: actualizar el contador con un nuevo valor
-                                                                                var nuevoValor = response;
-                                                                                actualizarContador(nuevoValor);
                                                                             }
-                                                                        }
-                                                                    });
+                                                                        });
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -592,13 +268,339 @@
                                             });
                                         });
                                     </script>
+                                    <!-- Left and right controls -->
+                                    <a class="left carousel-control" href="#myCarousel{{ $index }}"
+                                        data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel{{ $index }}"
+                                        data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
                                 </div>
-                            </form>
-                        @endforeach
-                    </div>
-                </div>
-            </section>
-        </section>
+                            </div>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder nombre">{{ $item->nombre }}</h5>
+                                    <!-- Product price-->
+                                    <h5 class="fw-bolder precio">Precio: ₡{{ $item->precio }}</h5>
+                                </div>
+                            </div>
+                            <br>
+                            <!-- Dependiendo la categoria muestra las opciones-->
+                            @if ($item->categoria != 'EMINENCE')
+                                <div class="product-item__info-inner">
+                                    <div class="form-group">
+                                        <select class="form-control styleSelect"
+                                            name="color"id="color-select-{{ $item->id }}">
+                                            <option disabled selected>Seleccione el color</option>
+                                            <option>{{ $item->color }}</option>
+                                            <?php $coloresExistentes = []; ?>
+                                            @foreach ($fotos as $item2)
+                                                @if ($item->id == $item2->idFK && !in_array($item2->color, $coloresExistentes))
+                                                    @if ($item->color != $item2->color)
+                                                        <option>{{ $item2->color }}</option>
+                                                        <?php $coloresExistentes[] = $item2->color; ?>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="product-item__info-inner">
+                                    <div class="form-group">
+                                        <select
+                                            class="form-control styleSelect"name="tamaño"id="selectTamaños{{ $item->id }}">
+                                            <option disabled selected>Seleccione el tamaño</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            @endif
+                            <script>
+                                //me trae los tamaños del color seleccionado y del producto seleccionado
+                                $(document).ready(function() {
+                                    $('#color-select-{{ $item->id }}').change(function() {
+                                        var productId = $(this).attr('id').replace('color-select-', '');
+                                        var selectedColor = $(this).val();
+                                        //console.log(selectedColor);
+                                        if ($.trim(productId != "")) {
+                                            $.ajax({
+                                                url: 'jqTamaños', // aqui va el nombre de la ruta
+                                                method: 'GET', // el metodo que se usa en la ruta
+                                                data: {
+                                                    productId: productId,
+                                                    selectedColor: selectedColor
+                                                }, //los parametros enviados
+                                                dataType: 'json',
+                                                success: function(response) {
+                                                    const filteredObj = Object.fromEntries(
+                                                        Object.entries(response).filter(([key, value]) => value !==
+                                                            'formImagenes')
+                                                    );
+                                                    // Crear un arreglo con los valores filtrados sin que vengan con 'formImagenes'
+                                                    const newArray = Object.values(filteredObj);
+                                                    $("#selectTamaños" + productId)
+                                                        .empty(); //limpia el select de tamaños
+                                                    $("#selectTamaños" + productId).append(
+                                                        "<option value=''>Selecciona el tamaño</option>"
+                                                    ); //coloca la primera opcion
+                                                    for (var i = 0; i < newArray
+                                                        .length; i++
+                                                    ) { //me trae los tamaños de la consulta que viene del response
+                                                        $("#selectTamaños" + productId).append("<option value='" +
+                                                            newArray[i] + "'>" + newArray[i] + "</option>"
+                                                        ); // Agrega las opciones con los tamaños
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    });
+                                });
+                            </script>
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <input type="hidden" name="sessionCliente" value="{{ $sessionCliente }}">
+                            <input type="hidden" name="categoria" value="{{ $item->categoria }}">
+                            <button style="width: 100%" type="submit" id="botonCarrito{{ $item->id }}"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</button>
+                            <div id="mensajeContainer{{ $item->id }}"></div>
+                            <script>
+                                $(document).ready(function() {
+                                    // Asigna un controlador de eventos al botón
+                                    $('#botonCarrito{{ $item->id }}').click(function(e) {
+                                        e.preventDefault(); // Evita que se envíe el formulario por defecto
+                                        // Obtén los datos del formulario
+                                        var formData = $('#miFormulario{{ $item->id }}').serialize();
+                                        console.log(formData);
+                                        // Separar los pares clave-valor por el caracter "&"
+                                        var pairs = formData.split('&');
+                                        // Crear un objeto para almacenar los valores separados
+                                        var data = {};
+                                        // Recorrer los pares clave-valor separados
+                                        for (var i = 0; i < pairs.length; i++) {
+                                            // Separar cada par en clave y valor
+                                            var pair = pairs[i].split('=');
+                                            // Obtener la clave y el valor
+                                            var key = decodeURIComponent(pair[0]);
+                                            //console.log(key);
+                                            var value = decodeURIComponent(pair[1]);
+                                            // Almacenar el valor en el objeto usando la clave
+                                            data[key] = value;
+                                        }
+
+                                        // Acceder a los valores separados por clave
+                                        var categoria = data['categoria'];
+                                        var id = data['id'];
+                                        var color = data['color'];
+                                        var tamaño = data['tamaño'];
+                                        var sessionCliente = data['sessionCliente'];
+                                        if (categoria == "EMINENCE") {
+                                            color = "NINGUNO";
+                                            tamaño = "NINGUNO";
+                                        }
+
+
+                                        if (color == undefined || tamaño == "") {
+                                            var mensajeContainer = document.getElementById("mensajeContainer{{ $item->id }}");
+                                            mensajeContainer.innerHTML =
+                                                "Debe seleccionar un color y un tamaño"; // limpio el mensajecontainer
+                                        } else {
+                                            //console.log("color:" + color);
+                                            //console.log("tamaño:" + tamaño);
+                                            //console.log(sessionCliente);
+                                            //console.log("si se selecciono el color");
+                                            $.ajax({
+                                                url: 'carritoCompraVerificarCantidad', // aqui va el nombre de la ruta
+                                                method: 'GET', // el metodo que se usa en la ruta
+                                                data: {
+                                                    productId: id,
+                                                    selectedColor: color,
+                                                    selectedTamaño: tamaño,
+                                                    sessionCliente: sessionCliente,
+                                                }, //los parametros enviados
+                                                dataType: 'json',
+                                                success: function(response) {
+                                                    //respuesta del controlador 
+                                                    console.log(response.producto.cantidad);
+                                                    console.log(response.foto.cantidad);
+                                                    if (response.producto.cantidad != null) {
+                                                        //console.log("Cantidad de producto tabla producto " + response.producto.cantidad + " del tamaño " + response.producto.tamaño);
+                                                        if (response.producto.cantidad <= 0) {
+                                                            var mensajeContainer = document.getElementById(
+                                                                "mensajeContainer{{ $item->id }}");
+                                                            mensajeContainer.innerHTML =
+                                                                "No quedan en inventario del tamaño " + response
+                                                                .producto.tamaño;
+                                                        } else {
+                                                            var mensajeContainer = document.getElementById(
+                                                                "mensajeContainer{{ $item->id }}");
+                                                            mensajeContainer.innerHTML =
+                                                                ""; // limpio el mensajecontainer
+                                                            //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                                            //console.log("Agregar al carrito");
+                                                            //tabla productos
+                                                            $.ajax({
+                                                                url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                                                method: 'GET', // el metodo que se usa en la ruta
+                                                                data: {
+                                                                    productId: id,
+                                                                    selectedColor: color,
+                                                                    selectedTamaño: tamaño,
+                                                                    sessionCliente: sessionCliente,
+                                                                }, //los parametros enviados
+                                                                dataType: 'json',
+                                                                success: function(response) {
+                                                                    //console.log(response);
+                                                                    if (response ==
+                                                                        "Si desea sumar mas de este producto entrar al carrito de compra"
+                                                                    ) {
+                                                                        var mensajeContainer = document
+                                                                            .getElementById(
+                                                                                "mensajeContainer{{ $item->id }}"
+                                                                            );
+                                                                        mensajeContainer.innerHTML =
+                                                                            response; // limpio el mensajecontainer
+                                                                    } else {
+                                                                        var mensajeContainer = document
+                                                                            .getElementById(
+                                                                                "mensajeContainer{{ $item->id }}"
+                                                                            );
+                                                                        mensajeContainer.innerHTML =
+                                                                            "Se agrego correctamente al carrito"; // limpio el mensajecontainer
+                                                                        var numeroContadorCarrito = document
+                                                                            .getElementById(
+                                                                                "contadorCarrito");
+                                                                        var parpadeo2 = document
+                                                                            .getElementById("parpadeo");
+                                                                        var parpadeo3 = document
+                                                                            .getElementById("parpadeoDrop");
+                                                                        // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                                                        function actualizarContador(
+                                                                            nuevoValor) {
+                                                                            numeroContadorCarrito
+                                                                                .innerHTML = nuevoValor;
+                                                                            parpadeo2.classList.add(
+                                                                                "parpadeo");
+                                                                            parpadeo3.classList.add(
+                                                                                "parpadeo");
+                                                                            // Eliminar la clase "parpadeo" después de la animación
+                                                                            setTimeout(function() {
+                                                                                    parpadeo2.classList
+                                                                                        .remove(
+                                                                                            "parpadeo");
+                                                                                    parpadeo3.classList
+                                                                                        .remove(
+                                                                                            "parpadeo");
+                                                                                },
+                                                                                6000
+                                                                            ); // 2s * 3 = 6s (duración total de la animación)
+                                                                        }
+                                                                        // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                                                        var nuevoValor = response;
+                                                                        actualizarContador(nuevoValor);
+                                                                    }
+                                                                }
+                                                            });
+                                                        }
+                                                    } else if (response.foto.cantidad != null) {
+                                                        //console.log("Cantidad de producto tabla foto " + response.foto.cantidad + " del tamaño " + response.foto.tamaño);
+                                                        if (response.foto.cantidad <= 0) {
+                                                            //console.log("Debo mandar una variable donde se imprima que no se pudo agregar el producto al carrito");
+                                                            var mensajeContainer = document.getElementById(
+                                                                "mensajeContainer{{ $item->id }}");
+                                                            mensajeContainer.innerHTML =
+                                                                "No quedan en inventario del tamaño " + response.foto
+                                                                .tamaño;
+                                                        } else {
+                                                            var mensajeContainer = document.getElementById(
+                                                                "mensajeContainer{{ $item->id }}");
+                                                            mensajeContainer.innerHTML =
+                                                                ""; // limpio el mensajecontainer
+                                                            //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                                            //console.log("Agregar al carrito");
+                                                            //tabla fotos
+                                                            $.ajax({
+                                                                url: 'carritoCompraTablaFotos', // aqui va el nombre de la ruta
+                                                                method: 'GET', // el metodo que se usa en la ruta
+                                                                data: {
+                                                                    productId: id,
+                                                                    selectedColor: color,
+                                                                    selectedTamaño: tamaño,
+                                                                    sessionCliente: sessionCliente,
+                                                                }, //los parametros enviados
+                                                                dataType: 'json',
+                                                                success: function(response) {
+                                                                    //respuesta del controlador 
+                                                                    //console.log(response);
+                                                                    if (response ==
+                                                                        "Si desea sumar mas de este producto entrar al carrito de compra"
+                                                                    ) {
+                                                                        var mensajeContainer = document
+                                                                            .getElementById(
+                                                                                "mensajeContainer{{ $item->id }}"
+                                                                            );
+                                                                        mensajeContainer.innerHTML =
+                                                                            response; // limpio el mensajecontainer
+                                                                    } else {
+                                                                        var mensajeContainer = document
+                                                                            .getElementById(
+                                                                                "mensajeContainer{{ $item->id }}"
+                                                                            );
+                                                                        mensajeContainer.innerHTML =
+                                                                            "Se agrego correctamente al carrito"; // limpio el mensajecontainer
+                                                                        var numeroContadorCarrito = document
+                                                                            .getElementById(
+                                                                                "contadorCarrito");
+                                                                        var parpadeo2 = document
+                                                                            .getElementById("parpadeo");
+                                                                        var parpadeo3 = document
+                                                                            .getElementById("parpadeoDrop");
+                                                                        // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                                                        function actualizarContador(
+                                                                            nuevoValor) {
+                                                                            numeroContadorCarrito
+                                                                                .innerHTML = nuevoValor;
+                                                                            parpadeo2.classList.add(
+                                                                                "parpadeo");
+                                                                            parpadeo3.classList.add(
+                                                                                "parpadeo");
+                                                                            // Eliminar la clase "parpadeo" después de la animación
+                                                                            setTimeout(function() {
+                                                                                    parpadeo2.classList
+                                                                                        .remove(
+                                                                                            "parpadeo");
+                                                                                    parpadeo3.classList
+                                                                                        .remove(
+                                                                                            "parpadeo");
+                                                                                },
+                                                                                6000
+                                                                            ); // 2s * 3 = 6s (duración total de la animación)
+                                                                        }
+                                                                        // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                                                        var nuevoValor = response;
+                                                                        actualizarContador(nuevoValor);
+                                                                    }
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </form>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    </section>
     </div>
     <div id="shopify-section-template--14562732638271__5199ee47-c016-4657-bf0b-bfd73334618b" class="shopify-section">
         <section class="section section--text-centered"
@@ -904,26 +906,29 @@
         <h2 class="section__title heading h3">El mejor artículo de la temporada</h2>
     </header>
 </div>
-@if(isset($productoTemporada->id))
-<div>
-    <div class="container container--flush">
-        <div class="featured-product">
-            <div class="card">
-                <div class="card__section card__section--tight">
-                    <div class="product-gallery product-gallery--with-thumbnails">
-                        <div class="product-gallery__carousel-wrapper">
-                            <div class="product-gallery__carousel product-gallery__carousel--zoomable flickity-enabled is-fade"
-                                data-media-count="20" data-initial-media-id="22584943902783" style="">
-                                <div class="flickity-viewport" style="height: 400px; touch-action: pan-y;">
-                                    <div class="flickity-slider" style="left: 0px; transform: translateX(50%);">
-                                        <div class="product-gallery__carousel-item is-selected" tabindex="-1"
-                                            data-media-id="22584943902783" data-media-type="image"
-                                            style="position: absolute; left: -50%; opacity: 1;">
-                                            <div class="product-gallery__size-limiter" style="max-width: 1000px">
-                                                <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                    <img style="width: 380px; height: 380px;"
-                                                        src="imagesProductos/{{ $productoTemporada->imagen }}"
-                                                        alt="">
+@if (isset($productoTemporada->id))
+    <div>
+        <div class="container container--flush">
+            <div class="featured-product">
+                <div class="card">
+                    <div class="card__section card__section--tight">
+                        <div class="product-gallery product-gallery--with-thumbnails">
+                            <div class="product-gallery__carousel-wrapper">
+                                <div class="product-gallery__carousel product-gallery__carousel--zoomable flickity-enabled is-fade"
+                                    data-media-count="20" data-initial-media-id="22584943902783" style="">
+                                    <div class="flickity-viewport" style="height: 400px; touch-action: pan-y;">
+                                        <div class="flickity-slider"
+                                            style="left: 0px; transform: translateX(50%);">
+                                            <div class="product-gallery__carousel-item is-selected" tabindex="-1"
+                                                data-media-id="22584943902783" data-media-type="image"
+                                                style="position: absolute; left: -50%; opacity: 1;">
+                                                <div class="product-gallery__size-limiter"
+                                                    style="max-width: 1000px">
+                                                    <div class="aspect-ratio" style="padding-bottom: 100.0%">
+                                                        <img style="width: 380px; height: 380px;"
+                                                            src="imagesProductos/{{ $productoTemporada->imagen }}"
+                                                            alt="">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -933,267 +938,268 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card card--collapsed ">
-                <div id="product-zoom-template--14562732638271__featured-product" class="product__zoom-wrapper">
-                </div>
-                <div class="card__section">
-                    <div class="product-meta">
-                        <h3 class="product-meta__title heading h2">
-                            <p>{{ $productoTemporada->nombre }}</p>
-                        </h3>
-                        <hr class="card__separator">
-                        <div class="product-form__info-list">
-                            <div class="product-form__info-item">
-                                <span class="product-form__info-title text--strong">Precio:</span>
-                                <div class="product-form__info-content" role="region" aria-live="polite">
-                                    <div class="price-list"><span class="price">
-                                            <p>₡{{ $productoTemporada->precio }}</p>
+                <div class="card card--collapsed ">
+                    <div id="product-zoom-template--14562732638271__featured-product"
+                        class="product__zoom-wrapper">
+                    </div>
+                    <div class="card__section">
+                        <div class="product-meta">
+                            <h3 class="product-meta__title heading h2">
+                                <p>{{ $productoTemporada->nombre }}</p>
+                            </h3>
+                            <hr class="card__separator">
+                            <div class="product-form__info-list">
+                                <div class="product-form__info-item">
+                                    <span class="product-form__info-title text--strong">Precio:</span>
+                                    <div class="product-form__info-content" role="region" aria-live="polite">
+                                        <div class="price-list"><span class="price">
+                                                <p>₡{{ $productoTemporada->precio }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="product-form__info-item">
-                                <span class="product-form__info-title text--strong">Color:</span>
-                                <div class="product-form__info-content" role="region" aria-live="polite">
-                                    <div class="price-list" id="colorTemporada{{ $productoTemporada->color }}">
-                                        <span class="price">
-                                            <p>{{ $productoTemporada->color }}</p>
+                                <div class="product-form__info-item">
+                                    <span class="product-form__info-title text--strong">Color:</span>
+                                    <div class="product-form__info-content" role="region" aria-live="polite">
+                                        <div class="price-list"
+                                            id="colorTemporada{{ $productoTemporada->color }}">
+                                            <span class="price">
+                                                <p>{{ $productoTemporada->color }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="product-form__info-item">
-                                <span class="product-form__info-title text--strong">Tamaño:</span>
-                                <div class="product-form__info-content" role="region" aria-live="polite">
-                                    <div id="tamañoTemporada{{ $productoTemporada->tamaño }}" class="price-list">
-                                        <span class="price">
-                                            <p>{{ $productoTemporada->tamaño }}</p>
+                                <div class="product-form__info-item">
+                                    <span class="product-form__info-title text--strong">Tamaño:</span>
+                                    <div class="product-form__info-content" role="region" aria-live="polite">
+                                        <div id="tamañoTemporada{{ $productoTemporada->tamaño }}"
+                                            class="price-list">
+                                            <span class="price">
+                                                <p>{{ $productoTemporada->tamaño }}</p>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="product-form__info-item product-form__info-item--quantity">
+                                    <label for="template--14562732638271__featured-product-7064984518719-quantity"
+                                        class="product-form__info-title text--strong">Descripción:
+                                        <p>{{ $productoTemporada->descripcion }}</p>
+                                    </label>
+                                </div>
                             </div>
-                            <div class="product-form__info-item product-form__info-item--quantity">
-                                <label for="template--14562732638271__featured-product-7064984518719-quantity"
-                                    class="product-form__info-title text--strong">Descripción:
-                                    <p>{{ $productoTemporada->descripcion }}</p>
-                                </label>
-                            </div>
+                            <button style="width: 100%" type="submit"
+                                id="botonCarritoTemporada{{ $productoTemporada->id }}"
+                                class="product-item__action-button button button--small button--primary">Añadir
+                                al carrito</button>
+                            <br><br>
+                            <input id="session{{ $sessionCliente }}" type="hidden" name="sessionCliente"
+                                value="{{ $sessionCliente }}">
+                            <div id="mensajeContainer2{{ $productoTemporada->id }}"></div>
                         </div>
-                        <button style="width: 100%" type="submit"
-                            id="botonCarritoTemporada{{ $productoTemporada->id }}"
-                            class="product-item__action-button button button--small button--primary">Añadir
-                            al carrito</button>
-                        <br><br>
-                        <input id="session{{ $sessionCliente }}" type="hidden" name="sessionCliente"
-                            value="{{ $sessionCliente }}">
-                        <div id="mensajeContainer2{{ $productoTemporada->id }}"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    $(document).ready(function() {
-        $("#botonCarritoTemporada{{ $productoTemporada->id }}").click(function() {
-            console.log("estoy aqui");
-            var elementId = document.getElementById("mensajeContainer2{{ $productoTemporada->id }}");
-            var id = elementId.id; // Get the ID attribute of the element
-            id = id.replace("mensajeContainer2", ""); // Remove the prefix
-            var elementColor = document.getElementById(
-            "colorTemporada{{ $productoTemporada->color }}");
-            var color = elementColor.id; // Get the ID attribute of the element
-            color = color.replace("colorTemporada", ""); // Remove the prefix
-            var elementTamaño = document.getElementById(
-                "tamañoTemporada{{ $productoTemporada->tamaño }}");
-            var tamaño = elementTamaño.id; // Get the ID attribute of the element
-            tamaño = tamaño.replace("tamañoTemporada", ""); // Remove the prefix
-            var elementSession = document.getElementById("session{{ $sessionCliente }}");
-            var sessionCliente = elementSession.id; // Get the ID attribute of the element
-            sessionCliente = sessionCliente.replace("session", ""); // Remove the prefix
-            $.ajax({
-                url: 'carritoCompraVerificarCantidad', // aqui va el nombre de la ruta
-                method: 'GET', // el metodo que se usa en la ruta
-                data: {
-                    productId: id,
-                    selectedColor: color,
-                    selectedTamaño: tamaño,
-                    sessionCliente: sessionCliente,
-                }, //los parametros enviados
-                dataType: 'json',
-                success: function(response) {
-                    //arreglar
-                    //respuesta del controlador 
-                    console.log(response.producto.cantidad);
-                    console.log(response.foto.cantidad);
-                    if (response.producto.cantidad != null) {
-                        console.log("Cantidad de producto tabla producto " + response
-                            .producto.cantidad + " del tamaño " + response.producto
-                            .tamaño);
-                        if (response.producto.cantidad <= 0) {
-                            var mensajeContainer = document.getElementById(
-                                "mensajeContainer2{{ $productoTemporada->id }}");
-                            mensajeContainer.innerHTML =
-                                "No quedan en inventario del tamaño " + response
-                                .producto.tamaño;
-                        } else {
-                            var mensajeContainer = document.getElementById(
-                                "mensajeContainer2{{ $productoTemporada->id }}");
-                            mensajeContainer.innerHTML = ""; // limpio el mensajecontainer
-                            //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
-                            //console.log("Agregar al carrito");
-                            //tabla productos
-                            $.ajax({
-                                url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
-                                method: 'GET', // el metodo que se usa en la ruta
-                                data: {
-                                    productId: id,
-                                    selectedColor: color,
-                                    selectedTamaño: tamaño,
-                                    sessionCliente: sessionCliente,
-                                }, //los parametros enviados
-                                dataType: 'json',
-                                success: function(response) {
-                                    //console.log(response);
-                                    if (response ==
-                                        "Si desea sumar mas de este producto entrar al carrito de compra"
-                                    ) {
-                                        var mensajeContainer = document
-                                            .getElementById(
-                                                "mensajeContainer2{{ $productoTemporada->id }}"
-                                            );
-                                        mensajeContainer.innerHTML =
-                                            response; // limpio el mensajecontainer
-                                    } else {
-                                        var mensajeContainer = document
-                                            .getElementById(
-                                                "mensajeContainer2{{ $productoTemporada->id }}"
-                                            );
-                                        mensajeContainer.innerHTML =
-                                            "Se agrego correctamente al carrito"; // limpio el mensajecontainer
-                                        var numeroContadorCarrito = document
-                                            .getElementById(
-                                                "contadorCarrito");
-                                        var parpadeo2 = document
-                                            .getElementById("parpadeo");
-                                        var parpadeo3 = document
-                                            .getElementById("parpadeoDrop");
-                                        // Función para actualizar el valor del contador y añadir la clase "parpadeo"
-                                        function actualizarContador(
-                                            nuevoValor) {
-                                            numeroContadorCarrito
-                                                .innerHTML = nuevoValor;
-                                            parpadeo2.classList.add(
-                                                "parpadeo");
-                                            parpadeo3.classList.add(
-                                                "parpadeo");
-                                            // Eliminar la clase "parpadeo" después de la animación
-                                            setTimeout(function() {
-                                                    parpadeo2.classList
-                                                        .remove(
-                                                            "parpadeo");
-                                                    parpadeo3.classList
-                                                        .remove(
-                                                            "parpadeo");
-                                                },
-                                                6000
-                                            ); // 2s * 3 = 6s (duración total de la animación)
+    <script>
+        $(document).ready(function() {
+            $("#botonCarritoTemporada{{ $productoTemporada->id }}").click(function() {
+                console.log("estoy aqui");
+                var elementId = document.getElementById("mensajeContainer2{{ $productoTemporada->id }}");
+                var id = elementId.id; // Get the ID attribute of the element
+                id = id.replace("mensajeContainer2", ""); // Remove the prefix
+                var elementColor = document.getElementById(
+                    "colorTemporada{{ $productoTemporada->color }}");
+                var color = elementColor.id; // Get the ID attribute of the element
+                color = color.replace("colorTemporada", ""); // Remove the prefix
+                var elementTamaño = document.getElementById(
+                    "tamañoTemporada{{ $productoTemporada->tamaño }}");
+                var tamaño = elementTamaño.id; // Get the ID attribute of the element
+                tamaño = tamaño.replace("tamañoTemporada", ""); // Remove the prefix
+                var elementSession = document.getElementById("session{{ $sessionCliente }}");
+                var sessionCliente = elementSession.id; // Get the ID attribute of the element
+                sessionCliente = sessionCliente.replace("session", ""); // Remove the prefix
+                $.ajax({
+                    url: 'carritoCompraVerificarCantidad', // aqui va el nombre de la ruta
+                    method: 'GET', // el metodo que se usa en la ruta
+                    data: {
+                        productId: id,
+                        selectedColor: color,
+                        selectedTamaño: tamaño,
+                        sessionCliente: sessionCliente,
+                    }, //los parametros enviados
+                    dataType: 'json',
+                    success: function(response) {
+                        //arreglar
+                        //respuesta del controlador 
+                        console.log(response.producto.cantidad);
+                        console.log(response.foto.cantidad);
+                        if (response.producto.cantidad != null) {
+                            console.log("Cantidad de producto tabla producto " + response
+                                .producto.cantidad + " del tamaño " + response.producto
+                                .tamaño);
+                            if (response.producto.cantidad <= 0) {
+                                var mensajeContainer = document.getElementById(
+                                    "mensajeContainer2{{ $productoTemporada->id }}");
+                                mensajeContainer.innerHTML =
+                                    "No quedan en inventario del tamaño " + response
+                                    .producto.tamaño;
+                            } else {
+                                var mensajeContainer = document.getElementById(
+                                    "mensajeContainer2{{ $productoTemporada->id }}");
+                                mensajeContainer.innerHTML = ""; // limpio el mensajecontainer
+                                //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                //console.log("Agregar al carrito");
+                                //tabla productos
+                                $.ajax({
+                                    url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                    method: 'GET', // el metodo que se usa en la ruta
+                                    data: {
+                                        productId: id,
+                                        selectedColor: color,
+                                        selectedTamaño: tamaño,
+                                        sessionCliente: sessionCliente,
+                                    }, //los parametros enviados
+                                    dataType: 'json',
+                                    success: function(response) {
+                                        //console.log(response);
+                                        if (response ==
+                                            "Si desea sumar mas de este producto entrar al carrito de compra"
+                                        ) {
+                                            var mensajeContainer = document
+                                                .getElementById(
+                                                    "mensajeContainer2{{ $productoTemporada->id }}"
+                                                );
+                                            mensajeContainer.innerHTML =
+                                                response; // limpio el mensajecontainer
+                                        } else {
+                                            var mensajeContainer = document
+                                                .getElementById(
+                                                    "mensajeContainer2{{ $productoTemporada->id }}"
+                                                );
+                                            mensajeContainer.innerHTML =
+                                                "Se agrego correctamente al carrito"; // limpio el mensajecontainer
+                                            var numeroContadorCarrito = document
+                                                .getElementById(
+                                                    "contadorCarrito");
+                                            var parpadeo2 = document
+                                                .getElementById("parpadeo");
+                                            var parpadeo3 = document
+                                                .getElementById("parpadeoDrop");
+                                            // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                            function actualizarContador(
+                                                nuevoValor) {
+                                                numeroContadorCarrito
+                                                    .innerHTML = nuevoValor;
+                                                parpadeo2.classList.add(
+                                                    "parpadeo");
+                                                parpadeo3.classList.add(
+                                                    "parpadeo");
+                                                // Eliminar la clase "parpadeo" después de la animación
+                                                setTimeout(function() {
+                                                        parpadeo2.classList
+                                                            .remove(
+                                                                "parpadeo");
+                                                        parpadeo3.classList
+                                                            .remove(
+                                                                "parpadeo");
+                                                    },
+                                                    6000
+                                                ); // 2s * 3 = 6s (duración total de la animación)
+                                            }
+                                            // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                            var nuevoValor = response;
+                                            actualizarContador(nuevoValor);
                                         }
-                                        // Ejemplo de uso: actualizar el contador con un nuevo valor
-                                        var nuevoValor = response;
-                                        actualizarContador(nuevoValor);
                                     }
-                                }
-                            });
-                        }
-                    } else if (response.foto.cantidad != null) {
-                        console.log("Cantidad de producto tabla foto " + response.foto
-                            .cantidad + " del tamaño " + response.foto.tamaño);
-                        if (response.foto.cantidad <= 0) {
-                            console.log(
-                                "Debo mandar una variable donde se imprima que no se pudo agregar el producto al carrito"
-                            );
-                            var mensajeContainer = document.getElementById(
-                                "mensajeContainer2{{ $productoTemporada->id }}");
-                            mensajeContainer.innerHTML =
-                                "No quedan en inventario del tamaño " + response.foto
-                                .tamaño;
-                        } else {
-                            var mensajeContainer = document.getElementById(
-                                "mensajeContainer2{{ $productoTemporada->id }}");
-                            mensajeContainer.innerHTML = ""; // limpio el mensajecontainer
-                            //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
-                            //console.log("Agregar al carrito");
-                            //tabla fotos
-                            $.ajax({
-                                url: 'carritoCompraTablaFotos', // aqui va el nombre de la ruta
-                                method: 'GET', // el metodo que se usa en la ruta
-                                data: {
-                                    productId: id,
-                                    selectedColor: color,
-                                    selectedTamaño: tamaño,
-                                    sessionCliente: sessionCliente,
-                                }, //los parametros enviados
-                                dataType: 'json',
-                                success: function(response) {
-                                    //respuesta del controlador 
-                                    console.log(response);
-                                    if (response ==
-                                        "Si desea sumar mas de este producto entrar al carrito de compra"
-                                    ) {
-                                        var mensajeContainer = document
-                                            .getElementById(
-                                                "mensajeContainer2{{ $productoTemporada->id }}"
-                                            );
-                                        mensajeContainer.innerHTML =
-                                            response; // limpio el mensajecontainer
-                                    } else {
-                                        var mensajeContainer = document
-                                            .getElementById(
-                                                "mensajeContainer2{{ $productoTemporada->id }}"
-                                            );
-                                        mensajeContainer.innerHTML =
-                                            "Se agrego correctamente al carrito"; // limpio el mensajecontainer
-                                        var numeroContadorCarrito = document
-                                            .getElementById(
-                                                "contadorCarrito");
-                                        var parpadeo2 = document
-                                            .getElementById("parpadeo");
-                                        var parpadeo3 = document
-                                            .getElementById("parpadeoDrop");
-                                        // Función para actualizar el valor del contador y añadir la clase "parpadeo"
-                                        function actualizarContador(
-                                            nuevoValor) {
-                                            numeroContadorCarrito
-                                                .innerHTML = nuevoValor;
-                                            parpadeo2.classList.add(
-                                                "parpadeo");
-                                            parpadeo3.classList.add(
-                                                "parpadeo");
-                                            // Eliminar la clase "parpadeo" después de la animación
-                                            setTimeout(function() {
-                                                    parpadeo2.classList
-                                                        .remove(
-                                                            "parpadeo");
-                                                    parpadeo3.classList
-                                                        .remove(
-                                                            "parpadeo");
-                                                },
-                                                6000
-                                            ); // 2s * 3 = 6s (duración total de la animación)
+                                });
+                            }
+                        } else if (response.foto.cantidad != null) {
+                            console.log("Cantidad de producto tabla foto " + response.foto
+                                .cantidad + " del tamaño " + response.foto.tamaño);
+                            if (response.foto.cantidad <= 0) {
+                                console.log(
+                                    "Debo mandar una variable donde se imprima que no se pudo agregar el producto al carrito"
+                                );
+                                var mensajeContainer = document.getElementById(
+                                    "mensajeContainer2{{ $productoTemporada->id }}");
+                                mensajeContainer.innerHTML =
+                                    "No quedan en inventario del tamaño " + response.foto
+                                    .tamaño;
+                            } else {
+                                var mensajeContainer = document.getElementById(
+                                    "mensajeContainer2{{ $productoTemporada->id }}");
+                                mensajeContainer.innerHTML = ""; // limpio el mensajecontainer
+                                //enviar a otro ajax donde me guarde el articulo y tambien se sume el carrito del usuario
+                                //console.log("Agregar al carrito");
+                                //tabla fotos
+                                $.ajax({
+                                    url: 'carritoCompraTablaFotos', // aqui va el nombre de la ruta
+                                    method: 'GET', // el metodo que se usa en la ruta
+                                    data: {
+                                        productId: id,
+                                        selectedColor: color,
+                                        selectedTamaño: tamaño,
+                                        sessionCliente: sessionCliente,
+                                    }, //los parametros enviados
+                                    dataType: 'json',
+                                    success: function(response) {
+                                        //respuesta del controlador 
+                                        console.log(response);
+                                        if (response ==
+                                            "Si desea sumar mas de este producto entrar al carrito de compra"
+                                        ) {
+                                            var mensajeContainer = document
+                                                .getElementById(
+                                                    "mensajeContainer2{{ $productoTemporada->id }}"
+                                                );
+                                            mensajeContainer.innerHTML =
+                                                response; // limpio el mensajecontainer
+                                        } else {
+                                            var mensajeContainer = document
+                                                .getElementById(
+                                                    "mensajeContainer2{{ $productoTemporada->id }}"
+                                                );
+                                            mensajeContainer.innerHTML =
+                                                "Se agrego correctamente al carrito"; // limpio el mensajecontainer
+                                            var numeroContadorCarrito = document
+                                                .getElementById(
+                                                    "contadorCarrito");
+                                            var parpadeo2 = document
+                                                .getElementById("parpadeo");
+                                            var parpadeo3 = document
+                                                .getElementById("parpadeoDrop");
+                                            // Función para actualizar el valor del contador y añadir la clase "parpadeo"
+                                            function actualizarContador(
+                                                nuevoValor) {
+                                                numeroContadorCarrito
+                                                    .innerHTML = nuevoValor;
+                                                parpadeo2.classList.add(
+                                                    "parpadeo");
+                                                parpadeo3.classList.add(
+                                                    "parpadeo");
+                                                // Eliminar la clase "parpadeo" después de la animación
+                                                setTimeout(function() {
+                                                        parpadeo2.classList
+                                                            .remove(
+                                                                "parpadeo");
+                                                        parpadeo3.classList
+                                                            .remove(
+                                                                "parpadeo");
+                                                    },
+                                                    6000
+                                                ); // 2s * 3 = 6s (duración total de la animación)
+                                            }
+                                            // Ejemplo de uso: actualizar el contador con un nuevo valor
+                                            var nuevoValor = response;
+                                            actualizarContador(nuevoValor);
                                         }
-                                        // Ejemplo de uso: actualizar el contador con un nuevo valor
-                                        var nuevoValor = response;
-                                        actualizarContador(nuevoValor);
                                     }
-                                }
-                            });
+                                });
+                            }
                         }
                     }
-                }
+                });
             });
         });
-    });
-</script>
-
+    </script>
 @endif
 <form id="miFormularioImage" action="{{ route('descriccionProducto') }}" method="GET">
     <input type="hidden" id="imagenInput" name="imagen" value="">
@@ -1222,7 +1228,9 @@
                                 <span>Acerca de nosotros</span>
                             </button>
                             <p>
-                                FitFusion Store ofrece una amplia variedad de productos de alta calidad para satisfacer todas las necesidades de las personas deportivas que desean transformar su físico y alcanzar sus metas de acondicionamiento físico.
+                                FitFusion Store ofrece una amplia variedad de productos de alta calidad para
+                                satisfacer todas las necesidades de las personas deportivas que desean transformar
+                                su físico y alcanzar sus metas de acondicionamiento físico.
                             </p>
                         </div>
                     </div>
@@ -1241,8 +1249,8 @@
                                         </svg></a>
                                 </li>
                                 <li class="social-media__item social-media__item--instagram">
-                                    <a href="https://www.instagram.com" target="_blank"
-                                        rel="noopener" aria-label="Síguenos en Instagram"
+                                    <a href="https://www.instagram.com" target="_blank" rel="noopener"
+                                        aria-label="Síguenos en Instagram"
                                         aria-describedby="a11y-new-window-message"><svg focusable="false"
                                             class="icon icon--instagram " role="presentation"
                                             viewBox="0 0 30 30">
@@ -1323,4 +1331,5 @@
         document.getElementById('miFormularioImage').submit();
     }
 </script>
+
 </html>
