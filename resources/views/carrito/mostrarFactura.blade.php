@@ -332,7 +332,7 @@
                                     </svg></a>
                             </li>
                             <li class="social-media__item social-media__item--whatsapp">
-                                <a href="https://wa.me/50687249099?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
+                                <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
                                     target="_blank" rel="noopener" aria-label="Síguenos en Instagram"
                                     aria-describedby="a11y-new-window-message"><svg focusable="false" class="icon"
                                         role="presentation" viewBox="2 1 21 21">

@@ -459,7 +459,7 @@
                                                                     //console.log("Agregar al carrito");
                                                                     //tabla productos
                                                                     $.ajax({
-                                                                        url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                                                        url: 'http://localhost/erotico/public/carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                                                         method: 'GET', // el metodo que se usa en la ruta
                                                                         data: {
                                                                             productId: id,
@@ -907,7 +907,7 @@
                 </svg></a>
         </li>
         <li class="social-media__item social-media__item--whatsapp">
-            <a href="https://wa.me/50687249099?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
+            <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
                 target="_blank" rel="noopener" aria-label="Síguenos en Instagram"
                 aria-describedby="a11y-new-window-message"><svg focusable="false" class="icon"
                     role="presentation" viewBox="2 1 21 21">
@@ -1059,7 +1059,7 @@
                             //console.log("Agregar al carrito");
                             //tabla productos
                             $.ajax({
-                                url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                url: 'http://localhost/erotico/public/carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                 method: 'GET', // el metodo que se usa en la ruta
                                 data: {
                                     productId: id,
@@ -1269,7 +1269,7 @@
                                         </svg></a>
                                 </li>
                                 <li class="social-media__item social-media__item--whatsapp">
-                                    <a href="https://wa.me/50687249099?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
+                                    <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
                                         target="_blank" rel="noopener" aria-label="Síguenos en Instagram"
                                         aria-describedby="a11y-new-window-message"><svg focusable="false"
                                             class="icon" role="presentation" viewBox="2 1 21 21">
@@ -1289,7 +1289,7 @@
                 </div>
             </div>
         </footer>
-        <a href="https://wa.me/50687249099?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
+        <a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
             target="_blank" rel="noopener" aria-describedby="a11y-new-window-message">
             <div class="wa__btn_popup" style="left: unset; right: 25px; bottom:35px;">
                 <p>

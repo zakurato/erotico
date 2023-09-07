@@ -371,7 +371,7 @@
                         </div>
                         <br>
                         <h1 style="font: 28px Arial">Metodo de pago <strong> SINPE MÓVIL o transferencia bancaria. </strong> </h1>
-                        <h1 style="font: 20px Arial">Teléfono SINPE MÓVIL: 87249099</h1>
+                        <h1 style="font: 20px Arial">Teléfono SINPE MÓVIL: 60168568</h1>
                         <h1 style="font: 20px Arial">Cuenta tranferencia: CR86015101220010656228</h1>
 
 
@@ -539,7 +539,7 @@ role="contentinfo">
 </div>
 </footer>
 
-<a href="https://wa.me/50687249099?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
+<a href="https://wa.me/50660168568?text=¿Me%20gustaría%20consultar%20sobre%20un%20producto%3F"
 target="_blank" rel="noopener"
 aria-describedby="a11y-new-window-message">
 <div class="wa__btn_popup" style="left: unset; right: 25px; bottom:35px;">
