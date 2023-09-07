@@ -292,7 +292,7 @@
                             </div>
                             <br>
                             <!-- Dependiendo la categoria muestra las opciones-->
-                            @if ($item->categoria != 'EMINENCE')
+                            @if ($item->categoria != 'EMINENCE' || $item->categoria != 'PROTEINAS')
                                 <div class="product-item__info-inner">
                                     <div class="form-group">
                                         <select class="form-control styleSelect"
@@ -398,7 +398,7 @@
                                         var color = data['color'];
                                         var tamaño = data['tamaño'];
                                         var sessionCliente = data['sessionCliente'];
-                                        if (categoria == "EMINENCE") {
+                                        if (categoria == "EMINENCE" || categoria == "PROTEINAS") {
                                             color = "NINGUNO";
                                             tamaño = "NINGUNO";
                                         }
