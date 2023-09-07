@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Carrito Compras MagicSexShop</title>
+    <title>Carrito Compras FitFusion Store</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="{{ asset('carrito/carritoForm.Css') }}?v={{ time() }}" type="text/css"
@@ -73,7 +73,7 @@
                                             <!-- cart products detailed -->
                                             <div class="card card_trans mb-3">
                                                 <div class="card-header" style="font: 17px Arial">
-                                                    Carrito MagicSexShop Producto({{ $ContadorProducto }}) <div
+                                                    Carrito FitFusion Store Producto({{ $ContadorProducto }}) <div
                                                         style="display: inline-block; margin-left: 90%; margin-bottom: 15px">
                                                         <a ref="#" id="basurero{{ $item->id }}">
                                                             <i class="fa-solid fa-trash-can fa-xl"
@@ -510,10 +510,8 @@ role="contentinfo">
                     <span>Acerca de nosotros</span>
                 </button>
                 <p>
-                    MagicSexShop ofrece variedad en Juguetes para Adultos,Lencería, Lubricantes y
-                    Accesorios.
-                    Ventas al por mayor.
-                    100% Discreción.
+                    FitFusion Store ofrece variedad en productos para personas deportivas que quieran cambiar
+                    su físico y mejorar su salud.
                 </p>
             </div>
         </div>
@@ -535,7 +533,7 @@ role="contentinfo">
         </aside>
         <br><br>
         <div>
-            <p style="color: white !important">© 2023 MagicSexShop</p>
+            <p style="color: white !important">© 2023 FitFusion Store</p>
         </div>
     </div>
 </div>

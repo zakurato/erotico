@@ -63,10 +63,7 @@
                             <span>Acerca de nosotros</span>
                         </button>
                         <p>
-                            MagicSexShop ofrece variedad en Juguetes para Adultos,Lencería, Lubricantes y
-                            Accesorios.
-                            Ventas al por mayor.
-                            100% Discreción.
+                            FitFusion Store ofrece variedad en productos para personas deportivas que quieran cambiar su fisico y mejorar su salud.
                         </p>
                     </div>
                 </div>
@@ -85,7 +82,7 @@
                                     </svg></a>
                             </li>
                             <li class="social-media__item social-media__item--instagram">
-                                <a href="https://www.instagram.com/magicsexshop27/?hl=es" target="_blank" rel="noopener"
+                                <a href="https://www.instagram.com" target="_blank" rel="noopener"
                                     aria-label="Síguenos en Instagram" aria-describedby="a11y-new-window-message"><svg
                                         focusable="false" class="icon icon--instagram " role="presentation"
                                         viewBox="0 0 30 30">
@@ -110,7 +107,7 @@
                 </aside>
                 <br><br>
                 <div>
-                    <p style="color: white !important">© 2023 MagicSexShop</p>
+                    <p style="color: white !important">© 2023 FitFusion Store</p>
                 </div>
             </div>
         </div>

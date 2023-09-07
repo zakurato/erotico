@@ -17,14 +17,14 @@
     <meta name="theme-color" content="#000000">
     <!-- BEGIN app block: shopify://apps/yoast-seo-seo-for-everyone/blocks/metatags/7c777011-bc88-4743-a24e-64336e1e5b46 -->
     <!-- This site is optimized with Yoast SEO for Shopify -->
-    <title>MagicSexShop</title>
+    <title>FitFusion Store</title>
     <meta name="description"
         content="La mejor Tienda De Productos Para Adultos Chat Con Asesora Gratis. Envíos 100% discretos, Enviamos a todo el país.">
-    <meta property="og:site_name" content="MagicSexShop - Sex Shop Online">
-    <meta property="og:url" content="https://www.magicsexshop.com/">
+    <meta property="og:site_name" content="FitFusion Store">
+    <meta property="og:url" content="https://www.FitFusionStore.com/">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="La mejor Tienda MagicSexShop">
+    <meta property="og:title" content="La mejor Tienda FitFusion Store">
     <meta property="og:description" content="La mejor Tienda De Productos Para Adultos">
     <meta property="og:image" content="">
     <meta property="og:image:height" content="628">
@@ -898,7 +898,7 @@
                 </svg></a>
         </li>
         <li class="social-media__item social-media__item--instagram">
-            <a href="https://www.instagram.com/magicsexshop27/?hl=es" target="_blank" rel="noopener"
+            <a href="https://www.instagram.com" target="_blank" rel="noopener"
                 aria-label="Síguenos en Instagram" aria-describedby="a11y-new-window-message"><svg
                     focusable="false" class="icon icon--instagram " role="presentation" viewBox="0 0 30 30">
                     <path
@@ -1239,10 +1239,7 @@
                                 <span>Acerca de nosotros</span>
                             </button>
                             <p>
-                                MagicSexShop ofrece variedad en Juguetes para Adultos,Lencería, Lubricantes y
-                                Accesorios.
-                                Ventas al por mayor.
-                                100% Discreción.
+                                FitFusion Store ofrece variedad en productos para personas deportivas que quieran cambiar su fisico y mejorar su salud.
                             </p>
                         </div>
                     </div>
@@ -1261,7 +1258,7 @@
                                         </svg></a>
                                 </li>
                                 <li class="social-media__item social-media__item--instagram">
-                                    <a href="https://www.instagram.com/magicsexshop27/?hl=es" target="_blank"
+                                    <a href="https://www.instagram.com" target="_blank"
                                         rel="noopener" aria-label="Síguenos en Instagram"
                                         aria-describedby="a11y-new-window-message"><svg focusable="false"
                                             class="icon icon--instagram " role="presentation"
@@ -1287,7 +1284,7 @@
                     </aside>
                     <br><br>
                     <div>
-                        <p style="color: white !important">© 2023 MagicSexShop</p>
+                        <p style="color: white !important">© 2023 FitFusion Store</p>
                     </div>
                 </div>
             </div>

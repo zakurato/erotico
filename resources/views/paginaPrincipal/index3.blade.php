@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Descripción del producto MagixSexShop</title>
+    <title>Descripción del producto FitFusion Store</title>
     <!--este style no se quita-->
     <link rel="stylesheet" href="{{ asset('index/index3.Css') }}?v={{ time() }}">
     <!--mis css-->
@@ -326,10 +326,7 @@ class="shopify-section shopify-section-group-footer-group">
                         <span>Acerca de nosotros</span>
                     </button>
                     <p>
-                        MagicSexShop ofrece variedad en Juguetes para Adultos,Lencería, Lubricantes y
-                        Accesorios.
-                        Ventas al por mayor.
-                        100% Discreción.
+                        FitFusion Store ofrece variedad en productos para personas deportivas que quieran cambiar su fisico y mejorar su salud.
                     </p>
                 </div>
             </div>
@@ -348,7 +345,7 @@ class="shopify-section shopify-section-group-footer-group">
                                 </svg></a>
                         </li>
                         <li class="social-media__item social-media__item--instagram">
-                            <a href="https://www.instagram.com/magicsexshop27/?hl=es" target="_blank"
+                            <a href="https://www.instagram.com" target="_blank"
                                 rel="noopener" aria-label="Síguenos en Instagram"
                                 aria-describedby="a11y-new-window-message" style="color: #337AB6"><svg
                                     focusable="false" class="icon icon--instagram " role="presentation"
@@ -375,7 +372,7 @@ class="shopify-section shopify-section-group-footer-group">
             </aside>
             <br><br>
             <div>
-                <p style="color: white !important">© 2023 MagicSexShop</p>
+                <p style="color: white !important">© 2023 FitFusion Store</p>
             </div>
         </div>
     </div>

@@ -66,7 +66,7 @@
     <tbody>
         <tr>
             <th scope="row" style="font: 30px Arial">
-                MagicSexShop
+                FitFusion Store
             </th>
         </tr>
         <tr>
