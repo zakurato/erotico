@@ -50,9 +50,9 @@
                                 alt="">
                         </a>
                     </div>
-                    <form action="http://localhost/erotico/public/index2" method="GET">
+                    <form action="http://54.89.124.204/index2" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
-                            <a href="http://localhost/erotico/public/carritoCompras">
+                            <a href="http://54.89.124.204/carritoCompras">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
                                         <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
@@ -536,7 +536,7 @@ role="contentinfo">
                                 //console.log("Agregar al carrito");
                                 //tabla productos
                                 $.ajax({
-                                    url: 'http://localhost/erotico/public/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                    url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                     method: 'GET', // el metodo que se usa en la ruta
                                     data: {
                                         productId: id,
