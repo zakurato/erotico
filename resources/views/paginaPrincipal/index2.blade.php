@@ -144,7 +144,7 @@
                     data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
                     data-section-type="rich-text">
                     <div class="container container--narrow">
-                        <h2 class="heading h1">No pain, no gain.</h2>
+                        <h2 class="heading h1">Tu cuerpo puede resistir todo lo que tu mente le diga que puede.</h2>
                     </div>
                 </section>
 
@@ -153,23 +153,6 @@
 
 
 
-    
-    <!--hasta aqui llega la seccion -->
-    <div id="shopify-section-template--14562732638271__featured-collection" class="shopify-section">
-        <section class="section" data-section-id="template--14562732638271__featured-collection"
-            data-section-type="featured-collection"
-            data-section-settings="{
-    &quot;stackable&quot;: true,
-    &quot;layout&quot;: &quot;vertical&quot;
-  }">
-            <div class="container">
-                <header class="section__header">
-                    <div class="section__header-stack">
-                        <h2 class="section__title heading h3">Tu cuerpo, tu mayor proyecto.
-                        </h2>
-                    </div>
-                </header>
-            </div>
             {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
             <section class="py-5">
                 <div class="container px-4 px-lg-5 mt-5">
