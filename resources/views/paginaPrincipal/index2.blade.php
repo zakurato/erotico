@@ -980,7 +980,7 @@
                                 <div class="product-form__info-item product-form__info-item--quantity">
                                     <label for="template--14562732638271__featured-product-7064984518719-quantity"
                                         class="product-form__info-title text--strong">Descripción:
-                                        <p style="width: 50%">{{ $productoTemporada->descripcion }}</p>
+                                        <p style="width: 10%">{{ $productoTemporada->descripcion }}</p>
                                     </label>
                                 </div>
                             </div>
