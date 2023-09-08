@@ -650,8 +650,6 @@ class HomeController extends Controller
     }
 
     public function storeActualizarProducto(Request $request){
-
-
         
     if(Empty($request->color)){
         $color = "NINGUNO";
@@ -705,7 +703,7 @@ class HomeController extends Controller
 
         session()->flash("correctoActualizarProducto","El producto se actualizo correctamente");
         $productos = Producto::all();
-        return redirect()->route("loginDentro");
+        return redirect()->route("crearProducto");
     }
 
     public function formCrearCategoria(){
