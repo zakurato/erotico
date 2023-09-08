@@ -957,6 +957,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if ($productoTemporada->categoria != "EMINENCE")
                                 <div class="product-form__info-item">
                                     <span class="product-form__info-title text--strong">Color:</span>
                                     <div class="product-form__info-content" role="region" aria-live="polite">
@@ -967,6 +968,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="product-form__info-item">
                                     <span class="product-form__info-title text--strong">Tamaño:</span>
                                     <div class="product-form__info-content" role="region" aria-live="polite">
