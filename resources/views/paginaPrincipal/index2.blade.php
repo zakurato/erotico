@@ -957,7 +957,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($productoTemporada->categoria != "EMINENCE")
+                                @if ($productoTemporada->categoria != "EMINENCE" && $productoTemporada->categoria != "PROTEINAS")
                                 <div class="product-form__info-item">
                                     <span class="product-form__info-title text--strong">Color:</span>
                                     <div class="product-form__info-content" role="region" aria-live="polite">
@@ -968,7 +968,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endif
                                 <div class="product-form__info-item">
                                     <span class="product-form__info-title text--strong">Tamaño:</span>
                                     <div class="product-form__info-content" role="region" aria-live="polite">
@@ -979,6 +978,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="product-form__info-item product-form__info-item--quantity">
                                     <label for="template--14562732638271__featured-product-7064984518719-quantity"
                                         class="product-form__info-title text--strong">Descripción:
