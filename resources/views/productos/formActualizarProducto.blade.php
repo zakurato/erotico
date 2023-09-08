@@ -46,7 +46,7 @@
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Seleccione una categoría</label>
                 <select class="form-control" name="categoria">
-                    <option disabled>{{ $producto->categoria }}</option>
+                    <option disabled selected>{{ $producto->categoria }}</option>
                     @foreach ($categorias as $item)
                         <option>{{ $item->nombreCategoria }}</option>
                     @endforeach
