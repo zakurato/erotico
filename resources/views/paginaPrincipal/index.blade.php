@@ -19,7 +19,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
-    <title>FitFusion Store</title>
+    <title>Shopiscr</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
             <p style="text-align: center !important"> <strong>Políticas de privacidad</strong></p>
             <p>
                 <br>
-                FitFusion Store es una tienda destinada a vender productos deportivos. Al utilizar nuestro sitio web
+                Shopiscr es una tienda destinada a vender productos deportivos. Al utilizar nuestro sitio web
                 y realizar compras en nuestra tienda, confirmas que aceptas los términos y
                 condiciones de esta Política de Privacidad. Nuestro objetivo es mantener tus datos seguros y utilizarlos
                 de manera responsable, cumpliendo con todas las regulaciones y leyes aplicables relacionadas con la
@@ -76,7 +76,7 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2023 Copyright:
-            <a class="text-white">FitFusion Store</a>
+            <a class="text-white">Shopiscr</a>
         </div>
         <!-- Copyright -->
     </footer>

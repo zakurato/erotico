@@ -44,19 +44,19 @@
     </nav>
     <br><br>
     <a href="{{ route('formCrearCategoria') }}">
-        <input type="button" value="Crear categoría">
+        <input type="button" value="Crear categoría" class="btn btn-info">
     </a>
     <br><br><br>
     <a href="{{ route('formCrearColores') }}">
-        <input type="button" value="Crear colores">
+        <input type="button" value="Crear colores" class="btn btn-info">
     </a>
     <br><br><br>
     <a href="{{ route('formCrearTamaños') }}">
-        <input type="button" value="Crear tamaños">
+        <input type="button" value="Crear tamaños" class="btn btn-info">
     </a>
     <br><br><br>
     <a href="{{ route('formCrearProducto') }}">
-        <input type="button" value="Crear producto">
+        <input type="button" value="Crear producto" class="btn btn-info">
     </a>
 
     <br><br>

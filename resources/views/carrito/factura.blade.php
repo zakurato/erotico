@@ -63,7 +63,7 @@
                             <span>Acerca de nosotros</span>
                         </button>
                         <p>
-                            FitFusion Store ofrece una amplia variedad de productos de alta calidad para satisfacer todas las necesidades de las personas deportivas que desean transformar su físico y alcanzar sus metas de acondicionamiento físico.
+                            Shopiscr ofrece una amplia variedad de productos de alta calidad para satisfacer todas las necesidades de las personas deportivas que desean transformar su físico y alcanzar sus metas de acondicionamiento físico.
                         </p>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                 </aside>
                 <br><br>
                 <div>
-                    <p style="color: white !important">© 2023 FitFusion Store</p>
+                    <p style="color: white !important">© 2023 Shopiscr</p>
                 </div>
             </div>
         </div>
