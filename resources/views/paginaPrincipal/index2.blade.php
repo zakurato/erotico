@@ -18,14 +18,14 @@
     <meta name="theme-color" content="#000000">
     <!-- BEGIN app block: shopify://apps/yoast-seo-seo-for-everyone/blocks/metatags/7c777011-bc88-4743-a24e-64336e1e5b46 -->
     <!-- This site is optimized with Yoast SEO for Shopify -->
-    <title>Shopiscr</title>
+    <title>ShopisCr</title>
     <meta name="description"
         content="La mejor Tienda De Productos Para Adultos Chat Con Asesora Gratis. Envíos 100% discretos, Enviamos a todo el país.">
-    <meta property="og:site_name" content="Shopiscr">
-    <meta property="og:url" content="https://www.Shopiscr.com/">
+    <meta property="og:site_name" content="ShopisCr">
+    <meta property="og:url" content="https://www.shopiscr.com/">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="La mejor Tienda Shopiscr">
+    <meta property="og:title" content="La mejor Tienda ShopisCr">
     <meta property="og:description" content="La mejor Tienda De Productos Para Adultos">
     <meta property="og:image" content="">
     <meta property="og:image:height" content="628">
@@ -1212,7 +1212,7 @@
         data-section-id="template--14562732638271__05ad0977-fcfc-476f-948d-e9119e0da40c"
         data-section-type="rich-text">
         <div class="container container--narrow" data-aos="fade-right">
-            <h2 class="heading h1">Elige Shopiscr con las mejores marcas.</h2>
+            <h2 class="heading h1">Elige ShopisCr con las mejores marcas.</h2>
             <div class="rte">
             </div>
         </div>
@@ -1231,8 +1231,8 @@
                                 <span>Acerca de nosotros</span>
                             </button>
                             <p>
-                                Shopiscr ofrece una amplia variedad de productos de alta calidad para
-                                satisfacer todas las necesidades de las personas deportivas que desean transformar
+                                ShopisCr ofrece una amplia variedad de productos de alta calidad para
+                                satisfacer todas las necesidades de las personas  que desean transformar
                                 su físico y alcanzar sus metas de acondicionamiento físico.
                             </p>
                         </div>
@@ -1278,7 +1278,7 @@
                     </aside>
                     <br><br>
                     <div>
-                        <p style="color: white !important">© 2023 Shopiscr</p>
+                        <p style="color: white !important">© 2023 ShopisCr</p>
                     </div>
                 </div>
             </div>

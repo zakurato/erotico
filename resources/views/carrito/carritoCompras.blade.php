@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Carrito Compras Shopiscr</title>
+    <title>Carrito Compras ShopisCr</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="{{ asset('carrito/carritoForm.Css') }}?v={{ time() }}" type="text/css"
@@ -73,7 +73,7 @@
                                             <!-- cart products detailed -->
                                             <div class="card card_trans mb-3">
                                                 <div class="card-header" style="font: 17px Arial">
-                                                    Carrito Shopiscr Producto({{ $ContadorProducto }}) <div
+                                                    Carrito ShopisCr Producto({{ $ContadorProducto }}) <div
                                                         style="display: inline-block; margin-left: 90%; margin-bottom: 15px">
                                                         <a ref="#" id="basurero{{ $item->id }}">
                                                             <i class="fa-solid fa-trash-can fa-xl"
@@ -510,7 +510,7 @@ role="contentinfo">
                     <span>Acerca de nosotros</span>
                 </button>
                 <p>
-                    Shopiscr ofrece una amplia variedad de productos de alta calidad para satisfacer todas las necesidades de las personas deportivas que desean transformar su físico y alcanzar sus metas de acondicionamiento físico.
+                    ShopisCr ofrece una amplia variedad de productos de alta calidad que harán que tu vida sea más cómoda y emocionante, no solo vendemos productos, sino que también brindamos una experiencia de compra excepcional.
                 </p>
             </div>
         </div>
@@ -532,7 +532,7 @@ role="contentinfo">
         </aside>
         <br><br>
         <div>
-            <p style="color: white !important">© 2023 Shopiscr</p>
+            <p style="color: white !important">© 2023 ShopisCr</p>
         </div>
     </div>
 </div>

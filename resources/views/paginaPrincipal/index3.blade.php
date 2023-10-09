@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Descripción del producto Shopiscr</title>
+    <title>Descripción del producto ShopisCr</title>
     <!--este style no se quita-->
     <link rel="stylesheet" href="{{ asset('index/index3.Css') }}?v={{ time() }}">
     <!--mis css-->
@@ -338,7 +338,7 @@ role="contentinfo">
                     <span>Acerca de nosotros</span>
                 </button>
                 <p>
-                    Shopiscr ofrece una amplia variedad de productos de alta calidad para satisfacer todas las necesidades de las personas deportivas que desean transformar su físico y alcanzar sus metas de acondicionamiento físico.
+                    ShopisCr ofrece una amplia variedad de productos de alta calidad que harán que tu vida sea más cómoda y emocionante, no solo vendemos productos, sino que también brindamos una experiencia de compra excepcional.
                 </p>
             </div>
         </div>
@@ -383,7 +383,7 @@ role="contentinfo">
         </aside>
         <br><br>
         <div>
-            <p style="color: white !important">© 2023 Shopiscr</p>
+            <p style="color: white !important">© 2023 ShopisCr</p>
         </div>
     </div>
 </div>

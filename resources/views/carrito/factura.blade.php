@@ -63,7 +63,7 @@
                             <span>Acerca de nosotros</span>
                         </button>
                         <p>
-                            Shopiscr ofrece una amplia variedad de productos de alta calidad para satisfacer todas las necesidades de las personas deportivas que desean transformar su físico y alcanzar sus metas de acondicionamiento físico.
+                            ShopisCr ofrece una amplia variedad de productos de alta calidad que harán que tu vida sea más cómoda y emocionante, no solo vendemos productos, sino que también brindamos una experiencia de compra excepcional.
                         </p>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                 </aside>
                 <br><br>
                 <div>
-                    <p style="color: white !important">© 2023 Shopiscr</p>
+                    <p style="color: white !important">© 2023 ShopisCr</p>
                 </div>
             </div>
         </div>
