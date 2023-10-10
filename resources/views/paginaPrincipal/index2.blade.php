@@ -148,7 +148,7 @@
                     data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
                     data-section-type="rich-text">
                     <div class="container container--narrow">
-                        <h3>Tu cuerpo puede resistir todo lo que tu mente le diga que puede.</h3>
+                        <h3>Descubre el poder de la calidad en cada uno de nuestros productos.</h3>
                     </div>
                 </section>
 
@@ -607,7 +607,7 @@
             data-section-id="template--14562732638271__5199ee47-c016-4657-bf0b-bfd73334618b"
             data-section-type="rich-text">
             <div class="container container--medium" data-aos="fade-right">
-                <h2 class="heading h1">Tu único límite es tu mente.</h2>
+                <h2 class="heading h1">Tu estilo merece la excelencia.</h2>
                 <div class="rte">
                 </div>
             </div>
@@ -773,7 +773,7 @@
             data-section-id="template--14562732638271__127e7bfe-e656-4552-b607-86d223e6a4d2"
             data-section-type="rich-text">
             <div class="container container--narrow" data-aos="fade-right">
-                <h2 class="heading h1">La tienda donde tu esfuerzo se traduce en resultados.</h2>
+                <h2 class="heading h1">Haz que tu vida sea más cómoda, saludable y feliz con nuestros productos.</h2>
                 <div class="rte">
                 </div>
             </div>
