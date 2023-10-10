@@ -29,7 +29,7 @@
             <p style="text-align: center !important"> <strong>Políticas de privacidad</strong></p>
             <p>
                 <br>
-                ShopisCr es una tienda destinada a vender productos. Al utilizar nuestro sitio web
+                ShopisCr es una tienda destinada a vender productos de calidad. Al utilizar nuestro sitio web
                 y realizar compras en nuestra tienda, confirmas que aceptas los términos y
                 condiciones de esta Política de Privacidad. Nuestro objetivo es mantener tus datos seguros y utilizarlos
                 de manera responsable, cumpliendo con todas las regulaciones y leyes aplicables relacionadas con la

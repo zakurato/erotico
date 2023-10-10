@@ -47,7 +47,7 @@
                             data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
                                 class="icon-bar"></span></button>
                         <a href="#" class="header__logo-link">
-                            <img style="height: 70px;" class="header__logo-image" src="images/logo5.jpg?v=1676468577"
+                            <img style="height: 70px;" class="header__logo-image" src="images/logoShopis2.jpg?v=1676468577"
                                 alt="">
                         </a>
                     </div>
@@ -883,7 +883,7 @@
                 </svg></a>
         </li>
         <li class="social-media__item social-media__item--instagram">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener"
+            <a href="https://www.instagram.com/shopis.cr/" target="_blank" rel="noopener"
                 aria-label="Síguenos en Instagram" aria-describedby="a11y-new-window-message"><svg
                     focusable="false" class="icon icon--instagram " role="presentation" viewBox="0 0 30 30">
                     <path
@@ -1252,7 +1252,7 @@
                                         </svg></a>
                                 </li>
                                 <li class="social-media__item social-media__item--instagram">
-                                    <a href="https://www.instagram.com" target="_blank" rel="noopener"
+                                    <a href="https://www.instagram.com/shopis.cr/" target="_blank" rel="noopener"
                                         aria-label="Síguenos en Instagram"
                                         aria-describedby="a11y-new-window-message"><svg focusable="false"
                                             class="icon icon--instagram " role="presentation"

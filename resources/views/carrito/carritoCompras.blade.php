@@ -41,7 +41,7 @@
                 <div class="col-lg-12">
                     <div class="navbar-header">
                         <a href="{{ route('index2') }}" class="header__logo-link">
-                            <img style="height: 70px;" class="header__logo-image" src="images/logo5.jpg?v=1676468577" alt="">
+                            <img style="height: 70px;" class="header__logo-image" src="images/logoShopis2.jpg?v=1676468577" alt="">
                         </a>
                     </div>
                 </div>
@@ -371,7 +371,7 @@
                         </div>
                         <br>
                         <h1 style="font: 28px Arial">Metodo de pago <strong> SINPE MÓVIL o transferencia bancaria. </strong> </h1>
-                        <h1 style="font: 20px Arial">Teléfono SINPE MÓVIL: 87249099</h1>
+                        <h1 style="font: 20px Arial">Teléfono SINPE MÓVIL: 87249099 / Nombre del propietario: Hugo Steven Zeledón Montero</h1>
                         <h1 style="font: 20px Arial">Cuenta tranferencia: CR86015101220010656228</h1>
 
 
