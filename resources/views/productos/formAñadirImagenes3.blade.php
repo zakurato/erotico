@@ -176,7 +176,7 @@
                             // Realizar la petición AJAX
                         $.ajax({
                             type: "GET",
-                            url: "http://asdfgh/cambiarTemporadaFotos",  // Reemplaza con la URL de tu script de procesamiento
+                            url: "http://shopiscr.com/cambiarTemporadaFotos",  // Reemplaza con la URL de tu script de procesamiento
                             data: { id: id },
                             success: function(response) {
                                 // Aquí puedes manejar la respuesta del servidor si es necesario

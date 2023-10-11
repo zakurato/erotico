@@ -147,7 +147,7 @@
 
         //ajax para traer el nombre del cliente
         $.ajax({
-            url: 'http://asdfgh/traerNombreCliente', // aqui va el nombre de la ruta
+            url: 'http://shopiscr.com/traerNombreCliente', // aqui va el nombre de la ruta
             method: 'GET', // el metodo que se usa en la ruta
             dataType: 'json',
             data: {
