@@ -47,7 +47,8 @@
 
                         <a href="{{ route('index2') }}" class="header__logo-link">
                             <img style="height: 70px;" class="header__logo-image"
-                                src="images/logoShopis.jpg?v=1676468577" alt="">
+                                src="images/logoShopis.jpg?v=1676468577" alt=""
+                                id="logo">
                         </a>
                     </div>
                     <form action="http://54.89.124.204/index2" method="GET">
@@ -733,6 +734,33 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
 </script>
 
 
+<script>
+
+    //cambia el tamaño del logo dependiendo si es pc o celular
+    // Imprime el ancho de la pantalla al cargar la página
+    var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    console.log("Ancho de la pantalla: " + ancho);
+    
+    var logo = document.getElementById("logo");
+        if (ancho <= 752) {
+            logo.style.height = "50px";
+        }else{
+            logo.style.height = "70px";
+        }   
+    
+    // Registra un manejador de eventos para el evento "resize" que imprime el ancho de la pantalla cuando la ventana se redimensiona
+    window.addEventListener("resize", function() {
+        var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        console.log("Ancho de la pantalla: " + ancho);
+        var logo = document.getElementById("logo");
+        if (ancho <= 752) {
+            logo.style.height = "50px";
+        }else{
+            logo.style.height = "70px";
+        }   
+    });
+    
+    </script>
 
 
 </html>
