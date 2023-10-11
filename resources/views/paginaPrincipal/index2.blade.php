@@ -449,7 +449,7 @@
                                                             //console.log("Agregar al carrito");
                                                             //tabla productos
                                                             $.ajax({
-                                                                url: 'http://shopiscr.com/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                                                url: 'carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                                                 method: 'GET', // el metodo que se usa en la ruta
                                                                 data: {
                                                                     productId: id,
@@ -459,7 +459,7 @@
                                                                 }, //los parametros enviados
                                                                 dataType: 'json',
                                                                 success: function(response) {
-                                                                    //console.log(response);
+                                                                    console.log(response);
                                                                     if (response ==
                                                                         "Si desea sumar mas de este producto entrar al carrito de compra"
                                                                     ) {
@@ -1057,7 +1057,7 @@
                                 //console.log("Agregar al carrito");
                                 //tabla productos
                                 $.ajax({
-                                    url: 'http://shopiscr.com/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                    url: 'carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                     method: 'GET', // el metodo que se usa en la ruta
                                     data: {
                                         productId: id,

@@ -543,7 +543,7 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
                                 //console.log("Agregar al carrito");
                                 //tabla productos
                                 $.ajax({
-                                    url: 'http://shopiscr.com/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                    url: 'carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                     method: 'GET', // el metodo que se usa en la ruta
                                     data: {
                                         productId: id,
