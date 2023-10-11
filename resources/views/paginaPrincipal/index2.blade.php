@@ -38,16 +38,18 @@
     <!-- END sections: header-group -->
     <!-- BEGIN sections: overlay-group -->
     <div class="navbar navbar-inverse"
-        style="background-color: black !important; position: fixed; width: 100% !important; z-index: 9999 !important;">
+        style="background-color: #e7e7e7 !important; position: fixed; width: 100% !important; z-index: 9999 !important;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-header">
-                        <button id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
-                            data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
-                                class="icon-bar"></span></button>
+                        <button style="background-color: #EA6A2F; border-color: white" id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
+                            data-toggle="collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span></button>
                         <a href="#" class="header__logo-link">
-                            <img style="height: 70px;" class="header__logo-image" src="images/logoShopis2.jpg?v=1676468577"
+                            <img style="height: 70px;" class="header__logo-image" src="images/logoShopis.jpg?v=1676468577"
                                 alt="">
                         </a>
                     </div>
@@ -56,7 +58,7 @@
                             <ul class="nav navbar-nav">
                                 <!--<li class="active"><a href="#">Home</a></li>-->
                                 <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
-                                    <a style="color: white !important; background-color: black; position: relative; top: 10px"class="dropdown-toggle"
+                                    <a style="color: 9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
                                         data-toggle="dropdown">Categorías</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ route('index2', ['categoria' => 'TODOS']) }}">TODOS</a></li>
@@ -118,7 +120,7 @@
             </div>
         </div>
     </div>
-    <div style="height: 145px;"></div>
+    <div style="height: 95px;"></div>
 
 
     @if (isset($imagenPrincipal->imagen))
@@ -1220,7 +1222,7 @@
     <div id="shopify-section-sections--14562733293631__footer"
         class="shopify-section shopify-section-group-footer-group">
         <footer class="footer" data-section-id="sections--14562733293631__footer" data-section-type="footer"
-            role="contentinfo">
+            role="contentinfo" style="background-color: #e7e7e7; color: black">
             <div class="container">
                 <div class="footer__wrapper">
                     <div class="footer__block-list">
@@ -1231,9 +1233,9 @@
                                 <span>Acerca de nosotros</span>
                             </button>
                             <p>
-                                ShopisCr ofrece una amplia variedad de productos de alta calidad para
-                                satisfacer todas las necesidades de las personas  que desean transformar
-                                su físico y alcanzar sus metas de acondicionamiento físico.
+                                En ShopisCr, nuestra misión es ofrecer una amplia variedad de productos de alta calidad
+a precios inigualables. Somos más que una empresa, somos un compromiso con la excelencia y la satisfacción
+de nuestros clientes, haciendo realidad tus sueños a través de productos excepcionales.
                             </p>
                         </div>
                     </div>
@@ -1278,7 +1280,7 @@
                     </aside>
                     <br><br>
                     <div>
-                        <p style="color: white !important">© 2023 ShopisCr</p>
+                        <p>© 2023 ShopisCr</p>
                     </div>
                 </div>
             </div>

@@ -18,13 +18,14 @@
 
 
 
-    <div class="navbar navbar-inverse" style="background-color: black !important; width: 100% !important;">
+    <div class="navbar navbar-inverse" style="background-color: #e7e7e7 !important; width: 100% !important;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-header">
                         <a href="#" class="header__logo-link">
-                            <img style="height: 70px;" class="header__logo-image" src="{{ asset('images/logoShopis2.jpg') }}" alt="">
+                            <img style="height: 70px;" class="header__logo-image"
+                                src="{{ asset('images/logoShopis.jpg') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -36,7 +37,7 @@
 
     <br><br><br><br>
     <div class="factura">
-        <form action="{{route("verFactura")}}">
+        <form action="{{ route('verFactura') }}">
             <label for="" id="facturaLabel"></label>
             <br>
             <label for="" id="telefonoLabel"></label>
@@ -53,7 +54,7 @@
 
 
     <footer class="footer" data-section-id="sections--14562733293631__footer" data-section-type="footer"
-        role="contentinfo">
+        role="contentinfo" style="background-color: #e7e7e7; color: black">
         <div class="container">
             <div class="footer__wrapper">
                 <div class="footer__block-list">
@@ -63,7 +64,10 @@
                             <span>Acerca de nosotros</span>
                         </button>
                         <p>
-                            ShopisCr ofrece una amplia variedad de productos de alta calidad que harán que tu vida sea más cómoda y emocionante, no solo vendemos productos, sino que también brindamos una experiencia de compra excepcional.
+                            En ShopisCr, nuestra misión es ofrecer una amplia variedad de productos de alta calidad
+                            a precios inigualables. Somos más que una empresa, somos un compromiso con la excelencia y
+                            la satisfacción
+                            de nuestros clientes, haciendo realidad tus sueños a través de productos excepcionales.
                         </p>
                     </div>
                 </div>
@@ -107,7 +111,7 @@
                 </aside>
                 <br><br>
                 <div>
-                    <p style="color: white !important">© 2023 ShopisCr</p>
+                    <p>© 2023 ShopisCr</p>
                 </div>
             </div>
         </div>

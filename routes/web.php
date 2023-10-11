@@ -130,6 +130,7 @@ Route::post('/storeSeccionImagenPrincipal',[HomeController::class,"storeSeccionI
 
 
 
+
 Route::get("/niki",[HomeController::class,"niki"])->name("niki");
 
 

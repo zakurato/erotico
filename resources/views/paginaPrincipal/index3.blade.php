@@ -31,7 +31,7 @@
 
 <body>
     <div class="navbar navbar-inverse"
-        style="background-color: black !important; position: fixed; width: 100% !important; z-index: 9999 !important;">
+        style="background-color: #e7e7e7 !important; position: fixed; width: 100% !important; z-index: 9999 !important;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
@@ -46,8 +46,8 @@
                         </button>
 
                         <a href="{{ route('index2') }}" class="header__logo-link">
-                            <img style="height: 70px;" class="header__logo-image" src="images/logoShopis2.jpg?v=1676468577"
-                                alt="">
+                            <img style="height: 70px;" class="header__logo-image"
+                                src="images/logoShopis.jpg?v=1676468577" alt="">
                         </a>
                     </div>
                     <form action="http://54.89.124.204/index2" method="GET">
@@ -158,7 +158,7 @@
                                                     <h1 class="attribute-detail-selected selected-color"
                                                         aria-live="off">
                                                         {{ $nombre }}
-                                                        @if ($categoria != 'EMINENCE' && $categoria != "PROTEINAS")
+                                                        @if ($categoria != 'EMINENCE' && $categoria != 'PROTEINAS')
                                                             {{ $color }}
                                                         @endif
                                                     </h1>
@@ -208,25 +208,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($categoria != "EMINENCE" && $categoria != "PROTEINAS")
-                                <div class="row attr-type-selecter" data-attr="color">
-                                    <div class="col-12">
-                                        <div class="attribute">
-                                            <div class="row mb-2">
-                                                <div
-                                                    class="col attribute-label-container brand-font-primary line-height-1">
-                                                    <!-- Select <Attribute> Label -->
-                                                    <h2 class="color attribute-label d-inline-block mb-0 h5">
-                                                        color:
-                                                    </h2>
-                                                    <span class="attribute-detail-selected selected-color"
-                                                        aria-live="off">
-                                                        @foreach ($combinadosImages as $item)
-                                                            <span>{{ $item->color }}</span>
-                                                        @break
-                                                    @endforeach
-                                                </span>
-                                                <br><br>
+                                @if ($categoria != 'EMINENCE' && $categoria != 'PROTEINAS')
+                                    <div class="row attr-type-selecter" data-attr="color">
+                                        <div class="col-12">
+                                            <div class="attribute">
+                                                <div class="row mb-2">
+                                                    <div
+                                                        class="col attribute-label-container brand-font-primary line-height-1">
+                                                        <!-- Select <Attribute> Label -->
+                                                        <h2 class="color attribute-label d-inline-block mb-0 h5">
+                                                            color:
+                                                        </h2>
+                                                        <span class="attribute-detail-selected selected-color"
+                                                            aria-live="off">
+                                                            @foreach ($combinadosImages as $item)
+                                                                <span>{{ $item->color }}</span>
+                                                            @break
+                                                        @endforeach
+                                                    </span>
+                                                    <br><br>
                                                     <select class="a-native-dropdown a-declarative">
                                                         <option> Seleccionar </option>
                                                         @foreach ($coloresDiferentesAProductoSeleccionado as $item)
@@ -235,100 +235,97 @@
                                                                 {{ $item }} </option>
                                                         @endforeach
                                                     </select>
-                                        </div>
-                                    </div>
-                                    <!-- container end -->
-                                </div>
-                                @endif
-                                @foreach ($combinadosImages as $item)
-                                <input id="colorValue" type="hidden"
-                                    value="{{ $item->color }}">
-                            @break
-                        @endforeach
-                            </div>
-                        </div>
-                        @if ($categoria != 'EMINENCE' && $categoria != "PROTEINAS")
-
-                            <div class="row attr-type-selecter" data-attr="size">
-                                <div class="col-12">
-                                    <div class="attribute">
-                                        <!-- Select <Attribute> Label -->
-                                        <div class="row">
-                                            <div class="col">
-                                                <!-- Select <Attribute> Label -->
-                                                <div
-                                                    class="attribute-label-container d-inline-block brand-font-primary line-height-1">
-                                                    <h2 class="size attribute-label queryParamSelector d-inline-block mb-0 h5"
-                                                        data-queryparam="dwvar_1045320_size">
-                                                        Tamaño:
-                                                    </h2>
-                                                    <br><br>
-                                                    <span class="attribute-detail-selected selected-size"
-                                                        aria-live="off">
-                                                        <select name="tamaño">
-                                                            <option disabled selected> Seleccionar </option>
-                                                            @foreach ($tamañosCombinados as $item)
-                                                                <option> {{ $item }} </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </span>
-                                                    <span
-                                                        class="attribute-detail-hovered hovered-size d-none"
-                                                        aria-live="off"></span>
                                                 </div>
                                             </div>
+                                            <!-- container end -->
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
+                            @endif
+                            @foreach ($combinadosImages as $item)
+                                <input id="colorValue" type="hidden" value="{{ $item->color }}">
+                            @break
+                        @endforeach
                     </div>
-                    <!-- isCartQuickView Start -->
-                    <div class="description-and-detail mt-4 pt-5">
-                        <div class="accordion" id="detailsAccordionPDP-1045320">
-                            <div class="card mb-0">
-                                <div class="card-header" id="detailsAccordion">
-                                    <h2 class="mb-0 h5">
-                                        <button
-                                            class="btn btn-link text-capitalize details-accordion-btn collapsed"
-                                            data-productid="1045320" type="button"
-                                            data-toggle="collapse"
-                                            data-target="#descriptionAndDetails-1045320"
-                                            aria-expanded="false" aria-controls="descriptionAndDetails">
-                                            Descripción &amp; detalles
-                                        </button>
-                                    </h2>
-                                    <div id="descriptionAndDetails-1045320" class="d-xl-block collapse"
-                                        aria-labelledby="detailsAccordion"
-                                        data-parent="#detailsAccordionPDP-1045320" style="">
-                                        <div class="col value content" id="collapsible-details-1">
-                                            {{ $descripcion }}
+                </div>
+                @if ($categoria != 'EMINENCE' && $categoria != 'PROTEINAS')
+
+                    <div class="row attr-type-selecter" data-attr="size">
+                        <div class="col-12">
+                            <div class="attribute">
+                                <!-- Select <Attribute> Label -->
+                                <div class="row">
+                                    <div class="col">
+                                        <!-- Select <Attribute> Label -->
+                                        <div
+                                            class="attribute-label-container d-inline-block brand-font-primary line-height-1">
+                                            <h2 class="size attribute-label queryParamSelector d-inline-block mb-0 h5"
+                                                data-queryparam="dwvar_1045320_size">
+                                                Tamaño:
+                                            </h2>
+                                            <br><br>
+                                            <span class="attribute-detail-selected selected-size"
+                                                aria-live="off">
+                                                <select name="tamaño">
+                                                    <option disabled selected> Seleccionar </option>
+                                                    @foreach ($tamañosCombinados as $item)
+                                                        <option> {{ $item }} </option>
+                                                    @endforeach
+                                                </select>
+                                            </span>
+                                            <span class="attribute-detail-hovered hovered-size d-none"
+                                                aria-live="off"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- isCartQuickView End -->
+                @endif
+            </div>
+            <!-- isCartQuickView Start -->
+            <div class="description-and-detail mt-4 pt-5">
+                <div class="accordion" id="detailsAccordionPDP-1045320">
+                    <div class="card mb-0">
+                        <div class="card-header" id="detailsAccordion">
+                            <h2 class="mb-0 h5">
+                                <button
+                                    class="btn btn-link text-capitalize details-accordion-btn collapsed"
+                                    data-productid="1045320" type="button" data-toggle="collapse"
+                                    data-target="#descriptionAndDetails-1045320" aria-expanded="false"
+                                    aria-controls="descriptionAndDetails">
+                                    Descripción &amp; detalles
+                                </button>
+                            </h2>
+                            <div id="descriptionAndDetails-1045320" class="d-xl-block collapse"
+                                aria-labelledby="detailsAccordion"
+                                data-parent="#detailsAccordionPDP-1045320" style="">
+                                <div class="col value content" id="collapsible-details-1">
+                                    {{ $descripcion }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- isCartQuickView End -->
         </div>
-        <input type="hidden" name="color" id="color" value="">
-        <input type="hidden" name="id" value="{{ $id }}">
-        <input type="hidden" name="sessionCliente" value="{{ $sessionCliente }}">
-        <input id="categoria" type="hidden" name="categoria" value="{{ $categoria }}">
-        <br><br><br>
-        <button style="width: 100%" type="submit" id="botonCarrito{{ $id }}"
-            class="product-item__action-button button button--small button--primary">Añadir
-            al carrito</button>
-        <div id="mensajeContainer{{ $id }}"></div>
+    </div>
+</div>
+<input type="hidden" name="color" id="color" value="">
+<input type="hidden" name="id" value="{{ $id }}">
+<input type="hidden" name="sessionCliente" value="{{ $sessionCliente }}">
+<input id="categoria" type="hidden" name="categoria" value="{{ $categoria }}">
+<br><br><br>
+<button style="width: 100%" type="submit" id="botonCarrito{{ $id }}"
+    class="product-item__action-button button button--small button--primary">Añadir
+    al carrito</button>
+<div id="mensajeContainer{{ $id }}"></div>
 </form>
 <br><br><br><br><br><br>
 </div>
 <div id="shopify-section-sections--14562733293631__footer"
 class="shopify-section shopify-section-group-footer-group">
 <footer class="footer" data-section-id="sections--14562733293631__footer" data-section-type="footer"
-role="contentinfo">
+role="contentinfo" style="background-color: #e7e7e7; color: black">
 <div class="container">
     <div class="footer__wrapper">
         <div class="footer__block-list">
@@ -338,7 +335,10 @@ role="contentinfo">
                     <span>Acerca de nosotros</span>
                 </button>
                 <p>
-                    ShopisCr ofrece una amplia variedad de productos de alta calidad que harán que tu vida sea más cómoda y emocionante, no solo vendemos productos, sino que también brindamos una experiencia de compra excepcional.
+                    En ShopisCr, nuestra misión es ofrecer una amplia variedad de productos de alta calidad
+                    a precios inigualables. Somos más que una empresa, somos un compromiso con la excelencia
+                    y la satisfacción
+                    de nuestros clientes, haciendo realidad tus sueños a través de productos excepcionales.
                 </p>
             </div>
         </div>
@@ -383,7 +383,7 @@ role="contentinfo">
         </aside>
         <br><br>
         <div>
-            <p style="color: white !important">© 2023 ShopisCr</p>
+            <p>© 2023 ShopisCr</p>
         </div>
     </div>
 </div>
