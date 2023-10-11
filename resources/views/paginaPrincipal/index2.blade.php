@@ -22,7 +22,7 @@
     <meta name="description"
         content="La mejor Tienda De Productos Para Adultos Chat Con Asesora Gratis. Envíos 100% discretos, Enviamos a todo el país.">
     <meta property="og:site_name" content="ShopisCr">
-    <meta property="og:url" content="https://www.shopiscr.com/">
+    <meta property="og:url" content="https://www.asdfgh/">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
     <meta property="og:title" content="La mejor Tienda ShopisCr">
@@ -449,7 +449,7 @@
                                                             //console.log("Agregar al carrito");
                                                             //tabla productos
                                                             $.ajax({
-                                                                url: 'http://shopiscr.com/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                                                url: 'http://asdfgh/carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                                                 method: 'GET', // el metodo que se usa en la ruta
                                                                 data: {
                                                                     productId: id,
@@ -1057,7 +1057,7 @@
                                 //console.log("Agregar al carrito");
                                 //tabla productos
                                 $.ajax({
-                                    url: 'http://shopiscr.com/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                    url: 'http://asdfgh/carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                     method: 'GET', // el metodo que se usa en la ruta
                                     data: {
                                         productId: id,

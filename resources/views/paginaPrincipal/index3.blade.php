@@ -58,9 +58,9 @@
                                 id="logo">
                         </a>
                     </div>
-                    <form action="http://shopiscr.com/index2" method="GET">
+                    <form action="http://asdfgh/index2" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
-                            <a href="http://shopiscr.com/carritoCompras">
+                            <a href="http://asdfgh/carritoCompras">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
                                         <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
@@ -543,7 +543,7 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
                                 //console.log("Agregar al carrito");
                                 //tabla productos
                                 $.ajax({
-                                    url: 'http://shopiscr.com/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                    url: 'http://asdfgh/carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                     method: 'GET', // el metodo que se usa en la ruta
                                     data: {
                                         productId: id,

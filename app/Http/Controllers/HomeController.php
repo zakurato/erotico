@@ -1879,7 +1879,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         "\nNombre: ".$request->nombre.
                         "\nTelefono:".$request->telefono.
                         "\nDireccion: ".$request->direccion.
-                        "\nLink: http://shopiscr.com/factura/".$factura."/".$request->telefono);
+                        "\nLink: http://asdfgh/factura/".$factura."/".$request->telefono);
 
                     // Redireccionar al enlace de WhatsApp
                     return redirect($url);
@@ -1926,7 +1926,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         "\nNombre: ".$request->nombre.
                         "\nTelefono:".$request->telefono.
                         "\nDireccion: ".$request->direccion.
-                        "\nLink: http://shopiscr.com/factura/".$factura."/".$request->telefono);
+                        "\nLink: http://asdfgh/factura/".$factura."/".$request->telefono);
 
                     // Redireccionar al enlace de WhatsApp
                     return redirect($url);
