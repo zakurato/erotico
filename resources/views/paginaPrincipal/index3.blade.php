@@ -333,7 +333,7 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
             <div class="footer__block-item footer__block-item--text">
                 <button class="footer__title heading h6" aria-expanded="false"
                     aria-controls="block-footer-0" data-action="toggle-collapsible" disabled="disabled">
-                    <span>Acerca de nosotros</span>
+                    <span style="color: black">Acerca de nosotros</span>
                 </button>
                 <p>
                     En ShopisCr, nuestra misión es ofrecer una amplia variedad de productos de alta calidad
