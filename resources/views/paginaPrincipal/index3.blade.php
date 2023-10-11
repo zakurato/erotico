@@ -31,7 +31,7 @@
 
 <body>
     <div class="navbar navbar-inverse"
-        style="background-color: #e7e7e7 !important; position: fixed; width: 100% !important; z-index: 9999 !important;">
+        style="background-color: #e7e7e7 !important; position: fixed; width: 100% !important; z-index: 9999 !important; position: relative; top: 5px">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">

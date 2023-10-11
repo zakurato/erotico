@@ -22,7 +22,7 @@
     class="cart lang-es country-es currency-eur layout-full-width page-cart tax-display-enabled lang_es    desktop_device   	 hide-left-column hide-right-column ">
 
 
-    <div class="navbar navbar-inverse" style="background-color: #e7e7e7 !important; width: 100% !important;">
+    <div class="navbar navbar-inverse" style="background-color: #e7e7e7 !important; width: 100% !important; position: relative; top: 5px">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">

@@ -42,7 +42,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="navbar-header">
+                    <div class="navbar-header" style="position: relative; top: 5px">
                         <button style="background-color: #EA6A2F; border-color: white" id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
                             data-toggle="collapse">
                             <span class="icon-bar"></span>
