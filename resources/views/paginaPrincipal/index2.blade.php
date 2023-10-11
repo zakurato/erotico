@@ -449,7 +449,7 @@
                                                             //console.log("Agregar al carrito");
                                                             //tabla productos
                                                             $.ajax({
-                                                                url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                                                url: 'http://shopiscr.com/carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                                                 method: 'GET', // el metodo que se usa en la ruta
                                                                 data: {
                                                                     productId: id,
@@ -1057,7 +1057,7 @@
                                 //console.log("Agregar al carrito");
                                 //tabla productos
                                 $.ajax({
-                                    url: 'http://54.89.124.204/carritoCompraTablaProducto', // aqui va el nombre de la ruta
+                                    url: 'http://shopiscr.com/carritoCompraTablaProducto', // aqui va el nombre de la ruta
                                     method: 'GET', // el metodo que se usa en la ruta
                                     data: {
                                         productId: id,
