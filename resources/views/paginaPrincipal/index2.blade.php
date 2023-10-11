@@ -123,7 +123,7 @@
             </div>
         </div>
     </div>
-    <div style="height: 95px;"></div>
+    <div style="height: 75px;" id="espacioImagenPrincipal"></div>
 
 
     @if (isset($imagenPrincipal->imagen))
@@ -1348,21 +1348,30 @@ var ancho = window.innerWidth || document.documentElement.clientWidth || documen
 console.log("Ancho de la pantalla: " + ancho);
 
 var logo = document.getElementById("logo");
+var espacioImagenPrincipal = document.getElementById("espacioImagenPrincipal");
     if (ancho <= 752) {
         logo.style.height = "50px";
+        espacioImagenPrincipal.style.height = "75px";
     }else{
         logo.style.height = "70px";
+        espacioImagenPrincipal.style.height = "90px";
     }   
+
+
+
 
 // Registra un manejador de eventos para el evento "resize" que imprime el ancho de la pantalla cuando la ventana se redimensiona
 window.addEventListener("resize", function() {
     var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     console.log("Ancho de la pantalla: " + ancho);
     var logo = document.getElementById("logo");
+    var espacioImagenPrincipal = document.getElementById("espacioImagenPrincipal");
     if (ancho <= 752) {
         logo.style.height = "50px";
+        espacioImagenPrincipal.style.height = "75px";
     }else{
         logo.style.height = "70px";
+        espacioImagenPrincipal.style.height = "90px";
     }   
 });
 
