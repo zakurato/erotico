@@ -160,7 +160,7 @@
         </section>
     @endif
 
-    <div style="height: 40px;" id="espacioImagenPrincipal"></div>
+    <div style="height: 30px;" id="espacioImagenPrincipal"></div>
 
 
     <div class="container">
@@ -181,7 +181,7 @@
                 @foreach ($productos as $index => $item)
                     <form id="miFormulario{{ $item->id }}">
                         @csrf
-                        <div class="col mb-5" style="padding-top: 40px">
+                        <div class="col mb-5" style="padding-top: 30px">
                             <div class="card h-100">
                                 <div id="myCarousel{{ $index }}" class="carousel slide" data-ride="carousel">
                                     <!-- Indicators -->
