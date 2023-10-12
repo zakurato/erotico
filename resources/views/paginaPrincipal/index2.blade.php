@@ -160,6 +160,14 @@
         </section>
     @endif
 
+    <div class="container">
+        <header class="section__header">
+            <div class="section__header-stack">
+                <h2 class="section__title heading h3">Los productos más vendidos</h2>
+            </div>
+        </header>
+    </div>
+
 
     {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
     <section class="py-5">
