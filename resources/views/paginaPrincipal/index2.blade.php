@@ -123,7 +123,7 @@
             </div>
         </div>
     </div>
-    <div style="height: 40px;" id="espacioImagenPrincipal"></div>
+    <div style="height: 20px;" id="espacioImagenPrincipal"></div>
 
 
     @if (isset($imagenPrincipal->imagen))
@@ -160,8 +160,6 @@
         </section>
     @endif
 
-    <div style="height: 20px;" id="espacioImagenPrincipal"></div>
-
 
     <div class="container">
         <header class="section__header">
@@ -170,6 +168,9 @@
             </div>
         </header>
     </div>
+
+    <div style="height: 10px;" id="espacioImagenPrincipal"></div>
+
 
 
     {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
