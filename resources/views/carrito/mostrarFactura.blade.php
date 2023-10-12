@@ -325,7 +325,7 @@
                                     </svg></a>
                             </li>
                             <li class="social-media__item social-media__item--instagram">
-                                <a href="https://www.instagram.com" target="_blank"
+                                <a href="https://www.instagram.com/shopis.cr/" target="_blank"
                                     rel="noopener" aria-label="Síguenos en Instagram"
                                     aria-describedby="a11y-new-window-message"><svg focusable="false"
                                         class="icon icon--instagram " role="presentation" viewBox="0 0 30 30">
