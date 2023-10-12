@@ -169,7 +169,6 @@
         </header>
     </div>
 
-    <div style="height: 10px;" id="espacioImagenPrincipal"></div>
 
 
 
