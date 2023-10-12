@@ -127,7 +127,7 @@
 
 
     @if (isset($imagenPrincipal->imagen))
-        <section class="animacion1">
+        <section class="animacion1" style="display: none">
             <div id="shopify-section-sections--14562733359167__popups"
                 class="shopify-section shopify-section-group-overlay-group">
                 <div data-section-id="sections--14562733359167__popups" data-section-type="popups"></div>
