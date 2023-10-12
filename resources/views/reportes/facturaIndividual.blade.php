@@ -25,22 +25,22 @@
         </ul>
     </div>
     <br>
-    @if ($estatus != 'Rechazada' )
+    @if ($estatus != 'Rechazada')
         <form action="{{ route('cambiarEstadoFactura') }}" method="GET" id="miFormulario">
 
             @foreach ($facturas as $item)
                 <input type="hidden" name="nFactura" value="{{ $item->nFactura }}">
             @break
         @endforeach
-            <select id="selectMiFormulario" name="estatus" class="form-select" aria-label="Default select example"
-                onchange="enviarFormulario()">
-                <option selected>Cambiar el estado de la factura</option>
-                <option value="En proceso">En proceso</option>
-                <option value="Aceptada">Aceptada</option>
-                <option value="Rechazada">Rechazada</option>
-            </select>
-        </form>
-    @endif
+        <select id="selectMiFormulario" name="estatus" class="form-select" aria-label="Default select example"
+            onchange="enviarFormulario()">
+            <option selected>Cambiar el estado de la factura</option>
+            <option value="En proceso">En proceso</option>
+            <option value="Aceptada">Aceptada</option>
+            <option value="Rechazada">Rechazada</option>
+        </select>
+    </form>
+@endif
 <script>
     function enviarFormulario() {
 
@@ -167,8 +167,7 @@ Ver imagen del comprobante
 
 <tr>
 <th scope="row">
-Los artículos de bateria tienen 15 días de garantía, o tengan daños de fabrica
-,los artículos recargables tienen 30 días de garantía, o tengan daños de fabrica
+Los artículos tienen 15 días de garantía.
 </th>
 </tr>
 <tr>

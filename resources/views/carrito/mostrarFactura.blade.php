@@ -91,9 +91,7 @@
         </tbody>
       </table>
 
-      <h1 style="font: 15px Arial; text-align: left">Los artículos de bateria tienen 15 días de garantía, o tengan daños de fabrica</h1>
-      <h1 style="font: 15px Arial; text-align: left">Los artículos recargables tienen 30 días de garantía, o tengan daños de fabrica</h1>
-
+      <h1 style="font: 15px Arial; text-align: left">Los artículos tienen 15 días de garantía.</h1>
 
         @break
     @endforeach
