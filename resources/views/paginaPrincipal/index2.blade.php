@@ -123,7 +123,7 @@
             </div>
         </div>
     </div>
-    <div style="height: 75px;" id="espacioImagenPrincipal"></div>
+    <div style="height: 40px;" id="espacioImagenPrincipal"></div>
 
 
     @if (isset($imagenPrincipal->imagen))
@@ -160,7 +160,7 @@
         </section>
     @endif
 
-    <div style="height: 75px;" id="espacioImagenPrincipal"></div>
+    <div style="height: 40px;" id="espacioImagenPrincipal"></div>
 
 
     <div class="container">
