@@ -160,6 +160,7 @@
         </section>
     @endif
 
+    <div style="height: 20px;" id="espacioImagenPrincipal"></div>
 
 
     <div class="container">
