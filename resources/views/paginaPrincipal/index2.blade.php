@@ -160,6 +160,9 @@
         </section>
     @endif
 
+    <div style="height: 75px;" id="espacioImagenPrincipal"></div>
+
+
     <div class="container">
         <header class="section__header">
             <div class="section__header-stack">
