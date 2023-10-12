@@ -20,6 +20,8 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
+    <!--icono-->
+    <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
     <title>ShopisCr</title>
 </head>
 

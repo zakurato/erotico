@@ -10,6 +10,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
+        <!--icono-->
+        <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
 </head>
 
 <body id="cart"

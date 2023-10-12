@@ -32,6 +32,8 @@
     <meta property="og:image:width" content="1200">
     <!--/ Yoast SEO -->
     <!-- END app app block -->
+    <!--icono-->
+    <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
 </head>
 
 <body class="warehouse--v4 features--animate-zoom template-index" data-instant-intensity="viewport">

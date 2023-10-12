@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('login/loginAdentro.Css') }}?v={{ time() }}">
 
-
+    <!--icono-->
+    <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
 
     <title>Factura</title>
 </head>

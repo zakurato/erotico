@@ -26,7 +26,8 @@
         //animaciones
     </script>
 
-
+    <!--icono-->
+    <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
 </head>
 
 <body>

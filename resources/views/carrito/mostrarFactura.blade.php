@@ -15,7 +15,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!--icono-->
+    <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
 </head>
 
 <body id="cart"
