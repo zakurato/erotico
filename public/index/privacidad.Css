@@ -9,10 +9,10 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('../images/privacidadFondo.png');
+    background-image: url('../images/privacidadFondo2.png');
     background-repeat: no-repeat;
     background-size: cover;
-    filter: blur(10px); /* ajusta el valor del desenfoque según tus necesidades */
+    filter: blur(2px); /* ajusta el valor del desenfoque según tus necesidades */
     opacity: 0.2; /* Ajusta la opacidad según tu preferencia */
     z-index: -1; /* Coloca el pseudo-elemento detrás del contenido de la página */
   }
