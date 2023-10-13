@@ -650,6 +650,7 @@ class HomeController extends Controller
     }
 
     public function storeActualizarProducto(Request $request){
+
         
     if(Empty($request->color)){
         $color = "NINGUNO";
