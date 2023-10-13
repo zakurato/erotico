@@ -288,6 +288,8 @@
                                             });
                                         });
                                     </script>
+
+                                    @if ($item->categoria != 'EMINENCE' && $item->categoria != 'PROTEINAS')
                                     <!-- Left and right controls -->
                                     <a class="left carousel-control" href="#myCarousel{{ $index }}"
                                         data-slide="prev">
@@ -299,6 +301,10 @@
                                         <span class="glyphicon glyphicon-chevron-right"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
+                                    @endif
+
+
+
                                 </div>
                             </div>
                             <!-- Product details-->
