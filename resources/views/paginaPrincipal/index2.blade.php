@@ -1034,17 +1034,28 @@
                 var elementId = document.getElementById("mensajeContainer2{{ $productoTemporada->id }}");
                 var id = elementId.id; // Get the ID attribute of the element
                 id = id.replace("mensajeContainer2", ""); // Remove the prefix
-                var elementColor = document.getElementById(
-                    "colorTemporada{{ $productoTemporada->color }}");
-                var color = elementColor.id; // Get the ID attribute of the element
-                color = color.replace("colorTemporada", ""); // Remove the prefix
-                var elementTamaño = document.getElementById(
-                    "tamañoTemporada{{ $productoTemporada->tamaño }}");
-                var tamaño = elementTamaño.id; // Get the ID attribute of the element
-                tamaño = tamaño.replace("tamañoTemporada", ""); // Remove the prefix
+                var elementColor = document.getElementById("colorTemporada{{ $productoTemporada->color }}");
+                var color = "";
+                if(elementColor == null){
+                    color = "NINGUNO";
+                }else{
+                    color = elementColor.id; // Get the ID attribute of the element
+                    color = color.replace("colorTemporada", ""); // Remove the prefix
+                }
+                var elementTamaño = document.getElementById("tamañoTemporada{{ $productoTemporada->tamaño }}");
+                var tamaño = "";
+                if(elementTamaño == null){
+                    tamaño = "NINGUNO";
+                }else{
+                    tamaño = elementTamaño.id; // Get the ID attribute of the element
+                    tamaño = tamaño.replace("tamañoTemporada", ""); // Remove the prefix
+                }
                 var elementSession = document.getElementById("session{{ $sessionCliente }}");
                 var sessionCliente = elementSession.id; // Get the ID attribute of the element
                 sessionCliente = sessionCliente.replace("session", ""); // Remove the prefix
+
+
+
                 $.ajax({
                     url: 'carritoCompraVerificarCantidad', // aqui va el nombre de la ruta
                     method: 'GET', // el metodo que se usa en la ruta
