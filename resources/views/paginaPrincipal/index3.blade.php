@@ -31,26 +31,21 @@
 </head>
 
 <body>
-    <div class="navbar navbar-inverse"
-        style="background-color: #e7e7e7 !important; 
-               position: fixed; 
+    <div style="background-color: #e7e7e7 !important; 
+               position: fixed !important; 
                width: 100% !important;
                z-index: 9999 !important;
-               position: relative; 
-               top: 5px;
                border-color: #e7e7e7;
                ">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-header">
-                        <button style="background-color: #EA6A2F; border-color: white" id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
-                            data-toggle="collapse"><span class="icon-bar">
-                            </span>
-                            <span class="icon-bar">
-                            </span>
-                            <span class="icon-bar">
-                            </span>
+                        <button style="background-color: #EA6A2F; border-color: white; color: white !important" id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
+                            data-toggle="collapse">
+                            <span style="background-color: white !important;" class="icon-bar"></span>
+                            <span style="background-color: white !important;" class="icon-bar"></span>
+                            <span style="background-color: white !important;" class="icon-bar"></span>
                         </button>
 
                         <a href="{{ route('index2') }}" class="header__logo-link">
@@ -93,7 +88,7 @@
 
 
 
-    <br><br><br><br>
+    <div style="height: 150px"></div>
     <div data-aos="fade-right">
         <form id="miFormulario{{ $id }}">
             @csrf
