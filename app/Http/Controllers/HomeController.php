@@ -2104,7 +2104,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
         }
 
         public function descriccionProducto(Request $request){
-            //return $request;
+            //return "estoy aqui";
             /*aqui debo buscar el producto en la tabla de productos con esa imagen y tambien el color y guardarla en un
             arreglo debo hacer lo mismo con la tabla de Fotos
             */
@@ -2201,7 +2201,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                 }
 
 
-                return $categoria;
+                //return $categoria;
                 //idFK de la tabla de fotos
                 //return $id;
 
