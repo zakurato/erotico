@@ -40,7 +40,7 @@
             </p>
 
             <div style="display: flex; justify-content: center; ">
-                <form action="{{ route('index2') }}" >
+                <form action="{{ route('index') }}" >
                     <input type="hidden" name="valor" value="1"  id="miCampo">
                     <button type="submit" class="btn btn-outline-success" style="margin-right: 20px;!important" id="miBoton">ACEPTAR
                 </form>

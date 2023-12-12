@@ -18,7 +18,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use DateTime;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isEmpty;
@@ -26,11 +28,25 @@ use function PHPUnit\Framework\returnSelf;
 
 class HomeController extends Controller
 {
-
+    /*
     public function index(){
-        return view("paginaPrincipal.index");
+        return view("paginaPrincipal.index2");
     }
-    public function index2(Request $request){
+    */
+    public function index(Request $request){
+
+        //OBTENGO el id session 
+        $sessionId = $request->session()->getId();
+
+         //obtener el valor de la session para imprimirlo en pantalla
+         Session::put('nombre', $sessionId); 
+
+        // La sesión no está en caché, guardarla en caché
+        $sessionData = $request->session()->all();
+        Cache::put('session:' . $sessionId, $sessionData); // Guardar en caché por 60 segundos
+
+        //return $sessionId;
+
 
         $imagenPrincipal = ImagenPrincipal::first();
 
@@ -571,7 +587,7 @@ class HomeController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('index2');
+        return redirect()->route('index');
     }
     
     public function formCrearProducto(){
@@ -1822,7 +1838,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
         public function WA(Request $request){
 
             if($request->sumaTotal == null){//si le doy finalizar compra sin tener nada agregado al carrito
-                return redirect()->route("index2");
+                return redirect()->route("index");
             }else{
                 //obtener imagen de comprobante y guardarla en la carpeta de comprobantes
                 $imageName = time().'.'.$request->imagen->extension();
@@ -1963,7 +1979,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
             $facturasCompras = Compras2s::where([["nFactura","=",$request->nFactura],["telefono","=",$request->telefono]])->get();
     
             if($facturasCompras->isEmpty()){
-                return redirect()->route("index2");
+                return redirect()->route("index");
             }else{
 
                 $productos = Producto::all();
@@ -2190,7 +2206,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                 //return $id;
 
                 if($contadorCarrito == null){
-                    return view("paginaPrincipal.index");
+                    return view("paginaPrincipal.index2");
                 }else{
 
                     return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","categoria"));
@@ -2269,7 +2285,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
 
                     
                     if($contadorCarrito == null){
-                        return view("paginaPrincipal.index");
+                        return view("paginaPrincipal.index2");
                     }else{
                         return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos","categoria"));
                     }

@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/', [HomeController::class,"index"])->name("index");
 Route::get('/', [HomeController::class,"index"])->name("index");
-Route::get('/index2', [HomeController::class,"index2"])->name("index2")->middleware("Check");
 
 
-Route::get('/formLogin', [HomeController::class,"formLogin"])->name("formLogin")->middleware("Check");
+Route::get('/formLogin', [HomeController::class,"formLogin"])->name("formLogin");
 Route::get('/authLogin', [HomeController::class,"authLogin"])->name("authLogin");
 Route::get('/loginDentro',[HomeController::class,"loginDentro"])->name("loginDentro")->middleware("auth");
 Route::get('/logout',[HomeController::class,"logout"])->name("logout")->middleware("auth");

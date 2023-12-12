@@ -48,13 +48,13 @@
                             <span style="background-color: white !important;" class="icon-bar"></span>
                         </button>
 
-                        <a href="{{ route('index2') }}" class="header__logo-link">
+                        <a href="{{ route('index') }}" class="header__logo-link">
                             <img style="height: 70px;" class="header__logo-image"
                                 src="images/logoShopis.jpg?v=1676468577" alt=""
                                 id="logo">
                         </a>
                     </div>
-                    <form action="http://shopiscr.com/index2" method="GET">
+                    <form action="http://shopiscr.com/index" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
                             <a href="http://shopiscr.com/carritoCompras">
                                 <ul class="nav navbar-nav navbar-right">

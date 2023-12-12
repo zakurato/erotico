@@ -18,7 +18,7 @@ class Check
      */
     public function handle(Request $request, Closure $next): Response
     {
-
+        
         //OBTENGO el id session 
         $sessionId = $request->session()->getId();
 
@@ -46,5 +46,6 @@ class Check
             Cache::flush();
             return redirect()->route("index");
         }
+        
     }
 }

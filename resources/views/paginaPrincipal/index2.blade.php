@@ -39,6 +39,10 @@
 <body class="warehouse--v4 features--animate-zoom template-index" data-instant-intensity="viewport">
     <!-- END sections: header-group -->
     <!-- BEGIN sections: overlay-group -->
+    <br>
+    <div>
+        <h1>{{$sessionCliente}}</h1>
+    </div>
     <div class="navbar navbar-inverse"
         style="background-color: #e7e7e7 !important; position: fixed; width: 100% !important; z-index: 9999 !important;">
         <div class="container-fluid">
@@ -58,7 +62,7 @@
                                 id="logo">
                         </a>
                     </div>
-                    <form action="{{ route('index2') }}" method="GET">
+                    <form action="{{ route('index') }}" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
                             <ul class="nav navbar-nav">
                                 <!--<li class="active"><a href="#">Home</a></li>-->
@@ -66,11 +70,11 @@
                                     <a style="color: 9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
                                         data-toggle="dropdown">Categorías</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ route('index2', ['categoria' => 'TODOS']) }}">TODOS</a></li>
+                                        <li><a href="{{ route('index', ['categoria' => 'TODOS']) }}">TODOS</a></li>
                                         @foreach ($categorias as $item)
                                             <li>
                                                 <a
-                                                    href="{{ route('index2', ['categoria' => $item->nombreCategoria]) }}">{{ $item->nombreCategoria }}</a>
+                                                    href="{{ route('index', ['categoria' => $item->nombreCategoria]) }}">{{ $item->nombreCategoria }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -805,7 +809,7 @@
             </div>
         </section>
     </div>
-    <form id="categoryForm" action="{{ route('index2') }}" method="GET">
+    <form id="categoryForm" action="{{ route('index') }}" method="GET">
         <input type="hidden" id="categoryInput" name="categoria" value="">
     </form>
     <div class="shopify-section">

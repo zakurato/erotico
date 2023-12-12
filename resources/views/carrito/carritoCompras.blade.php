@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-header">
-                        <a href="{{ route('index2') }}" class="header__logo-link">
+                        <a href="{{ route('index') }}" class="header__logo-link">
                             <img style="height: 70px;" class="header__logo-image"
                                 src="images/logoShopis.jpg?v=1676468577" alt=""
                                 id="logo">
