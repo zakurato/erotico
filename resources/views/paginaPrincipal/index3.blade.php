@@ -57,7 +57,7 @@
                                 src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
                         </a>
                     </div>
-                    <form action="http://localhost/erotico/public" method="GET">
+                    <form action="http://shopiscr.com" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
                             <ul class="nav navbar-nav">
                                 <!--<li class="active"><a href="#">Home</a></li>-->
@@ -128,7 +128,7 @@
                                     </form>
                                 </li>
                             </ul>
-                            <a href="http://localhost/erotico/public/carritoCompras">
+                            <a href="http://shopiscr.com/carritoCompras">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
                                         <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
