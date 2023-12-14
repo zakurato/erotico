@@ -15,7 +15,10 @@
     <!--mis css-->
     <!--/Css propios public-->
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
-    <link rel="stylesheet" href="{{ asset('index/stylesBoost.Css') }}?v={{ time() }}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!--iconos-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -31,7 +34,8 @@
 </head>
 
 <body>
-    <div style="background-color: #e7e7e7 !important; 
+    <div
+        style="background-color: #e7e7e7 !important; 
                position: fixed !important; 
                width: 100% !important;
                z-index: 9999 !important;
@@ -41,8 +45,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-header">
-                        <button style="background-color: #EA6A2F; border-color: white; color: white !important" id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
-                            data-toggle="collapse">
+                        <button style="background-color: #EA6A2F; border-color: white; color: white !important"
+                            id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse">
                             <span style="background-color: white !important;" class="icon-bar"></span>
                             <span style="background-color: white !important;" class="icon-bar"></span>
                             <span style="background-color: white !important;" class="icon-bar"></span>
@@ -50,13 +54,81 @@
 
                         <a href="{{ route('index') }}" class="header__logo-link">
                             <img style="height: 70px;" class="header__logo-image"
-                                src="images/logoShopis.jpg?v=1676468577" alt=""
-                                id="logo">
+                                src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
                         </a>
                     </div>
-                    <form action="http://shopiscr.com/index" method="GET">
+                    <form action="http://localhost/erotico/public" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
-                            <a href="http://shopiscr.com/carritoCompras">
+                            <ul class="nav navbar-nav">
+                                <!--<li class="active"><a href="#">Home</a></li>-->
+                                <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
+                                    <a style="color: 9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
+                                        data-toggle="dropdown">Categorías <i class="fa-solid fa-sort-down" style="position: relative; top: -5px; font-size: 10px"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('index', ['categoria' => 'TODOS']) }}">TODOS</a></li>
+                                        @foreach ($categorias as $item)
+                                            <li>
+                                                <a
+                                                    href="{{ route('index', ['categoria' => $item->nombreCategoria]) }}">{{ $item->nombreCategoria }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <!--
+                            <li><a href="#">Welcome</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            -->
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <!--<li class="active"><a href="#">Home</a></li>-->
+                                <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
+                                    <a style="color: #9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
+                                        data-toggle="dropdown">Horario <i class="fa-solid fa-sort-down" style="position: relative; top: -5px; font-size: 10px"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a id="a1" href="#">Lunes de 9am a 6 pm</a></li>
+                                            <li><a id="a2" href="#">Martes de 9am a 6 pm</a></li>
+                                            <li><a id="a3" href="#">Miércoles de 9am a 6 pm</a></li>
+                                            <li><a id="a4" href="#">Jueves de 9am a 6 pm</a></li>
+                                            <li><a id="a5" href="#">Viernes de 9am a 6 pm</a></li>
+                                            <li><a id="a6" href="#">Sábado de 9am a 6 pm</a></li>
+                                            <li><a id="a7" href="#">Domingo Cerrado</a></li>
+                                        </ul>
+                                </li>
+                                <!--
+                            <li><a href="#">Welcome</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            -->
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <form action="" class="navbar-form" style="width: 100%">
+                                        <div class="form-group">
+                                            <div style="display: flex;align-items: center; position: relative; top: 15px">
+                                                <input type="search" name="txtBuscar" id="search-input"
+                                                    placeholder="Nombre/Tamaño/Color" 
+                                                    style="display: block;
+                                                    width: 100%;
+                                                    height: 34px;
+                                                    padding: 0px 12px;
+                                                    font-size: 14px;
+                                                    line-height: 1.42857143;
+                                                    color: #9d9d9d;
+                                                    background-color: #fff;
+                                                    background-image: none;
+                                                    border: 1px solid #ccc;
+                                                    border-radius: 4px;">
+                                                <button type="submit">
+                                                    <i class="fa-solid fa-magnifying-glass fa-xl"
+                                                        style="color: #ffffff;"></i> </button>
+                                            </div>
+                                    </form>
+                                </li>
+                            </ul>
+                            <a href="http://localhost/erotico/public/carritoCompras">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
                                         <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
@@ -107,7 +179,7 @@
                                                 @foreach ($combinadosImages as $index => $item)
                                                     @if ($item->imagen != 'formTamañosCantidades')
                                                         <div class="mb-1" id="imagenPequeña{{ $index }}">
-                                                            <button type="button" class="btn p-0">
+                                                            <button type="button" class="btn p-0" style="width: 110px">
                                                                 <picture>
                                                                     <source
                                                                         media="(min-width: 761px)"srcset="imagesProductos/{{ $item->imagen }}">
@@ -123,7 +195,7 @@
                                         <div class="col">
                                             <div>
                                                 <div class="product-primary-image  active-primary " data-index="0">
-                                                    <picture class="d-block w-100" style="">
+                                                    <picture class="d-block w-100" style="position: relative; right: -40px;">
                                                         <source media="(min-width: 1980px)"
                                                             class="position-relative img-fluid w-md-100 h-md-100"
                                                             alt="Twist-Front Swim Dress, BLUE PAINTERLY LEAVES, hi-res image number null"
@@ -221,7 +293,7 @@
                                                         class="col attribute-label-container brand-font-primary line-height-1">
                                                         <!-- Select <Attribute> Label -->
                                                         <h2 class="color attribute-label d-inline-block mb-0 h5">
-                                                            color:
+                                                            color seleccionado:
                                                         </h2>
                                                         <span class="attribute-detail-selected selected-color"
                                                             aria-live="off">
@@ -738,32 +810,76 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
 
 
 <script>
-
     //cambia el tamaño del logo dependiendo si es pc o celular
     // Imprime el ancho de la pantalla al cargar la página
     var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     console.log("Ancho de la pantalla: " + ancho);
-    
+
     var logo = document.getElementById("logo");
-        if (ancho <= 752) {
-            logo.style.height = "50px";
-        }else{
-            logo.style.height = "70px";
-        }   
+    var a1 = document.getElementById("a1");
+    var a2 = document.getElementById("a2");
+    var a3 = document.getElementById("a3");
+    var a4 = document.getElementById("a4");
+    var a5 = document.getElementById("a5");
+    var a6 = document.getElementById("a6");
+    var a7 = document.getElementById("a7");
+
     
+    if (ancho <= 752) {
+        logo.style.height = "50px";
+        a1.style.color = "#9d9d9d";
+        a2.style.color = "#9d9d9d";
+        a3.style.color = "#9d9d9d";
+        a4.style.color = "#9d9d9d";
+        a5.style.color = "#9d9d9d";
+        a6.style.color = "#9d9d9d";
+        a7.style.color = "#9d9d9d";
+    } else {
+        logo.style.height = "70px";
+        a1.style.color = "black";
+        a2.style.color = "black";
+        a3.style.color = "black";
+        a4.style.color = "black";
+        a5.style.color = "black";
+        a6.style.color = "black";
+        a7.style.color = "black";
+    }
+
     // Registra un manejador de eventos para el evento "resize" que imprime el ancho de la pantalla cuando la ventana se redimensiona
     window.addEventListener("resize", function() {
         var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         console.log("Ancho de la pantalla: " + ancho);
         var logo = document.getElementById("logo");
+
+        var a1 = document.getElementById("a1");
+        var a2 = document.getElementById("a2");
+        var a3 = document.getElementById("a3");
+        var a4 = document.getElementById("a4");
+        var a5 = document.getElementById("a5");
+        var a6 = document.getElementById("a6");
+        var a7 = document.getElementById("a7");
+        
         if (ancho <= 752) {
             logo.style.height = "50px";
-        }else{
+            a1.style.color = "#9d9d9d";
+            a2.style.color = "#9d9d9d";
+            a3.style.color = "#9d9d9d";
+            a4.style.color = "#9d9d9d";
+            a5.style.color = "#9d9d9d";
+            a6.style.color = "#9d9d9d";
+            a7.style.color = "#9d9d9d";
+        } else {
             logo.style.height = "70px";
-        }   
+            a1.style.color = "black";
+            a2.style.color = "black";
+            a3.style.color = "black";
+            a4.style.color = "black";
+            a5.style.color = "black";
+            a6.style.color = "black";
+            a7.style.color = "black";
+        }
     });
-    
-    </script>
+</script>
 
 
 </html>

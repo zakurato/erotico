@@ -36,21 +36,91 @@
 <body id="cart"
     class="cart lang-es country-es currency-eur layout-full-width page-cart tax-display-enabled lang_es    desktop_device   	 hide-left-column hide-right-column "
     style="font: 17px Arial">
-    <div class="navbar navbar-inverse" style="background-color: #e7e7e7 !important; width: 100% !important; position: relative;">
+
+    <div class="navbar navbar-inverse"
+        style="background-color: #e7e7e7 !important;  width: 100% !important; z-index: 9999 !important;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="navbar-header">
-                        <a href="{{ route('index') }}" class="header__logo-link">
+                    <div class="navbar-header" style="position: relative; top: 5px">
+                        <button style="background-color: #EA6A2F; border-color: white" id="parpadeoDrop"
+                            class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span></button>
+                        <a href="{{route("index")}}" class="header__logo-link">
                             <img style="height: 70px;" class="header__logo-image"
-                                src="images/logoShopis.jpg?v=1676468577" alt=""
-                                id="logo">
+                                src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
                         </a>
                     </div>
+                    <form action="{{ route('index') }}" method="GET">
+                        <div class="navbar-collapse collapse" id="mobile_menu">
+                            <ul class="nav navbar-nav">
+                                <!--<li class="active"><a href="#">Home</a></li>-->
+                                <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
+                                    <a style="color: 9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
+                                        data-toggle="dropdown">Categorías</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('index', ['categoria' => 'TODOS']) }}">TODOS</a></li>
+                                        @foreach ($categorias as $item)
+                                            <li>
+                                                <a
+                                                    href="{{ route('index', ['categoria' => $item->nombreCategoria]) }}">{{ $item->nombreCategoria }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <!--
+                            <li><a href="#">Welcome</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            -->
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <!--<li class="active"><a href="#">Home</a></li>-->
+                                <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
+                                    <a style="color: #9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
+                                        data-toggle="dropdown">Horario</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Lunes de 9am a 6 pm</a></li>
+                                            <li><a href="#">Martes de 9am a 6 pm</a></li>
+                                            <li><a href="#">Miércoles de 9am a 6 pm</a></li>
+                                            <li><a href="#">Jueves de 9am a 6 pm</a></li>
+                                            <li><a href="#">Viernes de 9am a 6 pm</a></li>
+                                            <li><a href="#">Sábado de 9am a 6 pm</a></li>
+                                            <li><a href="#">Domingo Cerrado</a></li>
+                                        </ul>
+                                </li>
+                                <!--
+                            <li><a href="#">Welcome</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            -->
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <form action="" class="navbar-form" style="width: 100%">
+                                        <div class="form-group">
+                                            <div
+                                                style="display: flex;align-items: center; position: relative; top: 15px">
+                                                <input type="search" name="txtBuscar" id="search-input"
+                                                    placeholder="Nombre/Tamaño/Color" class="form-control">
+                                                <button type="submit">
+                                                    <i class="fa-solid fa-magnifying-glass fa-xl"
+                                                        style="color: #ffffff;"></i> </button>
+                                            </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
 
 
     <div id="st-container" class="st-container st-effect-0" style="background-color: white">
@@ -621,19 +691,18 @@ rel="noopener" aria-describedby="a11y-new-window-message">
 
 
 <script>
-
     //cambia el tamaño del logo dependiendo si es pc o celular
     // Imprime el ancho de la pantalla al cargar la página
     var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     console.log("Ancho de la pantalla: " + ancho);
-    
+
     var logo = document.getElementById("logo");
-        if (ancho <= 752) {
-            logo.style.height = "50px";
-        }else{
-            logo.style.height = "70px";
-        }   
-    
+    if (ancho <= 752) {
+        logo.style.height = "50px";
+    } else {
+        logo.style.height = "70px";
+    }
+
     // Registra un manejador de eventos para el evento "resize" que imprime el ancho de la pantalla cuando la ventana se redimensiona
     window.addEventListener("resize", function() {
         var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -641,11 +710,10 @@ rel="noopener" aria-describedby="a11y-new-window-message">
         var logo = document.getElementById("logo");
         if (ancho <= 752) {
             logo.style.height = "50px";
-        }else{
+        } else {
             logo.style.height = "70px";
-        }   
+        }
     });
-    
-    </script>
+</script>
 
 </html>

@@ -36,8 +36,30 @@
             <br>
             <div class="form-group">
                 <label for="exampleImage">Seleccionar imagen</label>
-                <input type="file" class="form-control-file" name="imagen" required>
+                <input type="file" class="form-control-file" name="imagen" id="imagen-input" required>
             </div>
+            <div>
+                <label>Imagen seleccionada:</label>
+                <img style="width: 250px; height: 250px;" id="imagen-preview" src="#" alt=".">
+            </div>
+            <script>
+                document.getElementById('imagen-input').addEventListener('change', function(e) {
+                    var preview = document.getElementById('imagen-preview');
+                    var file = e.target.files[0];
+        
+                    if (file) {
+                        var reader = new FileReader();
+        
+                        reader.onload = function(e) {
+                            preview.src = e.target.result;
+                        }
+        
+                        reader.readAsDataURL(file);
+                    } else {
+                        preview.src = "#";
+                    }
+                });
+            </script>
             <div class="form-group">
                 <label>Nombre del producto:</label>
                 <input type="text" class="form-control" name="nombre"

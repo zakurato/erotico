@@ -60,11 +60,23 @@
     <a href="{{ route('formCrearProducto') }}">
         <input type="button" value="Crear producto" class="btn btn-info">
     </a>
+    <br><br><br>
+
+    <div class="mb-3">
+        <form action="{{route("crearProducto")}}" method="GET">
+            <label for="formGroupExampleInput" class="form-label">Buscar producto por nombre:</label>
+            <input name="txtBuscar" type="text" class="form-control" id="formGroupExampleInput" placeholder="Buscar...">
+            <input type="submit" value="Buscar" class="btn btn-info">
+        </form>
+    </div>
 
     <br><br>
     {{ session('eliminarProducto') }}
     {{ session('correctoActualizarProducto') }}
 
+
+    <br><br>
+    {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
 
     <br><br>
     <div class="row row-cols-2 g-3">
@@ -130,7 +142,8 @@
             </div>
         @endforeach
     </div>
-
+    <br><br>
+    {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
 
 
 </body>

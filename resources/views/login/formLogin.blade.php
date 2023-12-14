@@ -9,27 +9,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{{asset("login/formLogin.Css")}}">
+    <link rel="stylesheet" href="{{asset("login/formLogin.Css")}}?v={{ time() }}">
+
+
     <!--icono-->
     <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
 </head>
 <body>
 
-    <div class="navbar">
-        <ul>
-            <li><a href="{{route("index")}}">Inicio</a></li>
-            <!-- Agrega aquí más elementos del navbar si es necesario -->
-        </ul>
+    <div class="navbar navbar-inverse"
+    style="background-color: #e7e7e7 !important; width: 100% !important; z-index: 9999 !important;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="navbar-header" style="position: relative; top: 5px">
+                    <a href="{{route("index")}}" class="header__logo-link">
+                        <img style="height: 70px;" class="header__logo-image"
+                            src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
 
     <div style="position: relative;">
-        <div style="text-align: center">
-            <img src="images/logo.jpg" alt="" class="img">
-        </div>
         <div style="position: absolute; top: 0; left: 0; width: 100%;">
             <div class="container" >
-                <br><br><br><br><br><br>
+                <div style="height: 120px"></div>
                 <form action="{{route("authLogin")}}" method="GET">
                     @csrf
                     <div class="form-group">

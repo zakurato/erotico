@@ -45,17 +45,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-header" style="position: relative; top: 5px">
-                        <button style="background-color: #EA6A2F; border-color: white" id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu"
-                            data-toggle="collapse">
+                        <button style="background-color: #EA6A2F; border-color: white" id="parpadeoDrop"
+                            class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span></button>
                         <a href="#" class="header__logo-link">
-                            <img style="height: 70px;" 
-                                 class="header__logo-image" 
-                                 src="images/logoShopis.jpg?v=1676468577"
-                                alt=""
-                                id="logo">
+                            <img style="height: 70px;" class="header__logo-image"
+                                src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
                         </a>
                     </div>
                     <form action="{{ route('index') }}" method="GET">
@@ -83,13 +80,35 @@
                             -->
                             </ul>
                             <ul class="nav navbar-nav">
+                                <!--<li class="active"><a href="#">Home</a></li>-->
+                                <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
+                                    <a style="color: 9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
+                                        data-toggle="dropdown">Horario</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Lunes de 9am a 6 pm</a></li>
+                                        <li><a href="#">Martes de 9am a 6 pm</a></li>
+                                        <li><a href="#">Miércoles de 9am a 6 pm</a></li>
+                                        <li><a href="#">Jueves de 9am a 6 pm</a></li>
+                                        <li><a href="#">Viernes de 9am a 6 pm</a></li>
+                                        <li><a href="#">Sábado de 9am a 6 pm</a></li>
+                                        <li><a href="#">Domingo Cerrado</a></li>
+                                    </ul>
+                                </li>
+                                <!--
+                            <li><a href="#">Welcome</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            -->
+                            </ul>
+                            <ul class="nav navbar-nav">
                                 <li>
                                     <form action="" class="navbar-form" style="width: 100%">
                                         <div class="form-group">
                                             <div
                                                 style="display: flex;align-items: center; position: relative; top: 15px">
                                                 <input type="search" name="txtBuscar" id="search-input"
-                                                    placeholder="Buscar..." class="form-control">
+                                                    placeholder="Nombre/Tamaño/Color" class="form-control">
                                                 <button type="submit">
                                                     <i class="fa-solid fa-magnifying-glass fa-xl"
                                                         style="color: #ffffff;"></i> </button>
@@ -103,8 +122,8 @@
                                         <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
                                             <!-- carrito -->
                                             <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg"
-                                                width="28" height="28" fill="currentColor" class="bi bi-cart3"
-                                                viewBox="0 0 16 16">
+                                                width="28" height="28" fill="currentColor"
+                                                class="bi bi-cart3" viewBox="0 0 16 16">
                                                 <path
                                                     d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                                                     fill="#9d9d9d">
@@ -126,7 +145,6 @@
         </div>
     </div>
     <div style="height: 60px;" id="espacioImagenPrincipal"></div>
-
 
     @if (isset($imagenPrincipal->imagen))
         <section class="animacion1" style="display: none">
@@ -174,6 +192,13 @@
     </div>
 
 
+    <div class="container">
+        <header class="section__header">
+            <div class="section__header-stack">
+                <p>{{ session('noEncontroProducto') }}</p>
+            </div>
+        </header>
+    </div>
 
 
     {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
@@ -192,7 +217,8 @@
                                         <div id="selectImagenes{{ $item->id }}" class="item active"
                                             file-name="{{ $item->imagen }}">
                                             <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
+                                                style="width: 380px; height: 260px;"class="card-img-top"
+                                                src="imagesProductos/{{ $item->imagen }}" alt="...">
                                         </div>
                                     </div>
                                     <script>
@@ -290,17 +316,17 @@
                                     </script>
 
                                     @if ($item->categoria != 'EMINENCE' && $item->categoria != 'PROTEINAS')
-                                    <!-- Left and right controls -->
-                                    <a class="left carousel-control" href="#myCarousel{{ $index }}"
-                                        data-slide="prev">
-                                        <span class="glyphicon glyphicon-chevron-left"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="right carousel-control" href="#myCarousel{{ $index }}"
-                                        data-slide="next">
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
+                                        <!-- Left and right controls -->
+                                        <a class="left carousel-control" href="#myCarousel{{ $index }}"
+                                            data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="right carousel-control" href="#myCarousel{{ $index }}"
+                                            data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
                                     @endif
 
 
@@ -339,8 +365,8 @@
                                 </div>
                                 <div class="product-item__info-inner">
                                     <div class="form-group">
-                                        <select
-                                            class="form-control styleSelect"name="tamaño"id="selectTamaños{{ $item->id }}">
+                                        <select class="form-control styleSelect"name="tamaño"
+                                            id="selectTamaños{{ $item->id }}">
                                             <option disabled selected>Seleccione el tamaño</option>
                                         </select>
                                     </div>
@@ -692,7 +718,8 @@
                                             <div id="selectImagenes{{ $item->id }}" class="item active"
                                                 file-name="{{ $item->imagen }}">
                                                 <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                    style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
+                                                    style="width: 380px; height: 260px;"class="card-img-top"
+                                                    src="imagesProductos/{{ $item->imagen }}" alt="...">
                                             </div>
                                         </div>
                                     </div>
@@ -771,7 +798,8 @@
                                             <div id="selectImagenes{{ $item->id }}" class="item active"
                                                 file-name="{{ $item->imagen }}">
                                                 <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                    style="width: 380px; height: 260px;"class="card-img-top"src="imagesProductos/{{ $item->imagen }}"alt="...">
+                                                    style="width: 380px; height: 260px;"class="card-img-top"
+                                                    src="imagesProductos/{{ $item->imagen }}" alt="...">
                                             </div>
                                         </div>
                                     </div>
@@ -983,27 +1011,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($productoTemporada->categoria != "EMINENCE" && $productoTemporada->categoria != "PROTEINAS")
-                                <div class="product-form__info-item">
-                                    <span class="product-form__info-title text--strong">Color:</span>
-                                    <div class="product-form__info-content" role="region" aria-live="polite">
-                                        <div class="price-list"
-                                            id="colorTemporada{{ $productoTemporada->color }}">
-                                            <span class="price">
-                                                <p>{{ $productoTemporada->color }}</p>
+                                @if ($productoTemporada->categoria != 'EMINENCE' && $productoTemporada->categoria != 'PROTEINAS')
+                                    <div class="product-form__info-item">
+                                        <span class="product-form__info-title text--strong">Color:</span>
+                                        <div class="product-form__info-content" role="region"
+                                            aria-live="polite">
+                                            <div class="price-list"
+                                                id="colorTemporada{{ $productoTemporada->color }}">
+                                                <span class="price">
+                                                    <p>{{ $productoTemporada->color }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="product-form__info-item">
-                                    <span class="product-form__info-title text--strong">Tamaño:</span>
-                                    <div class="product-form__info-content" role="region" aria-live="polite">
-                                        <div id="tamañoTemporada{{ $productoTemporada->tamaño }}"
-                                            class="price-list">
-                                            <span class="price">
-                                                <p>{{ $productoTemporada->tamaño }}</p>
+                                    <div class="product-form__info-item">
+                                        <span class="product-form__info-title text--strong">Tamaño:</span>
+                                        <div class="product-form__info-content" role="region"
+                                            aria-live="polite">
+                                            <div id="tamañoTemporada{{ $productoTemporada->tamaño }}"
+                                                class="price-list">
+                                                <span class="price">
+                                                    <p>{{ $productoTemporada->tamaño }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endif
                                 <div class="product-form__info-item product-form__info-item--quantity">
                                     <label for="template--14562732638271__featured-product-7064984518719-quantity"
@@ -1034,19 +1064,21 @@
                 var elementId = document.getElementById("mensajeContainer2{{ $productoTemporada->id }}");
                 var id = elementId.id; // Get the ID attribute of the element
                 id = id.replace("mensajeContainer2", ""); // Remove the prefix
-                var elementColor = document.getElementById("colorTemporada{{ $productoTemporada->color }}");
+                var elementColor = document.getElementById(
+                "colorTemporada{{ $productoTemporada->color }}");
                 var color = "";
-                if(elementColor == null){
+                if (elementColor == null) {
                     color = "NINGUNO";
-                }else{
+                } else {
                     color = elementColor.id; // Get the ID attribute of the element
                     color = color.replace("colorTemporada", ""); // Remove the prefix
                 }
-                var elementTamaño = document.getElementById("tamañoTemporada{{ $productoTemporada->tamaño }}");
+                var elementTamaño = document.getElementById(
+                    "tamañoTemporada{{ $productoTemporada->tamaño }}");
                 var tamaño = "";
-                if(elementTamaño == null){
+                if (elementTamaño == null) {
                     tamaño = "NINGUNO";
-                }else{
+                } else {
                     tamaño = elementTamaño.id; // Get the ID attribute of the element
                     tamaño = tamaño.replace("tamañoTemporada", ""); // Remove the prefix
                 }
@@ -1268,9 +1300,12 @@
                                 <span>Acerca de nosotros</span>
                             </button>
                             <p>
-                                En ShopisCr, nuestra misión es ofrecer una amplia variedad de productos de alta calidad
-a precios inigualables. Somos más que una empresa, somos un compromiso con la excelencia y la satisfacción
-de nuestros clientes, haciendo realidad tus sueños a través de productos excepcionales.
+                                En ShopisCr, nuestra misión es ofrecer una amplia variedad de productos de alta
+                                calidad
+                                a precios inigualables. Somos más que una empresa, somos un compromiso con la
+                                excelencia y la satisfacción
+                                de nuestros clientes, haciendo realidad tus sueños a través de productos
+                                excepcionales.
                             </p>
                         </div>
                     </div>
@@ -1373,40 +1408,38 @@ de nuestros clientes, haciendo realidad tus sueños a través de productos excep
 </script>
 
 <script>
-
-//cambia el tamaño del logo dependiendo si es pc o celular
-// Imprime el ancho de la pantalla al cargar la página
-var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-console.log("Ancho de la pantalla: " + ancho);
-
-var logo = document.getElementById("logo");
-var espacioImagenPrincipal = document.getElementById("espacioImagenPrincipal");
-    if (ancho <= 752) {
-        logo.style.height = "50px";
-        espacioImagenPrincipal.style.height = "75px";
-    }else{
-        logo.style.height = "70px";
-        espacioImagenPrincipal.style.height = "90px";
-    }   
-
-
-
-
-// Registra un manejador de eventos para el evento "resize" que imprime el ancho de la pantalla cuando la ventana se redimensiona
-window.addEventListener("resize", function() {
+    //cambia el tamaño del logo dependiendo si es pc o celular
+    // Imprime el ancho de la pantalla al cargar la página
     var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     console.log("Ancho de la pantalla: " + ancho);
+
     var logo = document.getElementById("logo");
     var espacioImagenPrincipal = document.getElementById("espacioImagenPrincipal");
     if (ancho <= 752) {
         logo.style.height = "50px";
         espacioImagenPrincipal.style.height = "75px";
-    }else{
+    } else {
         logo.style.height = "70px";
         espacioImagenPrincipal.style.height = "90px";
-    }   
-});
+    }
 
+
+
+
+    // Registra un manejador de eventos para el evento "resize" que imprime el ancho de la pantalla cuando la ventana se redimensiona
+    window.addEventListener("resize", function() {
+        var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        console.log("Ancho de la pantalla: " + ancho);
+        var logo = document.getElementById("logo");
+        var espacioImagenPrincipal = document.getElementById("espacioImagenPrincipal");
+        if (ancho <= 752) {
+            logo.style.height = "50px";
+            espacioImagenPrincipal.style.height = "75px";
+        } else {
+            logo.style.height = "70px";
+            espacioImagenPrincipal.style.height = "90px";
+        }
+    });
 </script>
 
 </html>
