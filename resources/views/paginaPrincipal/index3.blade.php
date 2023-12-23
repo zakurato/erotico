@@ -16,6 +16,7 @@
     <!--/Css propios public-->
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
 
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -57,7 +58,30 @@
                                 src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
                         </a>
                     </div>
-                    <form action="http://shopiscr.com" method="GET">
+
+                    <div style="margin-left: 60%">
+                        <a href="{{ route('carritoCompras') }}">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <div style="display: inline-flex; position: relative; top: 1px;" id="parpadeo">
+                                        <!-- carrito -->
+                                        <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                                                fill="#9d9d9d">
+                                            </path>
+                                        </svg>
+                                        <div style="color: #9d9d9d" id="contadorCarrito">
+                                            {{ $contadorCarrito->contadorCarrito }}</div>
+                                        <h4 style="color: #9d9d9d;">Carrito de compras</h4>
+                                        <!-- carrito -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </a>
+                    </div>
+                    <form action="http://localhost/erotico/public" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
                             <ul class="nav navbar-nav">
                                 <!--<li class="active"><a href="#">Home</a></li>-->
@@ -128,34 +152,38 @@
                                     </form>
                                 </li>
                             </ul>
-                            <a href="http://shopiscr.com/carritoCompras">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
-                                            <!-- carrito -->
-                                            <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg"
-                                                width="28" height="28" fill="currentColor" class="bi bi-cart3"
-                                                viewBox="0 0 16 16">
-                                                <path
-                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                                    fill="#9d9d9d">
-                                                </path>
-                                            </svg>
-                                            <div style="color: #9d9d9d" id="contadorCarrito">
-                                                {{ $contadorCarrito->contadorCarrito }}
-                                            </div>
-                                            <h4 style="color: #9d9d9d;">Carrito de compras</h4>
-                                            <!-- carrito -->
-                                        </div>
-                                    </li>
-                                </ul>
-                            </a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -304,7 +332,7 @@
                                                     </span>
                                                     <br><br>
                                                     <select class="a-native-dropdown a-declarative">
-                                                        <option> Seleccionar </option>
+                                                        <option disabled selected> {{$color}} </option>
                                                         @foreach ($coloresDiferentesAProductoSeleccionado as $item)
                                                             <option
                                                                 value="color:{{ $item }} id:{{ $id }}">
@@ -398,6 +426,67 @@
 </form>
 <br><br><br><br><br><br>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div id="shopify-section-sections--14562733293631__footer"
 class="shopify-section shopify-section-group-footer-group">
 <footer class="footer" data-section-id="sections--14562733293631__footer" data-section-type="footer"

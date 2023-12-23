@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', [HomeController::class,"index"])->name("index");
 Route::get('/', [HomeController::class,"index"])->name("index");
 
+Route::get('/prueba', [HomeController::class,"prueba"])->name("prueba");
+
+
 
 Route::get('/formLogin', [HomeController::class,"formLogin"])->name("formLogin");
 Route::get('/authLogin', [HomeController::class,"authLogin"])->name("authLogin");

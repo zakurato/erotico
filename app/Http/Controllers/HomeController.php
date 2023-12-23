@@ -1898,7 +1898,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         "\nNombre: ".$request->nombre.
                         "\nTelefono:".$request->telefono.
                         "\nDireccion: ".$request->direccion.
-                        "\nLink: http://shopiscr.com/factura/".$factura."/".$request->telefono);
+                        "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
 
                     // Redireccionar al enlace de WhatsApp
                     return redirect($url);
@@ -1945,7 +1945,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         "\nNombre: ".$request->nombre.
                         "\nTelefono:".$request->telefono.
                         "\nDireccion: ".$request->direccion.
-                        "\nLink: http://shopiscr.com/factura/".$factura."/".$request->telefono);
+                        "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
 
                     // Redireccionar al enlace de WhatsApp
                     return redirect($url);
@@ -2210,8 +2210,10 @@ public function restarCambioInputCambioTotalIva(Request $request){
                 if($contadorCarrito == null){
                     return view("paginaPrincipal.index2");
                 }else{
+                    $productos = Producto::paginate(12);
+                    $fotos = Foto::all();
                     $categorias = Categoria::all();
-                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","categoria","categorias"));
+                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","categoria","categorias","productos","fotos"));
                 }
                 
 
@@ -2289,8 +2291,10 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     if($contadorCarrito == null){
                         return view("paginaPrincipal.index2");
                     }else{
+                        $productos = Producto::paginate(12);
+                        $fotos = Foto::all();
                         $categorias = Categoria::all();
-                        return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos","categoria","categorias"));
+                        return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos","categoria","categorias","productos","fotos"));
                     }
                     
                 }
@@ -2472,17 +2476,14 @@ public function restarCambioInputCambioTotalIva(Request $request){
 
 
 
-        
 
 
 
 
 
-
-
-
-
-
+        public function prueba() {
+            return view("prueba");
+        }
 
         public function niki(){
             return view("niki");

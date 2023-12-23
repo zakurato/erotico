@@ -19,14 +19,13 @@
     <!-- BEGIN app block: shopify://apps/yoast-seo-seo-for-everyone/blocks/metatags/7c777011-bc88-4743-a24e-64336e1e5b46 -->
     <!-- This site is optimized with Yoast SEO for Shopify -->
     <title>ShopisCr</title>
-    <meta name="description"
-        content="La mejor Tienda De Productos Para Adultos Chat Con Asesora Gratis. Envíos 100% discretos, Enviamos a todo el país.">
+    <meta name="description" content="La mejor Tienda de productos.">
     <meta property="og:site_name" content="ShopisCr">
     <meta property="og:url" content="https://www.shopiscr.com/">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
     <meta property="og:title" content="La mejor Tienda ShopisCr">
-    <meta property="og:description" content="La mejor Tienda De Productos Para Adultos">
+    <meta property="og:description" content="La mejor Tienda de Productos">
     <meta property="og:image" content="">
     <meta property="og:image:height" content="628">
     <meta property="og:image:width" content="1200">
@@ -53,6 +52,28 @@
                         <a href="#" class="header__logo-link">
                             <img style="height: 70px;" class="header__logo-image"
                                 src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
+                        </a>
+                    </div>
+                    <div style="margin-left: 60%">
+                        <a href="{{ route('carritoCompras') }}">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <div style="display: inline-flex; position: relative; top: 1px;" id="parpadeo">
+                                        <!-- carrito -->
+                                        <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                                                fill="#9d9d9d">
+                                            </path>
+                                        </svg>
+                                        <div style="color: #9d9d9d" id="contadorCarrito">
+                                            {{ $contadorCarrito->contadorCarrito }}</div>
+                                        <h4 style="color: #9d9d9d;">Carrito de compras</h4>
+                                        <!-- carrito -->
+                                    </div>
+                                </li>
+                            </ul>
                         </a>
                     </div>
                     <form action="{{ route('index') }}" method="GET">
@@ -116,35 +137,17 @@
                                     </form>
                                 </li>
                             </ul>
-                            <a href="{{ route('carritoCompras') }}">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
-                                            <!-- carrito -->
-                                            <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg"
-                                                width="28" height="28" fill="currentColor"
-                                                class="bi bi-cart3" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                                    fill="#9d9d9d">
-                                                </path>
-                                            </svg>
-                                            <div style="color: #9d9d9d" id="contadorCarrito">
-                                                {{ $contadorCarrito->contadorCarrito }}</div>
-                                            <h4 style="color: #9d9d9d;">Carrito de compras</h4>
-                                            <!-- carrito -->
-                                        </div>
-                                    </li>
-                                </ul>
-                            </a>
-                            </a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div style="height: 60px;" id="espacioImagenPrincipal"></div>
+
+
+
+    <div style="height: 20px;" id="espacioImagenPrincipal"></div>
+
 
     @if (isset($imagenPrincipal->imagen))
         <section class="animacion1" style="display: none">
@@ -1065,7 +1068,7 @@
                 var id = elementId.id; // Get the ID attribute of the element
                 id = id.replace("mensajeContainer2", ""); // Remove the prefix
                 var elementColor = document.getElementById(
-                "colorTemporada{{ $productoTemporada->color }}");
+                    "colorTemporada{{ $productoTemporada->color }}");
                 var color = "";
                 if (elementColor == null) {
                     color = "NINGUNO";
