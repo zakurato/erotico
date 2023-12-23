@@ -81,7 +81,7 @@
                             </ul>
                         </a>
                     </div>
-                    <form action="http://localhost/erotico/public" method="GET">
+                    <form action="http://shopiscr.com" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
                             <ul class="nav navbar-nav">
                                 <!--<li class="active"><a href="#">Home</a></li>-->
