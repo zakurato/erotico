@@ -16,7 +16,7 @@
     <!--/Css propios public-->
     <link rel="stylesheet" href="{{ asset('index/styles.Css') }}?v={{ time() }}">
 
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -47,7 +47,7 @@
                 <div class="col-lg-12">
                     <div class="navbar-header">
                         <button style="background-color: #EA6A2F; border-color: white; color: white !important"
-                            id="parpadeoDrop" class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse">
+                            id="" class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse">
                             <span style="background-color: white !important;" class="icon-bar"></span>
                             <span style="background-color: white !important;" class="icon-bar"></span>
                             <span style="background-color: white !important;" class="icon-bar"></span>
@@ -58,36 +58,14 @@
                                 src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
                         </a>
                     </div>
-
-                    <div style="margin-left: 60%">
-                        <a href="{{ route('carritoCompras') }}">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <div style="display: inline-flex; position: relative; top: 1px;" id="parpadeo">
-                                        <!-- carrito -->
-                                        <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg" width="20"
-                                            height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                                fill="#9d9d9d">
-                                            </path>
-                                        </svg>
-                                        <div style="color: #9d9d9d" id="contadorCarrito">
-                                            {{ $contadorCarrito->contadorCarrito }}</div>
-                                        <h4 style="color: #9d9d9d;">Carrito de compras</h4>
-                                        <!-- carrito -->
-                                    </div>
-                                </li>
-                            </ul>
-                        </a>
-                    </div>
                     <form action="http://shopiscr.com" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
                             <ul class="nav navbar-nav">
                                 <!--<li class="active"><a href="#">Home</a></li>-->
                                 <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
                                     <a style="color: 9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
-                                        data-toggle="dropdown">Categorías <i class="fa-solid fa-sort-down" style="position: relative; top: -5px; font-size: 10px"></i></a>
+                                        data-toggle="dropdown">Categorías <i class="fa-solid fa-sort-down"
+                                            style="position: relative; top: -5px; font-size: 10px"></i></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ route('index', ['categoria' => 'TODOS']) }}">TODOS</a></li>
                                         @foreach ($categorias as $item)
@@ -109,16 +87,17 @@
                                 <!--<li class="active"><a href="#">Home</a></li>-->
                                 <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
                                     <a style="color: #9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
-                                        data-toggle="dropdown">Horario <i class="fa-solid fa-sort-down" style="position: relative; top: -5px; font-size: 10px"></i></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a id="a1" href="#">Lunes de 9am a 6 pm</a></li>
-                                            <li><a id="a2" href="#">Martes de 9am a 6 pm</a></li>
-                                            <li><a id="a3" href="#">Miércoles de 9am a 6 pm</a></li>
-                                            <li><a id="a4" href="#">Jueves de 9am a 6 pm</a></li>
-                                            <li><a id="a5" href="#">Viernes de 9am a 6 pm</a></li>
-                                            <li><a id="a6" href="#">Sábado de 9am a 6 pm</a></li>
-                                            <li><a id="a7" href="#">Domingo Cerrado</a></li>
-                                        </ul>
+                                        data-toggle="dropdown">Horario <i class="fa-solid fa-sort-down"
+                                            style="position: relative; top: -5px; font-size: 10px"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a id="a1" href="#">Lunes de 9am a 6 pm</a></li>
+                                        <li><a id="a2" href="#">Martes de 9am a 6 pm</a></li>
+                                        <li><a id="a3" href="#">Miércoles de 9am a 6 pm</a></li>
+                                        <li><a id="a4" href="#">Jueves de 9am a 6 pm</a></li>
+                                        <li><a id="a5" href="#">Viernes de 9am a 6 pm</a></li>
+                                        <li><a id="a6" href="#">Sábado de 9am a 6 pm</a></li>
+                                        <li><a id="a7" href="#">Domingo Cerrado</a></li>
+                                    </ul>
                                 </li>
                                 <!--
                             <li><a href="#">Welcome</a></li>
@@ -131,9 +110,10 @@
                                 <li>
                                     <form action="" class="navbar-form" style="width: 100%">
                                         <div class="form-group">
-                                            <div style="display: flex;align-items: center; position: relative; top: 15px">
+                                            <div
+                                                style="display: flex;align-items: center; position: relative; top: 15px">
                                                 <input type="search" name="txtBuscar" id="search-input"
-                                                    placeholder="Nombre/Tamaño/Color" 
+                                                    placeholder="Nombre/Tamaño/Color"
                                                     style="display: block;
                                                     width: 100%;
                                                     height: 34px;
@@ -167,7 +147,44 @@
 
 
 
+    <!-- Pestaña desplegable -->
+    <div id="">
+        <div id="pestaña" class="pestaña" onclick="togglePestaña()">
+            <div class="icono">
+                <i class='fas fa-angle-left' style='font-size:30px; color:#EA6A2F '></i>
 
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido de la pestaña -->
+    <div id="parpadeo">
+        <div id="contenidoPestaña" class="contenido-pestaña">
+            <!-- Agrega aquí el contenido que deseas mostrar en la pestaña desplegable -->
+            <!-- carrito -->
+            <a href="{{ route('carritoCompras') }}">
+                <p id="contadorCarrito" style="position: fixed; right: 30px; color: #EA6A2F">
+                    {{ $contadorCarrito->contadorCarrito }}
+                </p>
+                <i class="fa-solid fa-cart-shopping" style="font-size:30px; color: #EA6A2F"></i>
+                <h5 style="color: #EA6A2F;">Carrito</h5>
+                <!-- carrito -->
+            </a>
+        </div>
+    </div>
+
+
+    <script>
+        function togglePestaña() {
+            var contenidoPestaña = document.getElementById("contenidoPestaña");
+
+            if (contenidoPestaña.style.display === "none" || contenidoPestaña.style.display === "") {
+                contenidoPestaña.style.display = "block";
+            } else {
+                contenidoPestaña.style.display = "none";
+            }
+        }
+    </script>
 
 
 
@@ -207,7 +224,8 @@
                                                 @foreach ($combinadosImages as $index => $item)
                                                     @if ($item->imagen != 'formTamañosCantidades')
                                                         <div class="mb-1" id="imagenPequeña{{ $index }}">
-                                                            <button type="button" class="btn p-0" style="width: 110px">
+                                                            <button type="button" class="btn p-0"
+                                                                style="width: 110px">
                                                                 <picture>
                                                                     <source
                                                                         media="(min-width: 761px)"srcset="imagesProductos/{{ $item->imagen }}">
@@ -223,7 +241,8 @@
                                         <div class="col">
                                             <div>
                                                 <div class="product-primary-image  active-primary " data-index="0">
-                                                    <picture class="d-block w-100" style="position: relative; right: -40px;">
+                                                    <picture class="d-block w-100"
+                                                        style="position: relative; right: -40px;">
                                                         <source media="(min-width: 1980px)"
                                                             class="position-relative img-fluid w-md-100 h-md-100"
                                                             alt="Twist-Front Swim Dress, BLUE PAINTERLY LEAVES, hi-res image number null"
@@ -298,6 +317,21 @@
                                                     class="col attribute-label-container brand-font-primary line-height-1">
                                                     <!-- Select <Attribute> Label -->
                                                     <h2 class="color attribute-label d-inline-block mb-0 h5">
+                                                        Disponibles:
+                                                    </h2>
+                                                    <span class="attribute-detail-selected selected-color"
+                                                        aria-live="off">
+                                                        ({{ $cantidad }})
+                                                    </span>
+                                                    <span class="attribute-detail-hovered hovered-color d-none"
+                                                        aria-live="off"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div
+                                                    class="col attribute-label-container brand-font-primary line-height-1">
+                                                    <!-- Select <Attribute> Label -->
+                                                    <h2 class="color attribute-label d-inline-block mb-0 h5">
                                                         Categoria:
                                                     </h2>
                                                     <span class="attribute-detail-selected selected-color"
@@ -332,7 +366,8 @@
                                                     </span>
                                                     <br><br>
                                                     <select class="a-native-dropdown a-declarative">
-                                                        <option disabled selected> {{$color}} </option>
+                                                        <option disabled selected> {{ $color }}
+                                                        </option>
                                                         @foreach ($coloresDiferentesAProductoSeleccionado as $item)
                                                             <option
                                                                 value="color:{{ $item }} id:{{ $id }}">
@@ -688,7 +723,7 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
                                 var mensajeContainer = document.getElementById(
                                     "mensajeContainer{{ $id }}");
                                 mensajeContainer.innerHTML =
-                                    "No quedan en inventario del tamaño " + response
+                                    "No quedan disponibles del tamaño " + response
                                     .producto.tamaño;
 
                             } else {
@@ -732,8 +767,13 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
                                                     "contadorCarrito");
                                             var parpadeo2 = document
                                                 .getElementById("parpadeo");
-                                            var parpadeo3 = document
-                                                .getElementById("parpadeoDrop");
+
+                                            var contenidoPestaña = document
+                                                .getElementById(
+                                                    "contenidoPestaña");
+                                            contenidoPestaña.style.display =
+                                                "block";
+
                                             // Función para actualizar el valor del contador y añadir la clase "parpadeo"
                                             function actualizarContador(
                                                 nuevoValor) {
@@ -741,17 +781,14 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
                                                     .innerHTML = nuevoValor;
                                                 parpadeo2.classList.add(
                                                     "parpadeo");
-                                                parpadeo3.classList.add(
-                                                    "parpadeo");
+
 
                                                 // Eliminar la clase "parpadeo" después de la animación
                                                 setTimeout(function() {
                                                         parpadeo2.classList
                                                             .remove(
                                                                 "parpadeo");
-                                                        parpadeo3.classList
-                                                            .remove(
-                                                                "parpadeo");
+
 
                                                     },
                                                     6000
@@ -776,7 +813,7 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
                                 var mensajeContainer = document.getElementById(
                                     "mensajeContainer{{ $id }}");
                                 mensajeContainer.innerHTML =
-                                    "No quedan en inventario del tamaño " + response.foto
+                                    "No quedan disponibles del tamaño " + response.foto
                                     .tamaño;
                             } else {
                                 var mensajeContainer = document.getElementById(
@@ -820,8 +857,12 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
                                                     "contadorCarrito");
                                             var parpadeo2 = document
                                                 .getElementById("parpadeo");
-                                            var parpadeo3 = document
-                                                .getElementById("parpadeoDrop");
+
+                                            var contenidoPestaña = document
+                                                .getElementById(
+                                                    "contenidoPestaña");
+                                            contenidoPestaña.style.display =
+                                                "block";
                                             // Función para actualizar el valor del contador y añadir la clase "parpadeo"
                                             function actualizarContador(
                                                 nuevoValor) {
@@ -829,18 +870,13 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
                                                     .innerHTML = nuevoValor;
                                                 parpadeo2.classList.add(
                                                     "parpadeo");
-                                                parpadeo3.classList.add(
-                                                    "parpadeo");
+
 
                                                 // Eliminar la clase "parpadeo" después de la animación
                                                 setTimeout(function() {
                                                         parpadeo2.classList
                                                             .remove(
                                                                 "parpadeo");
-                                                        parpadeo3.classList
-                                                            .remove(
-                                                                "parpadeo");
-
                                                     },
                                                     6000
                                                 ); // 2s * 3 = 6s (duración total de la animación)
@@ -913,7 +949,7 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
     var a6 = document.getElementById("a6");
     var a7 = document.getElementById("a7");
 
-    
+
     if (ancho <= 752) {
         logo.style.height = "50px";
         a1.style.color = "#9d9d9d";
@@ -947,7 +983,7 @@ role="contentinfo" style="background-color: #e7e7e7; color: black">
         var a5 = document.getElementById("a5");
         var a6 = document.getElementById("a6");
         var a7 = document.getElementById("a7");
-        
+
         if (ancho <= 752) {
             logo.style.height = "50px";
             a1.style.color = "#9d9d9d";

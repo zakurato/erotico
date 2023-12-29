@@ -48,7 +48,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span></button>
-                        <a href="{{route("index")}}" class="header__logo-link">
+                        <a href="{{ route('index') }}" class="header__logo-link">
                             <img style="height: 70px;" class="header__logo-image"
                                 src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
                         </a>
@@ -82,15 +82,15 @@
                                 <li class="dropdown"> <!-- Agregamos la clase "dropdown" al elemento li -->
                                     <a style="color: #9d9d9d !important; background-color: #e7e7e7; position: relative; top: 10px"class="dropdown-toggle"
                                         data-toggle="dropdown">Horario</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Lunes de 9am a 6 pm</a></li>
-                                            <li><a href="#">Martes de 9am a 6 pm</a></li>
-                                            <li><a href="#">Miércoles de 9am a 6 pm</a></li>
-                                            <li><a href="#">Jueves de 9am a 6 pm</a></li>
-                                            <li><a href="#">Viernes de 9am a 6 pm</a></li>
-                                            <li><a href="#">Sábado de 9am a 6 pm</a></li>
-                                            <li><a href="#">Domingo Cerrado</a></li>
-                                        </ul>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Lunes de 9am a 6 pm</a></li>
+                                        <li><a href="#">Martes de 9am a 6 pm</a></li>
+                                        <li><a href="#">Miércoles de 9am a 6 pm</a></li>
+                                        <li><a href="#">Jueves de 9am a 6 pm</a></li>
+                                        <li><a href="#">Viernes de 9am a 6 pm</a></li>
+                                        <li><a href="#">Sábado de 9am a 6 pm</a></li>
+                                        <li><a href="#">Domingo Cerrado</a></li>
+                                    </ul>
                                 </li>
                                 <!--
                             <li><a href="#">Welcome</a></li>
@@ -230,6 +230,11 @@
                                                                             Categoría:
                                                                             {{ $item2->categoria }}
                                                                         </div>
+                                                                        <div class="product-line-info">
+                                                                            <h5
+                                                                                id="msjFull{{ $item->id }}">
+                                                                            </h5>
+                                                                        </div>
                                                                     </div>
 
                                                                     <!--  product left body: description -->
@@ -309,6 +314,8 @@
                                                                                                 var idProductoCarrito = restarInput.id.replace("inputCantidad", "");
                                                                                                 var $resultadoTotalArticulos = document.getElementById("resultado");
                                                                                                 var precioTotalProductoIvaHidden = document.getElementById("sumaTotalProductosHidden");
+                                                                                                var h5msjFull = document.getElementById("msjFull{{ $item->id }}");
+
 
 
                                                                                                 $.ajax({
@@ -325,6 +332,7 @@
                                                                                                         restarInput.value = response.cantidad;
                                                                                                         $resultadoTotalArticulos.textContent = response.sumaTotalArticulos;
                                                                                                         precioTotalProductoIvaHidden.defaultValue = response.suma;
+                                                                                                        h5msjFull.innerText = "";
 
                                                                                                     }
                                                                                                 });
@@ -355,6 +363,8 @@
                                                                                                 var idProductoCarrito = sumarInput.id.replace("inputCantidad", "");
                                                                                                 var $resultadoTotalArticulos = document.getElementById("resultado");
                                                                                                 var precioTotalProductoIvaHidden = document.getElementById("sumaTotalProductosHidden");
+                                                                                                var h5msjFull = document.getElementById("msjFull{{ $item->id }}");
+
 
                                                                                                 //aqui debo arreglar para traer el $item5->imagen que es la imagen de la foto para poder sumarla o restarla
 
@@ -366,11 +376,13 @@
                                                                                                     }, //los parametros enviados
                                                                                                     dataType: 'json',
                                                                                                     success: function(response) {
+
                                                                                                         //respuesta del controlador 
                                                                                                         precioTotalProductoIva.textContent = "₡" + response.suma;
                                                                                                         sumarInput.value = response.cantidad;
                                                                                                         $resultadoTotalArticulos.textContent = response.sumaTotalArticulos;
                                                                                                         precioTotalProductoIvaHidden.defaultValue = response.suma;
+                                                                                                        h5msjFull.innerText = response.msjNoMasCantidad;
                                                                                                     }
                                                                                                 });
 
@@ -474,6 +486,73 @@
                                                 <div class="product-line-grid container-fluid">
                                                     <div>
                                                         <!--  Formulario-->
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Seleccione envío:</label>
+                                                            <br>
+                                                            <select name="opcionEnvio" required
+                                                                id="opcionEnvio">
+                                                                <option value="" disabled selected>
+                                                                    Seleccione envío</option>
+                                                                <option value="Ciudad Quesada">Ciudad Quesada
+                                                                </option>
+                                                                <option value="Correos de Costa Rica">Correos
+                                                                    de Costa Rica</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <script>
+                                                            document.addEventListener('DOMContentLoaded', function() {
+                                                                // Obtener el elemento select por su id
+                                                                var selectElement = document.getElementById('opcionEnvio');
+                                                                var labelSumaProductos = document.getElementById("sumaTotalProductos");
+                                                                var txtCedula = document.getElementById("txtCedula");
+                                                                var inputCedula = document.getElementById("inputCedula");
+
+                                                                console.log(inputCedula);
+                                                        
+                                                                // Declarar una variable para almacenar el valor seleccionado
+                                                                var valorSeleccionadoInicial;
+                                                        
+                                                                // Agregar un event listener para el cambio de selección
+                                                                selectElement.addEventListener('change', function() {
+                                                                    // Hacer algo con el valor seleccionado, por ejemplo, imprimirlo en la consola
+                                                                    var valorSeleccionado = selectElement.value;
+                                                                    var montoOriginal = parseFloat(labelSumaProductos.innerText.replace(/₡/g, '').trim());
+                                                        
+                                                                    if (!valorSeleccionadoInicial) {
+                                                                        // Guardar el valor seleccionado la primera vez que se produce el evento
+                                                                        valorSeleccionadoInicial = montoOriginal;
+                                                                    }
+                                                                    //console.log("Valor inicial seleccionado: " + valorSeleccionadoInicial);
+                                                                    //console.log("Valor cambiado: " + montoOriginal);
+                                                        
+                                                                    // Realizar la operación adecuada según la selección
+                                                                    var resultado;
+                                                        
+                                                                    if (valorSeleccionado === "Ciudad Quesada") {
+                                                                        resultado = valorSeleccionadoInicial + 1000;
+                                                                        txtCedula.style.display = "none";
+                                                                        // Elimina el atributo "required"
+                                                                        inputCedula.removeAttribute("required");
+                                                                    } else {
+                                                                        txtCedula.style.display = "block";
+                                                                        resultado = valorSeleccionadoInicial + 3500;
+                                                                        // Añade el atributo "required"
+                                                                        inputCedula.setAttribute("required", "");
+                                                                    }
+                                                        
+                                                                    // Actualizar el texto en el elemento labelSumaProductos
+                                                                    labelSumaProductos.innerText = "₡" + resultado; // Agregar el símbolo de colón nuevamente si es necesario
+                                                                });
+                                                            });
+                                                        </script>
+                                                        
+                                                        <div class="mb-3" style="display: none" id="txtCedula">
+                                                            <label class="form-label">Cédula:</label>
+                                                            <input id="inputCedula" type="text" class="form-control" name="cedula" required>
+                                                        </div>
+
+
                                                         <div class="mb-3">
                                                             <label class="form-label">Nombre completo:</label>
                                                             <input type="text" class="form-control"

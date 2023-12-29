@@ -19,8 +19,7 @@
     <!-- BEGIN app block: shopify://apps/yoast-seo-seo-for-everyone/blocks/metatags/7c777011-bc88-4743-a24e-64336e1e5b46 -->
     <!-- This site is optimized with Yoast SEO for Shopify -->
     <title>ShopisCr</title>
-    <meta name="description"
-        content="La mejor Tienda de productos.">
+    <meta name="description" content="La mejor Tienda de productos.">
     <meta property="og:site_name" content="ShopisCr">
     <meta property="og:url" content="https://www.shopiscr.com/">
     <meta property="og:locale" content="es_ES">
@@ -45,8 +44,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-header" style="position: relative; top: 5px">
-                        <button style="background-color: #EA6A2F; border-color: white" id="parpadeoDrop"
-                            class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse">
+                        <button style="background-color: #EA6A2F; border-color: white" class="navbar-toggle"
+                            data-target="#mobile_menu" data-toggle="collapse">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span></button>
@@ -116,34 +115,67 @@
                                     </form>
                                 </li>
                             </ul>
-                            <a href="{{ route('carritoCompras') }}">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <div style="display: inline-flex; position: relative; top: 7px" id="parpadeo">
-                                            <!-- carrito -->
-                                            <svg style="color: #9d9d9d" xmlns="http://www.w3.org/2000/svg"
-                                                width="28" height="28" fill="currentColor"
-                                                class="bi bi-cart3" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                                    fill="#9d9d9d">
-                                                </path>
-                                            </svg>
-                                            <div style="color: #9d9d9d" id="contadorCarrito">
-                                                {{ $contadorCarrito->contadorCarrito }}</div>
-                                            <h4 style="color: #9d9d9d;">Carrito de compras</h4>
-                                            <!-- carrito -->
-                                        </div>
-                                    </li>
-                                </ul>
-                            </a>
-                            </a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+    <!-- Pestaña desplegable -->
+    <div id="">
+        <div id="pestaña" class="pestaña" onclick="togglePestaña()">
+            <div class="icono">
+                <i class='fas fa-angle-left' style='font-size:30px; color:#EA6A2F '></i>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido de la pestaña -->
+    <div id="parpadeo">
+        <div id="contenidoPestaña" class="contenido-pestaña">
+            <!-- Agrega aquí el contenido que deseas mostrar en la pestaña desplegable -->
+            <!-- carrito -->
+            <a href="{{ route('carritoCompras') }}">
+                <p id="contadorCarrito" style="position: fixed; right: 30px; color: #EA6A2F">
+                    {{ $contadorCarrito->contadorCarrito }}
+                </p>
+                <i class="fa-solid fa-cart-shopping" style="font-size:30px; color: #EA6A2F"></i>
+                <h5 style="color: #EA6A2F;">Carrito</h5>
+                <!-- carrito -->
+            </a>
+        </div>
+    </div>
+
+
+    <script>
+        function togglePestaña() {
+            var contenidoPestaña = document.getElementById("contenidoPestaña");
+
+            if (contenidoPestaña.style.display === "none" || contenidoPestaña.style.display === "") {
+                contenidoPestaña.style.display = "block";
+            } else {
+                contenidoPestaña.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div style="height: 60px;" id="espacioImagenPrincipal"></div>
 
     @if (isset($imagenPrincipal->imagen))
@@ -340,6 +372,7 @@
                                     <h5 class="fw-bolder nombre">{{ $item->nombre }}</h5>
                                     <!-- Product price-->
                                     <h5 class="fw-bolder precio">Precio: ₡{{ $item->precio }}</h5>
+                                    <h5 id="selectCantidad{{ $item->id }}" class="fw-bolder precio">Disponibles: ({{ $item->cantidad }})</h5>
                                 </div>
                             </div>
                             <br>
@@ -389,8 +422,14 @@
                                                 }, //los parametros enviados
                                                 dataType: 'json',
                                                 success: function(response) {
+                                                    const cantidad = response.cantidades.find(elemento => !isNaN(elemento));
+                                                    //console.log(numeroEncontrado)
+
+                                                    $("#selectCantidad" + productId).empty(); //limpia el select de tamaños
+                                                    $("#selectCantidad" + productId).append("Disponibles: ("+ cantidad+")");
+
                                                     const filteredObj = Object.fromEntries(
-                                                        Object.entries(response).filter(([key, value]) => value !==
+                                                        Object.entries(response.colores).filter(([key, value]) => value !==
                                                             'formImagenes')
                                                     );
                                                     // Crear un arreglo con los valores filtrados sin que vengan con 'formImagenes'
@@ -485,7 +524,7 @@
                                                             var mensajeContainer = document.getElementById(
                                                                 "mensajeContainer{{ $item->id }}");
                                                             mensajeContainer.innerHTML =
-                                                                "No quedan en inventario del tamaño " + response
+                                                                "No quedan disponibles del tamaño " + response
                                                                 .producto.tamaño;
                                                         } else {
                                                             var mensajeContainer = document.getElementById(
@@ -528,8 +567,14 @@
                                                                                 "contadorCarrito");
                                                                         var parpadeo2 = document
                                                                             .getElementById("parpadeo");
-                                                                        var parpadeo3 = document
-                                                                            .getElementById("parpadeoDrop");
+                                                                        var contenidoPestaña = document
+                                                                            .getElementById(
+                                                                                "contenidoPestaña");
+                                                                        contenidoPestaña.style.display =
+                                                                            "block";
+
+
+
                                                                         // Función para actualizar el valor del contador y añadir la clase "parpadeo"
                                                                         function actualizarContador(
                                                                             nuevoValor) {
@@ -537,16 +582,13 @@
                                                                                 .innerHTML = nuevoValor;
                                                                             parpadeo2.classList.add(
                                                                                 "parpadeo");
-                                                                            parpadeo3.classList.add(
-                                                                                "parpadeo");
+
                                                                             // Eliminar la clase "parpadeo" después de la animación
                                                                             setTimeout(function() {
                                                                                     parpadeo2.classList
                                                                                         .remove(
                                                                                             "parpadeo");
-                                                                                    parpadeo3.classList
-                                                                                        .remove(
-                                                                                            "parpadeo");
+
                                                                                 },
                                                                                 6000
                                                                             ); // 2s * 3 = 6s (duración total de la animación)
@@ -565,7 +607,7 @@
                                                             var mensajeContainer = document.getElementById(
                                                                 "mensajeContainer{{ $item->id }}");
                                                             mensajeContainer.innerHTML =
-                                                                "No quedan en inventario del tamaño " + response.foto
+                                                                "No quedan disponibles del tamaño " + response.foto
                                                                 .tamaño;
                                                         } else {
                                                             var mensajeContainer = document.getElementById(
@@ -609,8 +651,15 @@
                                                                                 "contadorCarrito");
                                                                         var parpadeo2 = document
                                                                             .getElementById("parpadeo");
-                                                                        var parpadeo3 = document
-                                                                            .getElementById("parpadeoDrop");
+
+
+
+                                                                        var contenidoPestaña = document
+                                                                            .getElementById(
+                                                                                "contenidoPestaña");
+                                                                        contenidoPestaña.style.display =
+                                                                            "block";
+
                                                                         // Función para actualizar el valor del contador y añadir la clase "parpadeo"
                                                                         function actualizarContador(
                                                                             nuevoValor) {
@@ -618,16 +667,13 @@
                                                                                 .innerHTML = nuevoValor;
                                                                             parpadeo2.classList.add(
                                                                                 "parpadeo");
-                                                                            parpadeo3.classList.add(
-                                                                                "parpadeo");
+
                                                                             // Eliminar la clase "parpadeo" después de la animación
                                                                             setTimeout(function() {
                                                                                     parpadeo2.classList
                                                                                         .remove(
                                                                                             "parpadeo");
-                                                                                    parpadeo3.classList
-                                                                                        .remove(
-                                                                                            "parpadeo");
+
                                                                                 },
                                                                                 6000
                                                                             ); // 2s * 3 = 6s (duración total de la animación)
@@ -1065,7 +1111,7 @@
                 var id = elementId.id; // Get the ID attribute of the element
                 id = id.replace("mensajeContainer2", ""); // Remove the prefix
                 var elementColor = document.getElementById(
-                "colorTemporada{{ $productoTemporada->color }}");
+                    "colorTemporada{{ $productoTemporada->color }}");
                 var color = "";
                 if (elementColor == null) {
                     color = "NINGUNO";
@@ -1111,7 +1157,7 @@
                                 var mensajeContainer = document.getElementById(
                                     "mensajeContainer2{{ $productoTemporada->id }}");
                                 mensajeContainer.innerHTML =
-                                    "No quedan en inventario del tamaño " + response
+                                    "No quedan disponibles del tamaño " + response
                                     .producto.tamaño;
                             } else {
                                 var mensajeContainer = document.getElementById(
@@ -1153,8 +1199,7 @@
                                                     "contadorCarrito");
                                             var parpadeo2 = document
                                                 .getElementById("parpadeo");
-                                            var parpadeo3 = document
-                                                .getElementById("parpadeoDrop");
+
                                             // Función para actualizar el valor del contador y añadir la clase "parpadeo"
                                             function actualizarContador(
                                                 nuevoValor) {
@@ -1162,16 +1207,13 @@
                                                     .innerHTML = nuevoValor;
                                                 parpadeo2.classList.add(
                                                     "parpadeo");
-                                                parpadeo3.classList.add(
-                                                    "parpadeo");
+
                                                 // Eliminar la clase "parpadeo" después de la animación
                                                 setTimeout(function() {
                                                         parpadeo2.classList
                                                             .remove(
                                                                 "parpadeo");
-                                                        parpadeo3.classList
-                                                            .remove(
-                                                                "parpadeo");
+
                                                     },
                                                     6000
                                                 ); // 2s * 3 = 6s (duración total de la animación)
@@ -1193,7 +1235,7 @@
                                 var mensajeContainer = document.getElementById(
                                     "mensajeContainer2{{ $productoTemporada->id }}");
                                 mensajeContainer.innerHTML =
-                                    "No quedan en inventario del tamaño " + response.foto
+                                    "No quedan disponibles del tamaño " + response.foto
                                     .tamaño;
                             } else {
                                 var mensajeContainer = document.getElementById(
@@ -1234,10 +1276,13 @@
                                             var numeroContadorCarrito = document
                                                 .getElementById(
                                                     "contadorCarrito");
-                                            var parpadeo2 = document
-                                                .getElementById("parpadeo");
-                                            var parpadeo3 = document
-                                                .getElementById("parpadeoDrop");
+                                            var parpadeo2 = document.getElementById(
+                                                "parpadeo");
+
+                                            var contenidoPestaña = document
+                                                .getElementById("contenidoPestaña");
+                                            contenidoPestaña.style.display =
+                                            "block";
                                             // Función para actualizar el valor del contador y añadir la clase "parpadeo"
                                             function actualizarContador(
                                                 nuevoValor) {
@@ -1245,16 +1290,13 @@
                                                     .innerHTML = nuevoValor;
                                                 parpadeo2.classList.add(
                                                     "parpadeo");
-                                                parpadeo3.classList.add(
-                                                    "parpadeo");
+
                                                 // Eliminar la clase "parpadeo" después de la animación
                                                 setTimeout(function() {
                                                         parpadeo2.classList
                                                             .remove(
                                                                 "parpadeo");
-                                                        parpadeo3.classList
-                                                            .remove(
-                                                                "parpadeo");
+
                                                     },
                                                     6000
                                                 ); // 2s * 3 = 6s (duración total de la animación)

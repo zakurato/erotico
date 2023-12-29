@@ -608,6 +608,10 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
 
         $request->imagen->move(public_path('imagesProductos'), $imageName);
 
+        //modificar precio con 30% de ganancia
+
+        $precio = ($request->precio * 0.30) + $request->precio;
+
 
         $producto = new Producto();
 
@@ -616,7 +620,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         $producto->categoria = $request->categoria;
         $producto->color = $request->color;
         $producto->tamaño = $request->tamaño;
-        $producto->precio = $request->precio;
+        $producto->precio = $precio;
         $producto->cantidad = $request->cantidad;
         $producto->descripcion = $request->descripcion;
         $producto->temporada = 0;
@@ -704,11 +708,14 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         }
         
 
+        //modificar precio con 30% de ganancia
+        $precio = ($request->precio * 0.30) + $request->precio;
+
         $producto->nombre = $request->nombre;
         $producto->categoria = $request->categoria;
         $producto->color = $color;
         $producto->tamaño = $tamaño;
-        $producto->precio = $request->precio;
+        $producto->precio = $precio;
         $producto->cantidad =  $producto->cantidad + $request->cantidad;
         if($producto->cantidad < 0){
             $producto->cantidad = 0;
@@ -1167,6 +1174,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
     public function jqTamaños(Request $request)
     {
         if ($request->ajax()) {
+
             $productId = $request->input('productId');
             $selectedColor = $request->input('selectedColor');
     
@@ -1176,7 +1184,16 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
             $respuesta = $tamañosSelectColorProducto->concat($tamañosSelectColorFotos);
             
             $colores = $respuesta->pluck('tamaño')->unique(); // Obtiene los tamanos únicos
-            return response()->json($colores);
+            $cantidades = $respuesta->pluck('cantidad')->unique(); // Obtiene las cantidades unicamente
+
+            
+            $datos = [
+                'colores' => $colores,
+                'cantidades' => $cantidades,
+            ];
+            //dd($cantidades);
+            
+            return response()->json($datos);
         }
     }
 
@@ -1658,7 +1675,6 @@ public function restarCambioInputCambioTotalIva(Request $request){
         if ($request->ajax()) {
            
                 $productIdTablaCompras = $request->input('id');//id tabla compras
-
             
                 $obtenerIdFKTablaCompra = Compra::where("id",$productIdTablaCompras)->first();//obtengo el producto completo de la tabla compra
                 //primero verificar si el producto esta en la tabla de productos para poder restarle la cantidad
@@ -1701,12 +1717,24 @@ public function restarCambioInputCambioTotalIva(Request $request){
                             }
                         }
 
+                        $msjNoMasCantidad = "";
 
-                        $response = [
-                            'cantidad' => $productorEncontrado->cantidad,
-                            'suma' => $suma,
-                            'sumaTotalArticulos' => $sumaArticulos,
-                        ];
+                        if($productoTablaProducto->cantidad == 0){
+                            $msjNoMasCantidad = "No hay mas cantidad disponible";
+                            $response = [
+                                'cantidad' => $productorEncontrado->cantidad,
+                                'suma' => $suma,
+                                'sumaTotalArticulos' => $sumaArticulos,
+                                'msjNoMasCantidad' => $msjNoMasCantidad,
+                            ];
+                        }else{
+                            $response = [
+                                'cantidad' => $productorEncontrado->cantidad,
+                                'suma' => $suma,
+                                'sumaTotalArticulos' => $sumaArticulos,
+                                'msjNoMasCantidad' => "",
+                            ];
+                        }
 
                         return response()->json($response);
                         
@@ -1720,8 +1748,8 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     
                     if($productoTablaFoto->cantidad > 0){
                         $productorEncontrado = Compra::where("id",$productIdTablaCompras)->first();
-                        //rebajar en la tabla de producto la cantidad
 
+                        //rebajar en la tabla de producto la cantidad
                         $productoTablaFoto->cantidad = $productoTablaFoto->cantidad - 1;
                         $productoTablaFoto->save();
 
@@ -1729,9 +1757,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         $productorEncontrado->cantidad = $productorEncontrado->cantidad + 1;
                         $productorEncontrado->save();
 
-
                         //sumaTotalPrecioProductos
-
                         $productosTablaCompras = Compra::all();
                         $todosProductos = Producto::all();
                         $suma = 0;
@@ -1751,12 +1777,24 @@ public function restarCambioInputCambioTotalIva(Request $request){
                             }
                         }
 
+                        $msjNoMasCantidad = "";
 
-                        $response = [
-                            'cantidad' => $productorEncontrado->cantidad,
-                            'suma' => $suma,
-                            'sumaTotalArticulos' => $sumaArticulos,
-                        ];
+                        if($productoTablaFoto->cantidad == 0){
+                            $msjNoMasCantidad = "No hay mas cantidad disponible";
+                            $response = [
+                                'cantidad' => $productorEncontrado->cantidad,
+                                'suma' => $suma,
+                                'sumaTotalArticulos' => $sumaArticulos,
+                                'msjNoMasCantidad' => $msjNoMasCantidad,
+                            ];
+                        }else{
+                            $response = [
+                                'cantidad' => $productorEncontrado->cantidad,
+                                'suma' => $suma,
+                                'sumaTotalArticulos' => $sumaArticulos,
+                                'msjNoMasCantidad' => "",
+                            ];
+                        }
                         
 
                         return response()->json($response);
@@ -1838,6 +1876,22 @@ public function restarCambioInputCambioTotalIva(Request $request){
         }
 
         public function WA(Request $request){
+            //aqui me imprime $request->cedula = null cuando es en Ciudad Quesada
+            //return $request;
+            if($request->cedula == null){
+                $cedula = "null";
+            }else{
+                $cedula = $request->cedula;
+            }
+
+            if($request->opcionEnvio == "Ciudad Quesada"){
+                $sumaTotal = $request->sumaTotal + 1000;
+            }else{
+                $sumaTotal = $request->sumaTotal + 3500;
+            }
+
+
+
 
             if($request->sumaTotal == null){//si le doy finalizar compra sin tener nada agregado al carrito
                 return redirect()->route("index");
@@ -1869,14 +1923,16 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         $compras2->colorSeleccionado = $item->colorSeleccionado;
                         $compras2->tamañoSeleccionado = $item->tamañoSeleccionado;
                         $compras2->cantidad = $item->cantidad;
+                        $compras2->cedula = $cedula;
                         $compras2->nombre = $request->nombre;
                         $compras2->telefono = $request->telefono;
                         $compras2->imagen = $imageName;
                         $compras2->direccion = $request->direccion;
-                        $compras2->sumaTotal = $request->sumaTotal;
+                        $compras2->sumaTotal = $sumaTotal;
                         $compras2->nFactura = "1";
                         $compras2->estatus = "En proceso";
                         $compras2->metodoPago = "SINPE";
+                        $compras2->opcionEnvio = $request->opcionEnvio;
                         $compras2->save();
                     }
 
@@ -1915,14 +1971,16 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         $compras2->colorSeleccionado = $item->colorSeleccionado;
                         $compras2->tamañoSeleccionado = $item->tamañoSeleccionado;
                         $compras2->cantidad = $item->cantidad;
+                        $compras2->cedula = $cedula;
                         $compras2->nombre = $request->nombre;
                         $compras2->telefono = $request->telefono;
                         $compras2->imagen = $imageName;
                         $compras2->direccion = $request->direccion;
-                        $compras2->sumaTotal = $request->sumaTotal;
+                        $compras2->sumaTotal = $sumaTotal;
                         $compras2->nFactura = $ultimaCompraTablaCompras2s->nFactura +1;
                         $compras2->estatus = "En proceso";
                         $compras2->metodoPago = "SINPE";
+                        $compras2->opcionEnvio = $request->opcionEnvio;
                         $compras2->save();
                     }
 
@@ -2210,10 +2268,17 @@ public function restarCambioInputCambioTotalIva(Request $request){
                 if($contadorCarrito == null){
                     return view("paginaPrincipal.index2");
                 }else{
+                    $cantidad = 0;
+                    foreach($combinadosImages as $item){
+                        if($item->cantidad != "formImagenes"){
+                            $cantidad = $item->cantidad;
+                        }
+                    }
+
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
                     $categorias = Categoria::all();
-                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","categoria","categorias","productos","fotos"));
+                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","categoria","categorias","productos","fotos","cantidad"));
                 }
                 
 
@@ -2224,7 +2289,6 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     $productos = Producto::where([["id","=",$productoImagen->id],["color","=",$productoImagen->color]])->get();
                     $fotos = Foto::where([["idFK","=",$productoImagen->id],["color","=",$productoImagen->color]])->get();
                     $combinadosImages = $productos->concat($fotos);//aqui van los productos del color seleccionado
-
 
                     //buscar los colores que tiene ese id y guardarlos en una coleccion
                     $coloresDiferentesAProductoSeleccionadoTablaFotos = Foto::where([
@@ -2291,10 +2355,13 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     if($contadorCarrito == null){
                         return view("paginaPrincipal.index2");
                     }else{
+
+                        $cantidad = $combinadosImages[0]->cantidad;
+
                         $productos = Producto::paginate(12);
                         $fotos = Foto::all();
                         $categorias = Categoria::all();
-                        return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos","categoria","categorias","productos","fotos"));
+                        return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos","categoria","categorias","productos","fotos","cantidad"));
                     }
                     
                 }

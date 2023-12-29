@@ -18,12 +18,14 @@ return new class extends Migration
             $table->string("colorSeleccionado");
             $table->string("tamañoSeleccionado");
             $table->string("cantidad");
+            $table->string("cedula");
             $table->string("nombre");
             $table->string("telefono");
             $table->string("direccion");
             $table->string("imagen");
             $table->string("sumaTotal");
             $table->string("nFactura");
+            $table->string("opcionEnvio");
             $table->string("estatus");
             $table->string("metodoPago");
             $table->timestamps();
