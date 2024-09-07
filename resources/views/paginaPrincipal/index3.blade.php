@@ -58,7 +58,7 @@
                                 src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
                         </a>
                     </div>
-                    <form action="http://shopiscr.com" method="GET">
+                    <form action="http://18.222.180.112" method="GET">
                         <div class="navbar-collapse collapse" id="mobile_menu">
                             <ul class="nav navbar-nav">
                                 <!--<li class="active"><a href="#">Home</a></li>-->

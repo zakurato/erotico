@@ -1106,7 +1106,7 @@
     <script>
         $(document).ready(function() {
             $("#botonCarritoTemporada{{ $productoTemporada->id }}").click(function() {
-                console.log("estoy aqui");
+
                 var elementId = document.getElementById("mensajeContainer2{{ $productoTemporada->id }}");
                 var id = elementId.id; // Get the ID attribute of the element
                 id = id.replace("mensajeContainer2", ""); // Remove the prefix
@@ -1197,8 +1197,14 @@
                                             var numeroContadorCarrito = document
                                                 .getElementById(
                                                     "contadorCarrito");
-                                            var parpadeo2 = document
-                                                .getElementById("parpadeo");
+
+                                                    var parpadeo2 = document.getElementById(
+                                                "parpadeo");
+
+                                            var contenidoPestaña = document
+                                                .getElementById("contenidoPestaña");
+                                            contenidoPestaña.style.display =
+                                            "block";      
 
                                             // Función para actualizar el valor del contador y añadir la clase "parpadeo"
                                             function actualizarContador(
