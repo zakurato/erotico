@@ -1031,7 +1031,7 @@
                                                 <div class="product-gallery__size-limiter"
                                                     style="max-width: 1000px">
                                                     <div class="aspect-ratio" style="padding-bottom: 100.0%">
-                                                        <img style="width: 380px; height: 380px;"
+                                                        <img style="width: 380px; height: 260px; object-fit: contain; background-color: #f0f0f0;"
                                                             src="imagesProductos/{{ $productoTemporada->imagen }}"
                                                             alt="">
                                                     </div>
