@@ -249,7 +249,7 @@
                                         <div id="selectImagenes{{ $item->id }}" class="item active"
                                             file-name="{{ $item->imagen }}">
                                             <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                style="max-width: 380px; max-height: 260px; height: auto; width: 100%; object-fit: cover; display: block "class="card-img-top"
+                                                style="max-width: 380px; max-height: 260px; height: auto; width: 100%; object-fit: cover;"class="card-img-top"
                                                 src="imagesProductos/{{ $item->imagen }}" alt="...">
                                         </div>
                                     </div>
