@@ -594,7 +594,7 @@
                                                                                     parpadeo2.classList
                                                                                         .remove(
                                                                                             "parpadeo");
-
+                                                                                
                                                                                 },
                                                                                 6000
                                                                             ); // 2s * 3 = 6s (duración total de la animación)

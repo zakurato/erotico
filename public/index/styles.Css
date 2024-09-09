@@ -15363,7 +15363,9 @@ shopify-payment-terms {
 }
 
 .parpadeo {
-  animation: parpadeo 2s 3;
+  animation: parpadeo 2s 3; /* La animación dura 2s y se repite 3 veces */
+  position: relative;       /* Cambia la posición para que el z-index funcione */
+  z-index: 9999;            /* Asegura que el elemento esté por delante de otros */
 }
 
 
