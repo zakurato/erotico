@@ -249,7 +249,7 @@
                                         <div id="selectImagenes{{ $item->id }}" class="item active"
                                             file-name="{{ $item->imagen }}">
                                             <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                style="width: 380px; height: 260px;"class="card-img-top"
+                                                style="max-width: 380px; max-height: 260px; height: auto; width: 100%; object-fit: cover; display: block "class="card-img-top"
                                                 src="imagesProductos/{{ $item->imagen }}" alt="...">
                                         </div>
                                     </div>
@@ -282,7 +282,7 @@
                                                                 $("#selectImagenes" + productId).append(
                                                                     "<img onclick=\"showImage('imagesProductos/" + response[
                                                                         0] +
-                                                                    "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                    "')\" style='max-width: 380px; max-height: 260px; height: auto; width: 100%; object-fit: cover; display: block ' class='card-img-top' src='imagesProductos/" +
                                                                     response[0] + "'>"
                                                                 );
                                                                 //coloca la primera opcion
@@ -310,7 +310,7 @@
                                                                             $("#selectImagenes" + productId).append(
                                                                                 "<img onclick=\"showImage('imagesProductos/" +
                                                                                 response[i] +
-                                                                                "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                                "')\" style='max-width: 380px; max-height: 260px; height: auto; width: 100%; object-fit: cover; display: block ' class='card-img-top' src='imagesProductos/" +
                                                                                 response[i] + "'>");
                                                                             divElement.setAttribute("file-name", response[i]);
                                                                         } else {
@@ -372,7 +372,8 @@
                                     <h5 class="fw-bolder nombre">{{ $item->nombre }}</h5>
                                     <!-- Product price-->
                                     <h5 class="fw-bolder precio">Precio: ₡{{ $item->precio }}</h5>
-                                    <h5 id="selectCantidad{{ $item->id }}" class="fw-bolder precio">Disponibles: ({{ $item->cantidad }})</h5>
+                                    <h5 id="selectCantidad{{ $item->id }}" class="fw-bolder precio">Disponibles:
+                                        ({{ $item->cantidad }})</h5>
                                 </div>
                             </div>
                             <br>
@@ -422,14 +423,18 @@
                                                 }, //los parametros enviados
                                                 dataType: 'json',
                                                 success: function(response) {
-                                                    const cantidad = response.cantidades.find(elemento => !isNaN(elemento));
+                                                    const cantidad = response.cantidades.find(elemento => !isNaN(
+                                                        elemento));
                                                     //console.log(numeroEncontrado)
 
-                                                    $("#selectCantidad" + productId).empty(); //limpia el select de tamaños
-                                                    $("#selectCantidad" + productId).append("Disponibles: ("+ cantidad+")");
+                                                    $("#selectCantidad" + productId)
+                                                        .empty(); //limpia el select de tamaños
+                                                    $("#selectCantidad" + productId).append("Disponibles: (" +
+                                                        cantidad + ")");
 
                                                     const filteredObj = Object.fromEntries(
-                                                        Object.entries(response.colores).filter(([key, value]) => value !==
+                                                        Object.entries(response.colores).filter(([key, value]) =>
+                                                            value !==
                                                             'formImagenes')
                                                     );
                                                     // Crear un arreglo con los valores filtrados sin que vengan con 'formImagenes'
@@ -764,7 +769,7 @@
                                             <div id="selectImagenes{{ $item->id }}" class="item active"
                                                 file-name="{{ $item->imagen }}">
                                                 <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                    style="width: 380px; height: 260px;"class="card-img-top"
+                                                    style="max-width: 380px; max-height: 260px; height: auto; width: 100%; object-fit: cover; display: block "class="card-img-top"
                                                     src="imagesProductos/{{ $item->imagen }}" alt="...">
                                             </div>
                                         </div>
@@ -844,7 +849,7 @@
                                             <div id="selectImagenes{{ $item->id }}" class="item active"
                                                 file-name="{{ $item->imagen }}">
                                                 <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                    style="width: 380px; height: 260px;"class="card-img-top"
+                                                    style="max-width: 380px; max-height: 260px; height: auto; width: 100%; object-fit: cover; display: block "class="card-img-top"
                                                     src="imagesProductos/{{ $item->imagen }}" alt="...">
                                             </div>
                                         </div>
@@ -1198,13 +1203,13 @@
                                                 .getElementById(
                                                     "contadorCarrito");
 
-                                                    var parpadeo2 = document.getElementById(
+                                            var parpadeo2 = document.getElementById(
                                                 "parpadeo");
 
                                             var contenidoPestaña = document
                                                 .getElementById("contenidoPestaña");
                                             contenidoPestaña.style.display =
-                                            "block";      
+                                                "block";
 
                                             // Función para actualizar el valor del contador y añadir la clase "parpadeo"
                                             function actualizarContador(
@@ -1288,7 +1293,7 @@
                                             var contenidoPestaña = document
                                                 .getElementById("contenidoPestaña");
                                             contenidoPestaña.style.display =
-                                            "block";
+                                                "block";
                                             // Función para actualizar el valor del contador y añadir la clase "parpadeo"
                                             function actualizarContador(
                                                 nuevoValor) {
