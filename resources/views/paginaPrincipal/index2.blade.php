@@ -283,7 +283,7 @@
                                                                 $("#selectImagenes" + productId).append(
                                                                     "<img onclick=\"showImage('imagesProductos/" + response[
                                                                         0] +
-                                                                    "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                    "')\" style='width: 380px; height: 260px; object-fit: contain; background-color: #f0f0f0;' class='card-img-top' src='imagesProductos/" +
                                                                     response[0] + "'>"
                                                                 );
                                                                 //coloca la primera opcion
@@ -311,7 +311,7 @@
                                                                             $("#selectImagenes" + productId).append(
                                                                                 "<img onclick=\"showImage('imagesProductos/" +
                                                                                 response[i] +
-                                                                                "')\" style='width: 380px; height: 260px;' class='card-img-top' src='imagesProductos/" +
+                                                                                "')\" style='width: 380px; height: 260px; object-fit: contain; background-color: #f0f0f0;' class='card-img-top' src='imagesProductos/" +
                                                                                 response[i] + "'>");
                                                                             divElement.setAttribute("file-name", response[i]);
                                                                         } else {
@@ -770,7 +770,7 @@
                                             <div id="selectImagenes{{ $item->id }}" class="item active"
                                                 file-name="{{ $item->imagen }}">
                                                 <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                    style="width: 380px; height: 260px;"class="card-img-top"
+                                                    style="width: 380px; height: 260px; object-fit: contain; background-color: #f0f0f0;"class="card-img-top"
                                                     src="imagesProductos/{{ $item->imagen }}" alt="...">
                                             </div>
                                         </div>
@@ -850,7 +850,7 @@
                                             <div id="selectImagenes{{ $item->id }}" class="item active"
                                                 file-name="{{ $item->imagen }}">
                                                 <img onclick="showImage('imagesProductos/{{ $item->imagen }}')"
-                                                    style="width: 380px; height: 260px;"class="card-img-top"
+                                                    style="width: 380px; height: 260px; object-fit: contain; background-color: #f0f0f0;"class="card-img-top"
                                                     src="imagesProductos/{{ $item->imagen }}" alt="...">
                                             </div>
                                         </div>
