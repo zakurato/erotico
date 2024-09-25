@@ -38,7 +38,7 @@
             @csrf
             <br>
             <div class="form-group" style="text-align: center !important">
-                <img style="width: 380px; height: 380px;" src="imagesProductos/{{ $producto->imagen }}" alt="">
+                <img style="width: 380px; height: 380px; object-fit: contain; background-color: #f0f0f0;" class="card-img-top" src="imagesProductos/{{ $producto->imagen }}">
             </div>
             <div class="form-group">
                 <label>Nombre del producto:</label>
@@ -66,11 +66,12 @@
             </div>
             <div class="form-group">
                 <label>Precio del producto:</label>
+                <input type="hidden" class="form-control" name="oldPrecio" required value="{{ $producto->precio }}">
                 <input type="text" class="form-control" name="precio" required value="{{ $producto->precio }}">
             </div>
             <div class="form-group">
                 <label>Cantidad del producto que desea añadir a este color y tamaño: (Existencia actual: {{$producto->cantidad}})</label>
-                <input type="text" class="form-control" name="cantidad" required>
+                <input type="text" class="form-control" name="cantidad" value="0" required>
             </div>
             <div class="form-group">
                 <label for="exampleTextarea">Descripción del producto</label>

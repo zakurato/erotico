@@ -149,7 +149,7 @@
 
         //ajax para traer el nombre del cliente
         $.ajax({
-            url: 'http://18.222.180.112/traerNombreCliente', // aqui va el nombre de la ruta
+            url: 'http://localhost/erotico/public/traerNombreCliente', // aqui va el nombre de la ruta
             method: 'GET', // el metodo que se usa en la ruta
             dataType: 'json',
             data: {

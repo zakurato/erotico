@@ -83,8 +83,9 @@
         @foreach ($productos as $item)
             <div class="col">
                 <div class="card" style="margin-left: 20px">
-                    <img style="width: 200px; height: 180px;" src="imagesProductos/{{ $item->imagen }}"
-                        class="card-img-top"alt="" />
+
+                        <img style="width: 380px; height: 260px; object-fit: contain; background-color: #f0f0f0;" class="card-img-top" src="imagesProductos/{{ $item->imagen }}">
+
                     <div class="card-body">
                         <h4 class="card-title">{{ $item->nombre }}</h4>
                         <p class="card-text">

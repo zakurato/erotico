@@ -49,7 +49,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span></button>
-                        <a href="#" class="header__logo-link">
+                        <a href="{{ route('index') }}" class="header__logo-link">
                             <img style="height: 70px;" class="header__logo-image"
                                 src="images/logoShopis.jpg?v=1676468577" alt="" id="logo">
                         </a>
@@ -173,43 +173,17 @@
 
 
 
-
-
-
     <div style="height: 60px;" id="espacioImagenPrincipal"></div>
-
     @if (isset($imagenPrincipal->imagen))
-        <section class="animacion1" style="display: none">
-            <div id="shopify-section-sections--14562733359167__popups"
-                class="shopify-section shopify-section-group-overlay-group">
-                <div data-section-id="sections--14562733359167__popups" data-section-type="popups"></div>
-            </div>
-            <!-- END sections: overlay-group -->
-            <main id="main" role="main" class="component">
-                <div class="hidden-phone">
-                    <img src="images/{{ $imagenPrincipal->imagen }}?v=1680025258&amp;width=1920" alt=""
-                        width="1920" height="600" loading="lazy" class="slideshow__image zoom">
-                </div>
-                <div class="hidden-tablet-and-up zoom"><img
-                        src="images/{{ $imagenPrincipal->imagen }}?v=1680025277&amp;width=1200" alt=""
-                        width="1200" height="1080" loading="lazy" class="slideshow__image ">
-                </div>
-                </div>
-                <div id="shopify-section-template--14562732638271__collection-list" class="shopify-section">
-                    <section class="section" data-section-id="template--14562732638271__collection-list"
-                        data-section-type="collection-list">
-                    </section>
-                </div>
-
-                <section class="section section--text-centered"
+        <img src="images/{{ $imagenPrincipal->imagen }}" alt=""
+            style="width: 1920px; height: 300px;" class="animacion1">
+            <section class="section section--text-centered"
                     data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
                     data-section-type="rich-text">
                     <div class="container container--narrow">
                         <h3>Descubre el poder de la calidad en cada uno de nuestros productos.</h3>
                     </div>
                 </section>
-
-        </section>
     @endif
 
     <div style="height: 30px;" id="espacioImagenPrincipal"></div>
@@ -429,7 +403,7 @@
                                                     //console.log(numeroEncontrado)
 
                                                     $("#selectCantidad" + productId)
-                                                .empty(); //limpia el select de tamaños
+                                                        .empty(); //limpia el select de tamaños
                                                     $("#selectCantidad" + productId).append("Disponibles: (" +
                                                         cantidad + ")");
 
@@ -594,7 +568,7 @@
                                                                                     parpadeo2.classList
                                                                                         .remove(
                                                                                             "parpadeo");
-                                                                                
+
                                                                                 },
                                                                                 6000
                                                                             ); // 2s * 3 = 6s (duración total de la animación)
@@ -1033,7 +1007,11 @@
                                                     <div class="aspect-ratio" style="padding-bottom: 100.0%">
                                                         <img style="width: 380px; height: 380px; object-fit: contain; background-color: #f0f0f0;"
                                                             src="imagesProductos/{{ $productoTemporada->imagen }}"
-                                                            alt="">
+                                                            alt=""
+                                                            id="mi-imagen">
+
+                                                            <canvas id="mi-canvas" width="380" height="380"></canvas>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1044,6 +1022,9 @@
                         </div>
                     </div>
                 </div>
+
+
+                
                 <div class="card card--collapsed ">
                     <div id="product-zoom-template--14562732638271__featured-product"
                         class="product__zoom-wrapper">

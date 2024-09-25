@@ -50,7 +50,6 @@ class HomeController extends Controller
         //return $sessionId;
 
         $imagenPrincipal = ImagenPrincipal::first();
-
         $productoTemporada = "";
         $productosTemporada = Producto::all();
         $existeProductoTemporadaTablaTemporada = 0;
@@ -73,7 +72,15 @@ class HomeController extends Controller
             ->where("tamaño", "!=", "formImagenes")
             ->where("color", "=", $fotoEncontrada->color)
             ->first(["tamaño"]);
-            
+
+            if($fotoEncontrada->tamaño == "formImagenes"){
+                foreach($productosTemporada as $producto){
+                    if($producto->id == $fotoEncontrada->idFK && $producto->color == $fotoEncontrada->color){
+                        $fotoEncontrada->tamaño = $producto->tamaño;
+                        break;
+                    }
+                }
+            }
                
             $atributosProducto = Producto::where([["id", "=", $fotoEncontrada->idFK]])
             ->first(["nombre", "categoria", "precio", "descripcion","id"]);
@@ -84,7 +91,7 @@ class HomeController extends Controller
                 "nombre" => $atributosProducto->nombre,
                 "categoria" => $atributosProducto->categoria,
                 "color" => $fotoEncontrada->color,
-                "tamaño" => $fotoEncontradaSoloTamaño->tamaño,
+                "tamaño" => $fotoEncontrada->tamaño,
                 "precio" => $atributosProducto->precio,
                 "descripcion" => $atributosProducto->descripcion,
             ];
@@ -608,9 +615,9 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
 
         $request->imagen->move(public_path('imagesProductos'), $imageName);
 
-        //modificar precio con 30% de ganancia
+        //modificar precio con 5% de ganancia
 
-        $precio = ($request->precio * 0.30) + $request->precio;
+        $precio = ($request->precio * 0.05) + $request->precio;
 
 
         $producto = new Producto();
@@ -671,7 +678,6 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
 
     public function storeActualizarProducto(Request $request){
 
-        
     if(Empty($request->color)){
         $color = "NINGUNO";
     }else{
@@ -706,10 +712,16 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
             $item->temporada = 0;
             $item->save();
         }
-        
 
-        //modificar precio con 30% de ganancia
-        $precio = ($request->precio * 0.30) + $request->precio;
+        //aqui debo poner los nuevos cambios debo traer el antiguo precio del producto y el actual
+        //si el precio del antiguo y el precio del actual son iguales quedaria el mismo precio.
+        //si son diferentes se le debe modificar y colocar solo el 5% de ganancia
+        //modificar precio con 5% de ganancia
+        if($request->precio == $request->oldPrecio){
+            $precio = $request->precio;
+        }else{
+            $precio = ($request->precio * 0.05) + $request->precio;
+        }
 
         $producto->nombre = $request->nombre;
         $producto->categoria = $request->categoria;
@@ -1954,7 +1966,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         "\nNombre: ".$request->nombre.
                         "\nTelefono:".$request->telefono.
                         "\nDireccion: ".$request->direccion.
-                        "\nLink: http://18.222.180.112/factura/".$factura."/".$request->telefono);
+                        "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
 
                     // Redireccionar al enlace de WhatsApp
                     return redirect($url);
@@ -2003,7 +2015,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         "\nNombre: ".$request->nombre.
                         "\nTelefono:".$request->telefono.
                         "\nDireccion: ".$request->direccion.
-                        "\nLink: http://18.222.180.112/factura/".$factura."/".$request->telefono);
+                        "\nLink: http://localhost/erotico/public/factura/".$factura."/".$request->telefono);
 
                     // Redireccionar al enlace de WhatsApp
                     return redirect($url);
@@ -2480,9 +2492,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
         }
 
         public function cambiarTemporadaFotos(Request $request){
-
-            //pasar todos los productos en la temporada a 0
-
+                      
             $productos = Producto::all();
             foreach($productos as $item){
                 $item->temporada = 0;
@@ -2497,7 +2507,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
 
             $productId = $request->input('id');
 
-            $fotoEncontrada = Foto::where([["id","=",$productId]])->first();    
+            $fotoEncontrada = Foto::where([["id","=",$productId]])->first();  
             $fotoEncontrada->temporada = "1";
             $fotoEncontrada->save();
             
@@ -2513,8 +2523,11 @@ public function restarCambioInputCambioTotalIva(Request $request){
         }
 
         public function storeSeccionImagenPrincipal(Request $request){
+            if($request->imagen == ""){
+                return redirect()->route("seccionImagenInicial");
 
-            //si se cambio la imagen
+            }else{
+                //si se cambio la imagen
             $imageName = time().'.'.$request->imagen->extension();  //nombre de la imagen
             //meto la imagen a la carpeta 
             $request->imagen->move(public_path('images'), $imageName);
@@ -2535,18 +2548,16 @@ public function restarCambioInputCambioTotalIva(Request $request){
             }
 
             return redirect()->route("seccionImagenInicial");
+            }
+            
         }
 
+        public function deleteImagenPrincipal(Request $request){
 
+            $delete=ImagenPrincipal::where('id',$request->id)->delete();
+            return view("seccionImagenPrincipal.seccionImagenPrincipal");
 
-
-
-
-
-
-
-
-
+        }
 
         public function prueba() {
             return view("prueba");

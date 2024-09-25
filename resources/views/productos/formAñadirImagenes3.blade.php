@@ -30,11 +30,11 @@
 
     @if ($producto->imagen != "" && $producto->color == $color)
         <div style="text-align: center">
-            <img style="width: 380px; height: 380px;" src="imagesProductos/{{ $producto->imagen }}" alt="">
+            <img style="width: 380px; height: 380px; object-fit: contain; background-color: #f0f0f0;" class="card-img-top" src="imagesProductos/{{ $producto->imagen }}">
         </div>
     @else
         <div style="text-align: center">
-            <img style="width: 380px; height: 380px;" src="imagesProductos/{{ $fotoColor->imagen }}" alt="">
+            <img style="width: 380px; height: 380px; object-fit: contain; background-color: #f0f0f0;" class="card-img-top" src="imagesProductos/{{ $fotoColor->imagen }}">
         </div>
     @endif
 
@@ -178,7 +178,7 @@
                             // Realizar la petición AJAX
                         $.ajax({
                             type: "GET",
-                            url: "http://18.222.180.112/cambiarTemporadaFotos",  // Reemplaza con la URL de tu script de procesamiento
+                            url: "http://localhost/erotico/public/cambiarTemporadaFotos",  // Reemplaza con la URL de tu script de procesamiento
                             data: { id: id },
                             success: function(response) {
                                 // Aquí puedes manejar la respuesta del servidor si es necesario

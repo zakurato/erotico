@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crear categoría</title>
     <link rel="stylesheet" href="{{ asset('login/loginAdentro.Css?1.0') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -71,19 +73,84 @@
                         </form>
                     </td>
                     <td>
-                        <form id="eliminarForm" action="{{ route('eliminarCategoria') }}" method="POST">
+                        <form id="eliminarForm-{{ $item->id }}" action="{{ route('eliminarCategoria') }}" method="POST">
                             @csrf
                             <input type="text" name="id" value="{{ $item->id }}" hidden>
-                            <button type="submit" class="bntEliminarCategoria"
-                                onclick="return confirm('¿Estás seguro de que deseas eliminar la categoría {{ $item->nombreCategoria }}')">
+                            <button type="button" class="bntEliminarCategoria" onclick="confirmarEliminacion('{{ $item->nombreCategoria }}', '{{ $item->id }}')">
                                 <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
                             </button>
                         </form>
+                        
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </body>
+
+@if(session('correctoCategoria'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Acción exitosa!',
+            text: '{{ session('correctoCategoria') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+@if(session('errorCategoria'))
+    <script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Advertencia',
+            text: '{{ session('errorCategoria') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+@if(session('actualizarCorrectoCategoria'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Acción exitosa!',
+            text: '{{ session('actualizarCorrectoCategoria') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+@if(session('actualizarExisteCategoria'))
+    <script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Advertencia',
+            text: '{{ session('actualizarExisteCategoria') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+
+<script>
+    function confirmarEliminacion(nombreCategoria, id) {
+        Swal.fire({
+            title: '¿Estás seguro de que deseas eliminar?',
+            text: "No podrás revertir esto. Se eliminará la categoría: " + nombreCategoria,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si se confirma, envía el formulario
+                document.getElementById('eliminarForm-' + id).submit();
+            }
+        });
+    }
+</script>
 
 </html>

@@ -28,7 +28,7 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div style="text-align: center">
-        <img style="width: 380px; height: 380px;" src="imagesProductos/{{ $producto->imagen }}" alt="">
+        <img style="width: 380px; height: 380px; object-fit: contain; background-color: #f0f0f0;" class="card-img-top" src="imagesProductos/{{ $producto->imagen }}">
     </div>
 
     <div>

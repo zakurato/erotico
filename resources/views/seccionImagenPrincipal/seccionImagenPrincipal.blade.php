@@ -41,7 +41,7 @@
                 <br>
                 @if (isset($imagenPrincipal) && $imagenPrincipal->imagen != null)
                     <img src="images/{{ $imagenPrincipal->imagen }}" alt=""
-                        style="width: 100%; height: 300px;">
+                        style="width: 100%; height: 300px; object-fit: contain; background-color: #f0f0f0;">
                     <input type="hidden" name="imagenAntigua" value="{{ $imagenPrincipal->imagen }}">
                 @endif
 
@@ -63,6 +63,14 @@
             {{ session('creadoCorrectamente') }}
             {{ session('max') }}
         </form>
+        @if (isset($imagenPrincipal->id))
+            <form action="{{ route('deleteImagenPrincipal') }}" method="GET">
+                @csrf
+                <input type="hidden" name="id" value="{{ $imagenPrincipal->id }}">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+        @endif
+
     </div>
 
 </body>

@@ -126,6 +126,7 @@ Route::get('/cambiarTemporadaFotos',[HomeController::class,"cambiarTemporadaFoto
 //seccionImagenInicial
 Route::get('/seccionImagenInicial',[HomeController::class,"seccionImagenInicial"])->name("seccionImagenInicial")->middleware("auth");
 Route::post('/storeSeccionImagenPrincipal',[HomeController::class,"storeSeccionImagenPrincipal"])->name("storeSeccionImagenPrincipal")->middleware("auth");
+Route::get('/deleteImagenPrincipal',[HomeController::class,"deleteImagenPrincipal"])->name("deleteImagenPrincipal")->middleware("auth");
 
 
 

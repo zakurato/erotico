@@ -62,7 +62,7 @@
         @foreach ($seccionProductoCategories as $item)
             <div class="col">
                 <div class="card" style="height: 300px">
-                    <img style="width: 180px; height: 180px;" src="imagesSeccionProductoCategoria/{{$item->imagenName}}"
+                    <img style="width: 180px; height: 180px;  object-fit: contain; background-color: #f0f0f0;" src="imagesSeccionProductoCategoria/{{$item->imagenName}}"
                         class="card-img-top"alt="" />
                     <div class="card-body">
                         <br>
