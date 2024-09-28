@@ -13,6 +13,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--icono-->
     <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
+    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -47,6 +50,10 @@
     <br><br>
     <a href="{{ route('formCrearCategoria') }}">
         <input type="button" value="Crear categoría" class="btn btn-info">
+    </a>
+    <br><br><br>
+    <a href="{{ route('formCategoriaSinColorNiTamaño') }}">
+        <input type="button" value="Crear categorias sin color ni tamaño" class="btn btn-info">
     </a>
     <br><br><br>
     <a href="{{ route('formCrearColores') }}">
@@ -126,11 +133,11 @@
                             </p>
 
                             <p class="card-text">
-                            <form id="eliminarForm" action="{{ route('eliminarProducto') }}" method="GET">
+                            <form id="eliminarForm-{{ $item->id }}" action="{{ route('eliminarProducto') }}" method="GET">
                                 @csrf
                                 <input type="text" name="id" value="{{ $item->id }}" hidden>
-                                <button type="submit" class="bntEliminarCategoria"
-                                    onclick="return confirm('¿Estás seguro de que deseas eliminar el producto {{ $item->nombre }}')">
+                                <button type="button" class="bntEliminarCategoria"
+                                onclick="confirmarEliminacion('{{ $item->nombre}}', '{{ $item->id }}')">
                                     <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
                                     <br><br>
                                     <p style="color: black">Eliminar</p>
@@ -148,5 +155,48 @@
 
 
 </body>
+
+
+
+
+<!-- actualizado correctamente -->
+@if(session('correctoActualizarProducto'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Acción exitosa!',
+            text: '{{ session('correctoActualizarProducto') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+
+
+
+
+
+<!-- Eliminado correctamente -->
+<script>
+    function confirmarEliminacion(nombre, id) {
+        Swal.fire({
+            title: '¿Estás seguro de que deseas eliminar?',
+            text: "No podrás revertir esto. Se eliminará el producto: " + nombre,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si se confirma, envía el formulario
+                document.getElementById('eliminarForm-' + id).submit();
+            }
+        });
+    }
+</script>
+
+
 
 </html>

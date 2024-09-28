@@ -14,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--icono-->
     <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -49,6 +49,7 @@
                 @endforeach
             </select>
         </div>
+        <input type="hidden" name="existe" value="{{$existe}}">
     </form>
 
 
@@ -61,5 +62,18 @@
         document.getElementById("myForm").submit();
     }
 </script>
+
+<!-- creado correctamente -->
+@if(session('productoCreadoCorrectamenteFotos'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Acción exitosa!',
+            text: '{{ session('productoCreadoCorrectamenteFotos') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
 
 </html>

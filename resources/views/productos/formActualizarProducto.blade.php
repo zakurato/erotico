@@ -45,25 +45,53 @@
                 <input type="text" class="form-control" name="nombre"
                     oninput="this.value = this.value.toUpperCase()" value="{{ $producto->nombre }}">
             </div>
+
+
+
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Seleccione una categoría</label>
-                <select class="form-control" name="categoria">
+                <select class="form-control" name="categoria" id="categoriaSelect" onchange="checkCategoria()">
                     <option selected>{{ $producto->categoria }}</option>
-                    @foreach ($categorias as $item)
-                        <option>{{ $item->nombreCategoria }}</option>
+                    @foreach ($categoriasCombinadas as $item)
+                        <option value="{{ $loop->index + 1 }};{{ $item->nombreCategoria ?? $item->nombreCategoriaSinColorNiTamaño }}">
+                            {{ $item->nombreCategoria ?? $item->nombreCategoriaSinColorNiTamaño }}
+                        </option>
+                    @endforeach
+                </select>
+                <input type="hidden" name="oldCategoria" value="{{ $producto->categoria }}">
+                
+            </div>
+            
+            <div class="form-group" id="colorDiv">
+                <label for="exampleFormControlSelect1">Seleccione el color</label>
+                <select class="form-control" name="color">
+                    <option>NINGUNO</option>
+                    <option>{{ $producto->color }}</option>
+
+                    @foreach ($colores as $item)
+                        <option>{{ $item->nombreColor }}</option>
                     @endforeach
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Color</label>
-                <input type="text" class="form-control" name="color" readonly value="{{ $producto->color }}">
+            <div class="form-group" id="tamañoDiv">
+                <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
+                <select class="form-control" name="tamaño">
+                    <option>NINGUNO</option>
+                    <option>{{ $producto->tamaño }}</option>
+
+                    @foreach ($tamaños as $item)
+                        <option>
+                            @if (is_numeric($item->tamaño))
+                                {{ $item->tamaño }}cm
+                            @else
+                                {{ $item->tamaño }}
+                            @endif
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Tamaño</label>
-                <input type="text" class="form-control" name="tamaño" readonly value="{{ $producto->tamaño }}">
-            </div>
             <div class="form-group">
                 <label>Precio del producto:</label>
                 <input type="hidden" class="form-control" name="oldPrecio" required value="{{ $producto->precio }}">
@@ -91,8 +119,42 @@
 
     <br><br>
 
-
+<input type="hidden" id="existe" value="{{$existe}}">
 
 </body>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let existe = document.getElementById('existe');
+        const colorDiv = document.getElementById('colorDiv');
+        const tamañoDiv = document.getElementById('tamañoDiv');
+        const categoriaSelect = document.getElementById('categoriaSelect');
+        const selectedIndex = categoriaSelect.selectedIndex;
+
+        // Primera parte: Ejecuta este script al cargar la página
+        if (existe.value == 1) {
+            colorDiv.style.display = 'block';
+            tamañoDiv.style.display = 'block';
+        } else {
+            colorDiv.style.display = 'none';
+            tamañoDiv.style.display = 'none';
+        }
+
+        // Segunda parte: Cuando se selecciona un valor en el select
+        const cantidadCategoriasSinColorNiTamaño = {{ $cantidadCategoriasSinColorNiTamaño }};
+        document.getElementById('categoriaSelect').addEventListener('change', function () {
+            let selectedIndex = this.selectedIndex;
+
+            if (selectedIndex <= cantidadCategoriasSinColorNiTamaño) {
+                colorDiv.style.display = 'none';
+                tamañoDiv.style.display = 'none';
+            } else {
+                colorDiv.style.display = 'block';
+                tamañoDiv.style.display = 'block';
+            }
+        });
+    });
+</script>
 
 </html>

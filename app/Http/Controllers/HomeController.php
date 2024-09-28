@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\categoriaSinColorNiTamaño;
 use App\Models\Cliente;
 use App\Models\Color;
 use App\Models\Compra;
@@ -13,6 +14,7 @@ use App\Models\Foto;
 use App\Models\ImagenPrincipal;
 use App\Models\Producto;
 use App\Models\Tamano;
+use App\Models\User;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +37,7 @@ class HomeController extends Controller
     */
     public function index(Request $request){
 
+        $categoriaSinColorNiTamaño = categoriaSinColorNiTamaño::all();
         //return $request;
 
         //OBTENGO el id session 
@@ -48,6 +51,23 @@ class HomeController extends Controller
         Cache::put('session:' . $sessionId, $sessionData); // Guardar en caché por 60 segundos
 
         //return $sessionId;
+
+        $categorias = Categoria::all()->map(function ($item) {
+            return [
+                'nombreCategoria' => $item->nombreCategoria, // Clave unificada
+            ];
+        });
+        
+        $categoriaSinColorNiTamaño = CategoriaSinColorNiTamaño::all()->map(function ($item) {
+            return [
+                'nombreCategoria' => $item->nombreCategoriaSinColorNiTamaño, // Unificamos la clave a 'nombreCategoria'
+            ];
+        });
+        // Unir ambas colecciones
+        $coleccionUnida = $categoriaSinColorNiTamaño->merge($categorias);
+
+
+
 
         $imagenPrincipal = ImagenPrincipal::first();
         $productoTemporada = "";
@@ -132,6 +152,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
     $fechaActual = Date::now();
     $fechaObjeto = new DateTime($fechaActual);
     $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
+    $categoriaSinColorNiTamaño = categoriaSinColorNiTamaño::all();
     
     // Obtiene la sesión de compra actual del cliente
     $clienteSession = Compra::where([["nombreClienteSession", "=", session('nombre')]])->first();
@@ -226,12 +247,11 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
     // Obtiene datos para la vista y renderiza la vista
     $sessionCliente = session('nombre');
     $contadorCarrito = Cliente::where("nombre", session('nombre'))->first();
-    $categorias = Categoria::all();
     $productos = Producto::paginate(12);
     $fotos = Foto::all();
     session()->flash("noEncontroProducto","");
 
-    return view("paginaPrincipal.index2", compact("productos", "categorias", "contadorCarrito", "fotos", "sessionCliente", "productosMasVendidos", "productosSeccionCategoria", "top5ProductosMasActuales", "productoTemporada", "imagenPrincipal"));
+    return view("paginaPrincipal.index2", compact("productos", "coleccionUnida", "contadorCarrito", "fotos", "sessionCliente", "productosMasVendidos", "productosSeccionCategoria", "top5ProductosMasActuales", "productoTemporada", "imagenPrincipal","categoriaSinColorNiTamaño"));
 }else{
 
             //return "estoy aqui si el buscador es por la lupa
@@ -243,6 +263,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
             $fechaFormateada = $fechaObjeto->format('Y-m-d H:i:s');
             $clienteSession = Compra::where([["nombreClienteSession","=",session('nombre')]])->first();
             $top5ProductosMasActuales = Producto::orderByDesc('created_at')->limit(4)->get();
+            $categoriaSinColorNiTamaño = categoriaSinColorNiTamaño::all();
 
             if($clienteSession == ""){
                 $existe = 0;
@@ -261,8 +282,6 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
                     $cliente->save();
         
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
-                    $categorias = Categoria::all();
-
                     if($request->categoria != ""){
                         $productos = Producto::where([["categoria","=",$request->categoria]])->paginate(12);
                     }
@@ -303,7 +322,8 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
                     
                     $fotos = Foto::all();
                     $sessionCliente = session('nombre');
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
+
+                    return view("paginaPrincipal.index2",compact("productos","coleccionUnida","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal","categoriaSinColorNiTamaño"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
@@ -363,10 +383,10 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
                         //y si en la lupa no se encuentra el producto que se esta buscando
                         session()->flash("noEncontroProducto","No se encontro ningun producto en la busqueda");
 
-                        return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
+                        return view("paginaPrincipal.index2",compact("productos","coleccionUnida","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal","categoriaSinColorNiTamaño"));
                     }else{
                         session()->flash("noEncontroProducto","");
-                        return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
+                        return view("paginaPrincipal.index2",compact("productos","coleccionUnida","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal","categoriaSinColorNiTamaño"));
                     }
                 
                     
@@ -451,7 +471,9 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
 
                     }
                     $fotos = Foto::all();
-                return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
+                    $categoriaSinColorNiTamaño = categoriaSinColorNiTamaño::all();
+
+                return view("paginaPrincipal.index2",compact("productos","coleccionUnida","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal","categoriaSinColorNiTamaño"));
     
     
             }else{
@@ -516,8 +538,8 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
                     $fotos = Foto::all();
                     $sessionCliente = session('nombre');
         
-        
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
+                    $categoriaSinColorNiTamaño = categoriaSinColorNiTamaño::all();
+                    return view("paginaPrincipal.index2",compact("productos","coleccionUnida","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal","categoriaSinColorNiTamaño"));
                 }else{
                     $sessionCliente = session('nombre');
                     $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
@@ -563,7 +585,9 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
 
                     }
                     $fotos = Foto::all();
-                    return view("paginaPrincipal.index2",compact("productos","categorias","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal"));
+                    $categoriaSinColorNiTamaño = categoriaSinColorNiTamaño::all();
+
+                    return view("paginaPrincipal.index2",compact("productos","coleccionUnida","contadorCarrito","fotos","sessionCliente","productosMasVendidos","productosSeccionCategoria","top5ProductosMasActuales","productoTemporada","imagenPrincipal","categoriaSinColorNiTamaño"));
                 }
             }
         }
@@ -601,12 +625,21 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         $categorias = Categoria::all();
         $colores = Color::all();
         $tamaños = Tamano::all();
-        return view("productos.formCrearProducto",compact("categorias","colores","tamaños"));
+        $categoriasSinColorNiTamaño = categoriaSinColorNiTamaño::all();
+        $cantidadCategoriasSinColorNiTamaño = $categoriasSinColorNiTamaño->count();
+       
+        // Combinar las dos colecciones
+        $categoriasCombinadas = $categoriasSinColorNiTamaño->merge($categorias);
+
+        return view("productos.formCrearProducto",compact("categoriasCombinadas","colores","tamaños","cantidadCategoriasSinColorNiTamaño"));
     }
 
     public function storeProducto(Request $request){
         // return "imagen","nombre","categoria","color,"tamaño","precio","cantidad","descripcion","temporada"}
         // database "imagen","nombre","categoria","color,"tamaño","precio","cantidad","descripcion","temporada"}
+
+        $categoria = explode(';', $request->input('categoria'))[1];
+        $user = Auth::user();
 
         $tamaño = $request->tamaño; // Valor original: "30mm"
         $tamaño = str_replace('mm', '', $tamaño); // Eliminar "mm"
@@ -624,13 +657,14 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
 
         $producto->imagen = $imageName;
         $producto->nombre = $request->nombre;
-        $producto->categoria = $request->categoria;
+        $producto->categoria = $categoria;
         $producto->color = $request->color;
         $producto->tamaño = $request->tamaño;
         $producto->precio = $precio;
         $producto->cantidad = $request->cantidad;
         $producto->descripcion = $request->descripcion;
         $producto->temporada = 0;
+        $producto->creador = $user->name;
         $producto->save();
 
         session()->flash("correcto","Producto creado correctamente");
@@ -673,11 +707,32 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         $colores = Color::all();
         $tamaños = Tamano::all();
         $fotos = Foto::where("idFK",$request->id)->get();
-        return view("productos.formActualizarProducto",compact("producto","categorias","colores","tamaños","fotos"));
+        $categoriasSinColorNiTamaño = categoriaSinColorNiTamaño::all();
+        $cantidadCategoriasSinColorNiTamaño = $categoriasSinColorNiTamaño->count();
+       
+        // Combinar las dos colecciones
+        $categoriasCombinadas = $categoriasSinColorNiTamaño->merge($categorias);
+
+
+        //verificar si el producto esta en la tabla de categorias
+        $existe = 0;
+        $existeProductoEnTablaCategorias = Categoria::where("nombreCategoria", $producto->categoria)->first();
+
+        if($existeProductoEnTablaCategorias != ""){
+            $existe = 1;
+        }
+        return view("productos.formActualizarProducto",compact("producto","categoriasCombinadas","colores","tamaños","fotos","cantidadCategoriasSinColorNiTamaño","categorias","existe"));
     }
 
     public function storeActualizarProducto(Request $request){
 
+
+        if($request->oldCategoria == $request->categoria){
+             $categoria = $request->categoria; 
+        }else{
+            $categoria = explode(';', $request->input('categoria'))[1];
+        }
+        
     if(Empty($request->color)){
         $color = "NINGUNO";
     }else{
@@ -690,6 +745,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         $tamaño = $request->tamaño;
         $tamaño = str_replace('mm', '', $tamaño); // Eliminar "mm"
     }
+
 
          // Verifica si el check box esta marcado
     if ($request->has('temporada')) {
@@ -724,7 +780,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         }
 
         $producto->nombre = $request->nombre;
-        $producto->categoria = $request->categoria;
+        $producto->categoria = $categoria;
         $producto->color = $color;
         $producto->tamaño = $tamaño;
         $producto->precio = $precio;
@@ -750,8 +806,16 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
 
         $existe = 0;
         $categorias = Categoria::all();
+        $categoriasSinColorNiTamaño = categoriaSinColorNiTamaño::all();
         foreach($categorias as $item){
             if($item->nombreCategoria == $request->nombreCategoria){
+                $existe = 1;
+                break;
+            }
+        }
+
+        foreach($categoriasSinColorNiTamaño as $item){
+            if($item->nombreCategoriaSinColorNiTamaño == $request->nombreCategoria){
                 $existe = 1;
                 break;
             }
@@ -788,9 +852,16 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         }else{
             $existe = 0;
             $categorias = Categoria::all();
+            $categoriasSinColorNiTamaño = categoriaSinColorNiTamaño::all();
 
             foreach($categorias as $item){
                 if($item->nombreCategoria == $request->nombreCategoria){
+                    $existe = 1;
+                    break;
+                }
+            }
+            foreach($categoriasSinColorNiTamaño as $item){
+                if($item->nombreCategoriaSinColorNiTamaño == $request->nombreCategoria){
                     $existe = 1;
                     break;
                 }
@@ -949,12 +1020,27 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         $producto = Producto::where("id",$request->id)->first();
         $colores = Color::all();
         $tamaños = Tamano::all();
-        return view("productos.formAñadirImagenes",compact("producto","colores","tamaños"));
+        $fotos = Foto::all();
+        //verifica si lacategoria esta en la tabla de categorias
+        $existe = 0;
+        $categoriaExisteCategoria = Categoria::where("nombreCategoria",$producto->categoria)->first();
+
+        if($categoriaExisteCategoria != ""){
+            $existe = 1;
+            return view("productos.formAñadirImagenes",compact("producto","colores","tamaños","existe"));
+        }
+
+        if($existe == 0){
+            $color = $producto->color;
+            return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","existe","color","fotos"));
+        }else{
+            $color = $producto->color;
+            return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","existe","color","fotos"));
+        }
     }
     public function colorSeleccionado(Request $request){
 
-        //return $request;
-
+            $existe = $request->existe;
             $existeColorTablaProducto = 0;
             $productos = Producto::all();
 
@@ -973,7 +1059,8 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
                     $tamaños = Tamano::all();
                     $fotos = Foto::all();
                     $fotoColor = Foto::where([["color", $request->color],["idFK","=",$producto->id]])->first();
-                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos","fotoColor"));
+                    
+                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos","fotoColor","existe"));
             }else{
                 $existeColorTablafotos = 0;
                 $fotos = Foto::all();
@@ -994,7 +1081,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
                     $fotos = Foto::all();
                     $fotoColor = Foto::where([["color", $request->color],["idFK","=",$producto->id]])->first();
 
-                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos","fotoColor"));
+                    return view("productos.formAñadirImagenes3",compact("producto","colores","tamaños","color","fotos","fotoColor","existe"));
                 }else{
                     //redireccionar a la vista donde se crea el producto en la parte de fotos osea uno nuevo
                     $color = $request->color;
@@ -1010,6 +1097,8 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
     }
 
     public function storeProductoFotos(Request $request){//la primera vez que se guarda un color nuevo
+
+        $user = Auth::user();
        $contador = 0;
 
         foreach ($request->file('image') as $image) {
@@ -1027,6 +1116,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
                 $nuevoProductoFotos->cantidad = $request->cantidad;
                 $nuevoProductoFotos->idFK = $request->id;
                 $nuevoProductoFotos->temporada = "0";
+                $nuevoProductoFotos->creador = $user->name;
                 $nuevoProductoFotos->save();
                 $contador = 1;
                 }else{
@@ -1042,6 +1132,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
                     $nuevoProductoFotos->cantidad = "formImagenes";
                     $nuevoProductoFotos->idFK = $request->id;
                     $nuevoProductoFotos->temporada = "0";
+                    $nuevoProductoFotos->creador = $user->name;
                     $nuevoProductoFotos->save();
                 }
 
@@ -1054,6 +1145,8 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
     }
 
     public function storeProductoFotosImagenes(Request $request){//para guardar solo imagenes
+
+        $user = Auth::user();
         foreach ($request->file('image') as $image) {
             // Genera un nombre único para cada imagen
             $imageName = uniqid().'.'.$image->extension();
@@ -1067,6 +1160,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
             $nuevoProductoFotos->cantidad = "formImagenes";
             $nuevoProductoFotos->idFK = $request->id;
             $nuevoProductoFotos->temporada = "0";
+            $nuevoProductoFotos->creador = $user->name;
             $nuevoProductoFotos->save();
         }
         session()->flash("productoCreadoCorrectamenteFotosImagenes","Imagenes guardadas para el color ".$request->color." correctamente");
@@ -1077,6 +1171,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
 
     public function storeProductoFotosTamañoCantidad(Request $request){//para guardar solo tamaños
 
+            $user = Auth::user();
 
             $existeTamañoTablaProducto = 0;
             $productos = Producto::all();
@@ -1145,6 +1240,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
                         $nuevoProductoFotos->cantidad = 0;
                     }
                     $nuevoProductoFotos->idFK = $request->id;
+                    $nuevoProductoFotos->creador = $user->name;
                     $nuevoProductoFotos->save();
 
                     session()->flash("productoCreadoCorrectamenteFotosTamaño","Tamaño y cantidad guardadas para el color ".$request->color." correctamente");
@@ -1163,7 +1259,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         if($ProductosEliminadoTablaFotos->imagen == "formTamañosCantidades"){
             $delete=Foto::where('id',$request->id)->delete();
             session()->flash("eliminarProducto","EL producto se elimino correctamente");
-            return redirect()->route("loginDentro");
+            return redirect()->route("colorSeleccionado", ['id' => $ProductosEliminadoTablaFotos->idFK, 'color' => $ProductosEliminadoTablaFotos->color]);
     
         }else if($ProductosEliminadoTablaFotos->tamaño == "formImagenes"){
             unlink(public_path('imagesProductos/'.$ProductosEliminadoTablaFotos->imagen));
@@ -1189,12 +1285,10 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
 
             $productId = $request->input('productId');
             $selectedColor = $request->input('selectedColor');
-    
+
             $tamañosSelectColorFotos = Foto::where("idFK", $productId)->where("color", $selectedColor)->get();
             $tamañosSelectColorProducto = Producto::where("id", $productId)->where("color", $selectedColor)->get();
-            
             $respuesta = $tamañosSelectColorProducto->concat($tamañosSelectColorFotos);
-            
             $colores = $respuesta->pluck('tamaño')->unique(); // Obtiene los tamanos únicos
             $cantidades = $respuesta->pluck('cantidad')->unique(); // Obtiene las cantidades unicamente
 
@@ -2180,6 +2274,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
             /*aqui debo buscar el producto en la tabla de productos con esa imagen y tambien el color y guardarla en un
             arreglo debo hacer lo mismo con la tabla de Fotos
             */
+            $categoriaSinColorNiTamaño = categoriaSinColorNiTamaño::all();
             $sessionCliente = session('nombre');
             $contadorCarrito = Cliente::where("nombre",session('nombre'))->first();
 
@@ -2290,7 +2385,8 @@ public function restarCambioInputCambioTotalIva(Request $request){
                     $productos = Producto::paginate(12);
                     $fotos = Foto::all();
                     $categorias = Categoria::all();
-                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","categoria","categorias","productos","fotos","cantidad"));
+                    
+                    return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","categoria","categorias","productos","fotos","cantidad","categoriaSinColorNiTamaño"));
                 }
                 
 
@@ -2373,7 +2469,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
                         $productos = Producto::paginate(12);
                         $fotos = Foto::all();
                         $categorias = Categoria::all();
-                        return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos","categoria","categorias","productos","fotos","cantidad"));
+                        return view("paginaPrincipal.index3",compact("combinadosImages","descripcion","precio","nombre","color","coloresDiferentesAProductoSeleccionado","tamañosCombinados","id","sessionCliente","contadorCarrito","productosCategoriaTablaProductos","categoria","categorias","productos","fotos","cantidad","categoriaSinColorNiTamaño"));
                     }
                     
                 }
@@ -2382,7 +2478,6 @@ public function restarCambioInputCambioTotalIva(Request $request){
         }
 
         public function descriccionProducto2(Request $request){
-
             $imagen = Producto::where([["id","=",$request->id],["color","=",$request->color]])->first();
 
             if(Empty($imagen)){
@@ -2449,6 +2544,8 @@ public function restarCambioInputCambioTotalIva(Request $request){
             $eliminarSeccionCategoria = CreateSeccionProductoCategory::where([
                 ["id","=",$request->idEliminar]
                 ])->delete();
+
+                session()->flash("eliminadoCorrectamente","Se elimino correctamente");
             unlink(public_path('imagesSeccionProductoCategoria/'.$eliminarSeccionCategoria2->imagenName));
             return redirect()->route("seccionImagenesCategoria");
         }
@@ -2488,6 +2585,7 @@ public function restarCambioInputCambioTotalIva(Request $request){
 
 
             }
+            session()->flash("editadoCorrectamente","Se edito correctamente");
             return redirect()->route("seccionImagenesCategoria");
         }
 
@@ -2546,18 +2644,114 @@ public function restarCambioInputCambioTotalIva(Request $request){
                 $imagenPrincipal->imagen = $imageName;
                 $imagenPrincipal->save();
             }
-
+            session()->flash("creadaCorrectamente","Imagen Principal creada correctamente");
             return redirect()->route("seccionImagenInicial");
             }
             
         }
 
         public function deleteImagenPrincipal(Request $request){
-
+            session()->flash("eliminadoCorrectamente","Se elimino correctamente");
             $delete=ImagenPrincipal::where('id',$request->id)->delete();
             return view("seccionImagenPrincipal.seccionImagenPrincipal");
 
         }
+
+
+
+        public function formCategoriaSinColorNiTamaño(){
+            $categorias = categoriaSinColorNiTamaño::all();
+            return view("categorias.formCrearCategoriaSinColorNiTamaño",compact("categorias"));
+        }
+
+        public function storeCategoriaSinColorNiTamaño(Request $request){
+
+            $existe = 0;
+            $categoriasSinColorNiTamaño = categoriaSinColorNiTamaño::all();
+            $categorias = Categoria::all();
+            foreach($categoriasSinColorNiTamaño as $item){
+                if($item->nombreCategoriaSinColorNiTamaño == $request->SinColorNiTamaño){
+                    $existe = 1;
+                    break;
+                }
+            }
+            foreach($categorias as $item){
+                if($item->nombreCategoria == $request->SinColorNiTamaño){
+                    $existe = 1;
+                    break;
+                }
+            }
+
+
+            if($existe == 0){
+                $categoriasSinColorNiTamaño = new categoriaSinColorNiTamaño();
+                $categoriasSinColorNiTamaño->nombreCategoriaSinColorNiTamaño = $request->SinColorNiTamaño;
+                $categoriasSinColorNiTamaño->save();
+                session()->flash("correctoCategoria","Categoria creada correctamente");
+                return redirect()->route("formCategoriaSinColorNiTamaño");
+            }else{
+                session()->flash("errorCategoria","La categoria que intento crear ya existe");
+                return redirect()->route("formCategoriaSinColorNiTamaño");
+            }
+        }
+
+        public function eliminarCategoriaSinColorNiTamaño(Request $request){
+            $delete=categoriaSinColorNiTamaño::where('id',$request->id)->delete();
+            session()->flash("eliminarCategoria","La categoria se elimino correctamente");
+            return redirect()->route("formCategoriaSinColorNiTamaño");
+        }
+
+        public function actualizarCategoriaSinColorNiTamaño(Request $request){
+            $categoriaEditar = categoriaSinColorNiTamaño::where("id",$request->id)->first();
+            return view("categorias.formEditarCategoriaSinColorNiTamaño",compact("categoriaEditar"));
+        }
+        public function storeActualizarCategoriaSinColorNiTamaño(Request $request){
+        
+            if($request->oldNombreCategoria == $request->nombreCategoria){
+                session()->flash("actualizarCorrectoCategoria","La categoria se actualizo correctamente");
+                return redirect()->route("formCategoriaSinColorNiTamaño");        
+            }else{
+                $existe = 0;
+                $categoriaSinColorNiTamaño = categoriaSinColorNiTamaño::all();
+                $categorias = Categoria::all();
+
+                foreach($categoriaSinColorNiTamaño as $item){
+                    if($item->nombreCategoriaSinColorNiTamaño == $request->nombreCategoria){
+                        $existe = 1;
+                        break;
+                    }
+                }
+                foreach($categorias as $item){
+                    if($item->nombreCategoria == $request->nombreCategoria){
+                        $existe = 1;
+                        break;
+                    }
+                }
+    
+                if($existe == 1){
+                    session()->flash("actualizarExisteCategoria","La categoria ya existe");
+                    return redirect()->route("formCategoriaSinColorNiTamaño");        
+                }else{
+                    $categoriaSinColorNiTamaño = categoriaSinColorNiTamaño::where("id", $request->id)->first();
+                    $categoriaSinColorNiTamaño->nombreCategoriaSinColorNiTamaño = $request->nombreCategoria;
+                    $categoriaSinColorNiTamaño->save();
+                    session()->flash("correctoCategoria","Categoria editada correctamente");
+                    return redirect()->route("formCategoriaSinColorNiTamaño");
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         public function prueba() {
             return view("prueba");

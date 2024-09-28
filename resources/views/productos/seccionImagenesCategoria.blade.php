@@ -13,6 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--icono-->
     <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -44,6 +45,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ route('seccionImagenInicial') }}">Seccion de imagen inicial</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ route('formCategoriaSinColorNiTamaño') }}">Crear categorias sin color ni tamaño</a></li>
+                </ul>
               <ul class="nav navbar-nav">
                 <li><a href="{{ route('logout') }}">Cerrar sesion</a></li>
               </ul>
@@ -56,6 +60,9 @@
     <a href="{{ route('formCrearProductoSeccionCategoria') }}">
         <input type="button" value="Crear seccion categoria" class="btn btn-primary">
     </a>
+    <br><br>
+    {{ session('eliminadoCorrectamente') }}
+    {{session("editadoCorrectamente")}}
     <br><br>
 
     <div class="row row-cols-2 g-3">
@@ -81,10 +88,11 @@
 
 
                             <p class="card-text">
-                            <form id="eliminarForm" action="{{ route('eliminarSeccionCategoria') }}" method="POST">
+                            <form id="eliminarForm-{{ $item->id }}" action="{{ route('eliminarSeccionCategoria') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="bntEliminarCategoria"
-                                    onclick="return confirm('¿Estás seguro de que deseas eliminar el producto ">
+                                <button type="button" class="bntEliminarCategoria"
+                                onclick="confirmarEliminacion('{{ $item->id }}')">
+
                                     <i style="color: red" class="fa-solid fa-trash-can fa-xl"></i>
                                     <input type="hidden" value="{{$item->id}}" name="idEliminar">
                                     <br><br>
@@ -102,5 +110,41 @@
 
 
 </body>
+
+<!-- Eliminado correctamente -->
+<script>
+    function confirmarEliminacion(id) {
+        Swal.fire({
+            title: '¿Estás seguro de que deseas eliminar?',
+            text: "No podrás revertir esto. Se eliminará" ,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si se confirma, envía el formulario
+                document.getElementById('eliminarForm-' + id).submit();
+            }
+        });
+    }
+</script>
+
+
+<!-- actualizado correctamente -->
+@if(session('editadoCorrectamente'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Acción exitosa!',
+            text: '{{ session('editadoCorrectamente') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+
 
 </html>

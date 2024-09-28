@@ -15,6 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--icono-->
     <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -56,23 +57,64 @@
                 <input type="file" class="form-control-file" name="imagen">
             </div>
             <br>
-
+            {{session("creadaCorrectamente")}}
             <br>
             <button type="submit" class="btn btn-primary">Crear seccion imagen principal</button>
-            <br><br>
-            {{ session('creadoCorrectamente') }}
-            {{ session('max') }}
-        </form>
+            <br><br>        </form>
         @if (isset($imagenPrincipal->id))
-            <form action="{{ route('deleteImagenPrincipal') }}" method="GET">
+            <form id="eliminarForm-{{ $imagenPrincipal->id }}" action="{{ route('deleteImagenPrincipal') }}" method="GET">
                 @csrf
                 <input type="hidden" name="id" value="{{ $imagenPrincipal->id }}">
-                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <button type="button" class="btn btn-danger"
+                    onclick="confirmarEliminacion('{{ $imagenPrincipal->id }}')">Eliminar
+                    
+                </button>
             </form>
         @endif
 
+        <div style="height: 100px"></div>
+
     </div>
 
+
+
+
+
+
 </body>
+
+<!-- Eliminado correctamente -->
+<script>
+    function confirmarEliminacion(id) {
+        Swal.fire({
+            title: '¿Estás seguro de que deseas eliminar?',
+            text: "No podrás revertir esto. Se eliminará la imagen principal",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si se confirma, envía el formulario
+                document.getElementById('eliminarForm-' + id).submit();
+            }
+        });
+    }
+</script>
+
+<!-- creado correctamente -->
+@if(session('creadaCorrectamente'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Acción exitosa!',
+            text: '{{ session('creadaCorrectamente') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
 
 </html>

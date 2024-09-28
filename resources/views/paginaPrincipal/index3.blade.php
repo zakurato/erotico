@@ -214,7 +214,8 @@
                                                         <div class="mb-1" id="imagenPequeña{{ $index }}">
                                                             <button type="button" class="btn p-0"
                                                                 style="width: 150px; height: 100px">
-                                                                    <img src="imagesProductos/{{ $item->imagen }}" style="width: 150px; height: 100px; object-fit: contain; background-color: white;" >
+                                                                <img src="imagesProductos/{{ $item->imagen }}"
+                                                                    style="width: 150px; height: 100px; object-fit: contain; background-color: white;">
                                                             </button>
                                                         </div>
                                                     @endif
@@ -245,7 +246,13 @@
                                 </div>
                             </div>
                         </div>
-
+                        @php
+                            $categoriasArray = $categoriaSinColorNiTamaño
+                                ->pluck('nombreCategoriaSinColorNiTamaño')
+                                ->toArray();
+                            // Comprobación de la condición
+                            $debeMostrarColor = !in_array($categoria, $categoriasArray) ? $color : null;
+                        @endphp
 
                         <div class="col-12 col-md-6 col-xl-7 mb-5" style="text-align: center !important">
 
@@ -265,7 +272,7 @@
                                                     <h1 class="attribute-detail-selected selected-color"
                                                         aria-live="off">
                                                         {{ $nombre }}
-                                                        @if ($categoria != 'EMINENCE' && $categoria != 'PROTEINAS')
+                                                        @if (!in_array($categoria, $categoriasArray))
                                                             {{ $color }}
                                                         @endif
                                                     </h1>
@@ -330,7 +337,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($categoria != 'EMINENCE' && $categoria != 'PROTEINAS')
+                                @if (!in_array($categoria, $categoriasArray))
                                     <div class="row attr-type-selecter" data-attr="color">
                                         <div class="col-12">
                                             <div class="attribute">
@@ -369,8 +376,7 @@
                         @endforeach
                     </div>
                 </div>
-                @if ($categoria != 'EMINENCE' && $categoria != 'PROTEINAS')
-
+                @if (!in_array($categoria, $categoriasArray))
                     <div class="row attr-type-selecter" data-attr="size">
                         <div class="col-12">
                             <div class="attribute">
@@ -557,9 +563,6 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
 </script>
 
 
-
-
-
 <script>
     $(document).ready(function() {
         // Asigna un controlador de eventos al botón
@@ -569,7 +572,9 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
             var colorValue = document.getElementById("colorValue").value;
 
             console.log(colorValue);
-            if (categoria.value == "EMINENCE" || categoria.value == "PROTEINAS") {
+            // Convertimos el arreglo de PHP a JSON
+            var categorias = @json($categoriasArray);
+            if (categorias.includes(categoria.value)) {
                 document.getElementById("color").value = "NINGUNO";
 
             } else {
@@ -606,7 +611,10 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
             var color = data['color'];
             var tamaño = data['tamaño'];
             var sessionCliente = data['sessionCliente'];
-            if (categoria == "EMINENCE" || categoria == "PROTEINAS") {
+
+            // Convertimos el arreglo de PHP a JSON
+            var categorias = @json($categoriasArray);
+            if (categorias.includes(categoria)) {
                 tamaño = "NINGUNO";
             }
 
@@ -616,8 +624,8 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
                     "Debe seleccionar un tamaño"; // limpio el mensajecontainer
             } else {
 
-                //console.log("color:" + color);
-                //console.log("tamaño:" + tamaño);
+                console.log("color:" + color);
+                console.log("tamaño:" + tamaño);
                 //console.log(sessionCliente);
                 //console.log("si se selecciono el color");
                 $.ajax({
@@ -833,7 +841,6 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
         // Obtiene el valor seleccionado
         var selectedValue = selectElement.value;
         // Hacer algo con el valor seleccionado
-        //console.log(selectedValue);
         var partes = selectedValue.split(" ");
         var color = partes[0].split(":")[1]; //color seleccionado
         var id = partes[1].split(":")[1]; //id del item seleccionado
@@ -844,6 +851,13 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
         document.getElementById('idInput').value = id;
         // Enviar el formulario
         document.getElementById('miFormularioImage2').submit();
+
+
+        
+
+
+
+
     });
 </script>
 
@@ -860,6 +874,12 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
 <script>
     //cambia el tamaño del logo dependiendo si es pc o celular
     // Imprime el ancho de la pantalla al cargar la página
+
+    var color = <?php echo json_encode($debeMostrarColor); ?>;
+
+
+
+
     var ancho = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     console.log("Ancho de la pantalla: " + ancho);
 
@@ -883,14 +903,28 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
         a6.style.color = "#9d9d9d";
         a7.style.color = "#9d9d9d";
 
+
         // esto es para la altura de los elementos de manera responsive
         var divElementos = document.getElementById("cambiarPosicionElementos");
         if (ancho <= 752) {
-            console.log(divElementos.style.cssText); // Imprime los estilos en línea
-            divElementos.style.height = "270vh"; // Cambia la altura a 100vh
+            if(color == null){
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "170vh"; // Cambia la altura a 100vh
+            }else{
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "270vh"; // Cambia la altura a 100vh
+            }
+
         } else {
-            divElementos.style.height = "160vh"; // Cambia la altura a 100vh
-            console.log(divElementos.style.cssText); // Imprime los estilos en línea
+
+            if(color == null){//cuando viene sin color
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "20vh"; // Cambia la altura a 100vh
+            }else{//cuando viene con color
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "160vh"; // Cambia la altura a 100vh
+            }
+
         }
     } else {
         logo.style.height = "70px";
@@ -905,11 +939,21 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
         // esto es para la altura de los elementos de manera responsive
         var divElementos = document.getElementById("cambiarPosicionElementos");
         if (ancho <= 752) {
-            console.log(divElementos.style.cssText); // Imprime los estilos en línea
-            divElementos.style.height = "270vh"; // Cambia la altura a 100vh
+            if(color == null){
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "170vh"; // Cambia la altura a 100vh
+            }else{
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "270vh"; // Cambia la altura a 100vh
+            }
         } else {
-            divElementos.style.height = "160vh"; // Cambia la altura a 100vh
-            console.log(divElementos.style.cssText); // Imprime los estilos en línea
+            if(color == null){//cuando viene sin color
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "100vh"; // Cambia la altura a 100vh
+            }else{//cuando viene con color
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "160vh"; // Cambia la altura a 100vh
+            }
         }
     }
 
@@ -950,11 +994,21 @@ role="contentinfo" style="background-color: #e7e7e7; color: black;">
         // esto es para la altura de los elementos de manera responsive
         var divElementos = document.getElementById("cambiarPosicionElementos");
         if (ancho <= 752) {
-            console.log(divElementos.style.cssText); // Imprime los estilos en línea
-            divElementos.style.height = "270vh"; // Cambia la altura a 100vh
+            if(color == null){
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "170vh"; // Cambia la altura a 100vh
+            }else{
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "270vh"; // Cambia la altura a 100vh
+            }
         } else {
-            divElementos.style.height = "160vh"; // Cambia la altura a 100vh
-            console.log(divElementos.style.cssText); // Imprime los estilos en línea
+            if(color == null){//cuando viene sin color
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "100vh"; // Cambia la altura a 100vh
+            }else{//cuando viene con color
+                console.log(divElementos.style.cssText); // Imprime los estilos en línea
+                divElementos.style.height = "160vh"; // Cambia la altura a 100vh
+            }
         }
 
 

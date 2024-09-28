@@ -63,12 +63,11 @@
                                         data-toggle="dropdown">Categorías</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ route('index', ['categoria' => 'TODOS']) }}">TODOS</a></li>
-                                        @foreach ($categorias as $item)
-                                            <li>
-                                                <a
-                                                    href="{{ route('index', ['categoria' => $item->nombreCategoria]) }}">{{ $item->nombreCategoria }}</a>
-                                            </li>
-                                        @endforeach
+                                        @foreach ($coleccionUnida as $item)
+                                        <li>
+                                            <a href="{{ route('index', ['categoria' => $item['nombreCategoria']]) }}">{{ $item['nombreCategoria'] }}</a>
+                                        </li>
+                                    @endforeach
                                     </ul>
                                 </li>
                                 <!--
@@ -175,15 +174,15 @@
 
     <div style="height: 60px;" id="espacioImagenPrincipal"></div>
     @if (isset($imagenPrincipal->imagen))
-        <img src="images/{{ $imagenPrincipal->imagen }}" alt=""
-            style="width: 1920px; height: 300px;" class="animacion1">
-            <section class="section section--text-centered"
-                    data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
-                    data-section-type="rich-text">
-                    <div class="container container--narrow">
-                        <h3>Descubre el poder de la calidad en cada uno de nuestros productos.</h3>
-                    </div>
-                </section>
+        <img src="images/{{ $imagenPrincipal->imagen }}" alt="" style="width: 1920px; height: 300px;"
+            class="animacion1">
+        <section class="section section--text-centered"
+            data-section-id="template--14562732638271__8d8dabb7-46e1-4ebb-82e1-523d2e198241"
+            data-section-type="rich-text">
+            <div class="container container--narrow">
+                <h3>Descubre el poder de la calidad en cada uno de nuestros productos.</h3>
+            </div>
+        </section>
     @endif
 
     <div style="height: 30px;" id="espacioImagenPrincipal"></div>
@@ -206,8 +205,9 @@
         </header>
     </div>
 
-
-    {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
+    <div class="text-center">
+        {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
+    </div>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -322,7 +322,14 @@
                                         });
                                     </script>
 
-                                    @if ($item->categoria != 'EMINENCE' && $item->categoria != 'PROTEINAS')
+
+                                    @php
+                                        $categoriasArray = $categoriaSinColorNiTamaño
+                                            ->pluck('nombreCategoriaSinColorNiTamaño')
+                                            ->toArray();
+                                    @endphp
+
+                                    @if (!in_array($item->categoria, $categoriasArray))
                                         <!-- Left and right controls -->
                                         <a class="left carousel-control" href="#myCarousel{{ $index }}"
                                             data-slide="prev">
@@ -335,6 +342,9 @@
                                             <span class="sr-only">Next</span>
                                         </a>
                                     @endif
+
+
+
 
 
 
@@ -353,7 +363,7 @@
                             </div>
                             <br>
                             <!-- Dependiendo la categoria muestra las opciones-->
-                            @if ($item->categoria != 'EMINENCE' && $item->categoria != 'PROTEINAS')
+                            @if (!in_array($item->categoria, $categoriasArray))
                                 <div class="product-item__info-inner">
                                     <div class="form-group">
                                         <select class="form-control styleSelect"
@@ -387,7 +397,7 @@
                                     $('#color-select-{{ $item->id }}').change(function() {
                                         var productId = $(this).attr('id').replace('color-select-', '');
                                         var selectedColor = $(this).val();
-                                        //console.log(selectedColor);
+                                        //alert(selectedColor);
                                         if ($.trim(productId != "")) {
                                             $.ajax({
                                                 url: 'jqTamaños', // aqui va el nombre de la ruta
@@ -398,9 +408,8 @@
                                                 }, //los parametros enviados
                                                 dataType: 'json',
                                                 success: function(response) {
-                                                    const cantidad = response.cantidades.find(elemento => !isNaN(
-                                                        elemento));
-                                                    //console.log(numeroEncontrado)
+                                                    const cantidad = response.cantidades[0];
+                                                    //console.log(cantidad)
 
                                                     $("#selectCantidad" + productId)
                                                         .empty(); //limpia el select de tamaños
@@ -469,7 +478,10 @@
                                         var color = data['color'];
                                         var tamaño = data['tamaño'];
                                         var sessionCliente = data['sessionCliente'];
-                                        if (categoria == "EMINENCE" || categoria == "PROTEINAS") {
+                                        // Convertimos el arreglo de PHP a JSON
+                                        var categorias = @json($categoriasArray);
+
+                                        if (categorias.includes(categoria)) {
                                             color = "NINGUNO";
                                             tamaño = "NINGUNO";
                                         }
@@ -678,6 +690,9 @@
             </div>
         </div>
     </section>
+    <div class="text-center">
+        {{ $productos->appends(request()->input())->links('pagination::bootstrap-4') }}
+    </div>
     </section>
     </div>
     <div id="shopify-section-template--14562732638271__5199ee47-c016-4657-bf0b-bfd73334618b" class="shopify-section">
@@ -1007,10 +1022,10 @@
                                                     <div class="aspect-ratio" style="padding-bottom: 100.0%">
                                                         <img style="width: 380px; height: 380px; object-fit: contain; background-color: #f0f0f0;"
                                                             src="imagesProductos/{{ $productoTemporada->imagen }}"
-                                                            alt=""
-                                                            id="mi-imagen">
+                                                            alt="" id="mi-imagen">
 
-                                                            <canvas id="mi-canvas" width="380" height="380"></canvas>
+                                                        <canvas id="mi-canvas" width="380"
+                                                            height="380"></canvas>
 
                                                     </div>
                                                 </div>
@@ -1024,7 +1039,7 @@
                 </div>
 
 
-                
+
                 <div class="card card--collapsed ">
                     <div id="product-zoom-template--14562732638271__featured-product"
                         class="product__zoom-wrapper">
@@ -1044,7 +1059,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($productoTemporada->categoria != 'EMINENCE' && $productoTemporada->categoria != 'PROTEINAS')
+                                @if (!in_array($productoTemporada->categoria, $categoriasArray))
                                     <div class="product-form__info-item">
                                         <span class="product-form__info-title text--strong">Color:</span>
                                         <div class="product-form__info-content" role="region"

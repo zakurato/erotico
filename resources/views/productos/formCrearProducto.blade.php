@@ -15,6 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--icono-->
     <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -46,14 +47,14 @@
                 document.getElementById('imagen-input').addEventListener('change', function(e) {
                     var preview = document.getElementById('imagen-preview');
                     var file = e.target.files[0];
-        
+
                     if (file) {
                         var reader = new FileReader();
-        
+
                         reader.onload = function(e) {
                             preview.src = e.target.result;
                         }
-        
+
                         reader.readAsDataURL(file);
                     } else {
                         preview.src = "#";
@@ -65,16 +66,21 @@
                 <input type="text" class="form-control" name="nombre"
                     oninput="this.value = this.value.toUpperCase()">
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Seleccione una categoría</label>
-                <select class="form-control" name="categoria">
-                    @foreach ($categorias as $item)
-                        <option>{{ $item->nombreCategoria }}</option>
-                    @endforeach
-                </select>
-            </div>
+
 
             <div class="form-group">
+                <label for="exampleFormControlSelect1">Seleccione una categoría</label>
+                <select class="form-control" name="categoria" id="categoriaSelect" onchange="checkCategoria()">
+                    @foreach ($categoriasCombinadas as $item)
+                        <option value="{{ $loop->index + 1 }};{{ $item->nombreCategoria ?? $item->nombreCategoriaSinColorNiTamaño }}">
+                            {{ $item->nombreCategoria ?? $item->nombreCategoriaSinColorNiTamaño }}
+                        </option>
+                    @endforeach
+                </select>
+                
+            </div>
+
+            <div class="form-group" id="colorDiv">
                 <label for="exampleFormControlSelect1">Seleccione el color</label>
                 <select class="form-control" name="color">
                     <option>NINGUNO</option>
@@ -83,21 +89,24 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
+
+            <div class="form-group" id="tamañoDiv">
                 <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
                 <select class="form-control" name="tamaño">
                     <option>NINGUNO</option>
                     @foreach ($tamaños as $item)
                         <option>
                             @if (is_numeric($item->tamaño))
-                            {{ $item->tamaño }}cm
+                                {{ $item->tamaño }}cm
                             @else
-                                {{$item->tamaño}}
+                                {{ $item->tamaño }}
                             @endif
                         </option>
                     @endforeach
                 </select>
             </div>
+
+
             <div class="form-group">
                 <label>Precio del producto:</label>
                 <input type="text" class="form-control" name="precio" required>
@@ -121,5 +130,51 @@
 
 
 </body>
+
+<!-- creado correctamente -->
+@if (session('correcto'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Acción exitosa!',
+            text: '{{ session('correcto') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+
+
+
+
+<script>
+    const cantidadCategoriasSinColorNiTamaño = {{ $cantidadCategoriasSinColorNiTamaño }};
+
+    function checkCategoria() {
+        const categoriaSelect = document.getElementById('categoriaSelect');
+        const selectedIndex = categoriaSelect.selectedIndex;
+
+
+        console.log(selectedIndex);
+
+
+        const colorDiv = document.getElementById('colorDiv');
+        const tamañoDiv = document.getElementById('tamañoDiv');
+
+        // Mostrar u ocultar los divs según la selección
+        if (selectedIndex < cantidadCategoriasSinColorNiTamaño) {
+            colorDiv.style.display = 'none';
+            tamañoDiv.style.display = 'none';
+        } else {
+            colorDiv.style.display = 'block';
+            tamañoDiv.style.display = 'block';
+        }
+    }
+
+    // Ejecutar la función al cargar la página por si ya hay una opción seleccionada
+    document.addEventListener('DOMContentLoaded', checkCategoria);
+</script>
+
+
 
 </html>

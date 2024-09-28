@@ -128,6 +128,14 @@ Route::get('/seccionImagenInicial',[HomeController::class,"seccionImagenInicial"
 Route::post('/storeSeccionImagenPrincipal',[HomeController::class,"storeSeccionImagenPrincipal"])->name("storeSeccionImagenPrincipal")->middleware("auth");
 Route::get('/deleteImagenPrincipal',[HomeController::class,"deleteImagenPrincipal"])->name("deleteImagenPrincipal")->middleware("auth");
 
+//seccion formCategoriaSinColorNiTamaño
+Route::get('/formCategoriaSinColorNiTamaño',[HomeController::class,"formCategoriaSinColorNiTamaño"])->name("formCategoriaSinColorNiTamaño")->middleware("auth");
+Route::get('/storeCategoriaSinColorNiTamaño',[HomeController::class,"storeCategoriaSinColorNiTamaño"])->name("storeCategoriaSinColorNiTamaño")->middleware("auth");
+Route::post('/eliminarCategoriaSinColorNiTamaño',[HomeController::class,"eliminarCategoriaSinColorNiTamaño"])->name("eliminarCategoriaSinColorNiTamaño")->middleware("auth");
+Route::get('/actualizarCategoriaSinColorNiTamaño',[HomeController::class,"actualizarCategoriaSinColorNiTamaño"])->name("actualizarCategoriaSinColorNiTamaño")->middleware("auth");
+Route::get('/storeActualizarCategoriaSinColorNiTamaño',[HomeController::class,"storeActualizarCategoriaSinColorNiTamaño"])->name("storeActualizarCategoriaSinColorNiTamaño")->middleware("auth");
+
+
 
 
 

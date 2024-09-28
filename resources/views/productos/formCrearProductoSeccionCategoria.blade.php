@@ -14,6 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--icono-->
     <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -58,5 +59,29 @@
     </div>
 
 </body>
+
+<!-- creado correctamente -->
+@if(session('creadoCorrectamente'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Acción exitosa!',
+            text: '{{ session('creadoCorrectamente') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+<!-- Error de advertencia no se puede añadir mas de 5 -->
+@if(session('max'))
+    <script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Advertencia',
+            text: '{{ session('max') }}',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
 
 </html>

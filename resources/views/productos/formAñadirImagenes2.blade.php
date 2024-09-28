@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>form Añadir Imagenes</title>
+    <title>form Añadir Imagenes2</title>
     <link rel="stylesheet" href="{{ asset('login/loginAdentro.Css?1.0') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,7 +14,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--icono-->
     <link style="width: 16px; height: 16px;" rel="icon" href="images/icono.png" type="image/png">
-
 </head>
 
 <body>
@@ -28,7 +27,8 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div style="text-align: center">
-        <img style="width: 380px; height: 380px; object-fit: contain; background-color: #f0f0f0;" class="card-img-top" src="imagesProductos/{{ $producto->imagen }}">
+        <img style="width: 380px; height: 380px; object-fit: contain; background-color: #f0f0f0;" class="card-img-top"
+            src="imagesProductos/{{ $producto->imagen }}">
     </div>
 
     <h1>Añadir producto con el color {{ $color }} seleccionado</h1>
@@ -48,7 +48,9 @@
             </select>
         </div>
     </form>
+
     <br><br>
+
     <div class="container" style="background-color: darkseagreen; border: solid 1px;">
         <form action="{{ route('storeProductoFotos') }}" method="POST" accept-charset="UTF-8"
             enctype="multipart/form-data">
@@ -60,25 +62,26 @@
                 <label>Seleccionar imágenes</label>
                 <input type="file" name="image[]" class="form-control" multiple required id="campoTexto">
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
-                <select class="form-control" name="tamaño">
-                    <option>NINGUNO</option>
-                    @foreach ($tamaños as $item)
-                        <option>
-                            @if (is_numeric($item->tamaño))
-                            {{ $item->tamaño }}cm
-                            @else
-                                {{$item->tamaño}}
-                            @endif
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Cantidad del producto:</label>
-                <input type="number" class="form-control" name="cantidad" required>
-            </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Seleccione el tamaño</label>
+                    <select class="form-control" name="tamaño">
+                        <option>NINGUNO</option>
+                        @foreach ($tamaños as $item)
+                            <option>
+                                @if (is_numeric($item->tamaño))
+                                    {{ $item->tamaño }}cm
+                                @else
+                                    {{ $item->tamaño }}
+                                @endif
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Cantidad del producto:</label>
+                    <input type="number" class="form-control" name="cantidad">
+                </div>
             <br><br>
             <button type="submit" class="btn btn-default">Añadir</button>
         </form>
@@ -87,12 +90,12 @@
 
 </body>
 
-
-
 <script>
     function submitForm() {
         document.getElementById("myForm").submit();
     }
 </script>
+
+
 
 </html>

@@ -46,6 +46,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ route('seccionImagenInicial') }}">Seccion de imagen inicial</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ route('formCategoriaSinColorNiTamaño') }}">Crear categorias sin color ni tamaño</a></li>
+                </ul>
               <ul class="nav navbar-nav">
                 <li><a href="{{ route('logout') }}">Cerrar sesion</a></li>
               </ul>
