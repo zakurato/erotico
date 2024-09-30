@@ -638,6 +638,8 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         // return "imagen","nombre","categoria","color,"tamaño","precio","cantidad","descripcion","temporada"}
         // database "imagen","nombre","categoria","color,"tamaño","precio","cantidad","descripcion","temporada"}
 
+
+        
         $categoria = explode(';', $request->input('categoria'))[1];
         $user = Auth::user();
 
@@ -645,7 +647,7 @@ if (empty($request) || ($request->txtBuscar == "" && $request->categoria == "") 
         $tamaño = str_replace('mm', '', $tamaño); // Eliminar "mm"
 
         $imageName = time().'.'.$request->imagen->extension();  
-
+        return $imageName;
         $request->imagen->move(public_path('imagesProductos'), $imageName);
 
         //modificar precio con 5% de ganancia
