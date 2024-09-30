@@ -188,7 +188,7 @@
                             // Realizar la petición AJAX
                             $.ajax({
                                 type: "GET",
-                                url: "http://localhost/erotico/public/cambiarTemporadaFotos", // Reemplaza con la URL de tu script de procesamiento
+                                url: "http://3.145.94.244/cambiarTemporadaFotos", // Reemplaza con la URL de tu script de procesamiento
                                 data: {
                                     id: id
                                 },
